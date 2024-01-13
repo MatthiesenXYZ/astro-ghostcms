@@ -1,0 +1,42 @@
+{
+  "name": "@adammatthiesen/astro-ghostcms",
+  "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
+  "version": "0.0.1-beta.0",
+  "author": "Adam Matthiesen <adam@matthiesen.xyz>",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adammatthiesen/astro-ghostcms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Adammatthiesen/astro-ghostcms/issues"
+  },
+  "homepage": "https://github.com/Adammatthiesen/astro-ghostcms",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "astro-component",
+    "withastro",
+    "ghost",
+    "ghostcms"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "astro": "^4.1.1"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "typescript": "^5.3.3",
+    "axios": "^1.0.0"
+  },
+  "main": "index.ts"
+}
