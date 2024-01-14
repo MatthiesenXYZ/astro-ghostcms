@@ -1,9 +1,8 @@
 // IMPORT Ghost Types
-import type { PostOrPage, PostsOrPages, Authors, Tag, Tags, ArrayOrValue, IncludeParam, LimitParam, Settings, Nullable } from './Types/ghost';
+import type { PostOrPage, PostsOrPages, Authors, Tag, Tags, ArrayOrValue, IncludeParam, LimitParam, Settings, Nullable } from '../index.d';
 
 // IMPORT Ghost API Client
 import { api } from './Content-API/api-client';
-
 // SET Include params
 const include:ArrayOrValue<IncludeParam> = ['authors', 'tags'];
 
