@@ -1,7 +1,7 @@
 {
   "name": "@adammatthiesen/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Adam Matthiesen <adam@matthiesen.xyz>",
   "type": "module",
   "license": "MIT",
