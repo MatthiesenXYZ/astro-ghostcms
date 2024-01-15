@@ -27,6 +27,10 @@ Dependencies:
 
 Basic Usage:
 
+```
+import { getGhostPosts } from "@adammatthiesen/astro-ghostcms";
+```
+
 - getGhostPosts() - Get list of posts
 - getGhostRecentPosts(setLimit?) - Get Recent Posts (setLimit={6})
 - getGhostFeaturedPosts(setLimit?) - Get Featured Posts (setLimit={1})

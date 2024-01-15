@@ -1,4 +1,4 @@
-import GhostContentAPI from './ghostContentAPI';
+import GhostContentAPI from './tryghost-content-api';
 
 // CALL GHOST VARS AND CREATE CLIENT
 const key = import.meta.env.CONTENT_API_KEY;
