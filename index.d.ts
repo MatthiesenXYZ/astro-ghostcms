@@ -71,7 +71,7 @@ export interface Settings extends Metadata, CodeInjection, SocialMedia {
             url: string;
         }>
         | undefined;
-    url?: string;
+    url: string;
 }
 
 export interface Author extends Identification, Metadata {
