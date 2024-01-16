@@ -1,18 +1,18 @@
 {
-  "name": "@adammatthiesen/astro-ghostcms",
+  "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "1.0.2",
-  "author": "Adam Matthiesen <adam@matthiesen.xyz>",
+  "version": "1.0.3",
+  "author": "MatthiesenXYZ (https://matthiesen.xyz)",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Adammatthiesen/astro-ghostcms.git"
+    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
   },
   "bugs": {
-    "url": "https://github.com/Adammatthiesen/astro-ghostcms/issues"
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues"
   },
-  "homepage": "https://github.com/Adammatthiesen/astro-ghostcms",
+  "homepage": "https://github.com/MatthiesenXYZ/astro-ghostcms",
   "exports": {
     ".": "./index.ts"
   },

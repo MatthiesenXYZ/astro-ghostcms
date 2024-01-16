@@ -7,7 +7,7 @@ This package contains a independent copy of the tryghost content-api.js that is 
 ## Installation
 
 ```
-npm install @adammatthiesen/astro-ghostcms
+npm i @matthiesenxyz/astro-ghostcms
 ```
 
 Must create `.env` with the following:
@@ -28,7 +28,7 @@ Dependencies:
 Basic Usage:
 
 ```
-import { getGhostPosts } from "@adammatthiesen/astro-ghostcms";
+import { getGhostPosts } from "@matthiesenxyz/astro-ghostcms";
 ```
 
 - getGhostPosts() - Get list of posts
