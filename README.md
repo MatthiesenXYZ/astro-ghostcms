@@ -42,7 +42,7 @@ Then set your astro.config.ts to look like this:
 
 ```ts
 import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
+import sitemap from "@astrojs/sitemap"; //optional but recommended
 import GhostCMS from '@matthiesenxyz/astro-ghostcms';
 
 // https://astro.build/config
