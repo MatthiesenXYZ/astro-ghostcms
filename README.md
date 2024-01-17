@@ -1,5 +1,7 @@
 # Welcome to Astro-GhostCMS
 
+![Astro-GhostCMS-Demo](https://repository-images.githubusercontent.com/742727289/f4a54637-44bd-49f5-8426-18dcccdbe5a6)
+
 Astro minimum Version: **Astro v4.0**
 
 This Integration is 2 parts.  Firstly, there is the API portion that uses the `@tryghost/content-api` to create the link between astro and GhostCMS.  From there we move to the Second Part, which is a theme pre-programmed to pull ALL of its data from GhostCMS iteself instead of storing any data locally outside of Build.
