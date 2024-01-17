@@ -89,7 +89,7 @@ CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
 ```astro
 ---
 // IMPORT {GET} GhostPosts Function
-import { getGhostPosts } from '@matthiesenxyz/astro-ghostcms';
+import { getGhostPosts } from '@matthiesenxyz/astro-ghostcms/api';
 // GET LIST OF ALL POSTS
 const ghostPosts = await getGhostPosts();
 ---
@@ -100,7 +100,7 @@ const ghostPosts = await getGhostPosts();
 ```astro
 ---
 // IMPORT {GET} GhostFeaturedPosts Function
-import { getGhostRecentPosts } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostRecentPosts } from "@matthiesenxyz/astro-ghostcms/api";
 // CREATE INTERFACE TO PASS 'setLimit' for POST LIMIT
 interface Props { 
   setLimit?:number;
@@ -117,7 +117,7 @@ const ghostPosts = await getGhostRecentPosts(setLimit);
 ```astro
 ---
 // IMPORT {GET} GhostFeaturedPosts Function
-import { getGhostFeaturedPosts } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostFeaturedPosts } from "@matthiesenxyz/astro-ghostcms/api";
 // CREATE INTERFACE TO PASS 'setLimit' for POST LIMIT
 interface Props { 
   setLimit?:number;
@@ -134,7 +134,7 @@ const ghostPosts = await getGhostFeaturedPosts(setLimit);
 ```astro
 ---
 // IMPORT {GET} GhostPostbySlug Function
-import  { getGhostPostbySlug }  from '@matthiesenxyz/astro-ghostcms';
+import  { getGhostPostbySlug }  from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/[slug]
 const { slug } = Astro.params;
 // GET CURRENT POST BY PASSING SLUG TO FUNCTION
@@ -147,7 +147,7 @@ const ghostPost = await getGhostPostbySlug(slug);
 ```astro
 ---
 // IMPORT {GET} GhostPostsbyTag, and GhostTagbySlug Functions
-import { getGhostPostsbyTag, getGhostTagbySlug } from '@matthiesenxyz/astro-ghostcms';
+import { getGhostPostsbyTag, getGhostTagbySlug } from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/tag/[slug]
 const { slug } = Astro.params;
 // GET TAG BY SLUG TO DISPLAY TAG INFO
@@ -162,7 +162,7 @@ const ghostPosts = await getGhostPostsbyTag(slug)
 ```astro
 ---
 // IMPORT {GET} GhostTags Function
-import { getGhostTags } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostTags } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL TAGS
 const ghostTags = await getGhostTags();
 ---
@@ -173,7 +173,7 @@ const ghostTags = await getGhostTags();
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostAuthors } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostAuthors } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostAuthors = await getGhostAuthors();
 ---
@@ -184,7 +184,7 @@ const ghostAuthors = await getGhostAuthors();
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostPages } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostPages } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostPages = await getGhostPages();
 ---
@@ -195,7 +195,7 @@ const ghostPages = await getGhostPages();
 ```astro
 ---
 // IMPORT {GET} GhostPostbySlug Function
-import  { getGhostPage }  from '@matthiesenxyz/astro-ghostcms';
+import  { getGhostPage }  from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/[slug]
 const { slug } = Astro.params;
 // GET CURRENT POST BY PASSING SLUG TO FUNCTION
@@ -208,7 +208,7 @@ const ghostpage = await getGhostPage(slug);
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostSettings } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostSettings } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostSettings = await getGhostSettings();
 ---
