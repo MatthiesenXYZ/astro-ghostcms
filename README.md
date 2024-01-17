@@ -11,6 +11,7 @@ This addon uses the `@tryghost/content-api` and creates astro friendly functions
 In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
 
 ```
+# NOT READY YET DO NOT USE
 astro add @matthiesenxyz/astro-ghostcms
 ```
 
