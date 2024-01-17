@@ -12,10 +12,14 @@ This Integration is 2 parts.  Firstly, there is the API portion that uses the `@
 
 In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
 
-### Astro Add Installation *(Coming Soon)*
+### Astro Add Installation
 
-```
-astro add @matthiesenxyz/astro-ghostcms
+```sh
+# For fresh Install
+npm create astro@latest
+# Create Empty Install with standard typescript
+# Then Delete entire pages folder
+npx astro add @matthiesenxyz/astro-ghostcms
 ```
 
 ### Manual Installation
