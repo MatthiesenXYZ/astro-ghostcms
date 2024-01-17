@@ -18,7 +18,7 @@ In this mode, the addon will not be just an API, but will be a full Route takeov
 # For fresh Install
 npm create astro@latest
 # Create Empty Install with standard typescript
-# Then Delete entire pages folder
+# Then Delete entire `pages` folder under `/src/`
 npx astro add @matthiesenxyz/astro-ghostcms
 ```
 
