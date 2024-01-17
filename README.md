@@ -1,7 +1,5 @@
 # Welcome to Astro-GhostCMS
 
-![Astro-GhostCMS-Demo](https://repository-images.githubusercontent.com/742727289/f4a54637-44bd-49f5-8426-18dcccdbe5a6)
-
 [Live Demo](https://astro-ghostcms.netlify.app/) of the Astro-GhostCMS integration in action!
 
 Astro minimum Version: **Astro v4.0**
