@@ -2,6 +2,8 @@
 
 ![Astro-GhostCMS-Demo](https://repository-images.githubusercontent.com/742727289/f4a54637-44bd-49f5-8426-18dcccdbe5a6)
 
+[Live Demo](https://astro-ghostcms.netlify.app/) of the Astro-GhostCMS integration in action!
+
 Astro minimum Version: **Astro v4.0**
 
 This Integration is 2 parts.  Firstly, there is the API portion that uses the `@tryghost/content-api` to create the link between astro and GhostCMS.  From there we move to the Second Part, which is a theme pre-programmed to pull ALL of its data from GhostCMS iteself instead of storing any data locally outside of Build.
@@ -13,8 +15,6 @@ This Integration is 2 parts.  Firstly, there is the API portion that uses the `@
 ## Astro Integration Mode
 
 In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
-
-- [Live Demo](https://astro-ghostcms.netlify.app/) of the Astro-GhostCMS integration in action!
 
 ### Astro Add Installation
 
