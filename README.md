@@ -12,11 +12,11 @@ This Integration is 2 parts.  Firstly, there is the API portion that uses the `@
 - If you are looking for a more Customizable option please check [astro-ghostcms-basetheme](https://github.com/MatthiesenXYZ/astro-ghostcms-basetheme) 
 - This project is not setup for SSR in Integration mode.  As such is will most likely not function properly in that mode. You will need to build your own project around the API or customize the *basetheme* linked above.
 
-## Astro Integration Mode
+# Astro Integration Mode
 
 In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
 
-### Astro Add Installation
+## Astro Add Installation
 
 ```sh
 # For fresh Install
@@ -25,8 +25,15 @@ npm create astro@latest
 # Then Delete entire `pages` folder under `/src/`
 npx astro add @matthiesenxyz/astro-ghostcms
 ```
+#### Dont forget to set your environment Variables!
 
-### Manual Installation
+You must also create 2 environment variables in a `.env` file with the following:
+
+```env
+CONTENT_API_KEY=a33da3965a3a9fb2c6b3f63b48
+CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
+```
+## Manual Installation
 
 ```
 npm i @matthiesenxyz/astro-ghostcms
@@ -46,7 +53,7 @@ export default defineConfig({
 });
 ```
 
-### Dont forget to set your environment Variables!
+#### Dont forget to set your environment Variables!
 
 You must also create 2 environment variables in a `.env` file with the following:
 
@@ -72,7 +79,7 @@ The routes are the same as a standard Ghost Blog so you can migrate to Astro eas
 | `/archives/[...page]` | All the posts, paginated                  |
 
 
-## Manual Function Mode (DIY MODE)
+# Manual Function Mode (DIY MODE)
 
 In this mode the integration will not deploy routes at all.  you will have to build your own website to utilize the exported functions listed below.
 
