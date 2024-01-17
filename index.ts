@@ -1,5 +1,51 @@
-// FUNCTION EXPORTS
-export { getGhostPosts, getGhostRecentPosts, getGhostFeaturedPosts, getGhostPostbySlug, getGhostPostsbyTag, getGhostTags, getGhostTagbySlug, getGhostAuthors, getGhostPages, getGhostPage, getGhostSettings } from './src/functions';
+import type { AstroIntegration } from "astro"
 
-// TYPE EXPORTS
-export type { PostOrPage, ArrayOrValue, Author, Authors, BrowseFunction, CodeInjection, Excerpt, Facebook, FieldParam, FilterParam, FormatParam, GhostAPI, GhostContentAPIOptions, GhostData, GhostError, Identification, IncludeParam, LimitParam, Metadata, Nullable, OrderParam, PageParam, Pagination, Params, PostsOrPages, ReadFunction, Settings, SettingsResponse, SocialMedia, Tag, TagVisibility, Tags, Twitter } from './index.d';
+export default function GhostCMS(): AstroIntegration {
+    return {
+        name: 'astro-ghostcms',
+        hooks: {
+            'astro:config:setup': async ({
+                injectRoute,
+                logger,
+            }) => {
+                
+                injectRoute({
+                    pattern: '/',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/index.astro'
+                })
+
+                injectRoute({
+                    pattern: '/[slug]',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/[slug].astro'
+                })
+
+                injectRoute({
+                    pattern: '/tags',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/tags.astro'
+                })
+
+                injectRoute({
+                    pattern: '/authors',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/authors.astro'
+                })
+
+                injectRoute({
+                    pattern: '/tag/[slug]',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/tag/[slug].astro'
+                })
+
+                injectRoute({
+                    pattern: '/author/[slug]',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/author/[slug].astro'
+                })
+
+                injectRoute({
+                    pattern: '/archives/[...page]',
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/archives/[...page].astro'
+                })
+
+                logger.info('Astro GhostCMS Plugin Loaded!')
+            }
+        }
+    }
+}

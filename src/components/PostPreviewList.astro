@@ -1,0 +1,43 @@
+---
+import PostPreview from "./PostPreview.astro";
+import type { Settings, PostOrPage } from "../api";
+export type Props = {
+  posts: PostOrPage[];
+  settings: Settings;
+  isHome?: boolean;
+};
+const { posts, settings, isHome = false } = Astro.props as Props;
+---
+
+<div class="post-feed">
+  {posts.map((post: PostOrPage, index: number) => (
+    <PostPreview
+      post={post}
+      index={index}
+      settings={settings}
+      isHome={isHome}
+    />
+  ))}
+</div>
+
+<style lang="scss">
+  .post-feed {
+    position: relative;
+    display: grid;
+    grid-gap: 4vmin;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 4vmin 0;
+  }
+
+  @media (max-width: 1000px) {
+    .post-feed {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 700px) {
+    .post-feed {
+      grid-template-columns: 1fr;
+      grid-gap: 40px;
+    }
+  }
+</style>

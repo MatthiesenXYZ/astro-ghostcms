@@ -1,42 +1,95 @@
 # Welcome to Astro-GhostCMS
 
-This addon uses the `@tryghost/content-api` and creates astro friendly functions to interface between ghost and astro.
+Astro minimum Version: **Astro v4.0**
 
-*This package contains a independent copy of the tryghost content-api.js that is used to establish the connection so this package dose not depend on `@tryghost/content-api` package.*
+This Integration is 2 parts.  Firstly, there is the API portion that uses the `@tryghost/content-api` to create the link between astro and GhostCMS.  From there we move to the Second Part, which is a theme pre-programmed to pull ALL of its data from GhostCMS iteself instead of storing any data locally outside of Build.
 
-## Astro Integration Mode *(Planned for V2)*
+- *This package contains a independent copy of the tryghost content-api.js that is used to establish the connection so this package dose not depend on `@tryghost/content-api` package.*
+- If you are looking for a more Customizable option please check [astro-ghostcms-basetheme](https://github.com/MatthiesenXYZ/astro-ghostcms-basetheme) 
+- This project is not setup for SSR in Integration mode.  As such is will most likely not function properly in that mode. You will need to build your own project around the API or customize the *basetheme* linked above.
 
-This is coming soon.  And will allow the user to utilize the prebuilt astro-ghostcms-basetheme to be integrated through this main project.  This feature is not yet setup or integrated.  If you want a easy quick and simple deploy please copy this Template Repo, [astro-ghostcms-basetheme](https://github.com/MatthiesenXYZ/astro-ghostcms-basetheme) This will get you setup and ready to deploy in minutes using this addon!
+## Astro Integration Mode
 
-## Manual Installation
+In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
+
+### Astro Add Installation *(Coming Soon)*
+
+```
+# NOT READY YET DO NOT USE
+astro add @matthiesenxyz/astro-ghostcms
+```
+
+### Manual Installation
 
 ```
 npm i @matthiesenxyz/astro-ghostcms
 ```
 
-Must create `.env` with the following:
+Then set your astro.config.ts to look like this:
+
+```ts
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import GhostCMS from '@matthiesenxyz/astro-ghostcms';
+
+// https://astro.build/config
+export default defineConfig({
+  site: "https://YOUR-DOMAIN-HERE.com"
+  integrations: [sitemap(), GhostCMS()],
+});
+```
+
+### Dont forget to set your environment Variables!
+
+You must also create 2 environment variables in a `.env` file with the following:
 
 ```env
-CONTENT_API_KEY=
-CONTENT_API_URL=
+CONTENT_API_KEY=a33da3965a3a9fb2c6b3f63b48
+CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
 ```
 
 **When you deploy your install dont forget to set the above ENVIRONMENT VARIABLES!**
 
-Astro minimum Version: **Astro v4.0**
+#### Created Routes
 
-Dependencies:
-- **Axios v1.0** *Will be auto installed*
-- **Typescript v5.3.3** *Will be auto installed*
+The routes are the same as a standard Ghost Blog so you can migrate to Astro easily.
 
-## Function Usage Examples:
+| Route                 | Content                                   |
+| --------------------- | ----------------------------------------- |
+| `/`                   | Homepage with recents/features Blog Posts |
+| `/[slug]`             | Post or Page                              |
+| `/author/[slug]`      | Author page with related posts            |
+| `/authors`            | All the authors                           |
+| `/tag[slug]`          | Tag page with related posts               |
+| `/tags`               | All the tags                              |
+| `/archives/[...page]` | All the posts, paginated                  |
+
+
+## Manual Function Mode (DIY MODE)
+
+In this mode the integration will not deploy routes at all.  you will have to build your own website to utilize the exported functions listed below.
+
+```
+npm i @matthiesenxyz/astro-ghostcms
+```
+
+You must also create 2 environment variables in a `.env` file with the following:
+
+```env
+CONTENT_API_KEY=a33da3965a3a9fb2c6b3f63b48
+CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
+```
+
+**When you deploy your install dont forget to set the above ENVIRONMENT VARIABLES!**
+
+## Manual Function Usage Examples:
 
 ### getGhostPosts() - Get list of posts
 
 ```astro
 ---
 // IMPORT {GET} GhostPosts Function
-import { getGhostPosts } from '@matthiesenxyz/astro-ghostcms';
+import { getGhostPosts } from '@matthiesenxyz/astro-ghostcms/api';
 // GET LIST OF ALL POSTS
 const ghostPosts = await getGhostPosts();
 ---
@@ -47,7 +100,7 @@ const ghostPosts = await getGhostPosts();
 ```astro
 ---
 // IMPORT {GET} GhostFeaturedPosts Function
-import { getGhostRecentPosts } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostRecentPosts } from "@matthiesenxyz/astro-ghostcms/api";
 // CREATE INTERFACE TO PASS 'setLimit' for POST LIMIT
 interface Props { 
   setLimit?:number;
@@ -64,7 +117,7 @@ const ghostPosts = await getGhostRecentPosts(setLimit);
 ```astro
 ---
 // IMPORT {GET} GhostFeaturedPosts Function
-import { getGhostFeaturedPosts } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostFeaturedPosts } from "@matthiesenxyz/astro-ghostcms/api";
 // CREATE INTERFACE TO PASS 'setLimit' for POST LIMIT
 interface Props { 
   setLimit?:number;
@@ -81,7 +134,7 @@ const ghostPosts = await getGhostFeaturedPosts(setLimit);
 ```astro
 ---
 // IMPORT {GET} GhostPostbySlug Function
-import  { getGhostPostbySlug }  from '@matthiesenxyz/astro-ghostcms';
+import  { getGhostPostbySlug }  from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/[slug]
 const { slug } = Astro.params;
 // GET CURRENT POST BY PASSING SLUG TO FUNCTION
@@ -94,7 +147,7 @@ const ghostPost = await getGhostPostbySlug(slug);
 ```astro
 ---
 // IMPORT {GET} GhostPostsbyTag, and GhostTagbySlug Functions
-import { getGhostPostsbyTag, getGhostTagbySlug } from '@matthiesenxyz/astro-ghostcms';
+import { getGhostPostsbyTag, getGhostTagbySlug } from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/tag/[slug]
 const { slug } = Astro.params;
 // GET TAG BY SLUG TO DISPLAY TAG INFO
@@ -109,7 +162,7 @@ const ghostPosts = await getGhostPostsbyTag(slug)
 ```astro
 ---
 // IMPORT {GET} GhostTags Function
-import { getGhostTags } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostTags } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL TAGS
 const ghostTags = await getGhostTags();
 ---
@@ -120,7 +173,7 @@ const ghostTags = await getGhostTags();
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostAuthors } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostAuthors } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostAuthors = await getGhostAuthors();
 ---
@@ -131,7 +184,7 @@ const ghostAuthors = await getGhostAuthors();
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostPages } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostPages } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostPages = await getGhostPages();
 ---
@@ -142,7 +195,7 @@ const ghostPages = await getGhostPages();
 ```astro
 ---
 // IMPORT {GET} GhostPostbySlug Function
-import  { getGhostPage }  from '@matthiesenxyz/astro-ghostcms';
+import  { getGhostPage }  from '@matthiesenxyz/astro-ghostcms/api';
 // GET SLUG from /blog/[slug]
 const { slug } = Astro.params;
 // GET CURRENT POST BY PASSING SLUG TO FUNCTION
@@ -155,7 +208,7 @@ const ghostpage = await getGhostPage(slug);
 ```astro
 ---
 // IMPORT {GET} GhostAuthors Function
-import { getGhostSettings } from "@matthiesenxyz/astro-ghostcms";
+import { getGhostSettings } from "@matthiesenxyz/astro-ghostcms/api";
 // GET LIST OF ALL AUTHORS
 const ghostSettings = await getGhostSettings();
 ---

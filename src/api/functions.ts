@@ -1,5 +1,5 @@
 // IMPORT Ghost Types
-import type { PostOrPage, PostsOrPages, Authors, Tag, Tags, ArrayOrValue, IncludeParam, LimitParam, Settings, Nullable } from '..';
+import type { PostOrPage, PostsOrPages, Authors, Tag, Tags, ArrayOrValue, IncludeParam, LimitParam, Settings, Nullable } from './ghosttypes';
 
 // IMPORT Ghost API Client
 import api from './interface';
