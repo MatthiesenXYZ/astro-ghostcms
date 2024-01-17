@@ -12,6 +12,8 @@ This Integration is 2 parts.  Firstly, there is the API portion that uses the `@
 
 In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
 
+- [Live Demo](https://astro-ghostcms.netlify.app/) of the Astro-GhostCMS integration in action!
+
 ### Astro Add Installation
 
 ```sh
