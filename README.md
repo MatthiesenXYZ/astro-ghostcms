@@ -15,7 +15,6 @@ In this mode, the addon will not be just an API, but will be a full Route takeov
 ### Astro Add Installation *(Coming Soon)*
 
 ```
-# NOT READY YET DO NOT USE
 astro add @matthiesenxyz/astro-ghostcms
 ```
 
