@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "MatthiesenXYZ (https://matthiesen.xyz)",
   "type": "module",
   "license": "MIT",
@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/MatthiesenXYZ/astro-ghostcms",
   "exports": {
+    ".": "./index.ts",
     "./api": "./src/api/index.ts",
     "./index.astro": "./src/routes/index.astro",
     "./[slug].astro": "./src/routes/[slug].astro",
