@@ -1,12 +1,18 @@
 # Welcome to Astro-GhostCMS
 
+Astro minimum Version: **Astro v4.0**
+
 This addon uses the `@tryghost/content-api` and creates astro friendly functions to interface between ghost and astro.
 
 *This package contains a independent copy of the tryghost content-api.js that is used to establish the connection so this package dose not depend on `@tryghost/content-api` package.*
 
-## Astro Integration Mode *(Planned for V2)*
+## Astro Integration Mode
 
-This is coming soon.  And will allow the user to utilize the prebuilt astro-ghostcms-basetheme to be integrated through this main project.  This feature is not yet setup or integrated.  If you want a easy quick and simple deploy please copy this Template Repo, [astro-ghostcms-basetheme](https://github.com/MatthiesenXYZ/astro-ghostcms-basetheme) This will get you setup and ready to deploy in minutes using this addon!
+In this mode, the addon will not be just an API, but will be a full Route takeover, there is plans to add more themes in time, but for now there is only the base Casper theme based on Ghost's main Theme.
+
+```
+astro add @matthiesenxyz/astro-ghostcms
+```
 
 ## Manual Installation
 
@@ -17,19 +23,13 @@ npm i @matthiesenxyz/astro-ghostcms
 Must create `.env` with the following:
 
 ```env
-CONTENT_API_KEY=
-CONTENT_API_URL=
+CONTENT_API_KEY=a33da3965a3a9fb2c6b3f63b48
+CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
 ```
 
 **When you deploy your install dont forget to set the above ENVIRONMENT VARIABLES!**
 
-Astro minimum Version: **Astro v4.0**
-
-Dependencies:
-- **Axios v1.0** *Will be auto installed*
-- **Typescript v5.3.3** *Will be auto installed*
-
-## Function Usage Examples:
+## Manual Function Usage Examples:
 
 ### getGhostPosts() - Get list of posts
 

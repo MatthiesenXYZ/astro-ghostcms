@@ -1,0 +1,60 @@
+---
+import type { Settings } from "../api";
+import BaseHead from "../components/BaseHead.astro";
+import MainLayout from "../components/MainLayout.astro";
+export type Props = {
+  content?: {
+    title: string|undefined;
+    description: string|undefined;
+  };
+  bodyClass?: string;
+  settings: Settings;
+};
+
+const { content, settings, bodyClass = "" } = Astro.props as Props;
+const ghostAccentColor = settings.accent_color;
+console.log(settings.accent_color)
+---
+
+<html lang="en" data-color-scheme="light">
+  <head>
+    <BaseHead
+      title={content?.title ? `${settings.title} | ${content.title}` : "" }
+      description={content?.description ?? "Description"}
+      settings={settings}
+    />
+  </head>
+  <body class={bodyClass}>
+    <MainLayout settings={settings}>
+      <slot />
+    </MainLayout>
+    <style
+      lang="scss"
+      is:global
+      define:vars={{ "ghost-accent-color": ghostAccentColor }}
+    >
+      @import "../styles/reset.scss";
+      @import "../styles/app.scss";
+      @mixin mq-sm {
+        @media only screen and (min-width: 36em) {
+          @content;
+        }
+      }
+      @mixin mq-md {
+        @media only screen and (min-width: 48em) {
+          @content;
+        }
+      }
+      @mixin mq-lg {
+        @media only screen and (min-width: 62em) {
+          @content;
+        }
+      }
+      @mixin mq-xl {
+        @media only screen and (min-width: 75em) {
+          @content;
+        }
+      }
+    </style>
+  </body>
+</html>
