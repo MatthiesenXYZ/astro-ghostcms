@@ -11,37 +11,37 @@ export default function GhostCMS(): AstroIntegration {
                 
                 injectRoute({
                     pattern: '/',
-                    entrypoint: './src/routes/index.astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/index.astro'
                 })
 
                 injectRoute({
                     pattern: '/[slug]',
-                    entrypoint: './src/routes/[slug].astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/[slug].astro'
                 })
 
                 injectRoute({
                     pattern: '/tags',
-                    entrypoint: './src/routes/tags.astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/tags.astro'
                 })
 
                 injectRoute({
                     pattern: '/authors',
-                    entrypoint: './src/routes/authors.astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/authors.astro'
                 })
 
                 injectRoute({
                     pattern: '/tag/[slug]',
-                    entrypoint: './src/routes/tag/[slug].astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/tag/[slug].astro'
                 })
 
                 injectRoute({
                     pattern: '/author/[slug]',
-                    entrypoint: './src/routes/author/[slug].astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/author/[slug].astro'
                 })
 
                 injectRoute({
                     pattern: '/archives/[...page]',
-                    entrypoint: './src/routes/archives/[...page].astro'
+                    entrypoint: '@matthiesenxyz/astro-ghostcms/archives/[...page].astro'
                 })
 
                 logger.info('Astro GhostCMS Plugin Loaded!')
