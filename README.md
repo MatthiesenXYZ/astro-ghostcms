@@ -4,7 +4,8 @@ Astro minimum Version: **Astro v4.0**
 
 This Integration is 2 parts.  Firstly, there is the API portion that uses the `@tryghost/content-api` to create the link between astro and GhostCMS.  From there we move to the Second Part, which is a theme pre-programmed to pull ALL of its data from GhostCMS iteself instead of storing any local data.
 
-*This package contains a independent copy of the tryghost content-api.js that is used to establish the connection so this package dose not depend on `@tryghost/content-api` package.*
+- *This package contains a independent copy of the tryghost content-api.js that is used to establish the connection so this package dose not depend on `@tryghost/content-api` package.*
+- If you are looking for a more Customizable option please check [astro-ghostcms-basetheme](https://github.com/MatthiesenXYZ/astro-ghostcms-basetheme) 
 
 ## Astro Integration Mode
 
@@ -25,7 +26,7 @@ npm i @matthiesenxyz/astro-ghostcms
 
 Then set your astro.config.ts to look like this:
 
-```
+```ts
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import GhostCMS from '@matthiesenxyz/astro-ghostcms';
@@ -36,6 +37,7 @@ export default defineConfig({
   integrations: [sitemap(), GhostCMS()],
 });
 ```
+
 ### Dont forget to set your environment Variables!
 
 You must also create 2 environment variables in a `.env` file with the following:
