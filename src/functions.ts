@@ -2,7 +2,7 @@
 import type { PostOrPage, PostsOrPages, Authors, Tag, Tags, ArrayOrValue, IncludeParam, LimitParam, Settings, Nullable } from '..';
 
 // IMPORT Ghost API Client
-import { api } from './interface';
+import api from './interface';
 
 // SET Include params
 const include:ArrayOrValue<IncludeParam> = ['authors', 'tags'];
