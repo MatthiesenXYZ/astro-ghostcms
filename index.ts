@@ -2,9 +2,11 @@ import type { AstroIntegration } from "astro"
 import { ZodError, type SafeParseError, type SafeParseSuccess } from "astro/zod"
 import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema"
 
+const pkg = '@matthiesenxyz/astro-ghostcms'
+
 export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
-        name: '@matthiesenxyz/astro-ghostcms',
+        name: pkg,
         hooks: {
             'astro:config:setup': async ({
                 injectRoute,
@@ -22,6 +24,13 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 }
 
                 const entry = o.data.theme
+
+                if (entry === pkg) {
+                    logger.info("Injecting Theme: astro-ghostcms-basetheme")
+                } else {
+                    logger.info(`Injecting Theme: ${entry}`)
+                }
+
 
                 logger.info("Injecting Route: /")
                 injectRoute({
