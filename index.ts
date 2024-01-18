@@ -1,5 +1,5 @@
 import type { AstroIntegration } from "astro"
-import { SafeParseError, SafeParseSuccess, ZodError } from "astro/zod"
+import { ZodError, type SafeParseError, type SafeParseSuccess } from "astro/zod"
 import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema"
 
 export default function GhostCMS(options: UserConfig): AstroIntegration {
