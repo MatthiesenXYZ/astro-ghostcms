@@ -18,7 +18,7 @@ const { post, settings, index, isHome = false } = Astro.props as Props;
     isHome && post.feature_image && index == 0 ? "post-card-large" : ""
   }`}
 >
-  <a class="post-card-image-link" href={`/${post.slug}`}>
+  <a class="post-card-image-link" href={`/${post.slug}`} data-astro-reload>
     <img
       class="post-card-image"
       srcset={`
