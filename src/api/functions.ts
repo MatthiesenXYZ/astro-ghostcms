@@ -44,7 +44,7 @@ export const getGhostTagbySlug = async (slug:Nullable<string>) => {
 
 // Get Authors (General "ALL")
 export const getGhostAuthors = async () => {
-    const ghostAuthors:Authors = await api.authors.browse();
+    const ghostAuthors:Authors = await api.authors.browse({include:`count.posts`});
     return ghostAuthors; }
 
 // Get Pages (ALL)
