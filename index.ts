@@ -2,7 +2,7 @@ import type { AstroIntegration } from "astro"
 
 export default function GhostCMS(): AstroIntegration {
     return {
-        name: 'astro-ghostcms',
+        name: '@matthiesenxyz/astro-ghostcms',
         hooks: {
             'astro:config:setup': async ({
                 injectRoute,
