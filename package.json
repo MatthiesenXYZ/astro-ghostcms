@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues"
   },
-  "homepage": "https://github.com/MatthiesenXYZ/astro-ghostcms",
+  "homepage": "https://astro-ghostcms.xyz/",
   "exports": {
     ".": "./index.ts",
     "./api": "./src/api/index.ts",
