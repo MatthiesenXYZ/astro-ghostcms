@@ -1,6 +1,8 @@
 import type { AstroIntegration } from "astro"
+import { SafeParseError, SafeParseSuccess, ZodError } from "astro/zod"
+import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema"
 
-export default function GhostCMS(): AstroIntegration {
+export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
         name: '@matthiesenxyz/astro-ghostcms',
         hooks: {
@@ -8,69 +10,68 @@ export default function GhostCMS(): AstroIntegration {
                 injectRoute,
                 logger,
             }) => {
+                
+                const o = UserConfigSchema.safeParse(options || {}) as SafeParseSuccess<UserConfig>
+
+                if (!o.success) {
+                    const validationError = fromZodError((o as unknown as SafeParseError<UserConfig>).error)
+
+                    logger.error(`Config Error - ${ validationError }`)
+
+                    throw validationError
+                }
+
+                const entry = o.data.theme
 
                 logger.info("Injecting Route: /")
-
                 injectRoute({
                     pattern: '/',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/index.astro'
+                    entrypoint: `${entry}/index.astro`
                 })
 
                 logger.info("Injecting Route: /[slug]")
-
                 injectRoute({
                     pattern: '/[slug]',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/[slug].astro'
+                    entrypoint: `${entry}/[slug].astro`
                 })
 
                 logger.info("Injecting Route: /tags")
-
                 injectRoute({
                     pattern: '/tags',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/tags.astro'
+                    entrypoint: `${entry}/tags.astro`
                 })
 
                 logger.info("Injecting Route: /authors")
-
                 injectRoute({
                     pattern: '/authors',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/authors.astro'
+                    entrypoint: `${entry}/authors.astro`
                 })
 
                 logger.info("Injecting Route: /tag/[slug]")
-
                 injectRoute({
                     pattern: '/tag/[slug]',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/tag/[slug].astro'
+                    entrypoint: `${entry}/tag/[slug].astro`
                 })
 
                 logger.info("Injecting Route: /author/[slug]")
-
                 injectRoute({
                     pattern: '/author/[slug]',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/author/[slug].astro'
+                    entrypoint: `${entry}/author/[slug].astro`
                 })
-
                 logger.info("Injecting Route: /archives/[...page]")
-
                 injectRoute({
                     pattern: '/archives/[...page]',
-                    entrypoint: '@matthiesenxyz/astro-ghostcms/archives/[...page].astro'
+                    entrypoint: `${entry}/archives/[...page].astro`
                 })
 
-                },
-            'astro:config:done': async ({
-                config,
-                logger,
-            }) => {
-                if (config.output === "server"){
-                    logger.error("This integration is not yet ready to be used in 'output: server' mode, to prevent issues please switch to static.")
-                } else if (config.output === "hybrid"){
-                    logger.error("This integration is not yet ready to be used in 'output: hybrid' mode, to prevent issues please switch to static.")
-                }else {
-                    logger.info('GhostCMS Routes Injected.  Integration is now ready.')
-                }
+            },
+            'astro:config:done': async ({ logger }) => {
+                logger.info('GhostCMS Routes Injected.  Integration is now ready.')
             }
         }
     }
+}
+
+function fromZodError(error: ZodError<{ theme: string }>) {
+    throw new Error("Function not implemented.")
 }
