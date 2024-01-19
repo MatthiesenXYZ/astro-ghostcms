@@ -10,9 +10,9 @@ export const getGhostImgPath = (
   const relativePath = imgUrl.substring(`${baseUrl}/content/images`.length);
   const cleanedBaseUrl = baseUrl.replace(/\/~/, "");
   if (width && width > 0) {
-    return `${cleanedBaseUrl}/content/images/size/w${width}/${relativePath}`;
+    return `${cleanedBaseUrl}content/images/size/w${width}/${relativePath}`;
   }
-  return `${cleanedBaseUrl}/content/images/${width}${relativePath}`;
+  return `${cleanedBaseUrl}content/images/${width}${relativePath}`;
 };
 
 export const truncate = (input: string, size: number): string =>
