@@ -1,4 +1,4 @@
-![logo](https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png)
+<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png" width="64px" />
 
 # Welcome to Astro-GhostCMS
 
