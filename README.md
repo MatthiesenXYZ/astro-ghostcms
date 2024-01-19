@@ -1,3 +1,5 @@
+![logo](https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png)
+
 # Welcome to Astro-GhostCMS
 
 - [Live Demo](https://demo.astro-ghostcms.xyz/) of the Astro-GhostCMS integration in action!
