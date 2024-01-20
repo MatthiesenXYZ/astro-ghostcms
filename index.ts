@@ -4,8 +4,7 @@ import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema"
 import { ghostSitemap, ghostRobots } from "./src/integrations";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
-import sitemap from '@astrojs/sitemap';
-import robotsTxt from "astro-robots-txt";
+import { viteGhostCMS } from "./src/utils/virtual-imports";
 
 // LOAD ENVIRONMENT VARIABLES
 const mode = 'all'; 
@@ -16,13 +15,10 @@ const env = loadEnv(mode, process.cwd(), prefixes);
 const pkg = '@matthiesenxyz/astro-ghostcms';
 
 export default function GhostCMS(options: UserConfig): AstroIntegration {
-    let UserConfig:UserConfig
     return {
         name: pkg,
         hooks: {
             'astro:config:setup': async ({
-                command,
-                isRestart,
                 injectRoute,
                 config,
                 updateConfig,
@@ -49,6 +45,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     throw validationError;
                 }
                 const entry = o.data.theme;
+                const uconf = o.data;
 
                 // THEME SELECTOR
                 if (entry === pkg) {
@@ -109,7 +106,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 logger.info("Checking for @astrojs/sitemap");
 				if (!int.find(({ name }) => name === '@astrojs/sitemap')) {
                     logger.info("Injecting Integration: @astrojs/sitemap");
-					int.push(sitemap());
+					int.push(ghostSitemap(uconf));
 				} else {
                     logger.info("Already Imported by User: @astrojs/sitemap");
                 }
@@ -118,18 +115,22 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 logger.info("Checking for astro-robots-txt");
 				if (!int.find(({ name }) => name === 'astro-robots-txt')) {
                     logger.info("Injecting Integration: astro-robots-txt");
-					int.push(robotsTxt());
+					int.push(ghostRobots(uconf));
 				} else {
                     logger.info("Already Imported by User: astro-robots-txt");
                 }
-                
-                try {
-                    updateConfig({
-                        integrations: [sitemap(),robotsTxt()]
-                    })
-                } catch (e) {
+                try { updateConfig({
+                        integrations: [
+                            ghostSitemap(uconf),
+                            ghostRobots(uconf)
+                        ],
+                        vite: { 
+                            plugins: [
+                                viteGhostCMS(uconf,config)
+                            ] 
+                    } }) } catch (e) {
                     logger.error(e as string)
-                    throw e
+                    throw e 
                 }
 
             },
