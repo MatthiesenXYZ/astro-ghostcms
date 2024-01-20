@@ -10,7 +10,7 @@ const RobotsPolicySchema = z.object({
   allow: z.string().optional(),
   disallow: z.string().optional(),
   cleanParam: z.string().optional(),
-  crawlDelay: z.number()
+  crawlDelay: z.number().optional()
 })
 
 export const RobotsTxtSchema = z.object({
