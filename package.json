@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "author": "MatthiesenXYZ (https://matthiesen.xyz)",
   "type": "module",
   "license": "MIT",
@@ -10,7 +10,8 @@
     "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
   },
   "bugs": {
-    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues"
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+    "email": "issues@astro-ghostcms.xyz"
   },
   "homepage": "https://astro-ghostcms.xyz/",
   "exports": {
@@ -23,10 +24,10 @@
     "./tag/[slug].astro": "./src/routes/tag/[slug].astro",
     "./author/[slug].astro": "./src/routes/author/[slug].astro",
     "./archives/[...page].astro": "./src/routes/archives/[...page].astro",
-    "./DefaultLayout": "./src/layouts/default.astro"
+    "./rss.xml.js": "./src/routes/rss.xml.js"
   },
   "main": "index.ts",
-  "types": "src/api/ghosttypes.ts",
+  "types": "src/api/tryghost-content-api.d.ts",
   "files": [
     "src",
     "index.ts"
@@ -56,11 +57,13 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "typescript": "^5.3.3",
+    "zod-validation-error": "^3.0.0",
     "axios": "^1.0.0",
     "astro-font": "^0.0.72",
     "@astrojs/renderer-svelte": "0.5.2",
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.0.4",
+    "astro-robots-txt": "^1.0.0",
     "@snowpack/plugin-dotenv": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
