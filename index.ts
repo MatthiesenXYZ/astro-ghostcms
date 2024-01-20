@@ -14,6 +14,10 @@ const env = loadEnv(mode, process.cwd(), prefixes);
 // SET LOCAL PACKAGE NAME
 const pkg = '@matthiesenxyz/astro-ghostcms';
 
+/** Astro-GhostCMS Integration
+ * @ For more information and to see the docs check
+ * @ https://astro-ghostcms.xyz
+ */
 export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
         name: pkg,
