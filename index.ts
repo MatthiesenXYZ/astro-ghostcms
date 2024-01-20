@@ -4,6 +4,8 @@ import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema"
 import { ghostSitemap, ghostRobots } from "./src/integrations";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
+import sitemap from '@astrojs/sitemap';
+import robotsTxt from "astro-robots-txt";
 
 // LOAD ENVIRONMENT VARIABLES
 const mode = 'all'; 
@@ -14,12 +16,16 @@ const env = loadEnv(mode, process.cwd(), prefixes);
 const pkg = '@matthiesenxyz/astro-ghostcms';
 
 export default function GhostCMS(options: UserConfig): AstroIntegration {
+    let UserConfig:UserConfig
     return {
         name: pkg,
         hooks: {
             'astro:config:setup': async ({
+                command,
+                isRestart,
                 injectRoute,
                 config,
+                updateConfig,
                 logger,
             }) => {
                 // Check For ENV Variables
@@ -103,7 +109,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 logger.info("Checking for @astrojs/sitemap");
 				if (!int.find(({ name }) => name === '@astrojs/sitemap')) {
                     logger.info("Injecting Integration: @astrojs/sitemap");
-					int.push(ghostSitemap());
+					int.push(sitemap());
 				} else {
                     logger.info("Already Imported by User: @astrojs/sitemap");
                 }
@@ -112,9 +118,18 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 logger.info("Checking for astro-robots-txt");
 				if (!int.find(({ name }) => name === 'astro-robots-txt')) {
                     logger.info("Injecting Integration: astro-robots-txt");
-					int.push(ghostRobots());
+					int.push(robotsTxt());
 				} else {
                     logger.info("Already Imported by User: astro-robots-txt");
+                }
+                
+                try {
+                    updateConfig({
+                        integrations: [sitemap(),robotsTxt()]
+                    })
+                } catch (e) {
+                    logger.error(e as string)
+                    throw e
                 }
 
             },
