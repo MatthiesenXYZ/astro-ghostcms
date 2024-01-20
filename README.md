@@ -1,8 +1,12 @@
+<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png" width="64px" />
+
 # Welcome to Astro-GhostCMS
 
 - [Live Demo](https://demo.astro-ghostcms.xyz/) of the Astro-GhostCMS integration in action!
 - [Live Demo - Unlighthouse Test](https://test.demo.astro-ghostcms.xyz) for a Automatically updated Lighthouse test from every deploy!
 - [Live Demo's Repo](https://github.com/MatthiesenXYZ/astro-ghostcms-demo) for an example of how the setup looks.
+
+*Need help but don't have Github? Email us at [issues@astro-ghostcms.xyz](mailto:issues@astroghostcms.xyz) to create an issue here on github!*
 
 Astro minimum Version: **Astro v4.0**
 
