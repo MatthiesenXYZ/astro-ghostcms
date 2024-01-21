@@ -1,32 +1,26 @@
 ---
-import FeatureImage from "./FeatureImage.astro";
-import type { Settings, PostOrPage } from "../api";
+import PostHero from "./PostHero.astro";
+import PostFooter from "./PostFooter.astro";
+import invariant from "tiny-invariant";
+import type {PostOrPage, PostsOrPages, Settings } from "../../api";
 export type Props = {
-  page: PostOrPage;
+  post: PostOrPage;
   settings: Settings;
-  pageClass?: string;
+  postClass?: string;
+  posts: PostsOrPages;
 };
-const { page, settings, pageClass } = Astro.props as Props;
+const { post, settings, postClass, posts } = Astro.props as Props;
+invariant(settings, "Settings not found");
 ---
 
 <main id="site-main" class="site-main">
-  <article class={`article page ${pageClass}`}>
-    <header class="article-header gh-canvas">
-      {page.feature_image && (
-        <FeatureImage
-          image={page.feature_image}
-          alt={page.feature_image_alt ? page.feature_image_alt : page.title}
-          caption={page.feature_image_caption || ""}
-          settings={settings}
-        />
-      )}
-    </header>
-
+  <article class={`article post ${postClass}`}>
+    <PostHero post={post} settings={settings} />
     <section class="gh-content gh-canvas">
-      <h1 class="article-title">{page.title}</h1>
-      <Fragment set:html={page.html} />
+      <Fragment set:html={post.html} />
     </section>
   </article>
+  <PostFooter post={post} settings={settings} posts={posts} />
 </main>
 
 <style lang="scss" is:global>
@@ -126,6 +120,13 @@ use it for applying any other styles. */
   .kg-width-full img {
     width: 100%;
   }
+
+  /* Content
+/* ---------------------------------------------------------- */
+
+  /* Content refers to styling all page and post content that is
+created within the Ghost editor. The main content handles
+headings, text, images and lists. We deal with cards lower down. */
 
   /* Default vertical spacing */
   .gh-content > * + * {

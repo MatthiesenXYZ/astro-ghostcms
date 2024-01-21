@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { getGhostPosts, getGhostSettings } from '../api';
+import { getGhostPosts, getGhostSettings } from '../../api';
 import invariant from "tiny-invariant";
 
 export async function GET(context) {

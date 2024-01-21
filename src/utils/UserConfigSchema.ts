@@ -24,4 +24,5 @@ export const UserConfigSchema = z.object({
     robotstxt: S.RobotsTxtSchema.optional(),
   });
 
+/** USER CONFIGURATION SCHEMA */
 export type UserConfig = z.infer<typeof UserConfigSchema>

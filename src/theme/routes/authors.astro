@@ -1,16 +1,14 @@
 ---
 import DefaultPageLayout from "../layouts/default.astro";
-import TagCard from "../components/TagCard.astro";
-import { getGhostSettings, getGhostTags } from "../api";
-import invariant from 'tiny-invariant';
+import AuthorCard from "../components/AuthorCard.astro";
+import { getGhostAuthors, getGhostSettings } from "../../api";
+import invariant from "tiny-invariant";
 
-
-let title = "All Tags";
-let description = "All the tags used so far...";
-
-const tags = await getGhostTags();
+let title = "All Authors";
+let description = "All the authors";
+const authors = await getGhostAuthors();
 const settings = await getGhostSettings();
-invariant(settings, "Settings not found");
+invariant(settings, 'Settings not found');
 ---
 
 <DefaultPageLayout content={{ title, description }} settings={settings}>
@@ -22,21 +20,19 @@ invariant(settings, "Settings not found");
       <div class="page__excerpt m-t text-acc-3 text-center text-lg">
         Collection of Tags
       </div>
-      <div class="tag-feed">
-        {
-          tags.map((tag) => (
-              <article class="post-card ">
-                <TagCard tag={tag} settings={settings} />
-              </article>
-            ))
-        }
+      <div class="author-feed">
+        {authors.map((author) => (
+          <article class="post-card ">
+            <AuthorCard author={author} settings={settings} />
+          </article>
+        ))}
       </div>
     </div>
   </section>
 </DefaultPageLayout>
 
 <style lang="scss">
-  .tag-feed {
+  .author-feed {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

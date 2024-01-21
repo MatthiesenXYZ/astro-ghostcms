@@ -6,24 +6,40 @@ import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
 import { viteGhostCMS } from "./src/utils/virtual-imports";
 
-// LOAD ENVIRONMENT VARIABLES
-const mode = 'all'; 
-const prefixes = 'CONTENT_API';
-const env = loadEnv(mode, process.cwd(), prefixes);
+/** INTERNAL CONSTANTS */
+const IC = {
+    /** INTERNAL PACKAGE NAME */
+    PKG:'@matthiesenxyz/astro-ghostcms',
+    /** INTERNAL STRING */
+    CHECK_ENV:"Checking for Environment Variables...",
+    /** SET ENV GRABBER MODE */
+    MODE: 'all',
+    /** SET ENV GRABBER PREFIXES */
+    PREFIXES: 'CONTENT_API',
+    /** INTERNAL STRING */
+    KEY_MISSING:"CONTENT_API_KEY Missing from .env",
+    /** INTERNAL STRING */
+    URL_MISSING:"CONTENT_API_URL Missing from .env",
+    /** INTERNAL STRING */
+    IT:"Injecting Theme: ",
+    /** INTERNAL STRING */
+    IR:"Injecting Routes...",
+    /** INTERNAL STRING */
+    IRD:"Route Injection Disabled - Skipping...",
+    /** INTERNAL STRING */
+    IIR:"Injecting Integration Route: ",
+    /** INTERNAL STRING */
+    II:"Injecting Integration: ",
+    /** INTERNAL STRING */
+    AIbU:"Already Imported by User: ",
+    /** INTERNAL STRING */
+    CF:"Checking for ",
+    /** INTERNAL STRING */
+    CONFSETUPDONE:"GhostCMS Injection Complete.  Integration is now ready.",
+}
 
-// INTERNAL CONSTANTS
-const pkg = '@matthiesenxyz/astro-ghostcms';
-const CHECK_ENV = "Checking for Environment Variables...";
-const KEY_MISSING = "CONTENT_API_KEY Missing from .env";
-const URL_MISSING = "CONTENT_API_URL Missing from .env";
-const IT = "Injecting Theme: "
-const IR = "Injecting Routes...";
-const IRD = "Route Injection Disabled - Skipping...";
-const IIR = "Injecting Integration Route: "
-const II = "Injecting Integration: ";
-const AIbU = "Already Imported by User: ";
-const CF = "Checking for ";
-const CONFSETUPDONE = "GhostCMS Injection Complete.  Integration is now ready."
+/** CONTENT API ENVIRONMENT VARIABLES */
+const ENV = loadEnv(IC.MODE, process.cwd(), IC.PREFIXES);
 
 /** Astro-GhostCMS Integration
  * @ For more information and to see the docs check
@@ -31,7 +47,7 @@ const CONFSETUPDONE = "GhostCMS Injection Complete.  Integration is now ready."
  */
 export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
-        name: pkg,
+        name: IC.PKG,
         hooks: {
             'astro:config:setup': async ({
                 injectRoute,
@@ -47,36 +63,39 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     logger.error(`Config Error - ${ validationError }`);
                     throw validationError;
                 }
+                /** INTERNAL USERCONFIG ALIAS */
                 const uconf = o.data;
+                /** CONFIG OPTION: ROUTE INJECTION */
                 const injection = uconf.disableRouteInjection;
+                /** CONFIG OPTION: THEME */
                 const entry = uconf.theme;
+                /** CONFIG OPTION: CONSOLE OUTPUT */
                 const logs = uconf.disableConsoleOutput;
 
                 // Check For ENV Variables
-                if(!logs) {logger.info(CHECK_ENV)}
+                if(!logs) {logger.info(IC.CHECK_ENV)}
 
                 // CHECK FOR API KEY
-                if(env.CONTENT_API_KEY === undefined){
-                    logger.error(KEY_MISSING);
-                    throw KEY_MISSING;
+                if(ENV.CONTENT_API_KEY === undefined){
+                    logger.error(IC.KEY_MISSING);
+                    throw IC.KEY_MISSING;
                 }
                 // CHECK FOR API URL
-                if(env.CONTENT_API_URL === undefined){
-                    logger.error(URL_MISSING);
-                    throw URL_MISSING;
+                if(ENV.CONTENT_API_URL === undefined){
+                    logger.error(IC.URL_MISSING);
+                    throw IC.URL_MISSING;
                 }
-
 
                 if(!injection){
                     // THEME SELECTOR
-                    if (entry === pkg) {
-                        if(!logs) {logger.info(IT + pkg)}
+                    if (entry === IC.PKG) {
+                        if(!logs) {logger.info(IC.IT + IC.PKG)}
                     } else {
-                        if(!logs) {logger.info(IT + entry)}
+                        if(!logs) {logger.info(IC.IT + entry)}
                     }
 
                     // INJECT ROUTES
-                    if(!logs) {logger.info(IR)}
+                    if(!logs) {logger.info(IC.IR)}
 
                     injectRoute({
                         pattern: '/',
@@ -118,35 +137,35 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         entrypoint: `${entry}/archives/[...page].astro`
                     });
                 } else {
-                    if(!logs) {logger.info(IRD)}
+                    if(!logs) {logger.info(IC.IRD)}
                 }
 
                 // IMPORT INTEGRATIONS & INTEGRATION ROUTES
                 const int = [...config.integrations];
 
                 // IMPORT INTEGRATION: @ASTROJS/RSS
-                if(!logs) {logger.info(IIR + "@astrojs/rss")}
+                if(!logs) {logger.info(IC.IIR + "@astrojs/rss")}
                 injectRoute({
                     pattern: '/rss.xml',
-                    entrypoint: `${pkg}/rss.xml.js`
+                    entrypoint: `${IC.PKG}/rss.xml.js`
                 });
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
-                if(!logs) {logger.info(CF + "@astrojs/sitemap")}
+                if(!logs) {logger.info(IC.CF + "@astrojs/sitemap")}
 				if (!int.find(({ name }) => name === '@astrojs/sitemap')) {
-                    if(!logs) {logger.info(II + "@astrojs/sitemap")}
+                    if(!logs) {logger.info(IC.II + "@astrojs/sitemap")}
 					int.push(ghostSitemap(uconf));
 				} else {
-                    if(!logs) {logger.info(AIbU + "@astrojs/sitemap")}
+                    if(!logs) {logger.info(IC.AIbU + "@astrojs/sitemap")}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
-                if(!logs) {logger.info(CF + "astro-robots-txt")}
+                if(!logs) {logger.info(IC.CF + "astro-robots-txt")}
 				if (!int.find(({ name }) => name === 'astro-robots-txt')) {
-                    if(!logs) {logger.info(II + "astro-robots-txt")}
+                    if(!logs) {logger.info(IC.II + "astro-robots-txt")}
 					int.push(ghostRobots(uconf));
 				} else {
-                    if(!logs) {logger.info(AIbU + "astro-robots-txt")}
+                    if(!logs) {logger.info(IC.AIbU + "astro-robots-txt")}
                 };
                 try {updateConfig({
                     integrations: [
@@ -161,7 +180,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
             },
             'astro:config:done': async ({ logger }) => {
-                logger.info(CONFSETUPDONE);
+                logger.info(IC.CONFSETUPDONE);
             }
         }
     }

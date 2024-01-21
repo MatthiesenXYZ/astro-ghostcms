@@ -3,7 +3,7 @@ import type { InferGetStaticPropsType } from 'astro';
 import DefaultPageLayout from "../layouts/default.astro";
 import Page from "../components/Page.astro";
 import Post from "../components/Post.astro";
-import { getGhostSettings, getGhostPages, getGhostPosts } from "../api";
+import { getGhostSettings, getGhostPages, getGhostPosts } from "../../api";
 import invariant from 'tiny-invariant';
 
 export async function getStaticPaths() {
