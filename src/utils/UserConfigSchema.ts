@@ -2,6 +2,11 @@ import { z } from 'astro/zod';
 import * as S from './schemas';
 
 export const UserConfigSchema = z.object({
+    /** OPTIONAL - Disable Route Injector
+     * This option allows the user to disable the route injection system and utilize just the integraions other functions. Such as API, sitemap and robotstxt integrations. */
+    disableRouteInjection: z.boolean().default(false),
+    /** OPTIONAL - Allows the user to disable "info" console output */
+    disableConsoleOutput: z.boolean().default(false),
     /** OPTIONAL - Theme Selector
      * This option allows the user to replace the included theme with an external npm module */
     theme: z.string().default('@matthiesenxyz/astro-ghostcms'),

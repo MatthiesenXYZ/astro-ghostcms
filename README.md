@@ -81,6 +81,7 @@ The routes are the same as a standard Ghost Blog so you can migrate to Astro eas
 | `/tag[slug]`          | Tag page with related posts               |
 | `/tags`               | All the tags                              |
 | `/archives/[...page]` | All the posts, paginated                  |
+| `/rss.xml`            | All the posts, in a FEED                  |
 
 
 # Manual Function Mode (DIY MODE)

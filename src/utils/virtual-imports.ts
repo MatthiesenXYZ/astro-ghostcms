@@ -20,7 +20,7 @@ export function viteGhostCMS(
 		JSON.stringify(id.startsWith('.') ? resolve(fileURLToPath(root), id) : id);
 
     const modules = {
-        'virtual:@matthiesenxyz/astro-ghostcms/user-config': `export default ${ JSON.stringify(opts) }`
+        'virtual:@matthiesenxyz/astro-ghostcms/config': `export default ${ JSON.stringify(opts) }`
     } satisfies Record<string, string>
 
     /** Mapping names prefixed with `\0` to their original form. */
