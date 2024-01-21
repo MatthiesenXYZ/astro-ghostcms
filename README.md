@@ -75,6 +75,7 @@ The routes are the same as a standard Ghost Blog so you can migrate to Astro eas
 | Route                 | Content                                   |
 | --------------------- | ----------------------------------------- |
 | `/`                   | Homepage with recents/features Blog Posts |
+| `/404`                | 404 Page                                  |
 | `/[slug]`             | Post or Page                              |
 | `/author/[slug]`      | Author page with related posts            |
 | `/authors`            | All the authors                           |
