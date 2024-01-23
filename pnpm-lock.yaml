@@ -121,8 +121,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1(typescript@5.3.3)
       '@astrojs/starlight':
-        specifier: ^0.15.4
-        version: 0.15.4(astro@4.2.3)
+        specifier: ^0.16.0
+        version: 0.16.0(astro@4.2.3)
       astro:
         specifier: ^4.2.0
         version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
@@ -297,8 +297,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/starlight@0.15.4(astro@4.2.3):
-    resolution: {integrity: sha512-o3heYH+RltsCsvO3L0qLnnFJEakwLSRoxW4wFX2zDeDWta9BIpdSOo7+Zg+sSn7k9RPOhI9SGvdFx67B53I18Q==}
+  /@astrojs/starlight@0.16.0(astro@4.2.3):
+    resolution: {integrity: sha512-zwSNiCqzZeiuivUp4Yhx+eMLGww8v8cRYoCYXg9myTXNUwphqPaVG3rp7dbaZ4y1MaejnjYWB444ZRItEgTDcQ==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
