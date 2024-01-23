@@ -1,10 +1,10 @@
 import type { AstroIntegration } from "astro";
 import type { SafeParseError, SafeParseSuccess } from "astro/zod";
-import { UserConfigSchema, type UserConfig } from "./src/utils/UserConfigSchema";
+import { UserConfigSchema, type UserConfig } from "./src/schemas";
 import { ghostSitemap, ghostRobots } from "./src/integrations";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
-import { viteGhostCMS } from "./src/utils/virtual-imports";
+import { viteGhostCMS } from "./src/virtual";
 
 /** INTERNAL CONSTANTS */
 const IC = {
@@ -17,9 +17,9 @@ const IC = {
     /** SET ENV GRABBER PREFIXES */
     PREFIXES: 'CONTENT_API',
     /** INTERNAL STRING */
-    KEY_MISSING:"CONTENT_API_KEY Missing from .env",
+    KEY_MISSING:"CONTENT_API_KEY Missing from .env/environment variables",
     /** INTERNAL STRING */
-    URL_MISSING:"CONTENT_API_URL Missing from .env",
+    URL_MISSING:"CONTENT_API_URL Missing from .env/environment variables",
     /** INTERNAL STRING */
     IT:"Injecting Theme: ",
     /** INTERNAL STRING */
@@ -104,7 +104,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     
                     injectRoute({
                         pattern: '/404',
-                        entrypoint: `${entry}/404.astro`
+                        entrypoint: `${IC.PKG}/404.astro`
                     });
 
                     injectRoute({

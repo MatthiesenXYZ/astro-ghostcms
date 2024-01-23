@@ -1,5 +1,5 @@
 import robotsTxt, { type RobotsTxtOptions } from "astro-robots-txt";
-import { UserConfig } from "../utils/UserConfigSchema";
+import type { UserConfig } from "../schemas";
 
 export function getRobotsTxtConfig(opts: UserConfig): RobotsTxtOptions {
 	const { robotstxt } = opts;

@@ -1,8 +1,8 @@
 ---
 import type { Settings } from "../../api";
 import { AstroFont } from "astro-font";
-import ViewTransitions from "astro/components/ViewTransitions.astro";
 import MainLayout from "../components/MainLayout.astro";
+import { ViewTransitions } from "astro:transitions";
 export type Props = {
   content?: {
     title: string|undefined;

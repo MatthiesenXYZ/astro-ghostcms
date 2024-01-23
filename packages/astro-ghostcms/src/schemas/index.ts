@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
-import * as S from './schemas';
+import { SitemapSchema } from './sitemap';
+import { RobotsTxtSchema } from './robots';
 
 export const UserConfigSchema = z.object({
     /** OPTIONAL - Disable Route Injector
@@ -15,13 +16,13 @@ export const UserConfigSchema = z.object({
      * Options shown are the availble options 
      * REFERENCE https://docs.astro.build/en/guides/integrations-guide/sitemap
       */
-    sitemap: S.SitemapSchema.optional(),
+    sitemap: SitemapSchema.optional(),
     /** OPTIONAL - astro-robots-txt 
      * This option allows the user to configure the included integration 
      * Options shown are the availble options
      * REFERENCE https://www.npmjs.com/package/astro-robots-txt#configuration
       */
-    robotstxt: S.RobotsTxtSchema.optional(),
+    robotstxt: RobotsTxtSchema.optional(),
   });
 
 /** USER CONFIGURATION SCHEMA */

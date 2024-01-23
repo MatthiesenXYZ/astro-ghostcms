@@ -1,8 +1,7 @@
 import type { AstroConfig, ViteUserConfig } from 'astro'
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { UserConfig } from './UserConfigSchema'
+import type { UserConfig } from '../schemas';
 
 function resolveVirtualModuleId<T extends string>(id: T): `\0${T}` {
 	return `\0${id}`

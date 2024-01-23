@@ -1,5 +1,5 @@
 import sitemap, { type SitemapOptions } from '@astrojs/sitemap';
-import { UserConfig } from '../utils/UserConfigSchema';
+import type { UserConfig } from '../schemas';
 
 export function getSitemapConfig(opts: UserConfig): SitemapOptions {
 	const { sitemap } = opts
