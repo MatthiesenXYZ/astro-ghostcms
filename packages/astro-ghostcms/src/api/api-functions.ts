@@ -1,19 +1,16 @@
-import type { Page, Post } from "./index";
+import type { Page, Post } from "./content-api/schemas";
 import { TSGhostContentAPI } from "./content-api";
 
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from 'vite';
 
-const {CONTENT_API_KEY, CONTENT_API_URL} = loadEnv(
-    'all',
-    process.cwd(),
-    'CONTENT_'
-);
+const {
+  CONTENT_API_KEY, 
+  CONTENT_API_URL
+} = loadEnv('all',process.cwd(),'CONTENT_');
 
 let ghostApiKey = CONTENT_API_KEY;
 let ghostUrl = CONTENT_API_URL;
-
-// SETUP API
 const version = "v5.0";
 
 export const getGhostAuthors = async () => {
@@ -95,9 +92,6 @@ export const getSettings = async () => {
   }
   return null;
 };
-export type NonNullable<T> = T extends null | undefined ? never : T;
-
-export type Settings = NonNullable<Awaited<ReturnType<typeof getSettings>>>;
 
 export const getAllTags = async () => {
   const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
@@ -112,6 +106,26 @@ export const getAllTags = async () => {
   }
   return {
     tags: results.data,
+    meta: results.meta,
+  };
+};
+
+export const getFeaturedPosts = async () => {
+  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
+  const results = await api.posts
+    .browse({
+      filter: "featured:true"
+    })
+    .include({
+      authors: true,
+      tags: true,
+    })
+    .fetch();
+  if (!results.success) {
+    throw new Error(results.errors.map((e) => e.message).join(", "));
+  }
+  return {
+    posts: results.data,
     meta: results.meta,
   };
 };
