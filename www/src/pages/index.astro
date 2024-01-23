@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import Layout from '../layouts/IndexLayout.astro';
+import QuickStart from '../components/QuickStart.astro';
+
+const posts = await getCollection('releases');
+posts.sort((a, b) => +b.data.date - +a.data.date);
+---
+
+<Layout>
+	<main>
+		<hr />
+		<div>Astro-GhostCMS is an Astro v4 Integration and API, its purpose is to create a easy way to bring your GhostCMS content into the Astro world.  Create super fast websites, and customize to your hearts content.  With the content being pulled from your headless GhostCMS install, all you do is build the layout with the info you want and your on your way!</div>
+		<QuickStart />
+		<hr />
+		<h1 class="page_title">News & Changelog</h1>
+		<hr />
+		<ul class="posts" transition:name="post">
+			{
+				posts.map((post) => (
+					<li class="post">
+						<div class="version_wrapper">
+							<div class="version_info">
+								<a href={`/releases/${post.slug}`}>
+									<div class="version_number">{post.data.versionNumber}</div>
+									<FormattedDate class="date" date={post.data.date} />
+								</a>
+							</div>
+						</div>
+						<div class="content">
+							{post.render().then(({ Content }) => (
+								<Content />
+							))}
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import '../styles/global.scss';
+import { SiteTitle } from '../consts';
+import favicon from '../assets/favicon.svg'
+import { Image } from 'astro:assets';
+---
+
+<header>
+	<nav>
+		<h2 id="site_title">
+			<a href="/">
+				<Image src={favicon} alt="logo" width={64}/>
+				{SiteTitle}
+			</a>
+		</h2>
+		<div class="links">
+			<a href="https://demo.astro-ghostcms.xyz" target="_blank">Live Demo</a>
+			<a href="https://test.demo.astro-ghostcms.xyz" target="_blank">Lighthouse Report</a>
+			<a href="/docs" target="">Docs</a>
+			<a href="https://www.npmjs.com/package/@matthiesenxyz/astro-ghostcms" target="_blank">NPM</a>
+			<a href="https://github.com/matthiesenxyz/astro-ghostcms" target="_blank">GitHub</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	.links a {
+		text-decoration: none;
+	}
+</style>
