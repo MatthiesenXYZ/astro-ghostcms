@@ -10,3 +10,4 @@ This Repo is a Demo Website for the [@matthiesenxyz/astro-ghostcms](https://gith
 ### For more information Check our website
 
 [Astro-GhostCMS.xyz](https://astro-ghostcms.xyz)
+ 
