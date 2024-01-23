@@ -2,3 +2,5 @@ packages:
   - package
   - "packages/*"
   - "playground"
+  - "www"
+  - "demo"

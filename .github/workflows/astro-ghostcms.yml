@@ -1,12 +1,15 @@
-name: publish npm
+name: Publish Astro-GhostCMS
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   publishnpm:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/astro-ghostcms
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -29,6 +32,9 @@ jobs:
       contents: read
       packages: write
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/astro-ghostcms
     steps:
       - name: checkout
         uses: actions/checkout@v3
