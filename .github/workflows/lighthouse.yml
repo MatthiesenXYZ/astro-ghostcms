@@ -1,7 +1,7 @@
 name: Unlighthouse - Demo Site
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   Unlighthouse-demo:
