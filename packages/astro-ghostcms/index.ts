@@ -10,6 +10,8 @@ import { viteGhostCMS } from "./src/virtual";
 const IC = {
     /** INTERNAL PACKAGE NAME */
     PKG:'@matthiesenxyz/astro-ghostcms',
+    /** INTERNAL PACKAGE NAME */
+    DT:'@matthiesenxyz/astro-ghostcms-theme-default',
     /** INTERNAL STRING */
     CHECK_ENV:"Checking for Environment Variables...",
     /** SET ENV GRABBER MODE */
@@ -88,8 +90,8 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
                 if(!injection){
                     // THEME SELECTOR
-                    if (entry === IC.PKG) {
-                        if(!logs) {logger.info(IC.IT + IC.PKG)}
+                    if (entry === IC.DT) {
+                        if(!logs) {logger.info(IC.IT + IC.DT)}
                     } else {
                         if(!logs) {logger.info(IC.IT + entry)}
                     }

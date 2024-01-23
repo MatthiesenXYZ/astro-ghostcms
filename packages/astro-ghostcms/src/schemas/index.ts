@@ -10,7 +10,7 @@ export const UserConfigSchema = z.object({
     disableConsoleOutput: z.boolean().default(false),
     /** OPTIONAL - Theme Selector
      * This option allows the user to replace the included theme with an external npm module */
-    theme: z.string().default('@matthiesenxyz/astro-ghostcms'),
+    theme: z.string().default('@matthiesenxyz/astro-ghostcms-theme-default'),
     /** OPTIONAL - astrojs/sitemap
      * This option allows the user to configure the included integration 
      * Options shown are the availble options 
