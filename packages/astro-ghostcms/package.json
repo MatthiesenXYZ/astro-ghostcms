@@ -64,7 +64,8 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint ."
   },
   "peerDependencies": {
-    "astro": "^4.2.1"
+    "astro": "^4.2.1",
+    "zod": "^3.22.4"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
