@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
-    "@matthiesenxyz/astro-ghostcms": "^2.1.8",
+    "@matthiesenxyz/astro-ghostcms": "2.1.8",
     "astro": "^4.2.0",
     "astro-robots-txt": "^1.0.0",
     "typescript": "^5.3.3",
