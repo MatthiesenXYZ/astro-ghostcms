@@ -13,7 +13,7 @@ let ghostApiKey = CONTENT_API_KEY;
 let ghostUrl = CONTENT_API_URL;
 const version = "v5.0";
 
-export const getGhostAuthors = async () => {
+export const getAllAuthors = async () => {
   const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const results = await api.authors
     .browse()
