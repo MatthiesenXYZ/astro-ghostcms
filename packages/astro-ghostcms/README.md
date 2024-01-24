@@ -2,7 +2,7 @@
 
 # Welcome to Astro-GhostCMS
 
-*Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided JavaScript tools to link a Headless GhostCMS install in to your Astro project.* 
+*Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided API to link a Headless GhostCMS install in to your Astro project.* 
 
 - [Live Demo](https://demo.astro-ghostcms.xyz/) of the Astro-GhostCMS integration in action!
 - [Live Demo - Unlighthouse Test](https://test.demo.astro-ghostcms.xyz) for a Automatically updated Lighthouse test from every deploy!
