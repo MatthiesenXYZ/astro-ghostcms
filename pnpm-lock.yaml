@@ -21,11 +21,11 @@ importers:
         specifier: 3.0.6
         version: link:../packages/astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: 0.0.5
+        specifier: 0.0.8
         version: link:../packages/astro-ghostcms-theme-default
       astro:
         specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -43,14 +43,14 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: ^0.0.5
-        version: link:../astro-ghostcms-theme-default
+        specifier: ^0.0.6
+        version: 0.0.6(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3)
       '@ts-ghost/core-api':
         specifier: ^5.1.2
         version: 5.1.2
       astro:
         specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
@@ -62,7 +62,7 @@ importers:
         version: 1.3.1
       vite:
         specifier: ^4.5.2
-        version: 4.5.2(@types/node@20.11.5)(sass@1.70.0)
+        version: 4.5.2(@types/node@20.11.6)(sass@1.70.0)
       vite-tsconfig-paths:
         specifier: ^4.2.2
         version: 4.3.1(typescript@5.3.3)(vite@4.5.2)
@@ -80,8 +80,8 @@ importers:
         specifier: '*'
         version: link:../tsconfig
       '@types/node':
-        specifier: ^20.11.5
-        version: 20.11.5
+        specifier: ^20.11.6
+        version: 20.11.6
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.19.0
         version: 6.19.1(@typescript-eslint/parser@6.19.1)(eslint@8.56.0)(typescript@5.3.3)
@@ -114,7 +114,7 @@ importers:
         version: 5.3.3
       vitest:
         specifier: ^1.1.0
-        version: 1.2.1(@types/node@20.11.5)(sass@1.70.0)
+        version: 1.2.1(@types/node@20.11.6)(sass@1.70.0)
       vitest-fetch-mock:
         specifier: ^0.2.2
         version: 0.2.2(vitest@1.2.1)
@@ -126,7 +126,7 @@ importers:
         version: link:../astro-ghostcms
       astro:
         specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       astro-font:
         specifier: ^0.0.77
         version: 0.0.77
@@ -153,7 +153,7 @@ importers:
         version: link:../packages/astro-ghostcms-theme-default
       astro:
         specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -172,7 +172,7 @@ importers:
         version: 0.16.0(astro@4.2.3)
       astro:
         specifier: ^4.2.0
-        version: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       sass:
         specifier: ^1.69.5
         version: 1.70.0
@@ -306,7 +306,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.3
-      astro: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -354,7 +354,7 @@ packages:
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.3
       '@types/mdast': 4.0.3
-      astro: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       astro-expressive-code: 0.31.0(astro@4.2.3)
       bcp-47: 2.1.0
       hast-util-select: 6.0.2
@@ -1441,6 +1441,74 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
+  /@matthiesenxyz/astro-ghostcms-theme-default@0.0.4(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3):
+    resolution: {integrity: sha512-/25SDHrTd6aTkbX40RQJmmN4snCEt8bfNXAXhr2atKNRy9lTYvaW9UqneYiOye48zcrxyQHJt6d6s3YVAm2/Lg==}
+    peerDependencies:
+      astro: ^4.2.1
+    dependencies:
+      '@matthiesenxyz/astro-ghostcms': 3.0.6(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3)
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+      astro-font: 0.0.77
+      tiny-invariant: 1.3.1
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@matthiesenxyz/astro-ghostcms-theme-default@0.0.6(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3):
+    resolution: {integrity: sha512-r0fwdABoUQ2HELHI1+Tok0nopTvyllxSNOk1k1xor3KgLIJCiPAfwmXtfjPWfWflnOP0UUCEhYzPgFtreiD7SQ==}
+    peerDependencies:
+      astro: ^4.2.1
+    dependencies:
+      '@matthiesenxyz/astro-ghostcms': 3.0.6(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3)
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+      astro-font: 0.0.77
+      tiny-invariant: 1.3.1
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@matthiesenxyz/astro-ghostcms@3.0.6(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3):
+    resolution: {integrity: sha512-gwyho2Z/qewvHA5A0Oo8OIzsK/ddV5YAdq00OR1XvbPJSvuu+bZvhjvDcUMFs/2v2Hu4laI/vZbB8rffKzDEfw==}
+    peerDependencies:
+      astro: ^4.2.1
+    dependencies:
+      '@astrojs/rss': 4.0.3
+      '@astrojs/sitemap': 3.0.5
+      '@matthiesenxyz/astro-ghostcms-theme-default': 0.0.4(@types/node@20.11.6)(astro@4.2.3)(typescript@5.3.3)
+      '@ts-ghost/core-api': 5.1.2
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+      astro-robots-txt: 1.0.0
+      sass: 1.70.0
+      tiny-invariant: 1.3.1
+      vite: 4.5.2(@types/node@20.11.6)(sass@1.70.0)
+      vite-tsconfig-paths: 4.3.1(typescript@5.3.3)(vite@4.5.2)
+      zod: 3.22.4
+      zod-validation-error: 3.0.0(zod@3.22.4)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
   /@mdx-js/mdx@3.0.0:
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
     dependencies:
@@ -1745,8 +1813,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: false
 
-  /@types/node@20.11.5:
-    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
+  /@types/node@20.11.6:
+    resolution: {integrity: sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==}
     dependencies:
       undici-types: 5.26.5
 
@@ -1761,7 +1829,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
     dev: false
 
   /@types/semver@7.5.6:
@@ -2206,7 +2274,7 @@ packages:
     peerDependencies:
       astro: ^3.3.0 || ^4.0.0-beta
     dependencies:
-      astro: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
       remark-expressive-code: 0.31.0
     dev: false
 
@@ -2221,7 +2289,7 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /astro@4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3):
+  /astro@4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3):
     resolution: {integrity: sha512-6bfSogmcwMdaTRAxuhJ7aISGin/T3ovI/69JWPRYOHBkPZxA/EfsNQOI2TiRHFJSF9XtoMnFlgvT+iYapkhOwg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -2284,7 +2352,7 @@ packages:
       tsconfck: 3.0.1(typescript@5.3.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.0.12(@types/node@20.11.5)(sass@1.70.0)
+      vite: 5.0.12(@types/node@20.11.6)(sass@1.70.0)
       vitefu: 0.2.5(vite@5.0.12)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -7120,7 +7188,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite-node@1.2.1(@types/node@20.11.5)(sass@1.70.0):
+  /vite-node@1.2.1(@types/node@20.11.6)(sass@1.70.0):
     resolution: {integrity: sha512-fNzHmQUSOY+y30naohBvSW7pPn/xn3Ib/uqm+5wAJQJiqQsU0NBR78XdRJb04l4bOFKjpTWld0XAfkKlrDbySg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7129,7 +7197,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.0.12(@types/node@20.11.5)(sass@1.70.0)
+      vite: 5.0.12(@types/node@20.11.6)(sass@1.70.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7152,13 +7220,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 3.0.1(typescript@5.3.3)
-      vite: 4.5.2(@types/node@20.11.5)(sass@1.70.0)
+      vite: 4.5.2(@types/node@20.11.6)(sass@1.70.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: false
 
-  /vite@4.5.2(@types/node@20.11.5)(sass@1.70.0):
+  /vite@4.5.2(@types/node@20.11.6)(sass@1.70.0):
     resolution: {integrity: sha512-tBCZBNSBbHQkaGyhGCDUGqeo2ph8Fstyp6FMSvTtsXeZSPpSMGlviAOav2hxVTqFcx8Hj/twtWKsMJXNY0xI8w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7186,7 +7254,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
       esbuild: 0.18.20
       postcss: 8.4.33
       rollup: 3.29.4
@@ -7195,7 +7263,7 @@ packages:
       fsevents: 2.3.3
     dev: false
 
-  /vite@5.0.12(@types/node@20.11.5)(sass@1.70.0):
+  /vite@5.0.12(@types/node@20.11.6)(sass@1.70.0):
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7223,7 +7291,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
       esbuild: 0.19.12
       postcss: 8.4.33
       rollup: 4.9.6
@@ -7239,7 +7307,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.12(@types/node@20.11.5)(sass@1.70.0)
+      vite: 5.0.12(@types/node@20.11.6)(sass@1.70.0)
     dev: false
 
   /vitest-fetch-mock@0.2.2(vitest@1.2.1):
@@ -7249,12 +7317,12 @@ packages:
       vitest: '>=0.16.0'
     dependencies:
       cross-fetch: 3.1.8
-      vitest: 1.2.1(@types/node@20.11.5)(sass@1.70.0)
+      vitest: 1.2.1(@types/node@20.11.6)(sass@1.70.0)
     transitivePeerDependencies:
       - encoding
     dev: true
 
-  /vitest@1.2.1(@types/node@20.11.5)(sass@1.70.0):
+  /vitest@1.2.1(@types/node@20.11.6)(sass@1.70.0):
     resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7279,7 +7347,7 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/node': 20.11.5
+      '@types/node': 20.11.6
       '@vitest/expect': 1.2.1
       '@vitest/runner': 1.2.1
       '@vitest/snapshot': 1.2.1
@@ -7298,8 +7366,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.6.0
       tinypool: 0.8.2
-      vite: 5.0.12(@types/node@20.11.5)(sass@1.70.0)
-      vite-node: 1.2.1(@types/node@20.11.5)(sass@1.70.0)
+      vite: 5.0.12(@types/node@20.11.6)(sass@1.70.0)
+      vite-node: 1.2.1(@types/node@20.11.6)(sass@1.70.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
