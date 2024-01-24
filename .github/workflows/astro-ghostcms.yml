@@ -23,7 +23,7 @@ jobs:
           # Change publish registry
           echo "$(jq '.publishConfig.registry = "https://registry.npmjs.org"' package.json)" > package.json
           # Publish package
-          pnpm publish
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -48,6 +48,6 @@ jobs:
           # Change publish registry
           echo "$(jq '.publishConfig.registry = "https://npm.pkg.github.com"' package.json)" > package.json
           # Publish package
-          pnpm publish
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.ACTION_TOKEN}}
