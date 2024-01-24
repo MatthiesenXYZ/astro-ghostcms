@@ -3,7 +3,7 @@ title: API Only Mode - Install
 description: API Only Mode - Install
 ---
 
-# API Mode Install
+# API Only Install
 
 In this mode the integration will not deploy routes at all.  you will have to build your own website to utilize the exported functions listed below.
 
