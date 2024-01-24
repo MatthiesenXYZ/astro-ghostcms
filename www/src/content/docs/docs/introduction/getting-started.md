@@ -6,7 +6,7 @@ description: Getting Started
 
 - [Live Demo](https://demo.astro-ghostcms.xyz/) of the Astro-GhostCMS integration in action!
 - [Live Demo - Unlighthouse Test](https://test.demo.astro-ghostcms.xyz) for a Automatically updated Lighthouse test from every deploy!
-- [Live Demo's Repo](https://github.com/MatthiesenXYZ/astro-ghostcms-demo) for an example of how the setup looks.
+- [Live Demo's Repo](https://github.com/MatthiesenXYZ/astro-ghostcms) for an example of how the setup looks.
 
 Astro minimum Version: **Astro v4.0**
 
