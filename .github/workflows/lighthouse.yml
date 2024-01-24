@@ -6,8 +6,11 @@ on:
 jobs:
   Unlighthouse-demo:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./unlighthouse
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
