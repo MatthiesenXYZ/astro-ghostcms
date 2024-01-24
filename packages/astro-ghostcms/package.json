@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -78,7 +78,7 @@
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
-    "@matthiesenxyz/astro-ghostcms-theme-default": "0.0.1",
+    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.0.2",
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.0.5",
     "@ts-ghost/core-api": "^5.1.2",
