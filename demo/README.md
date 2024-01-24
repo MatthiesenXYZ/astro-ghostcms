@@ -1,6 +1,6 @@
 # Astro-GhostCMS Demo Template
 
-![Vercel](https://vercelbadge.vercel.app/api/matthiesenxyz/astro-ghostcms-demo)
+![Vercel](https://vercelbadge.vercel.app/api/matthiesenxyz/astro-ghostcms)
 
 This Repo is a Demo Website for the [@matthiesenxyz/astro-ghostcms](https://github.com/MatthiesenXYZ/astro-ghostcms) integraion.
 
