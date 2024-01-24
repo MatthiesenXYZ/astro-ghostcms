@@ -1,17 +1,17 @@
 ---
 import { getGhostImgPath } from "../utils";
 import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
-import featureImgLocal from "../assets/publication-cover.jpg";
+import cover from "./cover.jpg";
 
 export type Props = {
-  featureImg?: string;
+  featureImg: string;
   mainTitle?: string;
   settings: Settings;
   description?: string;
   addClass?: string;
 };
 const {
-  featureImg = featureImgLocal.src,
+  featureImg = cover.src,
   mainTitle = "",
   settings,
   description = "",
@@ -41,7 +41,28 @@ const {
       sizes="100vw"
     />
   )}
-
+  {!featureImg && (
+    <img
+      class="site-header-cover"
+      data-srcset={`
+            ${cover.src} 300w,
+            ${cover.src} 600w,
+            ${cover.src} 1000w,
+            ${cover.src} 2000w
+            `}
+      srcset={`
+            ${cover.src} 300w,
+            ${cover.src} 600w
+            ${cover.src} 1000w
+            ${cover.src} 2000w
+            `}
+      data-sizes="auto"
+      data-src={cover.src}
+      src={cover.src}
+      alt={mainTitle}
+      sizes="100vw"
+    />
+  )}
   <slot name="title">
     <h1 class="site-title">
       {settings.logo ? (
