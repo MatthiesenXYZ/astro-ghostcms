@@ -6,7 +6,7 @@ For a full always up to date documentation please checkout [Our Website](https:/
 
 **Demo site Deploy status**:
 
-![Vercel](https://vercelbadge.vercel.app/api/matthiesenxyz/astro-ghostcms-demo)
+![Vercel](https://vercelbadge.vercel.app/api/matthiesenxyz/astro-ghostcms)
 
 ## Repo Structure
 
