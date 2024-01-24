@@ -63,6 +63,7 @@
     "@astrojs/check": "^0.3.4",
     "@ts-ghost/core-api": "*",
     "@ts-ghost/tsconfig": "*",
+    "@matthiesenxyz/astro-ghostcms-theme-default": "*",
     "@types/node": "^20.11.5",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
@@ -78,7 +79,7 @@
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
-    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.0.2",
+    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.0.3",
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.0.5",
     "@ts-ghost/core-api": "^5.1.2",
