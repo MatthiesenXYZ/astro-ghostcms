@@ -1,6 +1,8 @@
 ---
 import { getGhostImgPath } from "../utils";
 import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import featureImgLocal from "../assets/publication-cover.jpg";
+
 export type Props = {
   featureImg?: string;
   mainTitle?: string;
@@ -9,7 +11,7 @@ export type Props = {
   addClass?: string;
 };
 const {
-  featureImg = "https://static.ghost.org/v4.0.0/images/publication-cover.jpg",
+  featureImg = featureImgLocal.src,
   mainTitle = "",
   settings,
   description = "",

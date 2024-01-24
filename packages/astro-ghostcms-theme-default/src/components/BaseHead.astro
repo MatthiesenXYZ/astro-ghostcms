@@ -1,6 +1,7 @@
 ---
 import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
 import { ViewTransitions } from 'astro:transitions';
+import { AstroFont } from "astro-font";
 
 export type Props = {
   title: string;
@@ -13,12 +14,20 @@ export type Props = {
 const { description, permalink, image, settings, title } = Astro.props as Props;
 ---
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet"
+<AstroFont
+config={[
+  {
+    src: [],
+    name: "Inter",
+    preload: false,
+    display: "swap",
+    selector: "html",
+    fallback: "sans-serif",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+  },
+]}
 />
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
