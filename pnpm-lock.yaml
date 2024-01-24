@@ -18,7 +18,7 @@ importers:
   demo:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: 3.0.1
+        specifier: 3.0.2
         version: link:../packages/astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-theme-default':
         specifier: 0.0.1
