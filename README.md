@@ -10,9 +10,17 @@ For a full always up to date documentation please checkout [Our Website](https:/
 
 ## Repo Structure
 
-This repo is structured as a monorepo.  All of our astro-ghostcms packages can be found under the `packages` folder.  These are all independently published packages that can be found on [npmjs.com](https://npmjs.com)
+This repo is structured as a monorepo.  All of our astro-ghostcms packages can be found under the `packages` folder.  These are all independently published or internal packages that can be found on [npmjs.com](https://npmjs.com)
 
-In this Repo you will also find a `playground` the dev environment, `www` the folder containing the main webpage, and `demo` the Demo site.
+In this Repo you will also find the Following:
+
+- `demo`: [Demo Site](https://demo.astro-ghostcms.xyz)
+- `www`: [Public Site](https://astro-ghostcms.xyz)
+- `playground`: Development and Testing
+- `packages/`:
+  - `astro-ghostcms`: The main Integration!
+  - `astro-ghostcms-theme-default`: The Default theme in integration mode
+  - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`
 
 ### Notices
 
