@@ -60,7 +60,7 @@
     "astro": "^4.2.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.3.4",
+    "@astrojs/check": "^0.4.1",
     "@ts-ghost/core-api": "*",
     "@ts-ghost/tsconfig": "*",
     "@matthiesenxyz/astro-ghostcms-theme-default": "*",
