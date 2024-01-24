@@ -23,7 +23,7 @@ export default defineConfig({
         // *OPTIONAL* Setting this to true will disable the extra info logs
         disableConsoleOutput: false // DEFAULT VALUE
         // *OPTIONAL* THIS IS THE DEFAULT VALUE
-        theme: '@matthiesenxyz/astro-ghostcms',
+        theme: '@matthiesenxyz/astro-ghostcms-theme-default',
         // THIS IS TO SHOW SUPPORTED FEATURES FOR MORE INFO SEE
         // npm:@astrojs/sitemap package README
         sitemap: {

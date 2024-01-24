@@ -8,7 +8,7 @@ description: API Only Mode - Install
 In this mode the integration will not deploy routes at all.  you will have to build your own website to utilize the exported functions listed below.
 
 ```sh
-npx astro add @matthiesenxyz/astro-ghostcms
+npm i @matthiesenxyz/astro-ghostcms
 ```
 
 You must also create 2 environment variables in a `.env` file with the following:

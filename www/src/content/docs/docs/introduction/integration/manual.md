@@ -6,7 +6,7 @@ description: Integration Mode - Manual Install
 ## Install
 
 ```sh
-npm i @matthiesenxyz/astro-ghostcms
+npm i @matthiesenxyz/astro-ghostcms @matthiesenxyz/astro-ghostcms-theme-default
 ```
 
 Then set your `astro.config.ts` to look like this:
