@@ -1,24 +1,25 @@
 ---
 import type { GetStaticPathsOptions, Page } from 'astro';
+import type { Post } from "@matthiesenxyz/astro-ghostcms/api";
 import invariant from "tiny-invariant";
-import DefaultPageLayout from "../../layouts/default.astro";
-import PostPreviewList from "../../components/PostPreviewList.astro";
-import HeroContent from "../../components/HeroContent.astro";
-import Paginator from "../../components/Paginator.astro";
-import { getGhostSettings, getGhostPosts, type PostOrPage } from "@matthiesenxyz/astro-ghostcms/api";
+import DefaultPageLayout from "../layouts/default.astro";
+import PostPreviewList from "../components/PostPreviewList.astro";
+import HeroContent from "../components/HeroContent.astro";
+import Paginator from "../components/Paginator.astro";
+import { getSettings, getAllPosts } from "@matthiesenxyz/astro-ghostcms/api";
 
 export async function getStaticPaths({ paginate }:GetStaticPathsOptions) {
-  const posts = await getGhostPosts();
+  const posts = await getAllPosts();
   return paginate(posts, {
     pageSize: 5,
   });
 }
 
 export type Props = {
-  page: Page<PostOrPage>
+  page: Page<Post>
 };
 
-const settings = await getGhostSettings();
+const settings = await getSettings();
 invariant(settings, "Settings are required");
 
 const title = settings.title;

@@ -1,8 +1,8 @@
 ---
-import PostPreview from "./PostPreview.astro";
-import type { Settings, PostOrPage } from "@matthiesenxyz/astro-ghostcms/api";
+import PostPreview from "../components/PostPreview.astro";
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
-  posts: PostOrPage[];
+  posts: Post[];
   settings: Settings;
   isHome?: boolean;
 };
@@ -10,7 +10,7 @@ const { posts, settings, isHome = false } = Astro.props as Props;
 ---
 
 <div class="post-feed">
-  {posts.map((post: PostOrPage, index: number) => (
+  {posts.map((post: Post, index: number) => (
     <PostPreview
       post={post}
       index={index}

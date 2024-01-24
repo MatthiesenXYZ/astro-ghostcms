@@ -1,13 +1,13 @@
 ---
 import DefaultPageLayout from "../layouts/default.astro";
 import AuthorCard from "../components/AuthorCard.astro";
-import { getGhostAuthors, getGhostSettings } from "@matthiesenxyz/astro-ghostcms/api";
+import { getAllAuthors, getSettings } from "@matthiesenxyz/astro-ghostcms/api";
 import invariant from "tiny-invariant";
 
 let title = "All Authors";
 let description = "All the authors";
-const authors = await getGhostAuthors();
-const settings = await getGhostSettings();
+const { authors } = await getAllAuthors();
+const settings = await getSettings();
 invariant(settings, 'Settings not found');
 ---
 

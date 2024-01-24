@@ -1,14 +1,15 @@
 ---
 import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
-import DefaultPageLayout from "../../layouts/default.astro";
-import PostPreviewList from "../../components/PostPreviewList.astro";
-import { getGhostPosts, getGhostAuthors, getGhostSettings } from "@matthiesenxyz/astro-ghostcms/api";
+import DefaultPageLayout from "../layouts/default.astro";
+import PostPreviewList from "../components/PostPreviewList.astro";
+import { getAllPosts, getAllAuthors, getSettings } from "@matthiesenxyz/astro-ghostcms/api";
+import { twitter, facebook } from "@matthiesenxyz/astro-ghostcms/api";
 import invariant from "tiny-invariant";
 
 export async function getStaticPaths() {
-  const posts = await getGhostPosts();
-  const authors = await getGhostAuthors();
-  const settings = await getGhostSettings();
+  const posts = await getAllPosts();
+  const { authors } = await getAllAuthors();
+  const settings = await getSettings();
 
   return authors.map((author) => {
     const filteredPosts = posts.filter((post) =>
@@ -67,7 +68,7 @@ const description = `All of the articles we've posted and linked so far under th
               ? author.bio
               : author.count?.posts || 0 > 0
               ? `${author.count?.posts} Posts`
-              : ""}
+              : "No posts"}
           </p>
 
           <div class="author-profile-meta">
@@ -91,7 +92,7 @@ const description = `All of the articles we've posted and linked so far under th
               <span>
                 <a
                   class="author-profile-social-link"
-                  href={author.twitter}
+                  href={twitter(author.twitter)}
                   target="_blank"
                   rel="noopener"
                 >
@@ -103,7 +104,7 @@ const description = `All of the articles we've posted and linked so far under th
               <span>
                 <a
                   class="author-profile-social-link"
-                  href={author.facebook}
+                  href={facebook(author.facebook)}
                   target="_blank"
                   rel="noopener"
                 >

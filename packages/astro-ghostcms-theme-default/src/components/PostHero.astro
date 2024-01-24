@@ -1,10 +1,10 @@
 ---
-import FeatureImage from "./FeatureImage.astro";
-import AuthorList from "./AuthorList.astro";
+import FeatureImage from "../components/FeatureImage.astro";
+import AuthorList from "../components/AuthorList.astro";
 import { formatDate } from "../utils";
-import type { Settings, PostOrPage } from "@matthiesenxyz/astro-ghostcms/api";
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
-  post: PostOrPage;
+  post: Post;
   settings: Settings;
 };
 const { post, settings } = Astro.props as Props;
@@ -29,11 +29,9 @@ const { post, settings } = Astro.props as Props;
         </h4>
         )}
         <div class="byline-meta-content">
-          {post.created_at && (
-            <time class="byline-meta-date" datetime={formatDate(post.created_at)}
+          <time class="byline-meta-date" datetime={formatDate(post.created_at)}
             >{formatDate(post.created_at)}
           </time>
-          )}
           <span class="byline-reading-time"
             ><span class="bull">&bull;</span>
             {post.reading_time} min read

@@ -1,13 +1,13 @@
 ---
-import PostHero from "./PostHero.astro";
-import PostFooter from "./PostFooter.astro";
+import PostHero from "../components/PostHero.astro";
+import PostFooter from "../components/PostFooter.astro";
 import invariant from "tiny-invariant";
-import type {PostOrPage, PostsOrPages, Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import type {Post, Settings } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
-  post: PostOrPage;
+  post: Post;
   settings: Settings;
   postClass?: string;
-  posts: PostsOrPages;
+  posts: Post[];
 };
 const { post, settings, postClass, posts } = Astro.props as Props;
 invariant(settings, "Settings not found");

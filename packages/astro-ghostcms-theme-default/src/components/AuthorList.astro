@@ -1,8 +1,8 @@
 ---
 import { getGhostImgPath } from "../utils";
-import type { Settings, PostOrPage } from "@matthiesenxyz/astro-ghostcms/api";
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
-  post: PostOrPage;
+  post: Post;
   settings: Settings;
 };
 const { post, settings } = Astro.props as Props;

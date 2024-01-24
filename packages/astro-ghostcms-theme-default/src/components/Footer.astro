@@ -9,10 +9,10 @@ const { settings } = Astro.props as Props;
 <footer class="site-footer outer">
   <div class="inner">
     <section class="copyright">
-      <a href="/">{settings.title}</a> &copy; 2024
+      <a href="/">{settings.title}</a> &copy; 2021
     </section>
     <nav class="site-footer-nav">
-      {settings.secondary_navigation && settings.secondary_navigation.length > 0 && (
+      {settings.secondary_navigation.length > 0 && (
         <ul class="nav secondary">
           {settings.secondary_navigation.map(({ label, url }) => (
             <li class="">

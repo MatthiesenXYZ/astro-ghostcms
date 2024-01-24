@@ -1,8 +1,8 @@
 ---
-import FeatureImage from "./FeatureImage.astro";
-import type { Settings, PostOrPage } from "@matthiesenxyz/astro-ghostcms/api";
+import FeatureImage from "../components/FeatureImage.astro";
+import type { Settings, Page } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
-  page: PostOrPage;
+  page: Page;
   settings: Settings;
   pageClass?: string;
 };

@@ -1,15 +1,15 @@
 ---
 import DefaultPageLayout from "../layouts/default.astro";
 import TagCard from "../components/TagCard.astro";
-import { getGhostSettings, getGhostTags } from "@matthiesenxyz/astro-ghostcms/api";
+import { getSettings, getAllTags } from "@matthiesenxyz/astro-ghostcms/api";
 import invariant from 'tiny-invariant';
 
 
 let title = "All Tags";
 let description = "All the tags used so far...";
 
-const tags = await getGhostTags();
-const settings = await getGhostSettings();
+const { tags } = await getAllTags();
+const settings = await getSettings();
 invariant(settings, "Settings not found");
 ---
 
@@ -24,7 +24,9 @@ invariant(settings, "Settings not found");
       </div>
       <div class="tag-feed">
         {
-          tags.map((tag) => (
+          tags
+            .filter((tag) => tag.slug && !tag.slug.startsWith("hash-"))
+            .map((tag) => (
               <article class="post-card ">
                 <TagCard tag={tag} settings={settings} />
               </article>

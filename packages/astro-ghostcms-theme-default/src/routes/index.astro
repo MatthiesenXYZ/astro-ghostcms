@@ -2,12 +2,11 @@
 import DefaultPageLayout from "../layouts/default.astro";
 import PostPreviewList from "../components/PostPreviewList.astro";
 import HeroContent from "../components/HeroContent.astro";
-import { getGhostPosts, getGhostSettings } from "@matthiesenxyz/astro-ghostcms/api";
-import invariant from "tiny-invariant";
-const posts = await getGhostPosts();
-const settings = await getGhostSettings();
-invariant(settings, "Settings not found");
-
+import { getPosts, getSettings } from "@matthiesenxyz/astro-ghostcms/api";
+import invariant from 'tiny-invariant';
+const { posts } = await getPosts();
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
 const title = settings.title;
 const description = settings.description;
 ---

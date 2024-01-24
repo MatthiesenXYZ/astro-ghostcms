@@ -1,4 +1,5 @@
 ---
+import { twitter, facebook } from "@matthiesenxyz/astro-ghostcms/api";
 import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
   settings: Settings;
@@ -24,7 +25,7 @@ const { settings } = Astro.props as Props;
     </div>
     <div class="gh-head-menu">
       <ul class="nav">
-        {settings.navigation && settings.navigation.map(({ label, url }) => (
+        {settings.navigation.map(({ label, url }) => (
           <li class="nav__item">
             <a href={url}>{label}</a>
           </li>
@@ -36,7 +37,7 @@ const { settings } = Astro.props as Props;
         {settings.facebook && (
           <a
             class="gh-social-facebook"
-            href={"https://facebook.com/" + settings.facebook}
+            href={facebook(settings.facebook)}
             title="Facebook"
             target="_blank"
             rel="noopener"
@@ -49,7 +50,7 @@ const { settings } = Astro.props as Props;
         {settings.twitter && (
           <a
             class="gh-social-twitter"
-            href={"https://twitter.com/" + settings.twitter}
+            href={twitter(settings.twitter)}
             title="Twitter"
             target="_blank"
             rel="noopener"
