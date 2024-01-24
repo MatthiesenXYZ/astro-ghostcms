@@ -18,8 +18,8 @@ importers:
   demo:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: 3.0.0
-        version: 3.0.0(astro@4.2.3)(typescript@5.3.3)
+        specifier: 3.0.1
+        version: link:../packages/astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-theme-default':
         specifier: 0.0.1
         version: link:../packages/astro-ghostcms-theme-default
@@ -1441,57 +1441,6 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@matthiesenxyz/astro-ghostcms-theme-default@0.0.1(astro@4.2.3)(typescript@5.3.3):
-    resolution: {integrity: sha512-Y2EqEciK3KVxM45iAcuh1vBdJbVJCGpuxKbV8BuEax4PlWccZEtCdtfvzU+3OZzJgIbLI/LxbNLIWnWzs2xREw==}
-    peerDependencies:
-      astro: ^4.2.1
-    dependencies:
-      '@matthiesenxyz/astro-ghostcms': 3.0.0(astro@4.2.3)(typescript@5.3.3)
-      astro: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
-      astro-font: 0.0.77
-      tiny-invariant: 1.3.1
-    transitivePeerDependencies:
-      - '@types/node'
-      - debug
-      - less
-      - lightningcss
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - typescript
-    dev: false
-
-  /@matthiesenxyz/astro-ghostcms@3.0.0(astro@4.2.3)(typescript@5.3.3):
-    resolution: {integrity: sha512-XDtAy4tefVelFpmZO/5N4R7JTGhiesCmV2B2zKZpet8J3VhR3wJDOCZITdxJBjKVdED1MwCOb2xEoKtcZeKf2Q==}
-    peerDependencies:
-      astro: ^4.2.1
-    dependencies:
-      '@astrojs/rss': 4.0.3
-      '@astrojs/sitemap': 3.0.5
-      '@matthiesenxyz/astro-ghostcms-theme-default': 0.0.1(astro@4.2.3)(typescript@5.3.3)
-      '@ts-ghost/core-api': 5.1.2
-      astro: 4.2.3(@types/node@20.11.5)(sass@1.70.0)(typescript@5.3.3)
-      astro-robots-txt: 1.0.0
-      axios: 1.6.5
-      sass: 1.70.0
-      tiny-invariant: 1.3.1
-      vite: 4.5.2(@types/node@20.11.5)(sass@1.70.0)
-      vite-tsconfig-paths: 4.3.1(typescript@5.3.3)(vite@4.5.2)
-      zod: 3.22.4
-      zod-validation-error: 3.0.0(zod@3.22.4)
-    transitivePeerDependencies:
-      - '@types/node'
-      - debug
-      - less
-      - lightningcss
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - typescript
-    dev: false
-
   /@mdx-js/mdx@3.0.0:
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
     dependencies:
@@ -2364,24 +2313,10 @@ packages:
       synckit: 0.9.0
     dev: true
 
-  /asynckit@0.4.0:
-    resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: false
-
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
     dev: true
-
-  /axios@1.6.5:
-    resolution: {integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==}
-    dependencies:
-      follow-redirects: 1.15.5
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   /axobject-query@4.0.0:
     resolution: {integrity: sha512-+60uv1hiVFhHZeO+Lz0RYzsVHy5Wr1ayX0mwda9KPDVLNJgZ1T9Ny7VmFbLDzxsH0D87I86vgj3gFrjTJUYznw==}
@@ -2743,13 +2678,6 @@ packages:
       color-string: 1.9.1
     dev: false
 
-  /combined-stream@1.0.8:
-    resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      delayed-stream: 1.0.0
-    dev: false
-
   /comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
     dev: false
@@ -2931,11 +2859,6 @@ packages:
       has-property-descriptors: 1.0.1
       object-keys: 1.1.1
     dev: true
-
-  /delayed-stream@1.0.0:
-    resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
-    engines: {node: '>=0.4.0'}
-    dev: false
 
   /dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -3548,16 +3471,6 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /follow-redirects@1.15.5:
-    resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
-
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
     dependencies:
@@ -3571,15 +3484,6 @@ packages:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
     dev: true
-
-  /form-data@4.0.0:
-    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
-    engines: {node: '>= 6'}
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      mime-types: 2.1.35
-    dev: false
 
   /fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -5237,18 +5141,6 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
 
-  /mime-db@1.52.0:
-    resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
-    engines: {node: '>= 0.6'}
-    dev: false
-
-  /mime-types@2.1.35:
-    resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
-    engines: {node: '>= 0.6'}
-    dependencies:
-      mime-db: 1.52.0
-    dev: false
-
   /mime@3.0.0:
     resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
     engines: {node: '>=10.0.0'}
@@ -5853,10 +5745,6 @@ packages:
 
   /property-information@6.4.0:
     resolution: {integrity: sha512-9t5qARVofg2xQqKtytzt+lZ4d1Qvj8t5B8fEwXK6qOfgRLgH/b13QlgEyDh033NOS31nXeFbYv7CLUDG1CeifQ==}
-    dev: false
-
-  /proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
   /pseudomap@1.0.2:
