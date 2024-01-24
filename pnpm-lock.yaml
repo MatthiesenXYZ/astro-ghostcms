@@ -24,8 +24,8 @@ importers:
         specifier: 0.0.8
         version: link:../packages/astro-ghostcms-theme-default
       astro:
-        specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+        specifier: ^4.2.4
+        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -152,8 +152,8 @@ importers:
         specifier: '*'
         version: link:../packages/astro-ghostcms-theme-default
       astro:
-        specifier: ^4.2.1
-        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+        specifier: ^4.2.4
+        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -169,10 +169,10 @@ importers:
         version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       '@astrojs/starlight':
         specifier: ^0.16.0
-        version: 0.16.0(astro@4.2.3)
+        version: 0.16.0(astro@4.2.4)
       astro:
-        specifier: ^4.2.0
-        version: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+        specifier: ^4.2.4
+        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
       sass:
         specifier: ^1.69.5
         version: 1.70.0
@@ -280,7 +280,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.6(astro@4.2.3):
+  /@astrojs/mdx@2.0.6(astro@4.2.4):
     resolution: {integrity: sha512-PY6FYN5TN8dsRFSzcPIt5ofJ/w+v+5GtUUyDYbznu8zmFWlL9TkTLJ9U1zaQ3s2Qh6r1cAeLdEYjW/hW+vZzlw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -289,7 +289,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.3
-      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -327,18 +327,18 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/starlight@0.16.0(astro@4.2.3):
+  /@astrojs/starlight@0.16.0(astro@4.2.4):
     resolution: {integrity: sha512-zwSNiCqzZeiuivUp4Yhx+eMLGww8v8cRYoCYXg9myTXNUwphqPaVG3rp7dbaZ4y1MaejnjYWB444ZRItEgTDcQ==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
-      '@astrojs/mdx': 2.0.6(astro@4.2.3)
+      '@astrojs/mdx': 2.0.6(astro@4.2.4)
       '@astrojs/sitemap': 3.0.5
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.3
       '@types/mdast': 4.0.3
-      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
-      astro-expressive-code: 0.31.0(astro@4.2.3)
+      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
+      astro-expressive-code: 0.31.0(astro@4.2.4)
       bcp-47: 2.1.0
       hast-util-select: 6.0.2
       hastscript: 8.0.0
@@ -2448,12 +2448,12 @@ packages:
       - supports-color
     dev: true
 
-  /astro-expressive-code@0.31.0(astro@4.2.3):
+  /astro-expressive-code@0.31.0(astro@4.2.4):
     resolution: {integrity: sha512-o6eFrRSYLnlM/2FKkO3MgkbmVxT8N6DJcKvbRf1wbUcRXpz7s1KfugbdsaGw3ABEWUBuQIBsRppcGGw2L816Vg==}
     peerDependencies:
       astro: ^3.3.0 || ^4.0.0-beta
     dependencies:
-      astro: 4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
       remark-expressive-code: 0.31.0
     dev: false
 
@@ -2470,6 +2470,88 @@ packages:
 
   /astro@4.2.3(@types/node@20.11.6)(sass@1.70.0)(typescript@5.3.3):
     resolution: {integrity: sha512-6bfSogmcwMdaTRAxuhJ7aISGin/T3ovI/69JWPRYOHBkPZxA/EfsNQOI2TiRHFJSF9XtoMnFlgvT+iYapkhOwg==}
+    engines: {node: '>=18.14.1', npm: '>=6.14.0'}
+    hasBin: true
+    dependencies:
+      '@astrojs/compiler': 2.5.0
+      '@astrojs/internal-helpers': 0.2.1
+      '@astrojs/markdown-remark': 4.2.0
+      '@astrojs/telemetry': 3.0.4
+      '@babel/core': 7.23.7
+      '@babel/generator': 7.23.6
+      '@babel/parser': 7.23.6
+      '@babel/plugin-transform-react-jsx': 7.23.4(@babel/core@7.23.7)
+      '@babel/traverse': 7.23.7
+      '@babel/types': 7.23.6
+      '@types/babel__core': 7.20.5
+      acorn: 8.11.3
+      aria-query: 5.3.0
+      axobject-query: 4.0.0
+      boxen: 7.1.1
+      chokidar: 3.5.3
+      ci-info: 4.0.0
+      clsx: 2.1.0
+      common-ancestor-path: 1.0.1
+      cookie: 0.6.0
+      debug: 4.3.4
+      deterministic-object-hash: 2.0.2
+      devalue: 4.3.2
+      diff: 5.1.0
+      dlv: 1.1.3
+      dset: 3.1.3
+      es-module-lexer: 1.4.1
+      esbuild: 0.19.12
+      estree-walker: 3.0.3
+      execa: 8.0.1
+      fast-glob: 3.3.2
+      flattie: 1.1.0
+      github-slugger: 2.0.0
+      gray-matter: 4.0.3
+      html-escaper: 3.0.3
+      http-cache-semantics: 4.1.1
+      js-yaml: 4.1.0
+      kleur: 4.1.5
+      magic-string: 0.30.5
+      mdast-util-to-hast: 13.0.2
+      mime: 3.0.0
+      ora: 7.0.1
+      p-limit: 5.0.0
+      p-queue: 8.0.1
+      path-to-regexp: 6.2.1
+      preferred-pm: 3.1.2
+      probe-image-size: 7.2.3
+      prompts: 2.4.2
+      rehype: 13.0.1
+      resolve: 1.22.8
+      semver: 7.5.4
+      server-destroy: 1.0.1
+      shikiji: 0.9.19
+      string-width: 7.1.0
+      strip-ansi: 7.1.0
+      tsconfck: 3.0.1(typescript@5.3.3)
+      unist-util-visit: 5.0.0
+      vfile: 6.0.1
+      vite: 5.0.12(@types/node@20.11.6)(sass@1.70.0)
+      vitefu: 0.2.5(vite@5.0.12)
+      which-pm: 2.1.1
+      yargs-parser: 21.1.1
+      zod: 3.22.4
+    optionalDependencies:
+      sharp: 0.32.6
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /astro@4.2.4(sass@1.70.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-z1f52lXkHf71M5HSLKrd5G1PH5/Zfq4kMp0iUT7Na5VHcPDma/NYFPFPewDxqV6UPmyxupj3xuooFaN3j8zaow==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -2911,6 +2993,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
 
   /color-string@1.9.1:
     resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
