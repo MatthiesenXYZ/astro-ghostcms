@@ -29,7 +29,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -74,8 +74,8 @@ importers:
         version: 3.0.0(zod@3.22.4)
     devDependencies:
       '@astrojs/check':
-        specifier: ^0.3.4
-        version: 0.3.4(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        specifier: ^0.4.1
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       '@ts-ghost/tsconfig':
         specifier: '*'
         version: link:../tsconfig
@@ -136,7 +136,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -157,7 +157,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -166,7 +166,7 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       '@astrojs/starlight':
         specifier: ^0.16.0
         version: 0.16.0(astro@4.2.3)
@@ -198,24 +198,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.22
     dev: false
 
-  /@astrojs/check@0.3.4(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
-    resolution: {integrity: sha512-Wi4KwW38J3GCd/U6LH2UuU4uc4P/K1WYaqhoKm2o7rVoGhQfO+RWrSO26rUPRXYbmae8JugAgpCmsHC8bt5RlA==}
-    hasBin: true
-    peerDependencies:
-      typescript: ^5.0.0
-    dependencies:
-      '@astrojs/language-server': 2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
-      chokidar: 3.5.3
-      fast-glob: 3.3.2
-      kleur: 4.1.5
-      typescript: 5.3.3
-      yargs: 17.7.2
-    transitivePeerDependencies:
-      - prettier
-      - prettier-plugin-astro
-    dev: true
-
-  /@astrojs/check@0.4.1(typescript@5.3.3):
+  /@astrojs/check@0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
     resolution: {integrity: sha512-XEsuU4TlWkgcsvdeessq5mXLXV1fejtxIioCPv/FfhTzb1bDYe2BtLiSBK+rFTyD9Hl686YOas9AGNMJcpoRsw==}
     hasBin: true
     peerDependencies:
