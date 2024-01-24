@@ -1,10 +1,10 @@
 import rss from "@astrojs/rss";
-import { getGhostPosts, getGhostSettings } from '../api_old';
+import { getPosts, getSettings } from '../api';
 import invariant from "tiny-invariant";
 
 export async function GET(context) {
-  const posts = await getGhostPosts();
-  const settings = await getGhostSettings();
+  const posts = await getPosts();
+  const settings = await getSettings();
   invariant(settings, "Settings not found");
   const title = settings.title;
   const description = settings.description;
@@ -16,7 +16,7 @@ export async function GET(context) {
       title: post.title,
       pubDate: post.published_at,
       description: post.excerpt,
-      link: `/blog/${post.slug}/`,
+      link: `/${post.slug}/`,
     })),
   });
 }
