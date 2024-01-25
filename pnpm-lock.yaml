@@ -18,14 +18,14 @@ importers:
   demo:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: 3.1.1
-        version: 3.1.1(astro@4.2.4)(typescript@5.3.3)
+        specifier: 3.1.2
+        version: link:../packages/astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: 0.1.1
-        version: 0.1.1(astro@4.2.4)(typescript@5.3.3)
+        specifier: 0.1.2
+        version: link:../packages/astro-ghostcms-theme-default
       astro:
         specifier: ^4.2.4
-        version: 4.2.4(@types/node@20.11.6)(typescript@5.3.3)
+        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -119,7 +119,7 @@ importers:
   packages/astro-ghostcms-theme-default:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.1.1
+        specifier: ^3.1.2
         version: link:../astro-ghostcms
       astro:
         specifier: ^4.2.1
@@ -150,7 +150,7 @@ importers:
         version: link:../packages/astro-ghostcms-theme-default
       astro:
         specifier: ^4.2.4
-        version: 4.2.4(@types/node@20.11.6)(typescript@5.3.3)
+        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -1419,54 +1419,6 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@matthiesenxyz/astro-ghostcms-theme-default@0.1.1(astro@4.2.4)(typescript@5.3.3):
-    resolution: {integrity: sha512-yTVJadnfuH2wHhlPHRSbEefi/0c1qWA2tzQeyXn+oQ8HByok2osKX2IvV8winLypZpFr3ofa7aB0B5AmFkOryw==}
-    peerDependencies:
-      astro: ^4.2.1
-    dependencies:
-      '@matthiesenxyz/astro-ghostcms': 3.1.1(astro@4.2.4)(typescript@5.3.3)
-      astro: 4.2.4(@types/node@20.11.6)(typescript@5.3.3)
-      astro-font: 0.0.77
-      tiny-invariant: 1.3.1
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - typescript
-    dev: false
-
-  /@matthiesenxyz/astro-ghostcms@3.1.1(astro@4.2.4)(typescript@5.3.3):
-    resolution: {integrity: sha512-5m6LQ5jtOvevYqUk+9LUIzM1yDw6N52ew1Ul6we/LFo7DCJGDYa2pq3VLOaox4VmAJKq6SZRwIIlgyz4IANhlg==}
-    peerDependencies:
-      astro: ^4.2.1
-    dependencies:
-      '@astrojs/rss': 4.0.3
-      '@astrojs/sitemap': 3.0.5
-      '@matthiesenxyz/astro-ghostcms-theme-default': 0.1.1(astro@4.2.4)(typescript@5.3.3)
-      '@ts-ghost/core-api': 5.1.2
-      astro: 4.2.4(@types/node@20.11.6)(typescript@5.3.3)
-      astro-robots-txt: 1.0.0
-      sass: 1.70.0
-      tiny-invariant: 1.3.1
-      vite: 5.0.12(sass@1.70.0)
-      vite-tsconfig-paths: 4.3.1(typescript@5.3.3)(vite@5.0.12)
-      zod: 3.22.4
-      zod-validation-error: 3.0.0(zod@3.22.4)
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - typescript
-    dev: false
-
   /@mdx-js/mdx@3.0.0:
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
     dependencies:
@@ -2310,7 +2262,7 @@ packages:
       tsconfck: 3.0.1(typescript@5.3.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.0.12(@types/node@20.11.6)
+      vite: 5.0.12(sass@1.70.0)
       vitefu: 0.2.5(vite@5.0.12)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -7453,7 +7405,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.12(@types/node@20.11.6)
+      vite: 5.0.12(sass@1.70.0)
     dev: false
 
   /vitest-fetch-mock@0.2.2(vitest@1.2.1):
