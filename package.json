@@ -10,7 +10,8 @@
 		"www:dev": "pnpm --filter www dev",
 		"demo:dev": "pnpm --filter demo dev",
 		"lint": "biome check .",
-		"lint:fix": "biome check --apply ."
+		"lint:fix": "biome check --apply .",
+		"base": "pnpm i --frozen-lockfile"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.5.3",

@@ -1,0 +1,1 @@
+This is a Local Development package for `@ts-ghost/core-api`
