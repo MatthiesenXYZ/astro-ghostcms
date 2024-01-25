@@ -4,6 +4,11 @@ const prefix: string = 'Invariant failed';
 // Throw an error if the condition fails
 // Strip out error messages for production
 // > Not providing an inline default argument for message as the result is smaller
+/** Throw an error if the condition is false
+ * @example 
+ * import { invariant } from '@matthiesenxyz/astro-ghostcms/api';
+ * invariant(var, "var is false but its not supposed to be!")
+ */
 export function invariant(
   // biome-ignore lint/suspicious/noExplicitAny: we know what we are doing
 condition: any,

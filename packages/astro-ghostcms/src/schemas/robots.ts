@@ -18,17 +18,18 @@ const RobotsPolicySchema = z.object({
   })
   
   export const RobotsTxtSchema = z.object({
-    /** EXAMPLE1 host: true - automatically resolve using the site option from Astro config
-     * EXAMPLE2 host: 'example.com'
+     /** @example host: true
+     * // Automatically resolve using the site option from Astro config
+     * @example host: 'example.com'
      */
     host: z.string().optional(),
-    /** EXAMPLE1 sitemap: "https://example.com/sitemap-0.xml"
-     * EXAMPLE2 sitemap: ['https://example.com/sitemap-0.xml','https://example.com/sitemap-1.xml']
-     * EXAMPLE3 sitemap: false - If you want to get the robots.txt file without the Sitemap: ... entry, set the sitemap parameter to false.
+    /** @example sitemap: "https://example.com/sitemap-0.xml"
+     * @example sitemap: ['https://example.com/sitemap-0.xml','https://example.com/sitemap-1.xml']
+     * @example sitemap: false - If you want to get the robots.txt file without the Sitemap: ... entry, set the sitemap parameter to false.
      */
     sitemap: z.string().optional(),
     /** astrojs/sitemap and astro-sitemap integrations have the sitemap-index.xml as their primary output. That is why the default value of sitemapBaseFileName is set to sitemap-index.
-     * EXAMPLE sitemapBaseFileName: 'custom-sitemap'
+     * @example sitemapBaseFileName: 'custom-sitemap'
      */
     sitemapBaseFileName: z.string().optional(),
     /** SET POLICY RULES */

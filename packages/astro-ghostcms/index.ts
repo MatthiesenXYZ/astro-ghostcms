@@ -53,7 +53,7 @@ const ENV = loadEnv(IC.MODE, process.cwd(), IC.PREFIXES);
 
 /** Astro-GhostCMS Integration
  * @ For more information and to see the docs check
- * @ https://astro-ghostcms.xyz
+ * @see https://astro-ghostcms.xyz
  */
 export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
