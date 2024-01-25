@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "astro": "^4.2.4",
-    "@matthiesenxyz/astro-ghostcms": "3.0.6",
-    "@matthiesenxyz/astro-ghostcms-theme-default": "0.0.8"
+    "@matthiesenxyz/astro-ghostcms": "3.1.0",
+    "@matthiesenxyz/astro-ghostcms-theme-default": "0.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.4.1",
