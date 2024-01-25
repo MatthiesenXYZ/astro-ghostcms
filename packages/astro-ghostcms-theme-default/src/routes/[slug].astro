@@ -3,8 +3,7 @@ import type { InferGetStaticPropsType } from 'astro';
 import DefaultPageLayout from "../layouts/default.astro";
 import Page from "../components/Page.astro";
 import Post from "../components/Post.astro";
-import { getSettings, getAllPages, getAllPosts } from "@matthiesenxyz/astro-ghostcms/api";
-import invariant from 'tiny-invariant';
+import { getSettings, getAllPages, getAllPosts, invariant } from "@matthiesenxyz/astro-ghostcms/api";
 
 export async function getStaticPaths() {
   const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);

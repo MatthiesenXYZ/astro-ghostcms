@@ -1,17 +1,18 @@
 import rss from "@astrojs/rss";
-import { getAllPosts, getSettings } from '../api';
-import invariant from "tiny-invariant";
+import { getAllPosts, getSettings, invariant } from '../api';
+import type { APIContext } from 'astro';
 
-export async function GET(context: { site: string; }) {
-  const posts = await getAllPosts();
-  const settings = await getSettings();
+const posts = await getAllPosts();
+const settings = await getSettings();
+
+export async function GET({ site, generator }: APIContext) {
   invariant(settings, "Settings not found");
   const title = settings.title;
   const description = settings.description;
   return rss({
-    title: title,
+    title: `${title} [Built on ${generator.slice(0, 8)}]`,
     description: description,
-    site: context.site,
+    site: site?site:"",
     items: posts.map((post) => ({
       title: post.title,
       pubDate: new Date(post.published_at?post.published_at:post.created_at),

@@ -12,14 +12,12 @@ const {
 const ghostApiKey = CONTENT_API_KEY;
 const ghostUrl = CONTENT_API_URL;
 const version = "v5.0";
+const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
 
 export const getAllAuthors = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const results = await api.authors
     .browse()
-    .include({
-      "count.posts": true,
-    })
+    .include({ "count.posts": true })
     .fetch();
   if (!results.success) {
     throw new Error(results.errors.map((e) => e.message).join(", "));
@@ -31,7 +29,6 @@ export const getAllAuthors = async () => {
 };
 
 export const getPosts = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const results = await api.posts
     .browse()
     .include({
@@ -49,7 +46,6 @@ export const getPosts = async () => {
 };
 
 export const getAllPosts = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const posts: Post[] = [];
   let cursor = await api.posts
     .browse()
@@ -67,7 +63,6 @@ export const getAllPosts = async () => {
 };
 
 export const getAllPages = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const pages: Page[] = [];
   let cursor = await api.pages
     .browse()
@@ -85,7 +80,6 @@ export const getAllPages = async () => {
 };
 
 export const getSettings = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const res = await api.settings.fetch();
   if (res.success) {
     return res.data;
@@ -94,12 +88,9 @@ export const getSettings = async () => {
 };
 
 export const getAllTags = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const results = await api.tags
     .browse()
-    .include({
-      "count.posts": true,
-    })
+    .include({ "count.posts": true })
     .fetch();
   if (!results.success) {
     throw new Error(results.errors.map((e) => e.message).join(", "));
@@ -111,11 +102,8 @@ export const getAllTags = async () => {
 };
 
 export const getFeaturedPosts = async () => {
-  const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
   const results = await api.posts
-    .browse({
-      filter: "featured:true"
-    })
+    .browse({ filter: "featured:true" })
     .include({
       authors: true,
       tags: true,

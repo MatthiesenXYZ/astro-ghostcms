@@ -1,8 +1,7 @@
 ---
 import PostHero from "../components/PostHero.astro";
 import PostFooter from "../components/PostFooter.astro";
-import invariant from "tiny-invariant";
-import type {Post, Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import {invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
   post: Post;
   settings: Settings;
