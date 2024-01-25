@@ -1,7 +1,9 @@
 import type { AstroIntegration } from "astro";
 import type { SafeParseError, SafeParseSuccess } from "astro/zod";
-import { UserConfigSchema, type UserConfig } from "./src/schemas";
-import { ghostSitemap, ghostRobots } from "./src/integrations";
+import { UserConfigSchema } from "./src/schemas";
+import type { UserConfig } from "./types";
+import ghostSitemap from "./src/integrations/sitemap";
+import ghostRobots from "./src/integrations/robots-txt";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
 import { viteGhostCMS } from "./src/virtual";
@@ -81,6 +83,10 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 const entry = uconf.theme;
                 /** CONFIG OPTION: CONSOLE OUTPUT */
                 const logs = uconf.disableConsoleOutput;
+                /** SITEMAP CONFIG */
+                const smconf = uconf.sitemap;
+                /** ROBOTS-TXT CONFIG */
+                const rtxtconf = uconf.robotstxt;
 
                 // Check For ENV Variables
                 if(!logs) {logger.info(IC.CHECK_ENV)}
@@ -136,21 +142,22 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 } else { if( !logs ) { logger.info( IC.IRD )} }
 
                 // IMPORT INTEGRATIONS & INTEGRATION ROUTES
-                const int = [...config.integrations];
+                const integrations = [...config.integrations];
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
                 if( !logs ) { logger.info( `${IC.CF}@astrojs/sitemap` )}
-				if ( !int.find( ({ name }) => name === '@astrojs/sitemap' )) {
+				if (!integrations.find(({ name }) => name === '@astrojs/sitemap' )) {
                     if( !logs ) { logger.info( `${IC.II}@astrojs/sitemap` )}
-					int.push( ghostSitemap( uconf ));
+					integrations.push(ghostSitemap(smconf));
+                    
 				} else { if( !logs ) { logger.info( `${IC.AIbU}@astrojs/sitemap` )}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
                 if( !logs ) { logger.info( `${IC.CF}astro-robots-txt` )}
-				if ( !int.find( ({ name }) => name === 'astro-robots-txt' )) {
+				if (!integrations.find(({ name }) => name === 'astro-robots-txt' )) {
                     if( !logs ) { logger.info( `${IC.II}astro-robots-txt` )}
-					int.push( ghostRobots( uconf ));
+					integrations.push(ghostRobots(rtxtconf));
 				} else {
                     if( !logs ) { logger.info( `${IC.AIbU}astro-robots-txt` )}
                 };
@@ -158,7 +165,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 // FINAL STEP TO KEEP INTEGRATION LIVE
                 try { updateConfig( {
                     // UPDATE ASTRO CONFIG WITH INTEGRATED INTEGRATIONS
-                    integrations: [ ghostSitemap( uconf ), ghostRobots( uconf ) ],
+                    integrations: [ ghostSitemap( smconf ), ghostRobots( rtxtconf ) ],
                     // LOAD VITE AND SETUP viteGhostCMS Configs
                     vite: { plugins: [ viteGhostCMS( uconf, config ) ]},
                 }) } catch ( e ) {

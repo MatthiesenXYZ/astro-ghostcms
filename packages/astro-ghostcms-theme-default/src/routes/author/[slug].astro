@@ -2,8 +2,7 @@
 import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
 import DefaultPageLayout from "../../layouts/default.astro";
 import PostPreviewList from "../../components/PostPreviewList.astro";
-import { getAllPosts, getAllAuthors, getSettings } from "@matthiesenxyz/astro-ghostcms/api";
-import { twitter, facebook } from "@matthiesenxyz/astro-ghostcms/api";
+import { getAllPosts, getAllAuthors, getSettings, twitter, facebook } from "@matthiesenxyz/astro-ghostcms/api";
 import invariant from "tiny-invariant";
 
 export async function getStaticPaths() {

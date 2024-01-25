@@ -23,10 +23,10 @@
 
 export const twitter = (username: string) => {
     // Creates the canonical twitter URL without the '@'
-    return "https://twitter.com/" + username.replace(/^@/, "");
+    return `https://twitter.com/${username.replace(/^@/, "")}`;
   };
   
   export const facebook = (username: string) => {
     // Handles a starting slash, this shouldn't happen, but just in case
-    return "https://www.facebook.com/" + username.replace(/^\//, "");
+    return `https://www.facebook.com/${username.replace(/^\//, "")}`;
   };

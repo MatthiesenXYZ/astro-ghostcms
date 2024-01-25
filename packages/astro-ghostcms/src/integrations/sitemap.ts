@@ -1,14 +1,13 @@
 import sitemap, { type SitemapOptions } from '@astrojs/sitemap';
 import type { UserConfig } from '../schemas';
 
-export function getSitemapConfig(opts: UserConfig): SitemapOptions {
-	const { sitemap } = opts
+export function getSitemapConfig(opts: UserConfig["sitemap"]): SitemapOptions {
 	const sitemapConfig: SitemapOptions = {};
-	if (sitemap?.entryLimit){
-		sitemapConfig.entryLimit = sitemap.entryLimit;
+	if (opts?.entryLimit){
+		sitemapConfig.entryLimit = opts.entryLimit;
 	}
-	if (sitemap?.customPages){
-		sitemapConfig.customPages = sitemap.customPages;
+	if (opts?.customPages){
+		sitemapConfig.customPages = opts.customPages;
 	}
 	return sitemapConfig;
 }
@@ -16,6 +15,6 @@ export function getSitemapConfig(opts: UserConfig): SitemapOptions {
 /**
  * A wrapped version of the `@astrojs/sitemap` integration for GhostCMS.
  */
-export default function ghostSitemap(opts: UserConfig) {
+export default function ghostSitemap(opts: UserConfig["sitemap"]) {
 	return sitemap(getSitemapConfig(opts));
 }

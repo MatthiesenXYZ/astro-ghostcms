@@ -9,9 +9,7 @@ function resolveVirtualModuleId<T extends string>(id: T): `\0${T}` {
 
 export function viteGhostCMS(
 	opts: UserConfig,
-	{
-		root,
-	}: Pick<AstroConfig, 'root' | 'srcDir' | 'trailingSlash'> & {
+	{ root, }: Pick<AstroConfig, 'root' | 'srcDir' | 'trailingSlash'> & {
 		build: Pick<AstroConfig['build'], 'format'>
 	}
 ): NonNullable<ViteUserConfig['plugins']>[number] {
@@ -32,10 +30,10 @@ export function viteGhostCMS(
 
     return {
 		name: 'vite-plugin-matthiesenxyz-astro-ghostcms-user-config',
-		resolveId(id): string | void {
+		resolveId(id): string | undefined {
 			if (id in modules) return resolveVirtualModuleId(id)
 		},
-		load(id): string | void {
+		load(id): string | undefined {
 			const resolution = resolutionMap[id]
 			if (resolution) return modules[resolution]
 		},

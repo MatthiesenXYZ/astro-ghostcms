@@ -1,20 +1,19 @@
 import robotsTxt, { type RobotsTxtOptions } from "astro-robots-txt";
 import type { UserConfig } from "../schemas";
 
-export function getRobotsTxtConfig(opts: UserConfig): RobotsTxtOptions {
-	const { robotstxt } = opts;
+export function getRobotsTxtConfig(opts: UserConfig["robotstxt"]): RobotsTxtOptions {
 	const robotsConfig: RobotsTxtOptions = {};
-	if (robotstxt?.host) {
-		robotsConfig.host = robotstxt.host;
+	if (opts?.host) {
+		robotsConfig.host = opts.host;
 	}
-	if (robotstxt?.policy) {
-		robotsConfig.policy = robotstxt.policy;
+	if (opts?.policy) {
+		robotsConfig.policy = opts.policy;
 	}
-	if (robotstxt?.sitemap) {
-		robotsConfig.sitemap = robotstxt.sitemap;
+	if (opts?.sitemap) {
+		robotsConfig.sitemap = opts.sitemap;
 	}
-	if (robotstxt?.sitemapBaseFileName) {
-		robotsConfig.sitemapBaseFileName = robotstxt.sitemapBaseFileName;
+	if (opts?.sitemapBaseFileName) {
+		robotsConfig.sitemapBaseFileName = opts.sitemapBaseFileName;
 	}
 	return robotsConfig;
 }
@@ -22,6 +21,6 @@ export function getRobotsTxtConfig(opts: UserConfig): RobotsTxtOptions {
 /**
  * A wrapped version of the `astro-robots-txt` integration for GhostCMS.
  */
-export default function ghostRobots(opts: UserConfig) {
+export default function ghostRobots(opts: UserConfig["robotstxt"]) {
 	return robotsTxt(getRobotsTxtConfig(opts));
 }

@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -39,14 +39,18 @@
   "main": "index.ts",
   "files": [
     "src",
-    "index.ts"
+    ".env.demo",
+    "index.ts",
+    "tsconfig.json",
+    "types.ts"
   ],
   "exports": {
     ".": "./index.ts",
     "./api": "./src/api/index.ts",
     "./api-core": "./src/api/content-api",
     "./404.astro": "./src/default-routes/404/404.astro",
-    "./rss.xml.ts": "./src/default-routes/rss.xml.ts"
+    "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
+    "./types": "./types.ts"
   },
   "scripts": {
     "dev": "astro dev",
@@ -57,7 +61,7 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint ."
   },
   "peerDependencies": {
-    "astro": "^4.2.1"
+    "astro": "^4.2.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.4.1",
@@ -84,7 +88,6 @@
     "@astrojs/sitemap": "^3.0.5",
     "@ts-ghost/core-api": "^5.1.2",
     "astro-robots-txt": "^1.0.0",
-    "sass": "^1.70.0",
     "tiny-invariant": "^1.3.1",
     "vite": "^5.0.12",
     "vite-tsconfig-paths": "^4.2.2",

@@ -9,8 +9,8 @@ const {
   CONTENT_API_URL
 } = loadEnv('all',process.cwd(),'CONTENT_');
 
-let ghostApiKey = CONTENT_API_KEY;
-let ghostUrl = CONTENT_API_URL;
+const ghostApiKey = CONTENT_API_KEY;
+const ghostUrl = CONTENT_API_URL;
 const version = "v5.0";
 
 export const getAllAuthors = async () => {
