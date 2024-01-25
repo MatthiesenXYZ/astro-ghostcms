@@ -149,7 +149,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 if(!logs) {logger.info(IC.IIR + "@astrojs/rss")}
                 injectRoute({
                     pattern: '/rss.xml',
-                    entrypoint: IC.PKG+'/rss.xml.js'
+                    entrypoint: IC.PKG+'/rss.xml.ts'
                 });
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
