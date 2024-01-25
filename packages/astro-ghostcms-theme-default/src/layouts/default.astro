@@ -19,8 +19,10 @@ const { content, permalink, image, settings, bodyClass = "" } = Astro.props as P
 const ghostAccentColor = settings.accent_color;
 ---
 
-<html lang="en" data-color-scheme="light">
+<html lang="en">
   <head>
+    <Fragment set:html={settings.codeinjection_head}>
+    
     <AstroFont
     config={[
       {
@@ -34,7 +36,6 @@ const ghostAccentColor = settings.accent_color;
       },
     ]}
     />
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     

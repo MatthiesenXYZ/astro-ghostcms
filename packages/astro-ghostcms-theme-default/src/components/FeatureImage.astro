@@ -24,7 +24,7 @@ const { image, alt, caption = "", settings, transitionName } = Astro.props as Pr
     alt={alt}
     transition:name={transitionName}
   />
-  {caption && <figcaption>{caption}</figcaption>}
+  {caption && <figcaption><Fragment set:html={caption}></figcaption>}
 </figure>
 
 <style lang="scss">

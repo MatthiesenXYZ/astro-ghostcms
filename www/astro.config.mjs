@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { ExpressiveCodeTheme } from '@astrojs/starlight/expressive-code';
 import starlight from "@astrojs/starlight";
 
-const houstonFile = `./houston-vscode.jsonc`;
+const houstonFile = './houston-vscode.jsonc';
 const houston = fs.readFileSync(
   new URL(houstonFile, import.meta.url),'utf-8');
 const houstonTheme = ExpressiveCodeTheme.fromJSONString(houston);
@@ -35,7 +35,7 @@ export default defineConfig({
             { label: 'API ( DIY ) Mode', items: [
                 { label: 'Install', link: '/docs/introduction/api/install' },
                 { label: 'Basic API Usage', link: '/docs/introduction/api/usage' }, ], }, ], },
-        //{ label: 'Advanced Usage', link: '/docs/#' },
+        { label: 'Default Theme Usage', autogenerate: { directory: 'docs/theme-default'}, },
         { label: 'Tutorials', autogenerate: { directory: 'docs/tutorials' }, },
         { label: 'Reference', autogenerate: { directory: 'docs/reference' }, },
       ],

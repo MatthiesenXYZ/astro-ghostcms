@@ -161,6 +161,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-right: auto;
   }
 }
 
@@ -212,7 +213,7 @@ html.dark-mode .post-card-title {
 }
 
 html.dark-mode .post-card-excerpt {
-  color: color-mod(var(--color-midgrey) l(+10%));
+  color: var(--color-midgrey);
 }
 
 html.dark-mode .post-full-content {
@@ -387,4 +388,8 @@ html.dark-mode .subscribe-form .error .message-error {
 
 html.dark-mode .subscribe-form .success .message-success {
   color: color-mod(var(--color-green) l(+5%) s(-5%));
+}
+
+html.dark-mode figcaption {
+  color: rgba(255, 255, 255, 0.6);
 }

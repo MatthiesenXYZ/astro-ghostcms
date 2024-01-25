@@ -27,7 +27,7 @@ const IC = {
     /** INTERNAL STRING */
     IDR:"Injecting Default Routes...",
     /** INTERNAL STRING */
-    IR:"Injecting Default Theme Routes...",
+    ITR:"Injecting Default Theme Routes...",
     /** INTERNAL STRING */
     IRD:"Route Injection Disabled - Skipping...",
     /** INTERNAL STRING */
@@ -111,10 +111,10 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     if( !logs ) { logger.info( IC.IDR )}
 
                     if( !logs ) { logger.info( IC.F0FR )}
-                    injectRoute({ pattern: '/404', entrypoint: IC.PKG+'/404.astro' });
+                    injectRoute({ pattern: '/404', entrypoint: `${IC.PKG}/404.astro` });
                     
                     if( !logs ) { logger.info( IC.RSS )}
-                    injectRoute({ pattern: '/rss.xml', entrypoint: IC.PKG+'/rss.xml.ts' });
+                    injectRoute({ pattern: '/rss.xml', entrypoint: `${IC.PKG}/rss.xml.ts` });
 
                     // THEME ROUTES
                     if( !logs ) { logger.info( IC.ITR )}
@@ -139,20 +139,20 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 const int = [...config.integrations];
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
-                if( !logs ) { logger.info( IC.CF + "@astrojs/sitemap" )}
+                if( !logs ) { logger.info( `${IC.CF}@astrojs/sitemap` )}
 				if ( !int.find( ({ name }) => name === '@astrojs/sitemap' )) {
-                    if( !logs ) { logger.info( IC.II + "@astrojs/sitemap" )}
+                    if( !logs ) { logger.info( `${IC.II}@astrojs/sitemap` )}
 					int.push( ghostSitemap( uconf ));
-				} else { if( !logs ) { logger.info( IC.AIbU + "@astrojs/sitemap" )}
+				} else { if( !logs ) { logger.info( `${IC.AIbU}@astrojs/sitemap` )}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
-                if( !logs ) { logger.info( IC.CF + "astro-robots-txt" )}
+                if( !logs ) { logger.info( `${IC.CF}astro-robots-txt` )}
 				if ( !int.find( ({ name }) => name === 'astro-robots-txt' )) {
-                    if( !logs ) { logger.info( IC.II + "astro-robots-txt" )}
+                    if( !logs ) { logger.info( `${IC.II}astro-robots-txt` )}
 					int.push( ghostRobots( uconf ));
 				} else {
-                    if( !logs ) { logger.info( IC.AIbU + "astro-robots-txt" )}
+                    if( !logs ) { logger.info( `${IC.AIbU}astro-robots-txt` )}
                 };
 
                 // FINAL STEP TO KEEP INTEGRATION LIVE
