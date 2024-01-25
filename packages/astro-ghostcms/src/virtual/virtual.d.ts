@@ -1,4 +1,4 @@
 declare module 'virtual:@matthiesenxyz/astro-ghostcms/config' {
-    const Config: import('./UserConfigSchema').UserConfig;
+    const Config: import('../schemas/UserConfigSchema').UserConfig;
     export default Config;
 }
