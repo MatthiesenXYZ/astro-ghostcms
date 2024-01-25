@@ -10,7 +10,7 @@ import { viteGhostCMS } from "./src/virtual";
 const IC = {
     /** INTERNAL PACKAGE NAME */
     PKG:'@matthiesenxyz/astro-ghostcms',
-    /** INTERNAL PACKAGE NAME */
+    /** INTERNAL PACKAGE NAME (THEME) */
     DT:'@matthiesenxyz/astro-ghostcms-theme-default',
     /** INTERNAL STRING */
     CHECK_ENV:"Checking for Environment Variables...",
@@ -25,7 +25,9 @@ const IC = {
     /** INTERNAL STRING */
     IT:"Injecting Theme: ",
     /** INTERNAL STRING */
-    IR:"Injecting Routes...",
+    IDR:"Injecting Default Routes...",
+    /** INTERNAL STRING */
+    IR:"Injecting Default Theme Routes...",
     /** INTERNAL STRING */
     IRD:"Route Injection Disabled - Skipping...",
     /** INTERNAL STRING */
@@ -38,6 +40,10 @@ const IC = {
     CF:"Checking for ",
     /** INTERNAL STRING */
     CONFSETUPDONE:"GhostCMS Injection Complete.  Integration is now ready.",
+    /** INTERNAL STRING */
+    F0FR: "Inject `/404` Route",
+    /** INTERNAL STRING */
+    RSS: "Injecting `/rss.xml` Route and `@astrojs/rss` Integration"
 }
 
 /** CONTENT API ENVIRONMENT VARIABLES */
@@ -57,6 +63,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 updateConfig,
                 logger,
             }) => {
+
                 // CHECK USER CONFIG AND MAKE AVAILBLE TO INTEGRATIONS
                 logger.info("Checking Config...")
                 const o = UserConfigSchema.safeParse(options || {}) as SafeParseSuccess<UserConfig>;
@@ -65,6 +72,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     logger.error(`Config Error - ${ validationError }`);
                     throw validationError;
                 }
+
                 /** INTERNAL USERCONFIG ALIAS */
                 const uconf = o.data;
                 /** CONFIG OPTION: ROUTE INJECTION */
@@ -89,100 +97,78 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 }
 
                 if(!injection){
+
                     // THEME SELECTOR
-                    if (entry === IC.DT) {
-                        if(!logs) {logger.info(IC.IT + IC.DT)}
-                    } else {
-                        if(!logs) {logger.info(IC.IT + entry)}
+                    if ( entry === IC.DT ) { 
+                        if( !logs ) { logger.info( IC.IT + IC.DT )} 
+                    } else { 
+                        if( !logs ) { logger.info( IC.IT + entry )} 
                     }
 
                     // INJECT ROUTES
-                    if(!logs) {logger.info(IC.IR)}
 
-                    injectRoute({
-                        pattern: '/',
-                        entrypoint: `${entry}/index.astro`
-                    });
+                    // DEFAULT PROGRAM ROUTES
+                    if( !logs ) { logger.info( IC.IDR )}
+
+                    if( !logs ) { logger.info( IC.F0FR )}
+                    injectRoute({ pattern: '/404', entrypoint: IC.PKG+'/404.astro' });
                     
-                    injectRoute({
-                        pattern: '/404',
-                        entrypoint: IC.PKG+'/404.astro'
-                    });
+                    if( !logs ) { logger.info( IC.RSS )}
+                    injectRoute({ pattern: '/rss.xml', entrypoint: IC.PKG+'/rss.xml.ts' });
 
-                    injectRoute({
-                        pattern: '/[slug]',
-                        entrypoint: `${entry}/[slug].astro`
-                    });
+                    // THEME ROUTES
+                    if( !logs ) { logger.info( IC.ITR )}
 
-                    injectRoute({
-                        pattern: '/tags',
-                        entrypoint: `${entry}/tags.astro`
-                    });
+                    injectRoute({ pattern: '/', entrypoint: `${entry}/index.astro` });
 
-                    injectRoute({
-                        pattern: '/authors',
-                        entrypoint: `${entry}/authors.astro`
-                    });
+                    injectRoute({ pattern: '/[slug]', entrypoint: `${entry}/[slug].astro` });
 
-                    injectRoute({
-                        pattern: '/tag/[slug]',
-                        entrypoint: `${entry}/tag/[slug].astro`
-                    });
+                    injectRoute({ pattern: '/tags', entrypoint: `${entry}/tags.astro` });
 
-                    injectRoute({
-                        pattern: '/author/[slug]',
-                        entrypoint: `${entry}/author/[slug].astro`
-                    });
+                    injectRoute({ pattern: '/authors', entrypoint: `${entry}/authors.astro` });
 
-                    injectRoute({
-                        pattern: '/archives/[...page]',
-                        entrypoint: `${entry}/archives/[...page].astro`
-                    });
-                } else {
-                    if(!logs) {logger.info(IC.IRD)}
-                }
+                    injectRoute({ pattern: '/tag/[slug]', entrypoint: `${entry}/tag/[slug].astro` });
+
+                    injectRoute({ pattern: '/author/[slug]', entrypoint: `${entry}/author/[slug].astro` });
+
+                    injectRoute({ pattern: '/archives/[...page]', entrypoint: `${entry}/archives/[...page].astro` });
+
+                } else { if( !logs ) { logger.info( IC.IRD )} }
 
                 // IMPORT INTEGRATIONS & INTEGRATION ROUTES
                 const int = [...config.integrations];
 
-                // IMPORT INTEGRATION: @ASTROJS/RSS
-                if(!logs) {logger.info(IC.IIR + "@astrojs/rss")}
-                injectRoute({
-                    pattern: '/rss.xml',
-                    entrypoint: IC.PKG+'/rss.xml.ts'
-                });
-
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
-                if(!logs) {logger.info(IC.CF + "@astrojs/sitemap")}
-				if (!int.find(({ name }) => name === '@astrojs/sitemap')) {
-                    if(!logs) {logger.info(IC.II + "@astrojs/sitemap")}
-					int.push(ghostSitemap(uconf));
-				} else {
-                    if(!logs) {logger.info(IC.AIbU + "@astrojs/sitemap")}
+                if( !logs ) { logger.info( IC.CF + "@astrojs/sitemap" )}
+				if ( !int.find( ({ name }) => name === '@astrojs/sitemap' )) {
+                    if( !logs ) { logger.info( IC.II + "@astrojs/sitemap" )}
+					int.push( ghostSitemap( uconf ));
+				} else { if( !logs ) { logger.info( IC.AIbU + "@astrojs/sitemap" )}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
-                if(!logs) {logger.info(IC.CF + "astro-robots-txt")}
-				if (!int.find(({ name }) => name === 'astro-robots-txt')) {
-                    if(!logs) {logger.info(IC.II + "astro-robots-txt")}
-					int.push(ghostRobots(uconf));
+                if( !logs ) { logger.info( IC.CF + "astro-robots-txt" )}
+				if ( !int.find( ({ name }) => name === 'astro-robots-txt' )) {
+                    if( !logs ) { logger.info( IC.II + "astro-robots-txt" )}
+					int.push( ghostRobots( uconf ));
 				} else {
-                    if(!logs) {logger.info(IC.AIbU + "astro-robots-txt")}
+                    if( !logs ) { logger.info( IC.AIbU + "astro-robots-txt" )}
                 };
-                try {updateConfig({
-                    integrations: [
-                        ghostSitemap(uconf),
-                        ghostRobots(uconf),
-                    ],
-                    vite:{plugins:[viteGhostCMS(uconf,config)]},
-                }) } catch (e) {
-                    logger.error(e as string);
+
+                // FINAL STEP TO KEEP INTEGRATION LIVE
+                try { updateConfig( {
+                    // UPDATE ASTRO CONFIG WITH INTEGRATED INTEGRATIONS
+                    integrations: [ ghostSitemap( uconf ), ghostRobots( uconf ) ],
+                    // LOAD VITE AND SETUP viteGhostCMS Configs
+                    vite: { plugins: [ viteGhostCMS( uconf, config ) ]},
+                }) } catch ( e ) {
+                    logger.error( e as string );
                     throw e;
                 };
 
             },
-            'astro:config:done': async ({ logger }) => {
-                logger.info(IC.CONFSETUPDONE);
+            'astro:config:done': async ({ logger }) => { 
+                logger.info(IC.CONFSETUPDONE); 
             }
         }
     }
