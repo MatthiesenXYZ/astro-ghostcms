@@ -1,11 +1,11 @@
 import { assert, beforeEach, describe, expect, test } from "vitest";
 
-import { TSGhostContentAPI } from "./content-api";
+import TS_API from "./content-api";
 
 describe("content-api", () => {
-  let api: TSGhostContentAPI;
+  let api: TS_API;
   beforeEach(() => {
-    api = new TSGhostContentAPI("https://ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
+    api = new TS_API("https://ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
   });
 
   test("content-api", () => {
@@ -14,21 +14,21 @@ describe("content-api", () => {
 
   test("content-api shouldn't instantiate with an incorrect url", () => {
     assert.throws(() => {
-      const api = new TSGhostContentAPI("ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
+      const api = new TS_API("ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
       api.settings;
     });
   });
 
   test("content-api shouldn't instantiate with an incorrect key", () => {
     assert.throws(() => {
-      const api = new TSGhostContentAPI("https://ghost.org", "a", "v5.0");
+      const api = new TS_API("https://ghost.org", "a", "v5.0");
       api.settings;
     });
   });
 
   test("content-api shouldn't instantiate with an incorrect version", () => {
     assert.throws(() => {
-      const api = new TSGhostContentAPI(
+      const api = new TS_API(
         "https://ghost.org",
         "1efedd9db174adee2d23d982:4b74dca0219bad629852191af326a45037346c2231240e0f7aec1f9371cc14e8",
         // @ts-expect-error

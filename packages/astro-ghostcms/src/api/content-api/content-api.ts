@@ -21,7 +21,7 @@ export enum BrowseEndpointType {
   settings = "settings",
 }
 
-export class TSGhostContentAPI<Version extends `v5.${// biome-ignore lint/suspicious/noExplicitAny: shhhhh
+export default class TS_API<Version extends `v5.${// biome-ignore lint/suspicious/noExplicitAny: shhhhh
 string}` = any> {
   private httpClient: HTTPClient;
 

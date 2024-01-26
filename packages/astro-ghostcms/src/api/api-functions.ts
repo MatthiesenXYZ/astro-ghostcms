@@ -1,5 +1,5 @@
 import type { Page, Post } from "./content-api/schemas";
-import { TSGhostContentAPI } from "./content-api";
+import { TS_API } from "./content-api";
 
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from 'vite';
@@ -16,7 +16,7 @@ const {
 const ghostApiKey = CONTENT_API_KEY;
 const ghostUrl = CONF_URL ? CONF_URL : CONTENT_API_URL;
 const version = "v5.0";
-const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
+const api = new TS_API(ghostUrl, ghostApiKey, version);
 
 export const getAllAuthors = async () => {
   const results = await api.authors
