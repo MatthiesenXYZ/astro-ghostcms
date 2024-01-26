@@ -1,9 +1,6 @@
-$baseFont: 'Lato', sans-serif;
-$codeFont: 'Source Code Pro', monospace;
 $fontSizeSmall: 15px;
 
 body {
-	font-family: $baseFont;
 	font-size: 18px;
 	line-height: 1.65;
 	font-weight: 400;
@@ -51,7 +48,7 @@ p {
 }
 
 code {
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	font-weight: bold;
 	color:rgb(0, 114, 114);
 	@media (prefers-color-scheme: dark) {
@@ -80,7 +77,7 @@ code {
 }
 
 .qstart {
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	font-weight: bold;
 	margin-top: 4px;
 	color:rgb(165, 0, 115);
@@ -92,7 +89,7 @@ code {
 }
 
 .install {
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	font-weight: bold;
 	margin-top: 4px;
 	color:rgb(0, 161, 161);
@@ -109,7 +106,7 @@ code {
 }
 
 .comment {
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	font-weight: bold;
 	margin-top: 4px;
 	color:rgb(102, 102, 102);

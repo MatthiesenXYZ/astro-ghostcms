@@ -212,7 +212,7 @@ nav {
 
 .version_number {
 	display: inline-block;
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	line-height: 1;
 	margin-bottom: 8px;
 	padding: 4px 12px;
@@ -237,7 +237,7 @@ nav {
 	@media (prefers-color-scheme: dark) {
 		color: color(gray, 200);
 	}
-	font-family: $codeFont;
+	font-family: var(--font-source-code);
 	font-size: $fontSizeSmall;
 }
 
