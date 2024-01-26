@@ -37,6 +37,7 @@
     "email": "issues@astro-ghostcms.xyz"
   },
   "main": "index.ts",
+  "types": "types.ts",
   "files": [
     "src",
     ".env.demo",
@@ -48,7 +49,7 @@
   "exports": {
     ".": "./index.ts",
     "./api": "./src/api/index.ts",
-    "./api-core": "./src/api/content-api",
+    "./api-core": "./src/api/content-api/index.ts",
     "./404.astro": "./src/default-routes/404/404.astro",
     "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
     "./config": "./src/integrations/virtual-config.ts",
