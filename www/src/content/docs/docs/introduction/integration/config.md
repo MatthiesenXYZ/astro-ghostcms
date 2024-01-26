@@ -15,13 +15,19 @@ export default defineConfig({
   site: "https://YOUR-DOMAIN-HERE.com",
   integrations: [
     GhostCMS({
+        // You can either set your ghostURL here or as a `.env`/environment variable
+			  ghostURL: "https://ghostdemo.matthiesen.xyz",
+        // Disables default 404 page route
+			  disable404: false,
+        // Disables default RSS page route and @astrojs/rss integration
+			  disableRSS: false,
         // *OPTIONAL* THIS Option allows the user to disable default route
         // injections, disabling the default layout and theme all together.
         // Allowing the user to still use integration features while building
         // off of the included API functions
-        disableRouteInjection: false // DEFAULT VALUE
+        disableRouteInjection: false, // DEFAULT VALUE
         // *OPTIONAL* Setting this to true will disable the extra info logs
-        disableConsoleOutput: false // DEFAULT VALUE
+        disableConsoleOutput: false, // DEFAULT VALUE
         // *OPTIONAL* THIS IS THE DEFAULT VALUE
         theme: '@matthiesenxyz/astro-ghostcms-theme-default',
         // THIS IS TO SHOW SUPPORTED FEATURES FOR MORE INFO SEE

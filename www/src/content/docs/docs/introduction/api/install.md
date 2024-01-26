@@ -29,6 +29,12 @@ import GhostCMS from '@matthiesenxyz/astro-ghostcms';
 export default defineConfig({
   site: "https://YOUR-DOMAIN-HERE.com",
   // THIS WILL DISABLE DEFAULT ROUTE INJECT
-  integrations: [ GhostCMS({ disableRouteInjection: true })],
+  integrations: [ 
+    GhostCMS({
+      // You can either set your ghostURL here or as a `.env`/environment variable
+			ghostURL: "https://ghostdemo.matthiesen.xyz", 
+      disableRouteInjection: true, 
+    })
+  ],
 });
 ```
