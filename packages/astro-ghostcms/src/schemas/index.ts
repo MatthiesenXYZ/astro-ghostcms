@@ -7,12 +7,13 @@ export const UserConfigSchema = z.object({
    * @example
    * // https://astro.build/config
    * export default defineConfig({
-   *     site: "https://demo.astro-ghostcms.xyz/",
-   *     integrations: [ghostcms({
-   *         ghostURL: "https://ghostdemo.matthiesen.xyz"
-   *     })],
+   *   integrations: [
+   *     ghostcms({
+   *       ghostURL: "https://ghostdemo.matthiesen.xyz"
+   *     })
+   *   ],
    * }); */
-  ghostURL: z.string().optional(),
+  ghostURL: z.string().url().optional(),
   /** OPTIONAL - Disable Route Injector
    * This option allows the user to disable the route injection system and utilize just the integraions other functions. Such as API, sitemap and robotstxt integrations. */
   disableRouteInjection: z.boolean().default(false),

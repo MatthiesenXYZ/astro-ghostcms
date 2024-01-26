@@ -4,7 +4,12 @@ import ghostcms from "@matthiesenxyz/astro-ghostcms";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://demo.astro-ghostcms.xyz/",
-	integrations: [ ghostcms({
-		ghostURL: "https://ghostdemo.matthiesen.xyz"
-	})],
+	integrations: [ 
+		ghostcms({
+			disableConsoleOutput: true,
+			disableRouteInjection: false,
+			theme: "@matthiesenxyz/astro-ghostcms-theme-default",
+			ghostURL: "https://ghostdemo.matthiesen.xyz",
+		})
+	],
 });

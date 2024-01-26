@@ -72,7 +72,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 if (!GhostUserConfig.success) {
                     const validationError = fromZodError((GhostUserConfig as unknown as SafeParseError<UserConfig>).error);
                     logger.error(`Config Error - ${ validationError }`);
-                    throw validationError;
+                    throw Error("");
                 }
                 const GhostConfig = GhostUserConfig.data;
                 const GCD = {
