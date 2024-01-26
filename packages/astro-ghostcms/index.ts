@@ -6,7 +6,7 @@ import ghostSitemap from "./src/integrations/sitemap";
 import ghostRobots from "./src/integrations/robots-txt";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
-import { viteGhostCMS } from "./src/virtual";
+import { addVirtualImport } from "./src/utils/add-virtual-import";
 
 /** INTERNAL CONSTANTS */
 const IC = {
@@ -23,7 +23,7 @@ const IC = {
     /** INTERNAL STRING */
     KEY_MISSING:"CONTENT_API_KEY Missing from .env/environment variables",
     /** INTERNAL STRING */
-    URL_MISSING:"CONTENT_API_URL Missing from .env/environment variables",
+    URL_MISSING:"CONTENT_API_URL Missing from .env/environment variables or ghostURL under the integration settings in `astro.config.mjs`",
     /** INTERNAL STRING */
     IT:"Injecting Theme: ",
     /** INTERNAL STRING */
@@ -55,7 +55,7 @@ const ENV = loadEnv(IC.MODE, process.cwd(), IC.PREFIXES);
  * @ For more information and to see the docs check
  * @see https://astro-ghostcms.xyz
  */
-export default function GhostCMS(options?: UserConfig): AstroIntegration {
+export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
         name: IC.PKG,
         hooks: {
@@ -81,6 +81,7 @@ export default function GhostCMS(options?: UserConfig): AstroIntegration {
                     dCO: GhostConfig.disableConsoleOutput,
                     SM: GhostConfig.sitemap,
                     RTXT: GhostConfig.robotstxt,
+                    gSite: GhostConfig.ghostURL
                 }
 
                 // Check For ENV Variables
@@ -93,8 +94,10 @@ export default function GhostCMS(options?: UserConfig): AstroIntegration {
                 }
                 // CHECK FOR API URL
                 if(ENV.CONTENT_API_URL === undefined){
-                    logger.error(IC.URL_MISSING);
-                    throw IC.URL_MISSING;
+                    if(GCD.gSite === undefined){
+                        logger.error(IC.URL_MISSING);
+                        throw IC.URL_MISSING;
+                    }
                 }
 
                 if(!GCD.dRI){
@@ -189,15 +192,16 @@ export default function GhostCMS(options?: UserConfig): AstroIntegration {
                     // UPDATE ASTRO CONFIG WITH INTEGRATED INTEGRATIONS
                     integrations: [ ghostSitemap( GCD.SM ), ghostRobots( GCD.RTXT ) ],
                     // LOAD VITE AND SETUP viteGhostCMS Configs
-                    vite: { 
-                        plugins: [ 
-                            viteGhostCMS( GhostConfig, config )
-                        ]
-                    },
                 }) } catch ( e ) {
                     logger.error( e as string );
                     throw e;
                 };
+
+                addVirtualImport({
+                    name: 'virtual:@matthiesenxyz/astro-ghostcms/config',
+                    content: `export default ${ JSON.stringify(GhostUserConfig.data) }`,
+                    updateConfig
+                })
 
             },
             'astro:config:done': async ({ logger }) => { 

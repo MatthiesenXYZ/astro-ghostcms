@@ -3,8 +3,8 @@ import './404.css';
 import { getSettings, invariant } from '../../api';
 const settings = await getSettings();
 invariant(settings, "Settings not found");
----
 
+---
 <html lang="en">
   <head>
     <title>404 | {settings.title}</title>

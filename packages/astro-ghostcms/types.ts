@@ -6,4 +6,5 @@ export type {
     Settings, Tag, TagsIncludeSchema, Tier, TiersIncludeSchema 
 } from './src/api';
 
+
 export type { ContentAPICredentials, APIVersions } from "@ts-ghost/core-api";

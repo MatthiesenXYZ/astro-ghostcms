@@ -42,7 +42,8 @@
     ".env.demo",
     "index.ts",
     "tsconfig.json",
-    "types.ts"
+    "types.ts",
+    "virtual.d.ts"
   ],
   "exports": {
     ".": "./index.ts",
@@ -50,6 +51,7 @@
     "./api-core": "./src/api/content-api",
     "./404.astro": "./src/default-routes/404/404.astro",
     "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
+    "./config": "./src/integrations/virtual-config.ts",
     "./types": "./types.ts"
   },
   "scripts": {

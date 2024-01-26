@@ -4,13 +4,17 @@ import { TSGhostContentAPI } from "./content-api";
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from 'vite';
 
+import config from "../integrations/virtual-config";
+
+const CONF_URL = config.ghostURL;
+
 const {
   CONTENT_API_KEY, 
   CONTENT_API_URL
 } = loadEnv('all',process.cwd(),'CONTENT_');
 
 const ghostApiKey = CONTENT_API_KEY;
-const ghostUrl = CONTENT_API_URL;
+const ghostUrl = CONF_URL?CONF_URL:CONTENT_API_URL;
 const version = "v5.0";
 const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
 
