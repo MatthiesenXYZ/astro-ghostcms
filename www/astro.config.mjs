@@ -34,7 +34,8 @@ export default defineConfig({
                 badge: { text: 'BETA', variant: 'caution' }, }, ], },
             { label: 'API ( DIY ) Mode', items: [
                 { label: 'Install', link: '/docs/introduction/api/install' },
-                { label: 'Basic API Usage', link: '/docs/introduction/api/usage' }, ], }, ], },
+                { label: 'Basic API Usage', link: '/docs/introduction/api/usage' },
+                { label: 'Templates', link: '/docs/introduction/api/templates', badge: { text: 'NEW', variant: 'success' }, } ], }, ], },
         { label: 'Default Theme Usage', autogenerate: { directory: 'docs/theme-default'}, },
         { label: 'Tutorials', autogenerate: { directory: 'docs/tutorials' }, },
         { label: 'Reference', autogenerate: { directory: 'docs/reference' }, },
