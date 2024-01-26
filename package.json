@@ -11,10 +11,14 @@
 		"demo:dev": "pnpm --filter demo dev",
 		"lint": "biome check .",
 		"lint:fix": "biome check --apply .",
-		"base": "pnpm i --frozen-lockfile"
+		"base": "pnpm i --frozen-lockfile",
+		"test:api": "vitest run --project astro-ghostcms",
+		"test:api:watch": "vitest --project astro-ghostcms"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.5.3",
-		"@changesets/cli": "^2.27.1"
+		"@changesets/cli": "^2.27.1",
+		"vitest": "^1.1.0",
+		"vitest-fetch-mock": "^0.2.2"
 	}
 }

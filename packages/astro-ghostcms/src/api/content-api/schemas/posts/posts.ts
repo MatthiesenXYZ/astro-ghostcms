@@ -7,14 +7,13 @@ import {
   ghostVisibilitySchema,
 } from "@ts-ghost/core-api";
 
-import { authorsSchema } from "./authors";
-import { tagsSchema } from "./tags";
+import { authorsSchema } from "../authors";
+import { tagsSchema } from "../tags";
 
 const postsAuthorSchema = authorsSchema.extend({
   url: z.string().nullish(),
 });
-
-export const pagesSchema = z.object({
+export const postsSchema = z.object({
   ...ghostIdentitySchema.shape,
   ...ghostMetadataSchema.shape,
   title: z.string(),
@@ -39,17 +38,17 @@ export const pagesSchema = z.object({
   excerpt: z.string().catch(""),
   reading_time: z.number().optional().default(0),
   created_at: z.string(),
-  updated_at: z.string(),
-  published_at: z.string(),
+  updated_at: z.string().nullish(),
+  published_at: z.string().nullish(),
   access: z.boolean(),
   comments: z.boolean(),
   email_subject: z.string().nullish(),
 });
 
-export type Page = z.infer<typeof pagesSchema>;
+export type Post = z.infer<typeof postsSchema>;
 
-export const pagesIncludeSchema = z.object({
+export const postsIncludeSchema = z.object({
   authors: z.literal(true).optional(),
   tags: z.literal(true).optional(),
 });
-export type PagesIncludeSchema = z.infer<typeof pagesIncludeSchema>;
+export type PostsIncludeSchema = z.infer<typeof postsIncludeSchema>;

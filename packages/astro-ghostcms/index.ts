@@ -55,7 +55,7 @@ const ENV = loadEnv(IC.MODE, process.cwd(), IC.PREFIXES);
  * @ For more information and to see the docs check
  * @see https://astro-ghostcms.xyz
  */
-export default function GhostCMS(options: UserConfig): AstroIntegration {
+export default function GhostCMS(options?: UserConfig): AstroIntegration {
     return {
         name: IC.PKG,
         hooks: {
@@ -68,28 +68,23 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
                 // CHECK USER CONFIG AND MAKE AVAILBLE TO INTEGRATIONS
                 logger.info("Checking Config...")
-                const o = UserConfigSchema.safeParse(options || {}) as SafeParseSuccess<UserConfig>;
-                if (!o.success) {
-                    const validationError = fromZodError((o as unknown as SafeParseError<UserConfig>).error);
+                const GhostUserConfig = UserConfigSchema.safeParse(options || {}) as SafeParseSuccess<UserConfig>;
+                if (!GhostUserConfig.success) {
+                    const validationError = fromZodError((GhostUserConfig as unknown as SafeParseError<UserConfig>).error);
                     logger.error(`Config Error - ${ validationError }`);
                     throw validationError;
                 }
-
-                /** INTERNAL USERCONFIG ALIAS */
-                const uconf = o.data;
-                /** CONFIG OPTION: ROUTE INJECTION */
-                const injection = uconf.disableRouteInjection;
-                /** CONFIG OPTION: THEME */
-                const entry = uconf.theme;
-                /** CONFIG OPTION: CONSOLE OUTPUT */
-                const logs = uconf.disableConsoleOutput;
-                /** SITEMAP CONFIG */
-                const smconf = uconf.sitemap;
-                /** ROBOTS-TXT CONFIG */
-                const rtxtconf = uconf.robotstxt;
+                const GhostConfig = GhostUserConfig.data;
+                const GCD = {
+                    theme:  GhostConfig.theme,
+                    dRI: GhostConfig.disableRouteInjection,
+                    dCO: GhostConfig.disableConsoleOutput,
+                    SM: GhostConfig.sitemap,
+                    RTXT: GhostConfig.robotstxt,
+                }
 
                 // Check For ENV Variables
-                if(!logs) {logger.info(IC.CHECK_ENV)}
+                if(!GCD.dCO) {logger.info(IC.CHECK_ENV)}
 
                 // CHECK FOR API KEY
                 if(ENV.CONTENT_API_KEY === undefined){
@@ -102,72 +97,103 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     throw IC.URL_MISSING;
                 }
 
-                if(!injection){
+                if(!GCD.dRI){
 
                     // THEME SELECTOR
-                    if ( entry === IC.DT ) { 
-                        if( !logs ) { logger.info( IC.IT + IC.DT )} 
+                    if ( GCD.theme === IC.DT ) { 
+                        if( !GCD.dCO ) { logger.info( IC.IT + IC.DT )} 
                     } else { 
-                        if( !logs ) { logger.info( IC.IT + entry )} 
+                        if( !GCD.dCO ) { logger.info( IC.IT + GCD.theme )} 
                     }
 
                     // INJECT ROUTES
 
                     // DEFAULT PROGRAM ROUTES
-                    if( !logs ) { logger.info( IC.IDR )}
+                    if( !GCD.dCO ) { logger.info( IC.IDR )}
 
-                    if( !logs ) { logger.info( IC.F0FR )}
-                    injectRoute({ pattern: '/404', entrypoint: `${IC.PKG}/404.astro` });
+                    if( !GCD.dCO ) { logger.info( IC.F0FR )}
+                    injectRoute({ 
+                        pattern: '/404', 
+                        entrypoint: `${IC.PKG}/404.astro` 
+                    });
                     
-                    if( !logs ) { logger.info( IC.RSS )}
-                    injectRoute({ pattern: '/rss.xml', entrypoint: `${IC.PKG}/rss.xml.ts` });
+                    if( !GCD.dCO ) { logger.info( IC.RSS )}
+                    injectRoute({ 
+                        pattern: '/rss.xml', 
+                        entrypoint: `${IC.PKG}/rss.xml.ts` 
+                    });
 
                     // THEME ROUTES
-                    if( !logs ) { logger.info( IC.ITR )}
+                    if( !GCD.dCO ) { logger.info( IC.ITR )}
 
-                    injectRoute({ pattern: '/', entrypoint: `${entry}/index.astro` });
+                    injectRoute({ 
+                        pattern: '/', 
+                        entrypoint: `${GCD.theme}/index.astro` 
+                    });
 
-                    injectRoute({ pattern: '/[slug]', entrypoint: `${entry}/[slug].astro` });
+                    injectRoute({ 
+                        pattern: '/[slug]', 
+                        entrypoint: `${GCD.theme}/[slug].astro` 
+                    });
 
-                    injectRoute({ pattern: '/tags', entrypoint: `${entry}/tags.astro` });
+                    injectRoute({ 
+                        pattern: '/tags', 
+                        entrypoint: `${GCD.theme}/tags.astro` 
+                    });
 
-                    injectRoute({ pattern: '/authors', entrypoint: `${entry}/authors.astro` });
+                    injectRoute({ 
+                        pattern: '/authors', 
+                        entrypoint: `${GCD.theme}/authors.astro` 
+                    });
 
-                    injectRoute({ pattern: '/tag/[slug]', entrypoint: `${entry}/tag/[slug].astro` });
+                    injectRoute({ 
+                        pattern: '/tag/[slug]', 
+                        entrypoint: `${GCD.theme}/tag/[slug].astro` 
+                    });
 
-                    injectRoute({ pattern: '/author/[slug]', entrypoint: `${entry}/author/[slug].astro` });
+                    injectRoute({ 
+                        pattern: '/author/[slug]', 
+                        entrypoint: `${GCD.theme}/author/[slug].astro` 
+                    });
 
-                    injectRoute({ pattern: '/archives/[...page]', entrypoint: `${entry}/archives/[...page].astro` });
+                    injectRoute({ 
+                        pattern: '/archives/[...page]', 
+                        entrypoint: `${GCD.theme}/archives/[...page].astro` 
+                    });
 
-                } else { if( !logs ) { logger.info( IC.IRD )} }
+                } else { if( !GCD.dCO ) { logger.info( IC.IRD )} }
 
                 // IMPORT INTEGRATIONS & INTEGRATION ROUTES
                 const integrations = [...config.integrations];
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
-                if( !logs ) { logger.info( `${IC.CF}@astrojs/sitemap` )}
+                if( !GCD.dCO ) { logger.info( `${IC.CF}@astrojs/sitemap` )}
 				if (!integrations.find(({ name }) => name === '@astrojs/sitemap' )) {
-                    if( !logs ) { logger.info( `${IC.II}@astrojs/sitemap` )}
-					integrations.push(ghostSitemap(smconf));
+                    if( !GCD.dCO ) { logger.info( `${IC.II}@astrojs/sitemap` )}
+					integrations.push(ghostSitemap(GCD.SM));
                     
-				} else { if( !logs ) { logger.info( `${IC.AIbU}@astrojs/sitemap` )}
+				} else { if( !GCD.dCO ) { logger.info( `${IC.AIbU}@astrojs/sitemap` )}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
-                if( !logs ) { logger.info( `${IC.CF}astro-robots-txt` )}
+                if( !GCD.dCO ) { logger.info( `${IC.CF}astro-robots-txt` )}
 				if (!integrations.find(({ name }) => name === 'astro-robots-txt' )) {
-                    if( !logs ) { logger.info( `${IC.II}astro-robots-txt` )}
-					integrations.push(ghostRobots(rtxtconf));
+                    if( !GCD.dCO ) { logger.info( `${IC.II}astro-robots-txt` )}
+					integrations.push(ghostRobots(GCD.RTXT));
 				} else {
-                    if( !logs ) { logger.info( `${IC.AIbU}astro-robots-txt` )}
+                    if( !GCD.dCO ) { logger.info( `${IC.AIbU}astro-robots-txt` )}
                 };
 
                 // FINAL STEP TO KEEP INTEGRATION LIVE
                 try { updateConfig( {
                     // UPDATE ASTRO CONFIG WITH INTEGRATED INTEGRATIONS
-                    integrations: [ ghostSitemap( smconf ), ghostRobots( rtxtconf ) ],
+                    integrations: [ ghostSitemap( GCD.SM ), ghostRobots( GCD.RTXT ) ],
                     // LOAD VITE AND SETUP viteGhostCMS Configs
-                    vite: { plugins: [ viteGhostCMS( uconf, config ) ]},
+                    vite: { 
+                        plugins: [ 
+                            viteGhostCMS( GhostConfig, config )
+                        ]
+                    },
                 }) } catch ( e ) {
                     logger.error( e as string );
                     throw e;
