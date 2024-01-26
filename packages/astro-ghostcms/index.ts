@@ -45,7 +45,13 @@ const IC = {
     /** INTERNAL STRING */
     F0FR: "Inject `/404` Route",
     /** INTERNAL STRING */
-    RSS: "Injecting `/rss.xml` Route and `@astrojs/rss` Integration"
+    RSS: "Injecting `/rss.xml` Route and `@astrojs/rss` Integration",
+    /** INTERNAL STRING */
+    NOURL: "No Ghost URL defined in User Config: Falling back to environment variables.",
+    /** INTERNAL STRING */
+    id404: "404 Injection Disabled",
+    /** INTERNAL STRING */
+    idRSS: "RSS Injection Disabled"
 }
 
 /** CONTENT API ENVIRONMENT VARIABLES */
@@ -81,7 +87,9 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     dCO: GhostConfig.disableConsoleOutput,
                     SM: GhostConfig.sitemap,
                     RTXT: GhostConfig.robotstxt,
-                    gSite: GhostConfig.ghostURL
+                    gSite: GhostConfig.ghostURL,
+                    dRSS: GhostConfig.disableRSS,
+                    d404: GhostConfig.disable404
                 }
 
                 // Check For ENV Variables
@@ -93,8 +101,9 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     throw IC.KEY_MISSING;
                 }
                 // CHECK FOR API URL
-                if(ENV.CONTENT_API_URL === undefined){
-                    if(GCD.gSite === undefined){
+                if(GCD.gSite === undefined){
+                    logger.warn(IC.NOURL)
+                    if(ENV.CONTENT_API_URL === undefined){
                         logger.error(IC.URL_MISSING);
                         throw IC.URL_MISSING;
                     }
@@ -114,17 +123,21 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     // DEFAULT PROGRAM ROUTES
                     if( !GCD.dCO ) { logger.info( IC.IDR )}
 
-                    if( !GCD.dCO ) { logger.info( IC.F0FR )}
-                    injectRoute({ 
-                        pattern: '/404', 
-                        entrypoint: `${IC.PKG}/404.astro` 
-                    });
+                    if( !GCD.d404 ){
+                        if( !GCD.dCO ) { logger.info( IC.F0FR )}
+                        injectRoute({ 
+                            pattern: '/404', 
+                            entrypoint: `${IC.PKG}/404.astro` 
+                        });
+                    } else { if( !GCD.dCO ) { logger.info(IC.id404)}}
                     
-                    if( !GCD.dCO ) { logger.info( IC.RSS )}
-                    injectRoute({ 
-                        pattern: '/rss.xml', 
-                        entrypoint: `${IC.PKG}/rss.xml.ts` 
-                    });
+                    if( !GCD.dRSS ) {
+                        if( !GCD.dCO ) { logger.info( IC.RSS )}
+                        injectRoute({ 
+                            pattern: '/rss.xml', 
+                            entrypoint: `${IC.PKG}/rss.xml.ts` 
+                        });
+                    } else { if( !GCD.dCO ) { logger.info(IC.idRSS)}}
 
                     // THEME ROUTES
                     if( !GCD.dCO ) { logger.info( IC.ITR )}

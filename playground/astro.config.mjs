@@ -6,8 +6,10 @@ export default defineConfig({
 	site: "https://demo.astro-ghostcms.xyz/",
 	integrations: [ 
 		ghostcms({
-			disableConsoleOutput: true,
+			disable404: false,
+			disableRSS: false,
 			disableRouteInjection: false,
+			disableConsoleOutput: false,
 			theme: "@matthiesenxyz/astro-ghostcms-theme-default",
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 		})
