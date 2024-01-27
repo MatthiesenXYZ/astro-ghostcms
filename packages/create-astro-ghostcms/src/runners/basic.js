@@ -84,8 +84,8 @@ export async function createBasic(ctx) {
  * @param {{ onError: (err: unknown) => any }} opts
  */
 async function createApp(projectName, projectPathname, { onError }) {
-	const { dirname } = getModulePaths(import.meta.url);
-	const templatesDir = path.resolve(dirname, "src", "templates");
+	const { pathname } = getModulePaths(import.meta.url);
+	const templatesDir = path.resolve(pathname, "..", "..", "templates");
 	const sharedTemplateDir = path.join(templatesDir, "_shared");
 	const basicTemplateDir = path.join(templatesDir, "basic");
 
