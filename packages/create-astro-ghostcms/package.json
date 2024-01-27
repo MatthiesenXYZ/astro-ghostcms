@@ -1,0 +1,71 @@
+{
+	"name": "@matthiesenxyz/create-astro-ghostcms",
+	"version": "0.0.1",
+	"description": "Utility to quickly get started with our Integration and astro",
+	"type": "module",
+	"main": "./create-astro-ghostcms.mjs",
+	"bin": {
+		"create-astro-ghostcms": "./create-astro-ghostcms.mjs"
+	},
+	"exports": {
+		".": "./create-astro-ghostcms.mjs"
+	},
+	"scripts": {
+		"dryrun": "node ./create-astro-ghostcms.mjs --dry",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"sideEffects": false,
+	"author": {
+	  "email": "adam@matthiesen.xyz",
+	  "name": "Adam Matthiesen - MatthiesenXYZ",
+	  "url": "https://matthiesen.xyz"
+	  },
+	"homepage": "https://astro-ghostcms.xyz/",
+	"repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+	},
+	"bugs": {
+	  "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+	  "email": "issues@astro-ghostcms.xyz"
+	},
+	"license": "MIT",
+	"files": [
+		"src",
+		"create-astro-ghostcms",
+		"index.d.ts",
+		"types.d.ts",
+		"README.md",
+		"LICENSE"
+	],
+	"dependencies": {
+		"@clack/prompts": "^0.7.0",
+		"picocolors": "^1.0.0",
+		"arg": "^5.0.2",
+		"execa": "^7.0.0",
+		"fs-extra": "^11.1.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.1",
+		"@types/gunzip-maybe": "^1.4.0",
+		"@types/node": "^18.14.1",
+		"@types/tar-fs": "^2.0.1",
+		"@typescript-eslint/eslint-plugin": "^6.19.0",
+		"@typescript-eslint/parser": "^6.19.0",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-node": "^0.3.7",
+		"eslint-import-resolver-typescript": "^3.5.3",
+		"prettier": "^2.8.4",
+		"typescript": "^5.3.3",
+		"vitest": "^1.1.0",
+		"vite": "^5.0.12",
+		"vite-tsconfig-paths": "^4.2.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=18.14.1"
+	}
+}
