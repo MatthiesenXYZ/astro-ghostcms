@@ -48,7 +48,7 @@ export async function createBasic(ctx) {
 			})
 	});
 
-	initGitRepo = fCheck.initGitRepo ?? initGitRepo;
+	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
 	// 3. Initialize git repo
 	if (initGitRepo) {
 		if (dryRun) {
@@ -62,7 +62,7 @@ export async function createBasic(ctx) {
 	}
 
 	// 4. Install dependencies
-	installDeps = fCheck.installDeps ?? installDeps;
+	installDeps = installDeps ?? fCheck.installDeps;
 	const pm = ctx.pkgManager ?? "pnpm";
 	if (installDeps) {
 		spinner.start(`Installing dependencies with ${pm}`);

@@ -89,8 +89,10 @@ export async function main() {
 	prompts.outro(color.reset(`Problems? ${color.underline(color.cyan('https://github.com/MatthiesenXYZ/astro-ghostcms/issues'))}`));
 }
 
+const nextSteps = "If you didnt opt to install Dependencies dont forget to run \n 'npm install'/'pnpm install'/'yarn install' inside your project directory \n Dont forget to modify your .env file for YOUR ghost install!"
+
 function success() {
-	prompts.note("Dont forget to modify your .env file for YOUR ghost install!");
+	prompts.note(nextSteps);
 	prompts.outro(color.green("Deployment Complete!"));
 }
 

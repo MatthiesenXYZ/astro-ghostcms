@@ -1,6 +1,6 @@
 {
 	"name": "@matthiesenxyz/create-astro-ghostcms",
-	"version": "0.0.1",
+	"version": "0.0.1-dev01",
 	"description": "Utility to quickly get started with our Integration and astro",
 	"type": "module",
 	"main": "./create-astro-ghostcms.mjs",
@@ -11,8 +11,6 @@
 		".": "./create-astro-ghostcms.mjs"
 	},
 	"scripts": {
-		"dryrun": "node ./create-astro-ghostcms.mjs --dry",
-		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"sideEffects": false,
 	"author": {
@@ -34,9 +32,9 @@
 		"src",
 		"create-astro-ghostcms",
 		"index.d.ts",
-		"types.d.ts",
+		"LICENSE",
 		"README.md",
-		"LICENSE"
+		"types.d.ts"
 	],
 	"dependencies": {
 		"@clack/prompts": "^0.7.0",
