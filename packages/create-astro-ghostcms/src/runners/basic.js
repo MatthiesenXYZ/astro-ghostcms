@@ -87,17 +87,15 @@ export async function createBasic(ctx) {
 		success()
 	}
 
-	const { black, bgYellow, yellow, green } = c.createColors(true)
-	const i = yellow;
 	const nextSteps = `
 	If you didnt opt to install Dependencies dont forget to run: \n 
-	${i('npm install')} / ${i('pnpm install')} / ${i('yarn install')} inside your project directory! \n 
+	${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n 
 	\n
-	${bgYellow+black("Dont forget to modify your .env file for YOUR ghost install!")} `
+	${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
 	
 	function success() {
 		prompts.note(nextSteps);
-		prompts.outro(green("Deployment Complete!"));
+		prompts.outro(c.green("Deployment Complete!"));
 	}
 }
 
