@@ -70,6 +70,12 @@ export async function createBasic(ctx) {
 		prompts.log.info("Skipped Git initialization");
 	}
 
+	const nextSteps = `
+	If you didnt opt to install Dependencies dont forget to run: \n 
+	${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n 
+	\n
+	${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
+	
 	// 4. Install dependencies
 	installDeps = installDeps ?? fCheck.installDeps;
 	const pm = ctx.pkgManager ?? "pnpm";
@@ -87,12 +93,6 @@ export async function createBasic(ctx) {
 		success()
 	}
 
-	const nextSteps = `
-	If you didnt opt to install Dependencies dont forget to run: \n 
-	${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n 
-	\n
-	${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
-	
 	function success() {
 		prompts.note(nextSteps);
 		prompts.outro(c.green("Deployment Complete!"));
