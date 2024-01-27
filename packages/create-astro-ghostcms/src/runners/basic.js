@@ -57,7 +57,7 @@ export async function createBasic(ctx) {
 		}
 	);
 
-	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
+	initGitRepo = initGitRepo ?? fCheck.initGitRepo.valueOf();
 	// 3. Initialize git repo
 	if (initGitRepo) {
 		if (dryRun) {
@@ -70,14 +70,10 @@ export async function createBasic(ctx) {
 		prompts.log.info("Skipped Git initialization");
 	}
 
-	const nextSteps = `
-	If you didnt opt to install Dependencies dont forget to run: \n 
-	${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n 
-	\n
-	${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
+const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
 	
 	// 4. Install dependencies
-	installDeps = installDeps ?? fCheck.installDeps;
+	installDeps = installDeps ?? fCheck.installDeps.valueOf();
 	const pm = ctx.pkgManager ?? "pnpm";
 	if (installDeps) {
 		spinner.start(`Installing dependencies with ${pm}`);
