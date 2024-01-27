@@ -1,5 +1,6 @@
 import path from "node:path";
 import fse from "fs-extra";
+import c from 'picocolors';
 import { execa } from "execa";
 import * as prompts from "@clack/prompts";
 import { exitPrompt, getModulePaths, isPathname,
@@ -37,16 +38,24 @@ export async function createBasic(ctx) {
 		});
 	}
 	spinner.stop(`New Astro-GhostCMS project '${project.name}' created 🚀`);
-	const fCheck = await prompts.group({
-		initGitRepo: () => prompts.confirm({
-			message: "Initialize a Git repository?",
-			initialValue: false,
+	const fCheck = await prompts.group(
+		{ 	initGitRepo: () => 
+				prompts.confirm({
+					message: "Initialize a Git repository?",
+					initialValue: false,
 			}),
-		installDeps: () => prompts.confirm({
-			message: "Install dependencies? (Recommended)",
-			initialValue: false,
-			})
-	});
+			installDeps: () => 
+				prompts.confirm({
+					message: "Install dependencies? (Recommended)",
+					initialValue: false,
+			}),
+		},
+		{ 	onCancel: () => {
+				prompts.cancel(c.red('Operation Cancelled!'));
+				process.exit(0);
+			}
+		}
+	);
 
 	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
 	// 3. Initialize git repo
@@ -72,8 +81,23 @@ export async function createBasic(ctx) {
 			await installDependencies(pm, { cwd });
 		}
 		spinner.stop(`Dependencies installed with ${pm}`);
+		success()
 	} else {
 		prompts.log.info("Skipped dependency installation");
+		success()
+	}
+
+	const { black, bgYellow, yellow, green } = c.createColors(true)
+	const i = yellow;
+	const nextSteps = `
+	If you didnt opt to install Dependencies dont forget to run: \n 
+	${i('npm install')} / ${i('pnpm install')} / ${i('yarn install')} inside your project directory! \n 
+	\n
+	${bgYellow+black("Dont forget to modify your .env file for YOUR ghost install!")} `
+	
+	function success() {
+		prompts.note(nextSteps);
+		prompts.outro(green("Deployment Complete!"));
 	}
 }
 

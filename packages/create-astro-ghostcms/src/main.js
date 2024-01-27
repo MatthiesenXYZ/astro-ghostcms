@@ -79,7 +79,7 @@ export async function main() {
 	// 3. Call template functions
 	switch (template) {
 		case "basic":
-			await createBasic(ctx).catch(console.error).then(success);
+			await createBasic(ctx).catch(console.error);
 			break;
 		default:
 			throw new Error(`Unknown template: ${template}`);
@@ -87,13 +87,6 @@ export async function main() {
 
 	// 4. Huzzah!
 	prompts.outro(color.reset(`Problems? ${color.underline(color.cyan('https://github.com/MatthiesenXYZ/astro-ghostcms/issues'))}`));
-}
-
-const nextSteps = `If you didnt opt to install Dependencies dont forget to run \n ${color.yellow('npm install')} / ${color.yellow('pnpm install')} / ${color.yellow('yarn install')} inside your project directory \n Dont forget to modify your .env file for YOUR ghost install!`
-
-function success() {
-	prompts.note(nextSteps);
-	prompts.outro(color.green("Deployment Complete!"));
 }
 
 function getHelp() {
