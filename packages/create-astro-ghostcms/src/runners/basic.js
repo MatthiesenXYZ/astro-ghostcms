@@ -39,16 +39,15 @@ export async function createBasic(ctx) {
 	}
 	spinner.stop(`New Astro-GhostCMS project '${project.name}' created 🚀`);
 	const fCheck = await prompts.group(
-		{ 	initGitRepo: () => 
+		{ 	installDeps: () => 
+			prompts.confirm({
+				message: "Install dependencies? (Recommended)",
+				initialValue: false,
+		}), initGitRepo: () => 
 				prompts.confirm({
 					message: "Initialize a Git repository?",
 					initialValue: false,
-			}),
-			installDeps: () => 
-				prompts.confirm({
-					message: "Install dependencies? (Recommended)",
-					initialValue: false,
-			}),
+		}),
 		},
 		{ 	onCancel: () => {
 				prompts.cancel(c.red('Operation Cancelled!'));
