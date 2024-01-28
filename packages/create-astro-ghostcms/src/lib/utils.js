@@ -66,5 +66,3 @@ export function isPackageManager(str) {
 export function getVersion() {
   return require('read-pkg').sync().version;
 }
-
-module.exports = getVersion();
