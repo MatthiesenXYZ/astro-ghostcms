@@ -38,21 +38,18 @@ export async function createBasic(ctx) {
 		});
 	}
 	s.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
-	const fCheck = await p.group(
-		{ 	installDeps: () => 
+	const fCheck = await p.group({
+		installDeps: () => 
 			p.confirm({
 				message: `${c.cyan('Install dependencies? (Recommended)')}`,
 				initialValue: false,
-		}), initGitRepo: () => 
-				p.confirm({
-					message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
-					initialValue: false,
-		}),
-		},
-		{ 	onCancel: () => {
-				exitPrompt();
-			}
-		}
+		}), 
+		initGitRepo: () => 
+			p.confirm({
+				message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
+				initialValue: false,
+		})},
+		{ onCancel: () => { exitPrompt(); } }
 	);
 
 	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
@@ -68,7 +65,7 @@ export async function createBasic(ctx) {
 		p.log.info(`${c.gray("Skipped Git initialization")}`);
 	}
 
-const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
+	const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black(c.bold(" Dont forget to modify your .env file for YOUR ghost install! ")))} `
 	
 	// 4. Install dependencies
 	installDeps = installDeps ?? fCheck.installDeps;
