@@ -1,0 +1,51 @@
+---
+import { getGhostImgPath } from "../utils";
+import type { Settings, Tag } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  tag: Tag;
+  addClass?: string;
+  settings: Settings;
+};
+const { tag, addClass = "", settings } = Astro.props;
+---
+
+<a
+  href={`/tag/${tag.slug}`}
+  title={tag.name}
+  aria-label={tag.name}
+  class={`tag-card ${addClass ? addClass : ""}`}
+  style={tag.accent_color ? `--color-accent:${tag.accent_color}` : ""}
+>
+  {
+    tag.feature_image && (
+      <div class="tag-card-media">
+        <img
+          class="tag-card-img"
+          data-srcset={`
+          ${getGhostImgPath(settings.url, tag.feature_image, 100)} 100w,
+          ${getGhostImgPath(settings.url, tag.feature_image, 300)} 300w
+        `}
+          srcset={`
+          ${getGhostImgPath(settings.url, tag.feature_image, 100)} 100w,
+          ${getGhostImgPath(settings.url, tag.feature_image, 300)} 300w
+        `}
+          data-sizes="auto"
+          data-src={getGhostImgPath(settings.url, tag.feature_image, 300)}
+          src={getGhostImgPath(settings.url, tag.feature_image, 300)}
+          alt={tag.name}
+          sizes="200px"
+        />
+      </div>
+    )
+  }
+  <div class="tag-card-content">
+    <h4 class="tag-card-name">{tag.name}</h4>
+    {tag.count && <span class="tag-card-count">{tag.count.posts}+ Posts</span>}
+  </div>
+</a>
+
+<style lang="scss">
+  .tag-card {
+    text-align: center;
+  }
+</style>

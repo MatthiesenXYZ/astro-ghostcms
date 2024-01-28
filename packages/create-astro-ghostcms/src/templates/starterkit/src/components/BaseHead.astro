@@ -1,0 +1,86 @@
+---
+import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { ViewTransitions } from 'astro:transitions';
+import { AstroFont } from "astro-font";
+
+export type Props = {
+  title: string;
+  description: string;
+  permalink?: string;
+  image?: string;
+  settings: Settings;
+};
+
+const { description, permalink, image, settings, title } = Astro.props as Props;
+---
+
+<AstroFont
+config={[
+  {
+    src: [],
+    name: "Inter",
+    preload: false,
+    display: "swap",
+    selector: "html",
+    fallback: "sans-serif",
+    googleFontsURL: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+  },
+]}
+/>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+<ViewTransitions />
+<meta name="title" content={title} />
+{description && <meta name="description" content={description} />}
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href={settings.icon} />
+<link rel="shortcut icon" type="image/png" sizes="16x16" href={settings.icon} />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="msapplication-config" content="/browserconfig.xml" />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- Open Graph Tags (Facebook) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+{permalink && <meta property="og:url" content={permalink} />}
+{description && <meta property="og:description" content={description} />}
+{image && <meta property="og:image" content={image} />}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+{permalink && <meta property="twitter:url" content={permalink} />}
+{description && <meta property="twitter:description" content={description} />}
+{image && <meta property="twitter:image" content={image} />}
+
+<!-- Link to the global style, or the file that imports constructs -->
+<link
+  rel="preload"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+  as="style"
+/>
+<link
+  rel="preload"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+  as="script"
+/>
+<link
+  rel="preload stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  crossorigin
+/>
+<script
+  async
+  defer
+  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+>
+
+</script>

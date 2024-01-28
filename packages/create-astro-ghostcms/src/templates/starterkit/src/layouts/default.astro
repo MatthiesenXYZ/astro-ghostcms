@@ -1,0 +1,128 @@
+---
+import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { AstroFont } from "astro-font";
+import MainLayout from "../components/MainLayout.astro";
+import { ViewTransitions } from "astro:transitions";
+
+export type Props = {
+  content?: {
+    title: string;
+    description: string;
+  };
+  bodyClass?: string;
+  settings: Settings;
+  image?: string;
+  permalink?: string;
+};
+
+const { content, permalink, image, settings, bodyClass = "" } = Astro.props as Props;
+const ghostAccentColor = settings.accent_color;
+---
+
+<html lang="en">
+  <head>
+    <Fragment set:html={settings.codeinjection_head}>
+    
+    <AstroFont
+    config={[
+      {
+        src: [],
+        name: "Inter",
+        preload: false,
+        display: "swap",
+        selector: "html",
+        fallback: "sans-serif",
+        googleFontsURL: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+      },
+    ]}
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <title>{content ? content.title + "|" + settings.title : settings.title}</title>
+    <ViewTransitions />
+    <meta name="title" content={content ? content.title : settings.title} />
+    {content?.description && <meta name="description" content={content.description} />}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href={settings.icon} />
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href={settings.icon} />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Open Graph Tags (Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={content?.title} />
+    {permalink && <meta property="og:url" content={permalink} />}
+    {content?.description && <meta property="og:description" content={content.description} />}
+    {image && <meta property="og:image" content={image} />}
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={content?.title} />
+    {permalink && <meta property="twitter:url" content={permalink} />}
+    {content?.description && <meta property="twitter:description" content={content.description} />}
+    {image && <meta property="twitter:image" content={image} />}
+    
+    <!-- Link to the global style, or the file that imports constructs -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+      as="script"
+    />
+    <link
+      rel="preload stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      crossorigin
+    />
+    <script
+      async
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+    >
+    </script>
+  </head>
+  <body class={bodyClass}>
+    <MainLayout settings={settings}>
+      <slot />
+    </MainLayout>
+    <style
+      lang="scss"
+      is:global
+      define:vars={{ "ghost-accent-color": ghostAccentColor }}
+    >
+      @import "../styles/reset.scss";
+      @import "../styles/app.scss";
+      @mixin mq-sm {
+        @media only screen and (min-width: 36em) {
+          @content;
+        }
+      }
+      @mixin mq-md {
+        @media only screen and (min-width: 48em) {
+          @content;
+        }
+      }
+      @mixin mq-lg {
+        @media only screen and (min-width: 62em) {
+          @content;
+        }
+      }
+      @mixin mq-xl {
+        @media only screen and (min-width: 75em) {
+          @content;
+        }
+      }
+    </style>
+  </body>
+</html>

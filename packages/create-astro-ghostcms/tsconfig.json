@@ -1,0 +1,26 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Default",
+	"include": ["."],
+	"exclude": ["node_modules", "templates/*"],
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"checkJs": true,
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"target": "ES2022",
+		"noEmit": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"inlineSources": false,
+		"isolatedModules": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"strict": true,
+		// Non-null assertions are a PITA when checking JS files
+		"strictNullChecks": false
+	}
+}
