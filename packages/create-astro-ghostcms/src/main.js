@@ -46,7 +46,7 @@ export async function main() {
 	}
 
 	const { pathname } = getModulePaths(import.meta.url);
-	const inputJSON = path.resolve(pathname, "..", 'package.json');
+	const inputJSON = path.resolve(pathname, "..", "..", 'package.json');
 	const packageJSON = await fse.readJson(inputJSON);
 	const pkgVer = packageJSON.version;
 
