@@ -41,29 +41,23 @@ export async function createBasic(ctx) {
 	}
 	s.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
 	const fCheck = await p.group({
-		opts: ({results}) => {
-			p.multiselect({
-			message: `${c.cyan('Select Additional Options')}`,
-			options: [
-				{
-					value: 'installDeps', 
-					label: `${c.cyan('Install Dependencies?')}`,
-					hint: `${c.cyan('recommended')}`
-				},
-				{
-					value: 'initGitRepo',
-					label: `${c.cyan('Initialize a Git repository?')}`
-				}
-			]
-		})
-	}
+		installDeps: () => p.confirm({
+			message: `${c.cyan('Install dependencies? (Recommended)')}`,
+			initialValue: false,
+		}), 
+		initGitRepo: () => p.confirm({
+			message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
+			initialValue: false,
+		}),
+		readyCheck: () => p.confirm({
+			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ')))}`,
+			initialValue: true,
+		}),
 	},
 	{ onCancel: () => { exitPrompt(); } });
 
-	const opts = await fCheck.results
-
 	if(fCheck.readyCheck){
-		initGitRepo = initGitRepo ?? opts.installGitRepo
+		initGitRepo = initGitRepo ?? fCheck.initGitRepo;
 		// 3. Initialize git repo
 		if (initGitRepo) {
 			if (dryRun) {
@@ -79,7 +73,7 @@ export async function createBasic(ctx) {
 		const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black(c.bold(" Dont forget to modify your .env file for YOUR ghost install! ")))} `
 		
 		// 4. Install dependencies
-		installDeps = installDeps ?? opts.installDeps;
+		installDeps = installDeps ?? fCheck.installDeps;
 		const pm = ctx.pkgManager ?? "pnpm";
 		if (installDeps) {
 			s.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
