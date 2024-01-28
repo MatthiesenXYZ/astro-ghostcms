@@ -59,3 +59,12 @@ export function isPackageManager(str) {
 /**
  * @typedef {import("../../types").PackageManager} PackageManager
  */
+
+/**
+ * @return {string} The current version of the package.
+ */
+export function getVersion() {
+  return require('read-pkg').sync().version;
+}
+
+module.exports = getVersion();

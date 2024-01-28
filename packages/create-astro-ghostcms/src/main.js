@@ -1,10 +1,11 @@
 import arg from "arg";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
-import { exitPrompt, isPackageManager } from "./lib/utils.js";
+import { exitPrompt, isPackageManager, getVersion } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
 import { createStarterKit } from "./runners/starterkit.js";
 
+const pkgVer = getVersion()
 
 export async function main() {
 	const exit = () => process.exit(0);
@@ -44,7 +45,7 @@ export async function main() {
 	}
 
 	// 1. Say hello!
-	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
+	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.underline(`( ${pkgVer} )`)} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
 	const gettingStarted = `${c.white(c.bold('Want to Initiate a git repo at the same time as deploying your project?'))} \n - ${c.white(`Use ${c.yellow('--git')} at the end of the command`)} \n ${c.white(c.bold(`Using a package manager other than ${c.cyan(c.bold('pnpm'))}?`))} \n - ${c.white(`Use ${c.yellow('--pkg-manager npm')} or ${c.yellow('--pkg-manager yarn')}.`)}`
 
