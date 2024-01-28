@@ -45,7 +45,7 @@ export async function main() {
 	// 1. Say hello!
 	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
-	const gettingStarted = `${c.white(c.bold('Want to Initiate a git repo at the same time as deploying your project?'))} \n - ${c.white(c.underline(`Use ${c.yellow('--git')} at the end of the command`))} \n ${c.white(c.bold('Using a package manager other than pnpm?'))} \n - ${c.white(c.underline(`Use ${c.yellow(c.underline('--pkg-manager npm'))} or ${c.yellow(c.underline('--pkg-manager yarn'))}.`))}`
+	const gettingStarted = `${c.white(c.bold('Want to Initiate a git repo at the same time as deploying your project?'))} \n - ${c.white(`Use ${c.yellow('--git')} at the end of the command`)} \n ${c.white(c.bold('Using a package manager other than pnpm?'))} \n - ${c.white(`Use ${c.yellow('--pkg-manager npm')} or ${c.yellow('--pkg-manager yarn')}.`)}`
 
 	p.note(gettingStarted)
 
