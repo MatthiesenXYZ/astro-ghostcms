@@ -1,0 +1,154 @@
+---
+import { getGhostImgPath } from "../utils";
+import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import cover from "./cover.jpg";
+
+export type Props = {
+  featureImg: string;
+  mainTitle?: string;
+  settings: Settings;
+  description?: string;
+  addClass?: string;
+};
+const {
+  featureImg = cover.src,
+  mainTitle = "",
+  settings,
+  description = "",
+} = Astro.props as Props;
+---
+
+<div class="site-header-content">
+  {featureImg && (
+    <img
+      class="site-header-cover"
+      data-srcset={`
+            ${getGhostImgPath(settings.url, featureImg, 300)} 300w,
+            ${getGhostImgPath(settings.url, featureImg, 600)} 600w
+            ${getGhostImgPath(settings.url, featureImg, 1000)} 1000w
+            ${getGhostImgPath(settings.url, featureImg, 2000)} 2000w
+            `}
+      srcset={`
+            ${getGhostImgPath(settings.url, featureImg, 300)} 300w,
+            ${getGhostImgPath(settings.url, featureImg, 600)} 600w
+            ${getGhostImgPath(settings.url, featureImg, 1000)} 1000w
+            ${getGhostImgPath(settings.url, featureImg, 2000)} 2000w
+            `}
+      data-sizes="auto"
+      data-src={getGhostImgPath(settings.url, featureImg, 2000)}
+      src={getGhostImgPath(settings.url, featureImg, 2000)}
+      alt={mainTitle}
+      sizes="100vw"
+    />
+  )}
+  {!featureImg && (
+    <img
+      class="site-header-cover"
+      data-srcset={`
+            ${cover.src} 300w,
+            ${cover.src} 600w,
+            ${cover.src} 1000w,
+            ${cover.src} 2000w
+            `}
+      srcset={`
+            ${cover.src} 300w,
+            ${cover.src} 600w
+            ${cover.src} 1000w
+            ${cover.src} 2000w
+            `}
+      data-sizes="auto"
+      data-src={cover.src}
+      src={cover.src}
+      alt={mainTitle}
+      sizes="100vw"
+    />
+  )}
+  <slot name="title">
+    <h1 class="site-title">
+      {settings.logo ? (
+        <img
+          class="site-logo"
+          src={getGhostImgPath(settings.url, settings.logo, 300)}
+          alt={settings.title}
+        />
+      ) : (
+        settings.title
+      )}
+    </h1>
+  </slot>
+  <p>{description}</p>
+</div>
+
+<style lang="scss">
+  .site-header {
+    position: relative;
+    color: #fff;
+    background: var(--ghost-accent-color);
+  }
+
+  .site-header-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .site-header-content {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6vw 3vw;
+    min-height: 200px;
+    max-height: 340px;
+    text-align: center;
+  }
+
+  .site-title {
+    z-index: 10;
+    margin: 0 0 0.15em;
+    padding: 0;
+  }
+
+  .site-logo {
+    max-height: 55px;
+  }
+
+  .site-header-content p {
+    z-index: 10;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.2em;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 600px) {
+    .site-header-content p {
+      max-width: 80vmin;
+      font-size: 1.8rem;
+    }
+  }
+
+  /* 4.1 Home header
+/* ---------------------------------------------------------- */
+
+  .site-home-header {
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  .site-header-content {
+    padding: 18vmin 4vmin;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #fff;
+    background: var(--ghost-accent-color);
+  }
+</style>

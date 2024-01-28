@@ -1,0 +1,23 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  settings: Settings;
+};
+const { settings } = Astro.props as Props;
+---
+
+<div class="viewport">
+  <Header settings={settings} />
+  <div class="site-content">
+    <slot></slot>
+  </div>
+  <Footer settings={settings} />
+</div>
+
+<style>
+  .content {
+    min-height: 580px;
+  }
+</style>

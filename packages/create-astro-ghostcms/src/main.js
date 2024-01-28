@@ -1,8 +1,9 @@
 import arg from "arg";
 import * as p from "@clack/prompts";
+import c from 'picocolors';
 import { exitPrompt, isPackageManager } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
-import c from 'picocolors';
+import { createStarterKit } from "./runners/starterkit.js";
 
 
 export async function main() {
@@ -63,6 +64,10 @@ export async function main() {
 					value: "basic", 
 					label: `${c.magenta('Basic')} - ${c.cyan(c.italic('Integration w/ Default Theme'))}` 
 				},
+				{
+					value: "starterkit",
+					label: `${c.magenta('Starter Kit')} - ${c.cyan(c.italic('Integration in API-Only Mode with customizable theme'))}`
+				}
 			],
 			initialValue: "basic",
 		});
@@ -85,6 +90,9 @@ export async function main() {
 		case "basic":
 			await createBasic(ctx).catch(console.error);
 			break;
+		case "starterkit":
+			await createStarterKit(ctx).catch(console.error);
+			break;
 		default:
 			throw new Error(c.red(`Unknown template: ${template}`));
 	}
@@ -102,7 +110,7 @@ function getHelp() {
  * @returns {template is Template}
  */
 function isValidTemplate(template) {
-	return ["basic"].includes(template);
+	return ["basic","starterkit"].includes(template);
 }
 
 /**

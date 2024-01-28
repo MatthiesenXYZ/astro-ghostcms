@@ -1,0 +1,80 @@
+---
+import { getGhostImgPath } from "../utils";
+import type { Settings, Author } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  author: Author;
+  wide?: boolean;
+  addClass?: string;
+  settings: Settings;
+  showCover?: boolean;
+};
+const {
+  author,
+  wide = false,
+  settings,
+  showCover = true,
+} = Astro.props as Props;
+---
+
+<div class={`card author-card author-${author.slug} ${wide ? "wide" : ""}`}>
+  <figure class="author-card-cover">
+    {author.cover_image && showCover && (
+      <img
+        class="lazyautosizes lazyloaded"
+        data-srcset={`
+            ${getGhostImgPath(settings.url, author.cover_image, 300)} 300w,
+            ${getGhostImgPath(settings.url, author.cover_image, 600)} 600w
+          `}
+        srcset={`
+            ${getGhostImgPath(settings.url, author.cover_image, 300)} 300w,
+            ${getGhostImgPath(settings.url, author.cover_image, 600)} 600w
+        `}
+        data-sizes="auto"
+        data-src={getGhostImgPath(settings.url, author.cover_image, 300)}
+        src={getGhostImgPath(settings.url, author.cover_image, 300)}
+        alt={author.name}
+        sizes="316px"
+      />
+    )}
+  </figure>
+
+  {author.profile_image && (
+    <a href={`/author/${author.slug}`} class="author-card-media">
+      <img
+        class="author-card-img"
+        data-srcset={`
+            ${getGhostImgPath(settings.url, author.profile_image, 100)} 100w,
+            ${getGhostImgPath(settings.url, author.profile_image, 300)} 300w
+          `}
+        srcset={`
+            ${getGhostImgPath(settings.url, author.profile_image, 100)} 100w,
+            ${getGhostImgPath(settings.url, author.profile_image, 300)} 300w
+        `}
+        data-sizes="auto"
+        data-src={getGhostImgPath(settings.url, author.profile_image, 300)}
+        src={getGhostImgPath(settings.url, author.profile_image, 300)}
+        alt={author.name}
+        sizes="316px"
+      />
+    </a>
+  )}
+  <div class="author-card-content">
+    <div class="author-card-name">
+      <a href={`/author/${author.slug}`}>{author.name}</a>
+    </div>
+
+    {author.bio && <div class="author-card-descr">{author.bio}</div>}
+
+    <div class="author-card-details">
+      {author.count && author.count.posts && (
+        <div>
+          {author.count.posts > 0 ? `${author.count.posts} posts` : "No posts"}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+
+</style>
