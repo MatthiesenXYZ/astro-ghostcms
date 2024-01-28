@@ -6,6 +6,8 @@ import * as p from "@clack/prompts";
 import { exitPrompt, getModulePaths, isPathname,
 	normalizePath, wait } from "../lib/utils.js";
 
+const runnerName = "basic";
+
 /** @param {Context} ctx */
 export async function createBasic(ctx) {
 	let { args, dryRun, initGitRepo, installDeps } = ctx;
@@ -100,13 +102,13 @@ async function createApp(projectName, projectPathname, { onError }) {
 	const { pathname } = getModulePaths(import.meta.url);
 	const templatesDir = path.resolve(pathname, "..", "..", "templates");
 	const sharedTemplateDir = path.join(templatesDir, "_shared");
-	const basicTemplateDir = path.join(templatesDir, "basic");
+	const runnerTemplateDir = path.join(templatesDir, runnerName);
 
 	await fse.ensureDir(projectPathname);
 
 	// TODO: Detect if project directory is empty, otherwise we
 	// can't create a new project here.
-	await fse.copy(basicTemplateDir, projectPathname);
+	await fse.copy(runnerTemplateDir, projectPathname);
 
 	// Copy misc files from shared
 	const filesToCopy = [
