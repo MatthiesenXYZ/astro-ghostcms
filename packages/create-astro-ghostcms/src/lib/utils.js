@@ -1,7 +1,7 @@
 import path from "node:path";
 import os from "node:os";
-import * as prompts from "@clack/prompts";
-import color from "picocolors";
+import * as p from "@clack/prompts";
+import c from "picocolors";
 import { fileURLToPath } from "node:url";
 
 /**
@@ -19,7 +19,7 @@ export function getModulePaths(url) {
  * @returns {never}
  */
 export function exitPrompt() {
-	prompts.cancel(color.red("Operation Cancelled"));
+	p.cancel(c.red("Operation Cancelled"));
 	process.exit(0);
 }
 

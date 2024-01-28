@@ -2,7 +2,7 @@ import path from "node:path";
 import fse from "fs-extra";
 import c from 'picocolors';
 import { execa } from "execa";
-import * as prompts from "@clack/prompts";
+import * as p from "@clack/prompts";
 import { exitPrompt, getModulePaths, isPathname,
 	normalizePath, wait } from "../lib/utils.js";
 
@@ -10,7 +10,7 @@ import { exitPrompt, getModulePaths, isPathname,
 export async function createBasic(ctx) {
 	let { args, dryRun, initGitRepo, installDeps } = ctx;
 
-	const spinner = prompts.spinner();
+	const s = p.spinner();
 	let cwd = process.cwd();
 
 	// 1. Set up project directory
@@ -24,34 +24,33 @@ export async function createBasic(ctx) {
 	// 2. Create the damned thing
 	cwd = project.pathname;
 	const relativePath = path.relative(process.cwd(), project.pathname);
-	spinner.start(`${c.yellow(`Creating a new Astro-GhostCMS project in ${relativePath}`)}`);
+	s.start(`${c.yellow(`Creating a new Astro-GhostCMS project in ${relativePath}`)}`);
 	if (dryRun) {
 		await wait(2000);
 	} else {
 		await createApp(project.name, project.pathname, {
 			onError(error) {
-				spinner.stop(`${c.red('Failed to create new project')}`);
-				prompts.cancel();
+				s.stop(`${c.red('Failed to create new project')}`);
+				p.cancel();
 				console.error(error);
 				process.exit(1);
 			},
 		});
 	}
-	spinner.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
-	const fCheck = await prompts.group(
+	s.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
+	const fCheck = await p.group(
 		{ 	installDeps: () => 
-			prompts.confirm({
+			p.confirm({
 				message: `${c.cyan('Install dependencies? (Recommended)')}`,
 				initialValue: false,
 		}), initGitRepo: () => 
-				prompts.confirm({
+				p.confirm({
 					message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
 					initialValue: false,
 		}),
 		},
 		{ 	onCancel: () => {
-				prompts.cancel(`${c.red('Operation Cancelled!')}`);
-				process.exit(0);
+				exitPrompt();
 			}
 		}
 	);
@@ -64,9 +63,9 @@ export async function createBasic(ctx) {
 		} else {
 			await exec("git", ["init"], { cwd });
 		}
-		prompts.log.success(c.green("Initialized Git repository"));
+		p.log.success(c.green("Initialized Git repository"));
 	} else {
-		prompts.log.info(`${c.gray("Skipped Git initialization")}`);
+		p.log.info(`${c.gray("Skipped Git initialization")}`);
 	}
 
 const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
@@ -75,22 +74,22 @@ const nextSteps = `If you didnt opt to install Dependencies dont forget to run: 
 	installDeps = installDeps ?? fCheck.installDeps;
 	const pm = ctx.pkgManager ?? "pnpm";
 	if (installDeps) {
-		spinner.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
+		s.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
 		if (dryRun) {
 			await wait(1);
 		} else {
 			await installDependencies(pm, { cwd });
 		}
-		spinner.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
+		s.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
 		success()
 	} else {
-		prompts.log.info(`${c.gray('Skipped dependency installation')}`);
+		p.log.info(`${c.gray('Skipped dependency installation')}`);
 		success()
 	}
 
 	async function success() {
-		prompts.note(nextSteps);
-		prompts.outro(c.green("Deployment Complete!"));
+		p.note(nextSteps);
+		p.outro(c.green("Deployment Complete!"));
 	}
 }
 
@@ -152,11 +151,11 @@ async function getProjectDetails(projectNameInput, opts) {
 	let projectName = projectNameInput;
 	if (!projectName) {
 		const defaultProjectName = "my-astro-ghost";
-		let answer = await prompts.text({
+		let answer = await p.text({
 			message: `${c.cyan("Where would you like to create your project?")}`,
 			placeholder: `.${path.sep}${defaultProjectName}`,
 		});
-		if (prompts.isCancel(answer)) exitPrompt();
+		if (p.isCancel(answer)) exitPrompt();
 
 		answer = answer?.trim();
 		projectName = answer || defaultProjectName;

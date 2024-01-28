@@ -1,8 +1,8 @@
 import arg from "arg";
-import * as prompts from "@clack/prompts";
+import * as p from "@clack/prompts";
 import { exitPrompt, isPackageManager } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
-import color from 'picocolors';
+import c from 'picocolors';
 
 
 export async function main() {
@@ -43,26 +43,26 @@ export async function main() {
 	}
 
 	// 1. Say hello!
-	prompts.intro(color.bgMagenta(color.black(` ${color.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${color.italic(dryRun ? "[Dry Run] ":" ")}`)))
+	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
 	// 2. Get template to set up
 	let [template, ...args] = flags._;
 	if (template && !isValidTemplate(template)) {
-		prompts.log.warning(color.red(`"${template}" isn't a valid template`));
+		p.log.warning(c.red(`"${template}" isn't a valid template`));
 		template = null;
 	}
 	if (!template) {
-		const answer = await prompts.select({
-			message: `${color.cyan('Which template would you like to use?')}`,
+		const answer = await p.select({
+			message: `${c.cyan('Which template would you like to use?')}`,
 			options: [
 				{ 
 					value: "basic", 
-					label: `${color.magenta('Basic')} - ${color.cyan(color.italic('Integration w/ Default Theme'))}` 
+					label: `${c.magenta('Basic')} - ${c.cyan(c.italic('Integration w/ Default Theme'))}` 
 				},
 			],
 			initialValue: "basic",
 		});
-		if (prompts.isCancel(answer)) exitPrompt();
+		if (p.isCancel(answer)) exitPrompt();
 		template = answer;
 	}
 
@@ -82,15 +82,15 @@ export async function main() {
 			await createBasic(ctx).catch(console.error);
 			break;
 		default:
-			throw new Error(color.red(`Unknown template: ${template}`));
+			throw new Error(c.red(`Unknown template: ${template}`));
 	}
 
 	// 4. Huzzah!
-	prompts.outro(color.reset(`Problems? ${color.underline(color.cyan('https://github.com/MatthiesenXYZ/astro-ghostcms/issues'))}`));
+	p.outro(c.reset(`Problems? ${c.underline(c.cyan('https://github.com/MatthiesenXYZ/astro-ghostcms/issues'))}`));
 }
 
 function getHelp() {
-	return `${color.yellow('Need Help? Check the Docs!')} ${color.underline(color.cyan('https://astro-ghostcms.xyz/docs'))}`;
+	return `${c.yellow('Need Help? Check the Docs!')} ${c.underline(c.cyan('https://astro-ghostcms.xyz/docs'))}`;
 }
 
 /**
