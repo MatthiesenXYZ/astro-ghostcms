@@ -41,54 +41,61 @@ export async function createBasic(ctx) {
 	}
 	s.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
 	const fCheck = await p.group({
-		installDeps: () => 
-			p.confirm({
-				message: `${c.cyan('Install dependencies? (Recommended)')}`,
-				initialValue: false,
+		installDeps: () => p.confirm({
+			message: `${c.cyan('Install dependencies? (Recommended)')}`,
+			initialValue: false,
 		}), 
-		initGitRepo: () => 
-			p.confirm({
-				message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
-				initialValue: false,
-		})},
-		{ onCancel: () => { exitPrompt(); } }
-	);
+		initGitRepo: () => p.confirm({
+			message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
+			initialValue: false,
+		}),
+		readyCheck: () => p.confirm({
+			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ')))}`,
+			initialValue: true,
+		}),
+	},
+	{ onCancel: () => { exitPrompt(); } });
 
-	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
-	// 3. Initialize git repo
-	if (initGitRepo) {
-		if (dryRun) {
-			await wait(1);
+	if(fCheck.readyCheck){
+		initGitRepo = initGitRepo ?? fCheck.initGitRepo;
+		// 3. Initialize git repo
+		if (initGitRepo) {
+			if (dryRun) {
+				await wait(1);
+			} else {
+				await exec("git", ["init"], { cwd });
+			}
+			p.log.success(c.green("Initialized Git repository"));
 		} else {
-			await exec("git", ["init"], { cwd });
+			p.log.info(`${c.gray("Skipped Git initialization")}`);
 		}
-		p.log.success(c.green("Initialized Git repository"));
-	} else {
-		p.log.info(`${c.gray("Skipped Git initialization")}`);
-	}
-
-	const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black(c.bold(" Dont forget to modify your .env file for YOUR ghost install! ")))} `
 	
-	// 4. Install dependencies
-	installDeps = installDeps ?? fCheck.installDeps;
-	const pm = ctx.pkgManager ?? "pnpm";
-	if (installDeps) {
-		s.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
-		if (dryRun) {
-			await wait(1);
+		const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black(c.bold(" Dont forget to modify your .env file for YOUR ghost install! ")))} `
+		
+		// 4. Install dependencies
+		installDeps = installDeps ?? fCheck.installDeps;
+		const pm = ctx.pkgManager ?? "pnpm";
+		if (installDeps) {
+			s.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
+			if (dryRun) {
+				await wait(1);
+			} else {
+				await installDependencies(pm, { cwd });
+			}
+			s.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
+			success()
 		} else {
-			await installDependencies(pm, { cwd });
+			p.log.info(`${c.gray('Skipped dependency installation')}`);
+			success()
 		}
-		s.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
-		success()
-	} else {
-		p.log.info(`${c.gray('Skipped dependency installation')}`);
-		success()
-	}
+	
+		async function success() {
+			p.note(nextSteps);
+			p.outro(c.green("Deployment Complete!"));
+		}
 
-	async function success() {
-		p.note(nextSteps);
-		p.outro(c.green("Deployment Complete!"));
+	} else {
+		exitPrompt();
 	}
 }
 
