@@ -46,7 +46,7 @@ export async function createBasic(ctx) {
 			initialValue: false,
 		}), 
 		GitRepo: () => p.confirm({
-			message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
+			message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray("( Tip: This Option gets Stuck Press Enter Twice if you get no reponse! )"))}`,
 			initialValue: false,
 		}),
 		readyCheck: () => p.confirm({
