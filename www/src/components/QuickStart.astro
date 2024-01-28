@@ -1,14 +1,15 @@
 ---
-import { Code } from "astro:components"
+import { Code } from '@astrojs/starlight/components';
 import quickstart from "../assets/quickstart.sh?raw"
 
+const highlights = ['npm', 'yarn', 'pnpm', 2];
 ---
-<div class="quickstart">
+<Code 
+    title='Astro-GhostCMS Quickstart'
+    lang={'sh'}
+    class='quickstart' 
+    code={quickstart}
+    mark={highlights}
+/>
 
-    <center>
-        <div class="qstart"> /|\ Astro-GhostCMS Quickstart /|\ </div>
-    </center>
 
-    <Code lang={'sh'} code={quickstart}/>
-
-</div>
