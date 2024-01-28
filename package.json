@@ -15,8 +15,7 @@
 		"api:test": "pnpm --filter astro-ghostcms test",
 		"api:test:watch": "pnpm --filter astro-ghostcms test:watch",
 		"api:test:coverage": "pnpm --filter astro-ghostcms test:coverage",
-		"api:test:ci": "pnpm --filter astro-ghostcms test:ci",
-		"create:dry": "pnpm --filter create-astro-ghostcms dryrun"
+		"api:test:ci": "pnpm --filter astro-ghostcms test:ci"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.5.3",
