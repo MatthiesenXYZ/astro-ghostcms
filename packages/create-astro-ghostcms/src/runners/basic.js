@@ -56,8 +56,7 @@ export async function createBasic(ctx) {
 	},
 	{ onCancel: () => { exitPrompt(); } });
 
-	if(fCheck.readyCheck){
-		//initGitRepo = initGitRepo ?? fCheck.GitRepo;
+	if(fCheck.readyCheck){;
 		// 3. Initialize git repo
 		if (initGitRepo) {
 			if (dryRun) {

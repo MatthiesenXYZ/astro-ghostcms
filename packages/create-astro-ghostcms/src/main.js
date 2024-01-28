@@ -45,6 +45,8 @@ export async function main() {
 	// 1. Say hello!
 	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
+	p.note(c.bold(" Want to Initiate a git repo at the same time as deploying your project? Use '--git' at the end of the command \n Using a package manager other than pnpm? Use '--pkg-manager npm' or replace npm with yarn."))
+
 	// 2. Get template to set up
 	let [template, ...args] = flags._;
 	if (template && !isValidTemplate(template)) {
