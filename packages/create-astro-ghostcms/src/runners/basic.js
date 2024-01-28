@@ -45,19 +45,19 @@ export async function createBasic(ctx) {
 			message: `${c.cyan('Install dependencies? (Recommended)')}`,
 			initialValue: false,
 		}), 
-		initGitRepo: () => p.confirm({
+		GitRepo: () => p.confirm({
 			message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray(`( Tip: If this option gets 'stuck' press the enter button a second time! )`))}`,
 			initialValue: false,
 		}),
 		readyCheck: () => p.confirm({
-			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ')))}`,
+			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Select Yes to continue or `Ctrl+C` to Cancel. ')))}`,
 			initialValue: true,
 		}),
 	},
 	{ onCancel: () => { exitPrompt(); } });
 
 	if(fCheck.readyCheck){
-		initGitRepo = initGitRepo ?? fCheck.initGitRepo;
+		initGitRepo = initGitRepo ?? fCheck.GitRepo;
 		// 3. Initialize git repo
 		if (initGitRepo) {
 			if (dryRun) {
