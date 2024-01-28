@@ -5,7 +5,7 @@ import { exitPrompt, isPackageManager, getVersion } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
 import { createStarterKit } from "./runners/starterkit.js";
 
-const pkgVer = getVersion()
+const pkgVer = await getVersion()
 
 export async function main() {
 	const exit = () => process.exit(0);

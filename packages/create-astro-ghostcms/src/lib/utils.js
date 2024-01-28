@@ -62,8 +62,9 @@ export function isPackageManager(str) {
  */
 
 /**
- * @return {string} The current version of the package.
+ * @return {Promise<string>} The current version of the package.
  */
-export function getVersion() {
-  return readPkg.sync().version;
+export async function getVersion() {
+  const pkg = await readPkg()
+  return pkg.version;
 }
