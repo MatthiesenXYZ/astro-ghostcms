@@ -3,7 +3,6 @@ import os from "node:os";
 import * as p from "@clack/prompts";
 import c from "picocolors";
 import { fileURLToPath } from "node:url";
-import readPkg from "read-pkg";
 
 /**
  * @param {string} url
@@ -60,11 +59,3 @@ export function isPackageManager(str) {
 /**
  * @typedef {import("../../types").PackageManager} PackageManager
  */
-
-/**
- * @return {Promise<string>} The current version of the package.
- */
-export async function getVersion() {
-  const pkg = await readPkg()
-  return pkg.version;
-}

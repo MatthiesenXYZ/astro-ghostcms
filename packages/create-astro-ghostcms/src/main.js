@@ -1,11 +1,19 @@
 import arg from "arg";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
-import { exitPrompt, isPackageManager, getVersion } from "./lib/utils.js";
+import { exitPrompt, isPackageManager } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
 import { createStarterKit } from "./runners/starterkit.js";
+import fse from "fs-extra";
 
-const pkgVer = await getVersion()
+async function pkgVer () {
+	try {
+	  const packageObj = await fse.readJson('../package.json')
+	  console.log(packageObj.version)
+	} catch (err) {
+	  console.error(err)
+	}
+  }
 
 export async function main() {
 	const exit = () => process.exit(0);
