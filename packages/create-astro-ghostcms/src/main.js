@@ -1,10 +1,11 @@
 import arg from "arg";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
-import { exitPrompt, isPackageManager } from "./lib/utils.js";
+import { exitPrompt, getModulePaths, isPackageManager } from "./lib/utils.js";
 import { createBasic } from "./runners/basic.js";
 import { createStarterKit } from "./runners/starterkit.js";
 import fse from "fs-extra";
+import path from "node:path";
 
 
 export async function main() {
@@ -44,7 +45,9 @@ export async function main() {
 		return;
 	}
 
-	const packageJSON = await fse.readJson('../package.json');
+	const { pathname } = getModulePaths(import.meta.url);
+	const inputJSON = path.resolve(pathname, "..", 'package.json');
+	const packageJSON = await fse.readJson(inputJSON);
 	const pkgVer = packageJSON.version;
 
 	// 1. Say hello!
