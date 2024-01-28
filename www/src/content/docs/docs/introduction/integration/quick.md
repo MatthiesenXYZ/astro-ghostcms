@@ -5,7 +5,7 @@ description: Integration Mode - Quick Install
 
 ```sh title="Simple"
 # Run this command and follow the prompt!
-npx astro add @matthiesenxyz/create-astro-ghostcms
+npx @matthiesenxyz/create-astro-ghostcms
 # Want to pass arguments through to the command?  YOU CAN!
 #  `--install`     : Sets Install Dependencies to 'true'
 #  `--git`         : Initiates git Repo
@@ -13,7 +13,7 @@ npx astro add @matthiesenxyz/create-astro-ghostcms
 ```
 
 ```sh title="Advanced"
-npx astro add @matthiesenxyz/create-astro-ghostcms <template> <project_directory> --git --install
+npx @matthiesenxyz/create-astro-ghostcms <template> <project_directory> --git --install
 ```
 
 ***When you deploy your install dont forget to set your ENVIRONMENT VARIABLES!***
