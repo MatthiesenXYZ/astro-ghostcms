@@ -18,7 +18,7 @@ In this Repo you will also find the Following:
 - `www`: [Public Site](https://astro-ghostcms.xyz)
 - `playground`: Development and Testing
 - `packages/`:
-  - `create-astro-ghostcms`: CLI Utility to quickly deploy new projects.
+  - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
   - `astro-ghostcms`: The main Integration!
   - `astro-ghostcms-theme-default`: The Default theme in integration mode.
   - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
