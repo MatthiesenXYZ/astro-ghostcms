@@ -41,7 +41,7 @@ export async function createBasic(ctx) {
 	const fCheck = await prompts.group(
 		{ 	installDeps: () => 
 			prompts.confirm({
-				message: `${c.green('Install dependencies? (Recommended)')}`,
+				message: `${c.cyan('Install dependencies? (Recommended)')}`,
 				initialValue: false,
 		}), initGitRepo: () => 
 				prompts.confirm({
@@ -88,7 +88,7 @@ const nextSteps = `If you didnt opt to install Dependencies dont forget to run: 
 		success()
 	}
 
-	function success() {
+	async function success() {
 		prompts.note(nextSteps);
 		prompts.outro(c.green("Deployment Complete!"));
 	}
