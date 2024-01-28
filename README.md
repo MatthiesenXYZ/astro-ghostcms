@@ -2,6 +2,17 @@
 
 # Welcome to Astro-GhostCMS
 
+## Quick Start
+
+```sh
+# Run this command and follow the prompt!
+npx @matthiesenxyz/create-astro-ghostcms
+# Want to pass arguments through to the command?  YOU CAN!
+#  `--install`     : Sets Install Dependencies to 'true'
+#  `--git`         : Initiates git Repo
+#  `--pkg-manager` : Specify your Package manager(i.e. npm, yarn | DEFAULT: pnpm)
+```
+
 For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
 **Demo site Deploy status**:

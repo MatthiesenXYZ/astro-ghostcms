@@ -6,7 +6,16 @@ description: Integration Mode - Manual Install
 ## Install
 
 ```sh
-npm i @matthiesenxyz/astro-ghostcms @matthiesenxyz/astro-ghostcms-theme-default
+# For fresh Install
+npm create astro@latest
+# Create Empty Install with standard typescript
+# Then Delete entire `pages` folder under `/src/`
+
+# Then run one of the following:
+# Astro Quick mode
+npx astro add @matthiesenxyz/astro-ghostcms
+# Manual Method
+npm i @matthiesenxyz/astro-ghostcms
 ```
 
 Then set your `astro.config.ts` to look like this:

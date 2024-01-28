@@ -3,24 +3,20 @@ title: Integration Mode - Quick Install
 description: Integration Mode - Quick Install
 ---
 
-## Install
-
-```sh
-# For fresh Install
-npm create astro@latest
-# Create Empty Install with standard typescript
-# Then Delete entire `pages` folder under `/src/`
-npx astro add @matthiesenxyz/astro-ghostcms
+```sh title="Simple"
+# Run this command and follow the prompt!
+npx astro add @matthiesenxyz/create-astro-ghostcms
+# Want to pass arguments through to the command?  YOU CAN!
+#  `--install`     : Sets Install Dependencies to 'true'
+#  `--git`         : Initiates git Repo
+#  `--pkg-manager` : Specify your Package manager(i.e. npm, yarn | DEFAULT: pnpm)
 ```
 
-## Setup `.env` variables
-
-```ansi frame="code" title=".env"
-[1;31mCONTENT_API_KEY[0m=[33ma33da3965a3a9fb2c6b3f63b48
-[1;31mCONTENT_API_URL[0m=[33mhttps://ghostdemo.matthiesen.xyz
+```sh title="Advanced"
+npx astro add @matthiesenxyz/create-astro-ghostcms <template> <project_directory> --git --install
 ```
 
-***When you deploy your install dont forget to set the above ENVIRONMENT VARIABLES!***
+***When you deploy your install dont forget to set your ENVIRONMENT VARIABLES!***
 
 ## Created Routes
 
