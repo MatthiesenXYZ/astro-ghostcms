@@ -2,6 +2,8 @@
 
 Utility to quickly get started with our Integration and astro.
 
+![Demo](./src/assets/create-astro-ghostcms-2024.jan.27.png)
+
 ```sh
 npx @matthiesenxyz/create-astro-ghostcms
 
