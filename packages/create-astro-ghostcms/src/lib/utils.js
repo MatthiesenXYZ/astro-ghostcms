@@ -3,6 +3,7 @@ import os from "node:os";
 import * as p from "@clack/prompts";
 import c from "picocolors";
 import { fileURLToPath } from "node:url";
+import readPkg from "read-pkg";
 
 /**
  * @param {string} url
@@ -64,5 +65,5 @@ export function isPackageManager(str) {
  * @return {string} The current version of the package.
  */
 export function getVersion() {
-  return require('read-pkg').sync().version;
+  return readPkg.sync().version;
 }
