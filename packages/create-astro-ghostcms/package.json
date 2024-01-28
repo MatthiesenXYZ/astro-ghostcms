@@ -1,6 +1,6 @@
 {
 	"name": "@matthiesenxyz/create-astro-ghostcms",
-	"version": "0.0.1-dev27",
+	"version": "0.0.1-dev28",
 	"description": "Utility to quickly get started with our Integration and astro",
 	"type": "module",
 	"main": "./create-astro-ghostcms.mjs",

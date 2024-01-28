@@ -119,12 +119,8 @@ async function createApp(projectName, projectPathname, { onError }) {
 	// Copy misc files from shared
 	const filesToCopy = [
 		{
-			src: path.join(sharedTemplateDir, ".env"),
-			dest: path.join(projectPathname, ".env"),
-		},
-		{
-			src: path.join(sharedTemplateDir, ".gitignore"),
-			dest: path.join(projectPathname, ".gitignore"),
+			src: path.join(sharedTemplateDir),
+			dest: path.join(projectPathname),
 		},
 	];
 	await Promise.all(
