@@ -45,13 +45,14 @@ export async function main() {
 		return;
 	}
 
+	// Get Package Version for Intro
 	const { pathname } = getModulePaths(import.meta.url);
-	const inputJSON = path.resolve(pathname, "..", "..", 'package.json');
-	const packageJSON = await fse.readJson(inputJSON);
-	const pkgVer = packageJSON.version;
+	const iJSON = path.resolve(pathname, "..", "..", 'package.json');
+	const pJSON = await fse.readJson(iJSON);
+	const pkgVer = pJSON.version;
 
 	// 1. Say hello!
-	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.underline(c.bold(c.blue(`( V: ${pkgVer} )`)))} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
+	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.underline(c.bold(c.blue(`( v${pkgVer} )`)))} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
 	const gettingStarted = `${c.white(c.bold('Want to Initiate a git repo at the same time as deploying your project?'))} \n - ${c.white(`Use ${c.yellow('--git')} at the end of the command`)} \n ${c.white(c.bold(`Using a package manager other than ${c.cyan(c.bold('pnpm'))}?`))} \n - ${c.white(`Use ${c.yellow('--pkg-manager npm')} or ${c.yellow('--pkg-manager yarn')}.`)}`
 
