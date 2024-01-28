@@ -48,16 +48,16 @@ export async function main() {
 	// 2. Get template to set up
 	let [template, ...args] = flags._;
 	if (template && !isValidTemplate(template)) {
-		prompts.log.warning(`"${template}" isn't a valid template`);
+		prompts.log.warning(color.red(`"${template}" isn't a valid template`));
 		template = null;
 	}
 	if (!template) {
 		const answer = await prompts.select({
-			message: "Which template would you like to use?",
+			message: `${color.cyan('Which template would you like to use?')}`,
 			options: [
 				{ 
 					value: "basic", 
-					label: "Basic - Integration w/ Default Theme" 
+					label: `${color.magenta('Basic')} - ${color.cyan(color.italic('Integration w/ Default Theme'))}` 
 				},
 			],
 			initialValue: "basic",
@@ -82,7 +82,7 @@ export async function main() {
 			await createBasic(ctx).catch(console.error);
 			break;
 		default:
-			throw new Error(`Unknown template: ${template}`);
+			throw new Error(color.red(`Unknown template: ${template}`));
 	}
 
 	// 4. Huzzah!
@@ -90,7 +90,7 @@ export async function main() {
 }
 
 function getHelp() {
-	return `Need Help? Check the Docs! ${color.underline(color.cyan('https://astro-ghostcms.xyz/docs'))}`;
+	return `${color.yellow('Need Help? Check the Docs!')} ${color.underline(color.cyan('https://astro-ghostcms.xyz/docs'))}`;
 }
 
 /**

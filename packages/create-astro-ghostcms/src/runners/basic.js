@@ -24,39 +24,39 @@ export async function createBasic(ctx) {
 	// 2. Create the damned thing
 	cwd = project.pathname;
 	const relativePath = path.relative(process.cwd(), project.pathname);
-	spinner.start(`Creating a new Astro-GhostCMS project in ${relativePath}`);
+	spinner.start(`${c.yellow(`Creating a new Astro-GhostCMS project in ${relativePath}`)}`);
 	if (dryRun) {
 		await wait(2000);
 	} else {
 		await createApp(project.name, project.pathname, {
 			onError(error) {
-				spinner.stop("Failed to create new project");
+				spinner.stop(`${c.red('Failed to create new project')}`);
 				prompts.cancel();
 				console.error(error);
 				process.exit(1);
 			},
 		});
 	}
-	spinner.stop(`New Astro-GhostCMS project '${project.name}' created 🚀`);
+	spinner.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
 	const fCheck = await prompts.group(
 		{ 	installDeps: () => 
 			prompts.confirm({
-				message: "Install dependencies? (Recommended)",
+				message: `${c.green('Install dependencies? (Recommended)')}`,
 				initialValue: false,
 		}), initGitRepo: () => 
 				prompts.confirm({
-					message: "Initialize a Git repository?",
+					message: `${c.cyan('Initialize a Git repository?')} ${c.dim(`( Tip: If this option gets 'stuck' press the enter button a second time! )`)}`,
 					initialValue: false,
 		}),
 		},
 		{ 	onCancel: () => {
-				prompts.cancel(c.red('Operation Cancelled!'));
+				prompts.cancel(`${c.red('Operation Cancelled!')}`);
 				process.exit(0);
 			}
 		}
 	);
 
-	initGitRepo = initGitRepo ?? fCheck.initGitRepo.valueOf();
+	initGitRepo = initGitRepo ?? fCheck.initGitRepo;
 	// 3. Initialize git repo
 	if (initGitRepo) {
 		if (dryRun) {
@@ -64,27 +64,27 @@ export async function createBasic(ctx) {
 		} else {
 			await exec("git", ["init"], { cwd });
 		}
-		prompts.log.success("Initialized Git repository");
+		prompts.log.success(c.green("Initialized Git repository"));
 	} else {
-		prompts.log.info("Skipped Git initialization");
+		prompts.log.info(`${c.gray("Skipped Git initialization")}`);
 	}
 
 const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black("Dont forget to modify your .env file for YOUR ghost install!"))} `
 	
 	// 4. Install dependencies
-	installDeps = installDeps ?? fCheck.installDeps.valueOf();
+	installDeps = installDeps ?? fCheck.installDeps;
 	const pm = ctx.pkgManager ?? "pnpm";
 	if (installDeps) {
-		spinner.start(`Installing dependencies with ${pm}`);
+		spinner.start(`${c.cyan(`Installing dependencies with ${pm}`)} `);
 		if (dryRun) {
 			await wait(1);
 		} else {
 			await installDependencies(pm, { cwd });
 		}
-		spinner.stop(`Dependencies installed with ${pm}`);
+		spinner.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
 		success()
 	} else {
-		prompts.log.info("Skipped dependency installation");
+		prompts.log.info(`${c.gray('Skipped dependency installation')}`);
 		success()
 	}
 
@@ -153,7 +153,7 @@ async function getProjectDetails(projectNameInput, opts) {
 	if (!projectName) {
 		const defaultProjectName = "my-astro-ghost";
 		let answer = await prompts.text({
-			message: "Where would you like to create your project?",
+			message: `${c.cyan("Where would you like to create your project?")}`,
 			placeholder: `.${path.sep}${defaultProjectName}`,
 		});
 		if (prompts.isCancel(answer)) exitPrompt();
