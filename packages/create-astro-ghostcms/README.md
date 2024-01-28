@@ -2,7 +2,7 @@
 
 Utility to quickly get started with our Integration and astro.
 
-![Demo](./src/assets/create-astro-ghostcms-2024.jan.27.png)
+![Demo](./src/assets/create-astro-ghostcms.png)
 
 The Default install method requires `pnpm` if you dont have `pnpm` installed you can change this by using the command below with the following argument `--pkg-manager <pkg-mngr>` with the Package manager of your choice(i.e npm, yarn). 
 
