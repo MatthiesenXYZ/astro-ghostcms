@@ -27,6 +27,7 @@ npx @matthiesenxyz/create-astro-ghostcms --<arg>
 
 ## Available templates
 
-| Template | Description                                           |
-| -------- | ----------------------------------------------------- |
-| `basic`  | Basic Setup with astro-ghostcms and theme-default     |
+|   Template   |   Description                                         |
+| ------------ | ----------------------------------------------------- |
+| `basic`      | Basic Setup with astro-ghostcms and theme-default     |
+| `starterkit` | Integration in API-Only Mode with customizable theme  |
