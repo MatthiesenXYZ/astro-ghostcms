@@ -50,7 +50,7 @@ export async function createBasic(ctx) {
 		//	initialValue: false,
 		//}),
 		readyCheck: () => p.confirm({
-			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Select Yes to continue or `Ctrl+C` to Cancel. ')))}`,
+			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ')))}`,
 			initialValue: true,
 		}),
 	},
