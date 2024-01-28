@@ -44,15 +44,9 @@ export async function main() {
 		return;
 	}
 
-	async function pkgVer () {
-		try {
-		  const packageObj = await fse.readJson('../package.json')
-		  console.log(packageObj.version)
-		} catch (err) {
-		  console.error(err)
-		}
-	  }
-	  
+	const packageJSON = await fse.readJson('../package.json');
+	const pkgVer = packageJSON.version;
+
 	// 1. Say hello!
 	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.underline(`( ${pkgVer} )`)} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
 
