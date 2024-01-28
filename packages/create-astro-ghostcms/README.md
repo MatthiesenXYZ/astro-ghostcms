@@ -18,11 +18,11 @@ npx @matthiesenxyz/create-astro-ghostcms <template> <project_directory>
 
 ```sh
 npx @matthiesenxyz/create-astro-ghostcms --<arg>
-#  `--help` : Calls internal getHelp Function
-#  `--install` : Sets Install Dependencies to 'true'
-#  `--git` : Initiates git Repo
-#  `--dry` : Shows you what the command will do. (NO CHANGES WILL BE MADE)
-#  `--pkg-manager`: Specify your Package manager(i.e. npm, yarn | DEFAULT: pnpm)
+#  `--help`        : Calls internal getHelp Function
+#  `--install`     : Sets Install Dependencies to 'true'
+#  `--git`         : Initiates git Repo
+#  `--dry`         : Shows you what the command will do. (NO CHANGES WILL BE MADE)
+#  `--pkg-manager` : Specify your Package manager(i.e. npm, yarn | DEFAULT: pnpm)
 ```
 
 ## Available templates
