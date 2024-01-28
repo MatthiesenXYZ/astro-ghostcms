@@ -122,6 +122,10 @@ async function createApp(projectName, projectPathname, { onError }) {
 			src: path.join(sharedTemplateDir, ".env"),
 			dest: path.join(projectPathname, ".env"),
 		},
+		{
+			src: path.join(sharedTemplateDir, ".gitignore"),
+			dest: path.join(projectPathname, ".gitignore"),
+		},
 	];
 	await Promise.all(
 		filesToCopy.map(async ({ src, dest }) => await fse.copy(src, dest))
