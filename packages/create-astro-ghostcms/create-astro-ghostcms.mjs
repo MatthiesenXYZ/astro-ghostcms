@@ -12,4 +12,4 @@ if (requiredMajorVersion < minimumMajorVersion) {
 	process.exit(1);
 }
 
-import('./src/main.js').then(({ main }) => main());
+import('./src/index.js').then(({ main }) => main());

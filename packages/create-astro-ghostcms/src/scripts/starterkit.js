@@ -4,12 +4,12 @@ import c from 'picocolors';
 import * as p from "@clack/prompts";
 import { execa } from "execa";
 import { exitPrompt, getModulePaths, isPathname,
-	normalizePath, wait } from "../lib/utils.js";
+	normalizePath, wait } from "../utils";
 
-const runnerName = "basic";
+const runnerName = "starterkit";
 
 /** @param {Context} ctx */
-export async function createBasic(ctx) {
+export async function createStarterKit(ctx) {
 	let { args, dryRun, initGitRepo, installDeps } = ctx;
 
 	const s = p.spinner();

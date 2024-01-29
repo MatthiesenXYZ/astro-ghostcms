@@ -3,9 +3,9 @@ import arg from "arg";
 import fse from "fs-extra";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
-import { exitPrompt, getModulePaths, isPackageManager } from "./lib/utils.js";
-import { createBasic } from "./runners/basic.js";
-import { createStarterKit } from "./runners/starterkit.js";
+import { exitPrompt, getModulePaths, isPackageManager } from "./utils";
+import { createBasic } from "./scripts/basic.js";
+//import { createStarterKit } from "./scripts/starterkit.js";
 
 
 export async function main() {
@@ -89,6 +89,7 @@ export async function main() {
 		dryRun,
 		installDeps,
 		initGitRepo,
+		template: template,
 		pkgManager: isPackageManager(pkgManager) ? pkgManager : null,
 		args,
 	};
@@ -99,7 +100,7 @@ export async function main() {
 			await createBasic(ctx).catch(console.error);
 			break;
 		case "starterkit":
-			await createStarterKit(ctx).catch(console.error);
+			await createBasic(ctx).catch(console.error);
 			break;
 		default:
 			throw new Error(c.red(`Unknown template: ${template}`));
@@ -122,7 +123,7 @@ function isValidTemplate(template) {
 }
 
 /**
- * @typedef {import("../types").Template} Template
- * @typedef {import("../types").PackageManager} PackageManager
- * @typedef {import("../types").Context} Context
+ * @typedef {import("../types.js").Template} Template
+ * @typedef {import("../types.js").PackageManager} PackageManager
+ * @typedef {import("../types.js").Context} Context
  */
