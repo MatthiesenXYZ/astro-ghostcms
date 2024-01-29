@@ -34,6 +34,22 @@ In this Repo you will also find the Following:
   - `astro-ghostcms-theme-default`: The Default theme in integration mode.
   - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
 
+## Contributing
+
+This is a `pnpm` workspace and requires `pnpm` to function properly
+
+To setup this workspace clone this repo and run the following command:
+
+```sh
+pnpm install
+```
+
+Then you can run the playground:
+
+```sh
+pnpm playground:dev
+```
+
 ### Notices
 
 *Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided JavaScript tools to link a Headless GhostCMS install in to your Astro project.* 
