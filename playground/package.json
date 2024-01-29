@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.2.4",
+    "astro": "^4.2.6",
     "@matthiesenxyz/astro-ghostcms-theme-default": "*",
     "@matthiesenxyz/astro-ghostcms": "workspace:*"
   },
