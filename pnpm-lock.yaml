@@ -30,8 +30,8 @@ importers:
         specifier: 0.1.5
         version: link:../packages/astro-ghostcms-theme-default
       astro:
-        specifier: ^4.2.4
-        version: 4.2.4(typescript@5.3.3)
+        specifier: ^4.2.6
+        version: 4.2.6(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -213,8 +213,8 @@ importers:
         specifier: '*'
         version: link:../packages/astro-ghostcms-theme-default
       astro:
-        specifier: ^4.2.4
-        version: 4.2.4(typescript@5.3.3)
+        specifier: ^4.2.6
+        version: 4.2.6(typescript@5.3.3)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
@@ -230,10 +230,10 @@ importers:
         version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       '@astrojs/starlight':
         specifier: ^0.17.0
-        version: 0.17.0(astro@4.2.4)
+        version: 0.17.0(astro@4.2.6)
       astro:
-        specifier: ^4.2.4
-        version: 4.2.4(sass@1.70.0)(typescript@5.3.3)
+        specifier: ^4.2.6
+        version: 4.2.6(sass@1.70.0)(typescript@5.3.3)
       astro-font:
         specifier: ^0.0.77
         version: 0.0.77
@@ -344,7 +344,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.6(astro@4.2.4):
+  /@astrojs/mdx@2.0.6(astro@4.2.6):
     resolution: {integrity: sha512-PY6FYN5TN8dsRFSzcPIt5ofJ/w+v+5GtUUyDYbznu8zmFWlL9TkTLJ9U1zaQ3s2Qh6r1cAeLdEYjW/hW+vZzlw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -353,7 +353,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.3
-      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.6(sass@1.70.0)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -391,18 +391,18 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/starlight@0.17.0(astro@4.2.4):
+  /@astrojs/starlight@0.17.0(astro@4.2.6):
     resolution: {integrity: sha512-a2s+x/5r0v7S5jERC91IuEqV+PXDUlFNVDJPrcbpjx0xaqvg4TezL1K3gWCptfHO1mUE9ikQ8vaArbNbgFVb/g==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
-      '@astrojs/mdx': 2.0.6(astro@4.2.4)
+      '@astrojs/mdx': 2.0.6(astro@4.2.6)
       '@astrojs/sitemap': 3.0.5
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.3
       '@types/mdast': 4.0.3
-      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
-      astro-expressive-code: 0.32.2(astro@4.2.4)
+      astro: 4.2.6(sass@1.70.0)(typescript@5.3.3)
+      astro-expressive-code: 0.32.2(astro@4.2.6)
       bcp-47: 2.1.0
       hast-util-select: 6.0.2
       hastscript: 8.0.0
@@ -2318,12 +2318,12 @@ packages:
       - supports-color
     dev: true
 
-  /astro-expressive-code@0.32.2(astro@4.2.4):
+  /astro-expressive-code@0.32.2(astro@4.2.6):
     resolution: {integrity: sha512-uJbgSCl9F9NGjdfTmBHci5Ws0/zMUNk9dWfOl6rvYaOL6NZha+NNjnmB3Aza7GnxP+NvQt3RV8M2vpcZnaudSw==}
     peerDependencies:
       astro: ^3.3.0 || ^4.0.0-beta
     dependencies:
-      astro: 4.2.4(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.6(sass@1.70.0)(typescript@5.3.3)
       hast-util-to-html: 8.0.4
       remark-expressive-code: 0.32.2
     dev: false
@@ -2503,8 +2503,8 @@ packages:
       - typescript
     dev: false
 
-  /astro@4.2.4(sass@1.70.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-z1f52lXkHf71M5HSLKrd5G1PH5/Zfq4kMp0iUT7Na5VHcPDma/NYFPFPewDxqV6UPmyxupj3xuooFaN3j8zaow==}
+  /astro@4.2.6(sass@1.70.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-k5i8pEI2r45JTkoE0I4JyhOH/dZFpjUA4AONbRd9Gr1LtnGOhKHDftiYOrRLUGx91q7BzoW3DOk+h4yZM4yC3g==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -2528,6 +2528,7 @@ packages:
       clsx: 2.1.0
       common-ancestor-path: 1.0.1
       cookie: 0.6.0
+      cssesc: 3.0.0
       debug: 4.3.4
       deterministic-object-hash: 2.0.2
       devalue: 4.3.2
@@ -2585,8 +2586,8 @@ packages:
       - typescript
     dev: false
 
-  /astro@4.2.4(typescript@5.3.3):
-    resolution: {integrity: sha512-z1f52lXkHf71M5HSLKrd5G1PH5/Zfq4kMp0iUT7Na5VHcPDma/NYFPFPewDxqV6UPmyxupj3xuooFaN3j8zaow==}
+  /astro@4.2.6(typescript@5.3.3):
+    resolution: {integrity: sha512-k5i8pEI2r45JTkoE0I4JyhOH/dZFpjUA4AONbRd9Gr1LtnGOhKHDftiYOrRLUGx91q7BzoW3DOk+h4yZM4yC3g==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -2610,6 +2611,7 @@ packages:
       clsx: 2.1.0
       common-ancestor-path: 1.0.1
       cookie: 0.6.0
+      cssesc: 3.0.0
       debug: 4.3.4
       deterministic-object-hash: 2.0.2
       devalue: 4.3.2
@@ -7640,7 +7642,7 @@ packages:
       vitest: '>=0.16.0'
     dependencies:
       cross-fetch: 3.1.8
-      vitest: 1.2.1(@types/node@18.19.10)
+      vitest: 1.2.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - encoding
     dev: true

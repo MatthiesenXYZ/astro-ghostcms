@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.2.4",
+    "astro": "^4.2.6",
     "@matthiesenxyz/astro-ghostcms": "3.1.5",
     "@matthiesenxyz/astro-ghostcms-theme-default": "0.1.5"
   },
