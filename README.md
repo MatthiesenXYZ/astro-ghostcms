@@ -2,6 +2,8 @@
 
 # Welcome to Astro-GhostCMS
 
+Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
+
 ## Quick Start
 
 ```sh
