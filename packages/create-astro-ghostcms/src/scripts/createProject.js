@@ -6,11 +6,11 @@ import { execa } from "execa";
 import { exitPrompt, getModulePaths, isPathname,
 	normalizePath, wait } from "../utils/index.js";
 
-const runnerName = "starterkit";
+//const runnerName = "basic";
 
 /** @param {Context} ctx */
-export async function createStarterKit(ctx) {
-	let { args, dryRun, initGitRepo, installDeps } = ctx;
+export async function createProject(ctx) {
+	let { args, dryRun, initGitRepo, installDeps, template } = ctx;
 
 	const s = p.spinner();
 	let cwd = process.cwd();
@@ -30,7 +30,7 @@ export async function createStarterKit(ctx) {
 	if (dryRun) {
 		await wait(2000);
 	} else {
-		await createApp(project.name, project.pathname, {
+		await createApp(project.name, project.pathname, template, {
 			onError(error) {
 				s.stop(`${c.red('Failed to create new project')}`);
 				p.cancel();
@@ -102,13 +102,14 @@ export async function createStarterKit(ctx) {
  *
  * @param {string} projectName
  * @param {string} projectPathname
+ * @param {string} template
  * @param {{ onError: (err: unknown) => any }} opts
  */
-async function createApp(projectName, projectPathname, { onError }) {
+async function createApp(projectName, projectPathname, template, { onError }) {
 	const { pathname } = getModulePaths(import.meta.url);
 	const templatesDir = path.resolve(pathname, "..", "..", "templates");
 	const sharedTemplateDir = path.join(templatesDir, "_shared");
-	const runnerTemplateDir = path.join(templatesDir, runnerName);
+	const runnerTemplateDir = path.join(templatesDir, template);
 
 	await fse.ensureDir(projectPathname);
 

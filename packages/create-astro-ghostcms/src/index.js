@@ -4,8 +4,7 @@ import fse from "fs-extra";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
 import { exitPrompt, getModulePaths, isPackageManager } from "./utils/index.js";
-import { createBasic } from "./scripts/basic.js";
-//import { createStarterKit } from "./scripts/starterkit.js";
+import { createProject } from "./scripts/createProject.js";
 
 
 export async function main() {
@@ -97,10 +96,10 @@ export async function main() {
 	// 3. Call template functions
 	switch (template) {
 		case "basic":
-			await createBasic(ctx).catch(console.error);
+			await createProject(ctx).catch(console.error);
 			break;
 		case "starterkit":
-			await createBasic(ctx).catch(console.error);
+			await createProject(ctx).catch(console.error);
 			break;
 		default:
 			throw new Error(c.red(`Unknown template: ${template}`));
