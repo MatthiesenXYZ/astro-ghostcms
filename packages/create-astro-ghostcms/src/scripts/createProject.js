@@ -43,7 +43,7 @@ export async function createProject(ctx) {
 	const fCheck = await p.group({
 		installDeps: () => p.confirm({
 			message: `${c.cyan('Install dependencies? (Recommended)')}`,
-			initialValue: false,
+			initialValue: true,
 		}), 
 		//GitRepo: () => p.confirm({
 		//	message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray("( Tip: This Option gets Stuck Press Enter Twice if you get no reponse! )"))}`,
