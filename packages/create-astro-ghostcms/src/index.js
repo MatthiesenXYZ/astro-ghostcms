@@ -3,7 +3,7 @@ import arg from "arg";
 import fse from "fs-extra";
 import * as p from "@clack/prompts";
 import c from 'picocolors';
-import { exitPrompt, getModulePaths, isPackageManager } from "./utils";
+import { exitPrompt, getModulePaths, isPackageManager } from "./utils/index.js";
 import { createBasic } from "./scripts/basic.js";
 //import { createStarterKit } from "./scripts/starterkit.js";
 

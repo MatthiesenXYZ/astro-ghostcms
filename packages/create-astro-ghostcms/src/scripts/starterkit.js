@@ -4,7 +4,7 @@ import c from 'picocolors';
 import * as p from "@clack/prompts";
 import { execa } from "execa";
 import { exitPrompt, getModulePaths, isPathname,
-	normalizePath, wait } from "../utils";
+	normalizePath, wait } from "../utils/index.js";
 
 const runnerName = "starterkit";
 
