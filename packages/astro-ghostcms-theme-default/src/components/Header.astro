@@ -431,7 +431,7 @@ const { settings } = Astro.props as Props;
     if (document.readyState === "complete") {
       callback();
     } else {
-      document.addEventListener("DOMContentLoaded", callback);
+      document.addEventListener("astro:page-load", callback);
     }
   }
   
