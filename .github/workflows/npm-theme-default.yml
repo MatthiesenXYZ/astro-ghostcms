@@ -1,4 +1,4 @@
-name: Publish Astro-GhostCMS Theme (Default)
+name: NPM-Theme (Default)
 
 on:
   workflow_dispatch:

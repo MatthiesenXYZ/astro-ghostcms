@@ -1,4 +1,4 @@
-name: Publish Astro-GhostCMS
+name: NPM-Astro-GhostCMS
 
 on:
   release:

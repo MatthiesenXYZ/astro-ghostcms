@@ -1,4 +1,4 @@
-name: Publish Create-Astro-GhostCMS
+name: NPM-Create
 
 on:
   workflow_dispatch:
