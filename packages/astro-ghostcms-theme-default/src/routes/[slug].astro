@@ -26,6 +26,7 @@ const bodyClass = `post-template ${postClass}`;
   content={{ title: post.title, description: post.excerpt }}
   settings={settings}
   bodyClass={bodyClass}
+  image={post.feature_image?post.feature_image:undefined}
 >
   {
     post.primary_author ? (

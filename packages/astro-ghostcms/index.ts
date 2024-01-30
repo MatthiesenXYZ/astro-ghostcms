@@ -8,6 +8,8 @@ import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
 import { addVirtualImport } from "./src/utils/add-virtual-import";
 
+export * from "./types.js"
+
 /** INTERNAL CONSTANTS */
 const IC = {
     /** INTERNAL PACKAGE NAME */
@@ -139,6 +141,31 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         });
                     } else { if( !GCD.dCO ) { logger.info(IC.idRSS)}}
 
+                    injectRoute({ 
+                        pattern: '/open-graph/[slug].png', 
+                        entrypoint: `${IC.PKG}/open-graph/[slug].png.ts` 
+                    });
+                    injectRoute({ 
+                        pattern: '/open-graph/index.png', 
+                        entrypoint: `${IC.PKG}/open-graph/index.png.ts` 
+                    });
+                    injectRoute({ 
+                        pattern: '/open-graph/authors.png', 
+                        entrypoint: `${IC.PKG}/open-graph/authors.png.ts` 
+                    });
+                    injectRoute({ 
+                        pattern: '/open-graph/author/[slug].png', 
+                        entrypoint: `${IC.PKG}/open-graph/author/[slug].png.ts` 
+                    });
+                    injectRoute({ 
+                        pattern: '/open-graph/tags.png', 
+                        entrypoint: `${IC.PKG}/open-graph/tags.png.ts` 
+                    });
+                    injectRoute({ 
+                        pattern: '/open-graph/tag/[slug].png', 
+                        entrypoint: `${IC.PKG}/open-graph/tag/[slug].png.ts` 
+                    });
+
                     // THEME ROUTES
                     if( !GCD.dCO ) { logger.info( IC.ITR )}
 
@@ -203,7 +230,15 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 // FINAL STEP TO KEEP INTEGRATION LIVE
                 try { updateConfig( {
                     // UPDATE ASTRO CONFIG WITH INTEGRATED INTEGRATIONS
-                    integrations: [ ghostSitemap( GCD.SM ), ghostRobots( GCD.RTXT ) ],
+                    integrations: [
+                        ghostSitemap(GCD.SM),
+                        ghostRobots(GCD.RTXT)
+                    ],
+                    vite: {
+                        optimizeDeps: {
+                            exclude: ["@resvg/resvg-js"],
+                        }
+                    }
                     // LOAD VITE AND SETUP viteGhostCMS Configs
                 }) } catch ( e ) {
                     logger.error( e as string );

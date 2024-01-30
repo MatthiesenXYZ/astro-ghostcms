@@ -15,6 +15,17 @@ export type Props = {
   permalink?: string;
 };
 
+export const getOgImagePath = (filename: string = "index") => {
+  if (filename.startsWith("/")) filename = filename.substring(1);
+  if (filename.endsWith("/"))
+    filename = filename.substring(0, filename.length - 1);
+  if (filename === "") filename = "index";
+  return `./open-graph/${filename}.png`;
+};
+
+const ogImage = new URL(getOgImagePath(Astro.url.pathname), Astro.url.origin)
+  .href;
+
 const { content, permalink, image, settings, bodyClass = "" } = Astro.props as Props;
 const ghostAccentColor = settings.accent_color;
 ---
@@ -58,14 +69,14 @@ const ghostAccentColor = settings.accent_color;
     <meta property="og:title" content={content?.title} />
     {permalink && <meta property="og:url" content={permalink} />}
     {content?.description && <meta property="og:description" content={content.description} />}
-    {image && <meta property="og:image" content={image} />}
+    <meta property="og:image" content={ogImage} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={content?.title} />
     {permalink && <meta property="twitter:url" content={permalink} />}
     {content?.description && <meta property="twitter:description" content={content.description} />}
-    {image && <meta property="twitter:image" content={image} />}
+    <meta property="twitter:image" content={ogImage} />
     
     <!-- Link to the global style, or the file that imports constructs -->
     <link
