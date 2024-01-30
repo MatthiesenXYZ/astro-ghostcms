@@ -2,7 +2,6 @@
 import { AstroFont } from 'astro-font';
 import { ViewTransitions } from 'astro:transitions';
 import { SiteTitle, SiteDescription } from '../consts';
-import favicon from '../assets/favicon.svg';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
@@ -12,7 +11,7 @@ const { title = SiteTitle, name = SiteTitle, description = SiteDescription } = A
 <!-- Page Metadata -->
 <link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
-<link rel="icon" type="image/svg" href={favicon.src} />
+<link rel="icon" type="image/svg" href={Astro.url+'favicon.svg'} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={title} />
