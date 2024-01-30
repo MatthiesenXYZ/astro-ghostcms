@@ -21,6 +21,8 @@ export default defineConfig({
 			  disable404: false,
         // Disables default RSS page route and @astrojs/rss integration
 			  disableRSS: false,
+        // Disables default satori OpenGraph generation
+        disableSatoriOG: false,
         // *OPTIONAL* THIS Option allows the user to disable default route
         // injections, disabling the default layout and theme all together.
         // Allowing the user to still use integration features while building
