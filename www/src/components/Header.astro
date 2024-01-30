@@ -1,15 +1,13 @@
 ---
 import '../styles/global.scss';
 import { SiteTitle } from '../consts';
-import favicon from '../assets/spaceghost.svg'
-import { Image } from 'astro:assets';
 ---
 
 <header>
 	<nav>
 		<h2 id="site_title">
 			<a href="/">
-				<Image src={favicon} alt="logo" width={64} class="filter-white" />
+				<img src="/favicon.svg" alt="logo" width={64} class="filter-white" />
 				{SiteTitle}
 			</a>
 		</h2>
