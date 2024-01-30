@@ -1,0 +1,97 @@
+---
+export type Props = {
+  name: string,
+  image?: string | null,
+  count: number,
+  bio: string | null,
+  location: string | null,
+  website: string | null,
+  twitter: string | null,
+  facebook: string | null
+};
+
+const {
+    name, image, bio, location, website, twitter, facebook, count
+} = Astro.props as Props;
+---
+
+<header class="author-card">
+    { image ? <img src={image} alt="Author Image" class="author-image"> : (
+        <span class="author-image">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z"
+                fill="#FFF"
+              />
+            </g>
+          </svg>
+        </span>
+      )}
+    <div class="author-info">
+        <div class="author-name">{name}</div>
+        <div class="author-bio">
+            {bio ? bio : count > 0? count + " Posts" : "No Posts"}
+        </div>
+
+        {location && (
+            <div class="author-location">
+                📍 {location}
+            </div>
+        )}
+
+        <div class="author-links">
+            {website && (<a href={website} target="_blank" rel="noopener">Website</a>)}
+            {twitter && (<a href={twitter} target="_blank" rel="noopener">Twitter</a>)}
+            {facebook && (<a href={facebook} target="_blank" rel="noopener">Facebook</a>)}
+        </div>
+    </div>
+</header>
+
+<style>
+    .author-card {
+        display: flex;
+        margin-top: 8vmin;
+        margin-bottom: 6vmin;
+        overflow: hidden;
+    }
+
+    .author-image {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+
+    .author-info {
+        flex: 1;
+        padding: 20px;
+        text-align: left;
+    }
+
+    .author-name {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .author-bio {
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .author-location {
+        margin-top: 10px;
+        color: #888;
+    }
+
+    .author-links {
+        margin-top: 10px;
+    }
+
+    .author-links a {
+        text-decoration: none;
+        color: #3498db;
+        margin-right: 10px;
+    }
+</style>
