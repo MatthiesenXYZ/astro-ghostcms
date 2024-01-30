@@ -1,4 +1,4 @@
-<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png" width="64px" />
+<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w256h256/2024/01/spaceghost.png" width="64px" />
 
 # Welcome to Astro-GhostCMS
 
