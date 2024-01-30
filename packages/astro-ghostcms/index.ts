@@ -53,7 +53,11 @@ const IC = {
     /** INTERNAL STRING */
     id404: "404 Injection Disabled",
     /** INTERNAL STRING */
-    idRSS: "RSS Injection Disabled"
+    idRSS: "RSS Injection Disabled",
+    /** INTERNAL STRING */
+    satori_e: "Injecting Satori-OpenGraph Generator",
+    /** INTERNAL STRING */
+    satori_d: "Satori Injection disabled"
 }
 
 /** CONTENT API ENVIRONMENT VARIABLES */
@@ -91,7 +95,8 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     RTXT: GhostConfig.robotstxt,
                     gSite: GhostConfig.ghostURL,
                     dRSS: GhostConfig.disableRSS,
-                    d404: GhostConfig.disable404
+                    d404: GhostConfig.disable404,
+                    dOG: GhostConfig.disableSatoriOG
                 }
 
                 // Check For ENV Variables
@@ -141,30 +146,33 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         });
                     } else { if( !GCD.dCO ) { logger.info(IC.idRSS)}}
 
-                    injectRoute({ 
-                        pattern: '/open-graph/[slug].png', 
-                        entrypoint: `${IC.PKG}/open-graph/[slug].png.ts` 
-                    });
-                    injectRoute({ 
-                        pattern: '/open-graph/index.png', 
-                        entrypoint: `${IC.PKG}/open-graph/index.png.ts` 
-                    });
-                    injectRoute({ 
-                        pattern: '/open-graph/authors.png', 
-                        entrypoint: `${IC.PKG}/open-graph/authors.png.ts` 
-                    });
-                    injectRoute({ 
-                        pattern: '/open-graph/author/[slug].png', 
-                        entrypoint: `${IC.PKG}/open-graph/author/[slug].png.ts` 
-                    });
-                    injectRoute({ 
-                        pattern: '/open-graph/tags.png', 
-                        entrypoint: `${IC.PKG}/open-graph/tags.png.ts` 
-                    });
-                    injectRoute({ 
-                        pattern: '/open-graph/tag/[slug].png', 
-                        entrypoint: `${IC.PKG}/open-graph/tag/[slug].png.ts` 
-                    });
+                    if ( !GCD.dOG ) {
+                        if( !GCD.dCO ) { logger.info( IC.satori_e )}
+                        injectRoute({ 
+                            pattern: '/open-graph/[slug].png', 
+                            entrypoint: `${IC.PKG}/open-graph/[slug].png.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/open-graph/index.png', 
+                            entrypoint: `${IC.PKG}/open-graph/index.png.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/open-graph/authors.png', 
+                            entrypoint: `${IC.PKG}/open-graph/authors.png.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/open-graph/author/[slug].png', 
+                            entrypoint: `${IC.PKG}/open-graph/author/[slug].png.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/open-graph/tags.png', 
+                            entrypoint: `${IC.PKG}/open-graph/tags.png.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/open-graph/tag/[slug].png', 
+                            entrypoint: `${IC.PKG}/open-graph/tag/[slug].png.ts` 
+                        });
+                    } else { if( !GCD.dCO ) { logger.info( IC.satori_d )}}
 
                     // THEME ROUTES
                     if( !GCD.dCO ) { logger.info( IC.ITR )}

@@ -54,11 +54,12 @@
     "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
     "./config": "./src/integrations/virtual-config.ts",
     "./types": "./types.ts",
-    "./open-graph/[slug].png.ts": "./src/default-routes/open-graph/[slug].png.ts",
+    "./satoriOG": "./src/integrations/satori.ts",
     "./open-graph/index.png.ts": "./src/default-routes/open-graph/index.png.ts",
     "./open-graph/authors.png.ts": "./src/default-routes/open-graph/authors.png.ts",
-    "./open-graph/author/[slug].png.ts": "./src/default-routes/open-graph/author/[slug].png.ts",
     "./open-graph/tags.png.ts": "./src/default-routes/open-graph/tags.png.ts",
+    "./open-graph/[slug].png.ts": "./src/default-routes/open-graph/[slug].png.ts",
+    "./open-graph/author/[slug].png.ts": "./src/default-routes/open-graph/author/[slug].png.ts",
     "./open-graph/tag/[slug].png.ts": "./src/default-routes/open-graph/tag/[slug].png.ts"
   },
   "scripts": {

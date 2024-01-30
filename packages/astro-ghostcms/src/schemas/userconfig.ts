@@ -15,6 +15,10 @@ export const UserConfigSchema = z.object({
   ghostURL: z.string().url().optional(),
   /** OPTIONAL - Allows the user to disable the `/rss.xml` injection */
   disableRSS: z.boolean().default(false),
+  /** OPTIONAL - Allows the user to disable the `/open-graph/*` route injection 
+   * @ This feature uses `satori` to generate OpenGraph Images
+  */
+  disableSatoriOG: z.boolean().default(false),
   /** OPTIONAL - Allows the user to disable the `/404` injection */
   disable404: z.boolean().default(false),
   /** OPTIONAL - Disable Route Injector

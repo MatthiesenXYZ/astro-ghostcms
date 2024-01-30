@@ -1,25 +1,13 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import type {
-	SatoriAstroOGOptions,
-	ToSvgOptions,
-	ToImageOptions,
-	ToResponseOptions,
-} from "../../types.js";
+import type { SatoriAstroOGOptions, ToSvgOptions, ToImageOptions, ToResponseOptions } from "../../types.js";
 
-export const satoriOG = ({
-	width,
-	height,
-	template,
-}: SatoriAstroOGOptions) => {
+const satoriOG = ({ width, height, template }: SatoriAstroOGOptions) => {
 	return {
 		async toSvg(options: ToSvgOptions) {
 			return await satori(template, { width, height, ...options });
 		},
-		async toImage({
-			satori: satoriOptions,
-			resvg: _resvgOptions,
-		}: ToImageOptions) {
+		async toImage({ satori: satoriOptions, resvg: _resvgOptions }: ToImageOptions) {
 			const resvgOptions =
 				typeof _resvgOptions === "function"
 					? _resvgOptions({ width, height })
@@ -28,15 +16,12 @@ export const satoriOG = ({
 			return new Resvg(await this.toSvg(satoriOptions), {
 				fitTo: { mode: "width", value: width },
 				...resvgOptions,
-			})
-				.render()
-				.asPng();
+			}).render().asPng();
 		},
 		async toResponse({ response: init, ...rest }: ToResponseOptions) {
 			const image = await this.toImage(rest);
 
-			return new Response(image, {
-				...init,
+			return new Response(image, {...init,
 				headers: {
 					"Content-Type": "image/png",
 					"Content-Length": image.length.toString(),
@@ -47,3 +32,5 @@ export const satoriOG = ({
 		},
 	};
 };
+
+export default satoriOG;

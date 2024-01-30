@@ -1,5 +1,5 @@
 import type { APIRoute, GetStaticPaths, GetStaticPathsItem, InferGetStaticPropsType } from "astro";
-import { satoriOG } from "../../integrations/satori.js";
+import satoriOG from "../../integrations/satori.js";
 import { html } from "satori-html";
 import { invariant, getAllPosts, getAllPages, getSettings } from "../../api/index.js";
 
