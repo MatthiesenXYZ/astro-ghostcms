@@ -9,7 +9,7 @@ import { Image } from 'astro:assets';
 	<nav>
 		<h2 id="site_title">
 			<a href="/">
-				<Image src={favicon} alt="logo" width={64}/>
+				<Image src={favicon} alt="logo" width={64} class="filter-white" />
 				{SiteTitle}
 			</a>
 		</h2>
@@ -27,4 +27,7 @@ import { Image } from 'astro:assets';
 	.links a {
 		text-decoration: none;
 	}
+	.filter-white{
+		filter: invert(100%) sepia(0%) saturate(3179%) hue-rotate(226deg) brightness(118%) contrast(101%);
+}
 </style>

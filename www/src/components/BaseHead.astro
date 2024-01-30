@@ -1,16 +1,36 @@
 ---
 import { AstroFont } from 'astro-font';
 import { ViewTransitions } from 'astro:transitions';
-import SEO, { type Props as SEOProps } from './SEO.astro';
 import { SiteTitle, SiteDescription } from '../consts';
 import favicon from '../assets/favicon.svg';
 
-export type Props = Partial<SEOProps>;
-const { title = SiteTitle, name = SiteTitle, description = SiteDescription, ...seo } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+const { title = SiteTitle, name = SiteTitle, description = SiteDescription } = Astro.props;
 ---
 
-<SEO {title} {description} {name} {...seo} />
+<!-- Page Metadata -->
+<link rel="canonical" href={canonicalURL} />
+<meta name="description" content={description} />
 <link rel="icon" type="image/svg" href={favicon.src} />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content='en' />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={name} />
+<meta property="og:image" content={Astro.url+'og.png'} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content='summary_large_image' />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={Astro.url+'og.png'} />
+<meta name="twitter:image:alt" content="og_alt" />
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <AstroFont
   config={[

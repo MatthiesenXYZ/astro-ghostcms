@@ -75,8 +75,6 @@ function normalizeImageUrl(image: string | ImageMetadata) {
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
-{og.image && <meta property="og:image" content={normalizeImageUrl(og.image.src)} />}
-{og.image && <meta property="og:image:alt" content={og.image.alt} />}
 
 <!-- Twitter Tags -->
 <meta name="twitter:card" content={twitter.card} />
