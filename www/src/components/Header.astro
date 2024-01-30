@@ -2,14 +2,13 @@
 import '../styles/global.scss';
 import { SiteTitle } from '../consts';
 import spaceghost from '../assets/spaceghost.png'
-import { Image } from 'astro:assets';
 ---
 
 <header>
 	<nav>
 		<h2 id="site_title">
 			<a href="/">
-				<Image src={spaceghost} alt="logo" width={64}/>
+				<img src={spaceghost.src} alt="logo" width={64}/>
 				{SiteTitle}
 			</a>
 		</h2>
