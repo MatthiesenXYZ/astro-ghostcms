@@ -15,9 +15,9 @@ export default defineConfig({
     starlight({
       title: 'Astro-GhostCMS',
       logo: {
-        src: './src/assets/spaceghost.svg'
+        src: './src/assets/spaceghost.png'
       },
-      favicon: 'spaceghost.svg',
+      favicon: 'spaceghost.png',
       customCss: [ './src/styles/starlight.css' ],
       expressiveCode: { themes: [ houstonTheme ] },
       social: {

@@ -2,6 +2,7 @@
 import { AstroFont } from 'astro-font';
 import { ViewTransitions } from 'astro:transitions';
 import { SiteTitle, SiteDescription } from '../consts';
+import spaceghost from '../assets/spaceghost.png'
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
@@ -11,7 +12,7 @@ const { title = SiteTitle, name = SiteTitle, description = SiteDescription } = A
 <!-- Page Metadata -->
 <link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
-<link rel="icon" type="image/svg" href={Astro.url+'favicon.svg'} />
+<link rel="icon" type="image/png" href={spaceghost.src} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={title} />
