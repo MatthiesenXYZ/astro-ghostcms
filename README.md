@@ -4,6 +4,9 @@ Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
 
 For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
+- [Default Theme Demo](https://demo.astro-ghostcms.xyz)
+- [Catppuccin Dark Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
+
 ## Quick Start
 
 ```sh
