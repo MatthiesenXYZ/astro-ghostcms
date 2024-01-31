@@ -37,6 +37,7 @@ export default defineConfig({
                 { label: 'Basic API Usage', link: '/docs/introduction/api/usage' },
                 { label: 'Templates', link: '/docs/introduction/api/templates', badge: { text: 'NEW', variant: 'success' }, } ], }, ], },
         { label: 'Default Theme Usage', autogenerate: { directory: 'docs/theme-default'}, },
+        { label: 'Catppuccin Dark Theme Usage', autogenerate: { directory: 'docs/catppuccin-dark'}, },
         { label: 'Tutorials', autogenerate: { directory: 'docs/tutorials' }, },
         { label: 'Reference', autogenerate: { directory: 'docs/reference' }, },
       ],
