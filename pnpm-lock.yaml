@@ -21,6 +21,31 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2(vitest@1.2.1)
 
+  catppuccin-dark-demo:
+    dependencies:
+      '@astrojs/tailwind':
+        specifier: ^5.1.0
+        version: 5.1.0(astro@4.2.8)(tailwindcss@3.4.1)
+      '@matthiesenxyz/astro-ghostcms':
+        specifier: 3.1.6
+        version: 3.1.6(astro@4.2.8)(typescript@5.3.3)
+      '@matthiesenxyz/astro-ghostcms-catppuccin-dark':
+        specifier: 0.0.2
+        version: link:../packages/astro-ghostcms-catppuccin-dark
+      astro:
+        specifier: ^4.2.8
+        version: 4.2.8(typescript@5.3.3)
+      tailwindcss:
+        specifier: ^3.3.5
+        version: 3.4.1
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.4.1
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   demo:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
@@ -1643,6 +1668,26 @@ packages:
       - typescript
     dev: false
 
+  /@matthiesenxyz/astro-ghostcms-theme-default@0.1.9(astro@4.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-VStl8TMS0wFZtGwVys8qUScAddGLS9FPjnAWppu/AWJMgD8wCRtiUZ24MB34LMWjkiP8ZtZlQVS75pA13ZK3Mg==}
+    peerDependencies:
+      astro: ^4.2.1
+    dependencies:
+      '@matthiesenxyz/astro-ghostcms': 3.1.8(astro@4.2.8)(sass@1.70.0)(typescript@5.3.3)
+      astro: 4.2.8(typescript@5.3.3)
+      astro-font: 0.0.77
+      sass: 1.70.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
   /@matthiesenxyz/astro-ghostcms@3.1.6(astro@4.2.6)(typescript@5.3.3):
     resolution: {integrity: sha512-2JN7ctAGJLHTyoRomr1yecJ1ikJVI+yl09ROkt1nSRF0pagZuqkVYbaQnzx/MMVdiqQFdtsVJaLQVwq0Y2NdSA==}
     peerDependencies:
@@ -1673,6 +1718,36 @@ packages:
       - typescript
     dev: false
 
+  /@matthiesenxyz/astro-ghostcms@3.1.6(astro@4.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-2JN7ctAGJLHTyoRomr1yecJ1ikJVI+yl09ROkt1nSRF0pagZuqkVYbaQnzx/MMVdiqQFdtsVJaLQVwq0Y2NdSA==}
+    peerDependencies:
+      astro: ^4.2.6
+    dependencies:
+      '@astrojs/rss': 4.0.4
+      '@astrojs/sitemap': 3.0.5
+      '@matthiesenxyz/astro-ghostcms-theme-default': 0.1.9(astro@4.2.8)(typescript@5.3.3)
+      '@resvg/resvg-js': 2.6.0
+      '@ts-ghost/core-api': 5.1.2
+      astro: 4.2.8(typescript@5.3.3)
+      astro-robots-txt: 1.0.0
+      satori: 0.10.13
+      satori-html: 0.3.2
+      vite: 5.0.12(@types/node@20.11.10)
+      vite-tsconfig-paths: 4.3.1(typescript@5.3.3)(vite@5.0.12)
+      zod: 3.22.4
+      zod-validation-error: 3.0.0(zod@3.22.4)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
   /@matthiesenxyz/astro-ghostcms@3.1.8(astro@4.2.6)(sass@1.70.0)(typescript@5.3.3):
     resolution: {integrity: sha512-pJt3WfTlUSr0cF+qcvouBKhpkNtx/uZxixUWVPHst9w4t/hBnMIzuLhTUPC8uBZboZ/qsCRO/3TLWDXPAeNj6g==}
     peerDependencies:
@@ -1684,6 +1759,36 @@ packages:
       '@resvg/resvg-js': 2.6.0
       '@ts-ghost/core-api': 5.1.2
       astro: 4.2.6(@types/node@20.11.10)(typescript@5.3.3)
+      astro-robots-txt: 1.0.0
+      satori: 0.10.13
+      satori-html: 0.3.2
+      vite: 5.0.12(sass@1.70.0)
+      vite-tsconfig-paths: 4.3.1(typescript@5.3.3)(vite@5.0.12)
+      zod: 3.22.4
+      zod-validation-error: 3.0.0(zod@3.22.4)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@matthiesenxyz/astro-ghostcms@3.1.8(astro@4.2.8)(sass@1.70.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-pJt3WfTlUSr0cF+qcvouBKhpkNtx/uZxixUWVPHst9w4t/hBnMIzuLhTUPC8uBZboZ/qsCRO/3TLWDXPAeNj6g==}
+    peerDependencies:
+      astro: ^4.2.6
+    dependencies:
+      '@astrojs/rss': 4.0.4
+      '@astrojs/sitemap': 3.0.5
+      '@matthiesenxyz/astro-ghostcms-theme-default': 0.1.9(astro@4.2.8)(typescript@5.3.3)
+      '@resvg/resvg-js': 2.6.0
+      '@ts-ghost/core-api': 5.1.2
+      astro: 4.2.8(typescript@5.3.3)
       astro-robots-txt: 1.0.0
       satori: 0.10.13
       satori-html: 0.3.2

@@ -11,6 +11,7 @@
 		"playground:dev": "pnpm --filter playground dev",
 		"www:dev": "pnpm --filter www dev",
 		"demo:dev": "pnpm --filter demo dev",
+		"cat:dev": "pnpm --filter catppuccin-dark-demo dev",
 		"api:test": "pnpm --filter astro-ghostcms test",
 		"api:test:watch": "pnpm --filter astro-ghostcms test:watch",
 		"api:test:coverage": "pnpm --filter astro-ghostcms test:coverage",

@@ -3,3 +3,4 @@ packages:
   - "playground"
   - "www"
   - "demo"
+  - "catppuccin-dark-demo"
