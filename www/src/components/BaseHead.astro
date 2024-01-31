@@ -11,8 +11,10 @@ const { title = SiteTitle, name = SiteTitle, description = SiteDescription } = A
 
 <!-- Page Metadata -->
 <link rel="canonical" href={canonicalURL} />
+<link rel="icon" type="image/svg" href={spaceghost.src} />
+
 <meta name="description" content={description} />
-<link rel="icon" type="image/png" href={spaceghost.src} />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={title} />
@@ -31,7 +33,6 @@ const { title = SiteTitle, name = SiteTitle, description = SiteDescription } = A
 
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <AstroFont
   config={[
 	{
