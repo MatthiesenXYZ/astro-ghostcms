@@ -1,0 +1,55 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "../components/footer.astro";
+import Navbar from "../components/navbar.astro";
+import "@fontsource-variable/inter/index.css";
+import { type Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { getOgImagePath } from "@matthiesenxyz/astro-ghostcms/satoriOG";
+import "../styles/global.css"
+
+export interface Props {
+  title: string;
+  description: string;
+  settings: Settings;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const ogI = new URL(getOgImagePath(Astro.url.pathname), Astro.url.origin).href;
+
+const { title, description, settings } = Astro.props;
+
+const makeTitle = title 
+  ? title + ' | ' + settings.title
+  : settings.title + ' | ' + settings.description;
+
+const makeDesc = description ? description : settings.description
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-ctp-base">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={settings.icon} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title={makeTitle}
+      description={makeDesc}
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {url: canonicalURL, type: "website",
+          title: makeTitle, image: ogI,},
+        optional: {siteName:settings.title, description: makeDesc},
+        image: {alt:makeTitle},
+      }}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>

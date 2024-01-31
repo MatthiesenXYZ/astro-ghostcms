@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+Lots of classes hidden here to showcase the catppuccin color classes
+*/
+
+
+#ghostimport h1 {
+  @apply font-black text-5xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-pink;
+}
+
+#ghostimport h2 {
+    @apply font-black text-4xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-teal;
+}
+
+#ghostimport h3 {
+      @apply font-black text-2xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-sapphire;
+}
+
+#ghostimport h4 {
+        @apply font-black text-xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-mauve;
+}
+  
+#ghostimport pre {
+    @apply bg-ctp-crust px-2 text-ctp-rosewater mb-3
+}
+
+#ghostimport p {
+    @apply py-2
+}
+
+#ghostimport table{
+    @apply border-2
+}
+#ghostimport table > thead{
+    @apply text-ctp-green border-2
+}
+#ghostimport table > tbody > tr{
+    @apply border-2 
+}
+#ghostimport table > tbody > tr > td{
+    @apply border-2 p-2
+}
+
+#ghostimport ul {
+    list-style: circle;
+    margin-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+#ghostimport ul > li {
+    @apply text-ctp-blue
+}

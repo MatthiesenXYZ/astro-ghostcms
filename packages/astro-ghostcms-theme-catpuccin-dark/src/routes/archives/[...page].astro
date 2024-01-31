@@ -1,0 +1,34 @@
+---
+import PostPreviewList from "../../components/PostPreviewList.astro";
+import Container from "../../components/container.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllPosts, getSettings, invariant, type Post } from "@matthiesenxyz/astro-ghostcms/api";
+import type { GetStaticPathsOptions, Page } from "astro";
+import Paginator from "../../components/Paginator.astro";
+
+export async function getStaticPaths({ paginate }:GetStaticPathsOptions) {
+  const posts = await getAllPosts();
+  return paginate(posts, {
+    pageSize: 5,
+  });
+}
+
+export type Props = {
+  page: Page<Post>
+};
+
+const settings = await getSettings();
+invariant(settings, "Settings are required");
+
+const title = settings.title;
+const description = settings.description;
+const { page } = Astro.props as Props;
+---
+
+<Layout title={title} description={description} settings={settings}>
+  <Container>
+    <div class="divider my-2" />
+    <PostPreviewList posts={page.data} settings={settings} />
+    <Paginator {page} />
+  </Container>
+</Layout>

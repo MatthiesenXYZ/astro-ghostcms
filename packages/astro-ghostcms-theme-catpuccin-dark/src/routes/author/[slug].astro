@@ -1,0 +1,45 @@
+---
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import Container from "../../components/container.astro";
+import Layout from "../../layouts/Layout.astro";
+import AuthorDetailCard from '../../components/AuthorDetailCard.astro';
+import { getAllPosts, getAllAuthors, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import PostPreviewList from '../../components/PostPreviewList.astro';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const { authors } = await getAllAuthors();
+  const settings = await getSettings();
+
+  return authors.map((author) => {
+    const filteredPosts = posts.filter((post) =>
+      post.authors?.map((author) => author.slug).includes(author.slug)
+    );
+    return {
+      params: { slug: author.slug },
+      props: {
+        posts: filteredPosts,
+        settings,
+        author,
+      },
+    };
+  });
+}
+
+export type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { posts, settings, author } = Astro.props;
+invariant(settings, "Settings are required");
+const title = `Posts by author: ${author.name}`;
+const description = `All of the articles we've posted and linked so far under the author: ${author.name}`;
+---
+
+<Layout title={title} description={description} settings={settings}>
+  <Container>
+    <section class="outer">
+    <AuthorDetailCard name={author.name} count={author.count?.posts || 0} image={author.profile_image} bio={author.bio} location={author.location} website={author.website} twitter={author.twitter} facebook={author.facebook}/>
+    <PostPreviewList posts={posts} settings={settings} />
+    </section>
+  </Container>
+</Layout>

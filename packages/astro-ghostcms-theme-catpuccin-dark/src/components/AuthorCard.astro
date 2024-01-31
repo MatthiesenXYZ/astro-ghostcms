@@ -1,0 +1,61 @@
+---
+import { getGhostImgPath } from "../utils";
+import type { Settings, Author } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  author: Author;
+  wide?: boolean;
+  addClass?: string;
+  settings: Settings;
+  showCover?: boolean;
+};
+const {
+  author,
+  wide = false,
+  settings,
+  showCover = true,
+} = Astro.props as Props;
+---
+<div class="flex">
+  {author.profile_image && (
+    <a href={`/author/${author.slug}`} class="author-card-media">
+      <img
+        class="author-card-img"
+        data-srcset={`
+            ${getGhostImgPath(settings.url, author.profile_image, 100)} 100w,
+            ${getGhostImgPath(settings.url, author.profile_image, 300)} 300w
+          `}
+        srcset={`
+            ${getGhostImgPath(settings.url, author.profile_image, 100)} 100w,
+            ${getGhostImgPath(settings.url, author.profile_image, 300)} 300w
+        `}
+        data-sizes="auto"
+        data-src={getGhostImgPath(settings.url, author.profile_image, 300)}
+        src={getGhostImgPath(settings.url, author.profile_image, 300)}
+        alt={author.name}
+        sizes="316px"
+      />
+    </a>
+  )}
+  <div class="flex flex-col ml-2">
+    <div class="text-ctp-teal text-3xl font-semibold">
+      <a href={`/author/${author.slug}`}>{author.name}</a>
+    </div>
+
+    {author.bio && <div class="text-ctp-blue">{author.bio}</div>}
+
+    <div class="text-ctp-red">
+      {author.count && author.count.posts && (
+        <div>
+          {author.count.posts > 0 ? `${author.count.posts} posts` : "No posts"}
+        </div>
+      )}
+    </div>
+
+    {author.location && (
+      <div class="text-ctp-sapphire">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map-fill text-ctp-flamingo inline" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8z"/> <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/> </svg> {author.location}
+      </div>
+  )}
+
+  </div>
+</div>

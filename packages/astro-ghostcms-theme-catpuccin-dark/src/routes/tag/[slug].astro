@@ -1,0 +1,64 @@
+---
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import Container from "../../components/container.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllPosts, getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import PostPreview from '../../components/PostPreview.astro';
+import { getGhostImgPath } from '../../utils';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const { tags } = await getAllTags();
+  const settings = await getSettings();
+
+  return tags.map((tag) => {
+    const filteredPosts = posts.filter((post) =>
+      post.tags?.map((tag) => tag.slug).includes(tag.slug)
+    );
+    return {
+      params: { slug: tag.slug },
+      props: {
+        posts: filteredPosts,
+        settings,
+        tag,
+      },
+    };
+  });
+}
+
+export type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { posts, settings, tag } = Astro.props;
+invariant(settings, "Settings are required");
+const title = `Posts by author: ${tag.name}`;
+const description = `All of the articles we've posted and linked so far under the author: ${tag.name}`;
+---
+
+<Layout title={title} description={description} settings={settings}>
+  <Container>
+    <section class="post-card post-card-large">
+      
+      <div class="post-card-content">
+        <div class="post-card-content-link">
+          <header class="post-card-header">
+            <div class="text-ctp-maroon text-4xl font-bold">Tagged</div>
+            <h2 class="text-ctp-lavender text-2xl font-semibold">{tag.name}</h2>
+          </header>
+          <div>
+            <p class="text-ctp-sky">
+              {tag.description
+                ? tag.description
+                : `A collection of ${tag.count?.posts || 0 } Post${
+                    tag.count?.posts ?? 0 > 1 ? "s" : ""
+                  }`}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    {posts.map((post, index) => (
+      <PostPreview post={post} index={index} settings={settings} />
+    ))}
+  </Container>
+</Layout>

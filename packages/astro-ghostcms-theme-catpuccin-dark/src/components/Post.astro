@@ -1,0 +1,19 @@
+---
+import PostHero from "../components/PostHero.astro";
+import PostFooter from "../components/PostFooter.astro";
+import {invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  post: Post;
+  settings: Settings;
+  posts: Post[];
+};
+const { post, settings, posts } = Astro.props as Props;
+invariant(settings, "Settings not found");
+---
+
+<PostHero post={post} settings={settings} />
+<div id="ghostimport" class="mt-4 text-ctp-subtext1">
+  <Fragment set:html={post.html} />
+</div>
+<PostFooter post={post} settings={settings} posts={posts} />
+

@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import type { InferGetStaticPropsType } from "astro";
+import Post from "../components/Post.astro";
+
+export async function getStaticPaths() {
+  const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
+  const allPosts = [...posts, ...pages];
+  return allPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, posts, settings },
+  }));
+}
+
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const {post, posts, settings} = Astro.props as Props;
+invariant(settings, "Settings are required");
+---
+
+<Layout 
+  title={post.title} 
+  description={post.excerpt} 
+  settings={settings}>
+
+  <Container>
+
+    {
+      post.primary_author && (
+      <Post
+          post={post}
+          settings={settings}
+          posts={posts}
+        />
+        
+      )
+    }
+
+  </Container>
+
+</Layout>

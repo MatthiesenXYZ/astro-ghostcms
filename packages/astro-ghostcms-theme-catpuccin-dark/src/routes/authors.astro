@@ -1,0 +1,30 @@
+---
+import AuthorCard from "../components/AuthorCard.astro";
+import Container from "../components/container.astro";
+import Layout from "../layouts/Layout.astro";
+import { getAllAuthors, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+
+let title = "All Authors";
+let description = "All the authors";
+const { authors } = await getAllAuthors();
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+
+---
+
+<Layout title={title} description={description} settings={settings}>
+  <Container>
+    <section class="outer">
+        <div class="text-center text-4xl font-bold text-ctp-pink">
+          Collection of Authors
+        </div>
+        <div class="grid-flow-col grid grid-cols-3 items-center ">
+          {authors.map((author) => (
+            <article class="bg-ctp-surface0">
+              <AuthorCard author={author} settings={settings} />
+            </article>
+          ))}
+        </div>
+    </section>
+  </Container>
+</Layout>

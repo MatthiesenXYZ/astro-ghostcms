@@ -1,0 +1,51 @@
+---
+import FeatureImage from "../components/FeatureImage.astro";
+import AuthorList from "../components/AuthorList.astro";
+import { formatDate } from "../utils";
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  post: Post;
+  settings: Settings;
+};
+const { post, settings } = Astro.props as Props;
+---
+
+<header class="article-header gh-canvas">
+  {post.primary_tag && (
+    <section class="text-ctp-lavender">
+      <a href={`/tag/${post.primary_tag.slug}`}>{post.primary_tag.name}</a>
+    </section>
+  )}
+  <h1 class="text-ctp-red text-4xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter" transition:name={post.title}>{post.title}</h1>
+
+  <div class="flex justify-between my-4">
+    <section class="flex flex-grow align-middle">
+      <AuthorList post={post} settings={settings} />
+      <div class="text-ctp-overlay2">
+        { post.primary_author  && (
+          <h4 class="text-ctp-teal">
+          {post.primary_author.name}
+        </h4>
+        )}
+        <div class="text-ctp-overlay2">
+          <time class="text-ctp-sapphire" datetime={formatDate(post.created_at)}
+            >{formatDate(post.created_at)}
+          </time>
+          <span class="text-ctp-peach"
+            ><span class="text-ctp-overlay2">&bull;</span>
+            {post.reading_time} min read
+          </span>
+        </div>
+      </div>
+    </section>
+  </div>
+  {post.feature_image && (
+    <FeatureImage
+      image={post.feature_image}
+      alt={post.feature_image_alt ? post.feature_image_alt : post.title}
+      caption={post.feature_image_caption || "" }
+      settings={settings}
+      transitionName={`img-${post.title}`}
+    />
+  )}
+</header>

@@ -1,0 +1,30 @@
+---
+import PostPreviewList from "../components/PostPreviewList.astro";
+import FeaturedPost from "../components/FeaturedPost.astro";
+import Container from "../components/container.astro";
+import Layout from "../layouts/Layout.astro";
+import { getPosts, getFeaturedPosts, getSettings, invariant, type Post } from "@matthiesenxyz/astro-ghostcms/api";
+const { posts:featuredposts} = await getFeaturedPosts();
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+
+async function getPostsSet(){
+  const featuredPosts = await getFeaturedPosts();
+  const { posts } = await getPosts();
+  if(featuredPosts.posts.length === 0){ return posts } 
+  else {
+    const featured = featuredPosts.posts[0]
+    return posts.filter((p: Post)=>p.id !== featured.id)
+  }
+}
+
+const mPosts = await getPostsSet()
+---
+
+<Layout title="" description="" settings={settings}>
+  <Container>
+    <FeaturedPost posts={featuredposts} settings={settings}/>
+    <div class="divider my-2" />
+    <PostPreviewList posts={mPosts} settings={settings} />
+  </Container>
+</Layout>

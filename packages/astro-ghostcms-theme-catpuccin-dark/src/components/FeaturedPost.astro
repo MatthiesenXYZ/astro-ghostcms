@@ -1,0 +1,66 @@
+---
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
+import FeatureImage from "./FeatureImage.astro";
+import AuthorList from "./AuthorList.astro";
+import { formatDate } from "utils";
+export type Props = {
+  posts: Post[];
+  settings: Settings;
+};
+const { posts, settings } = Astro.props as Props;
+
+const latestFeatured = posts[0]
+---
+{latestFeatured && (
+  <main
+    class="grid place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+    {latestFeatured.feature_image && (
+      <FeatureImage
+        image={latestFeatured.feature_image}
+        alt={latestFeatured.feature_image_alt ? latestFeatured.feature_image_alt : latestFeatured.title}
+        caption={latestFeatured.feature_image_caption || "" }
+        settings={settings}
+        transitionName={`img-${latestFeatured.title}`}
+      />
+    )}
+    <div>
+      {latestFeatured.primary_tag && (
+        <section class="text-ctp-lavender">
+          <a href={`/tag/${latestFeatured.primary_tag.slug}`}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag inline" viewBox="0 0 16 16">
+    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/>
+    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/>
+  </svg> {latestFeatured.primary_tag.name}</a>
+          </section>
+      )}
+      <h2
+        class="text-ctp-red text-4xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+        {latestFeatured && latestFeatured.title}
+      </h2>
+      <div class="flex justify-between ml-5">
+        <section class="flex flex-grow align-middle">
+          <AuthorList post={latestFeatured} settings={settings} />
+          <div class="text-ctp-overlay2">
+            { latestFeatured.primary_author && (
+              <h4 class="text-ctp-teal">
+              {latestFeatured.primary_author.name}
+            </h4>
+            )}
+            <div class="text-ctp-overlay2">
+              <time class="text-ctp-sapphire" datetime={formatDate(latestFeatured.published_at?latestFeatured.published_at:latestFeatured.created_at)}
+                >{formatDate(latestFeatured.published_at?latestFeatured.published_at:latestFeatured.created_at)}
+              </time>
+              <span class="text-ctp-peach"
+                ><span class="text-ctp-overlay2">&bull;</span>
+                {latestFeatured.reading_time} min read
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="divider my-4"/>
+      <section id="ghostimport" class="text-ctp-subtext1">
+        {latestFeatured && <Fragment set:html={latestFeatured.html} />}
+      </section>
+    </div>
+  </main>
+)}

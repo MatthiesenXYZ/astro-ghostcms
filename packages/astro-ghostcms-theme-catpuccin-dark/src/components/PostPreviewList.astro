@@ -1,0 +1,21 @@
+---
+import PostPreview from "./PostPreview.astro";
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  posts: Post[];
+  settings: Settings;
+  isHome?: boolean;
+};
+const { posts, settings, isHome = false } = Astro.props as Props;
+---
+
+<div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8 p-4">
+  {posts.map((post: Post, index: number) => (
+    <PostPreview
+      post={post}
+      index={index}
+      settings={settings}
+      isHome={isHome}
+    />
+  ))}
+</div>

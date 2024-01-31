@@ -1,0 +1,34 @@
+---
+import TagCard from "../components/TagCard.astro";
+import Container from "../components/container.astro";
+import Layout from "../layouts/Layout.astro";
+import { getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+
+let title = "All Tags";
+let description = "All the tags used so far...";
+const { tags } = await getAllTags();
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+
+---
+
+<Layout title={title} description={description} settings={settings}>
+  <Container>
+    <section class="outer">
+        <div class="text-center text-4xl font-bold text-ctp-pink">
+          Collection of Tags
+        </div>
+        <div class="grid grid-flow-col gap-4">
+          {
+            tags
+              .filter((tag) => tag.slug && !tag.slug.startsWith("hash-"))
+              .map((tag) => (
+                <article class="bg-ctp-surface0">
+                  <TagCard tag={tag} settings={settings} />
+                </article>
+              ))
+          }
+        </div>
+    </section>
+  </Container>
+</Layout>

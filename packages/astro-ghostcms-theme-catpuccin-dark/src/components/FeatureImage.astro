@@ -1,0 +1,26 @@
+---
+import { getGhostImgPath } from "../utils";
+import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  image: string;
+  alt?: string;
+  caption?: string;
+  settings: Settings;
+  transitionName?: string;
+};
+const { image, alt, caption = "", settings, transitionName } = Astro.props as Props;
+---
+
+<figure class="article-image">
+  <img
+    srcset={`
+          ${getGhostImgPath(settings.url, image, 300)}   300w,
+          ${getGhostImgPath(settings.url, image, 600)}   600w,
+        `}
+    sizes="(min-width: 300px) 600px, 92vw"
+    src={getGhostImgPath(settings.url, image, 2000)}
+    alt={alt}
+    transition:name={transitionName}
+  />
+  {caption && <figcaption class="text-ctp-overlay2"><Fragment set:html={caption}></figcaption>}
+</figure>

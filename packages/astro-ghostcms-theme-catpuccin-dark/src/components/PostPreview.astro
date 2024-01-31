@@ -1,0 +1,65 @@
+---
+import { getGhostImgPath, formatDate } from "../utils";
+import AuthorList from "./AuthorList.astro";
+import type { Settings, Post, Tag } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  post: Post;
+  settings: Settings;
+  index?: number;
+  isHome?: boolean;
+};
+const { post, settings, index, isHome = false } = Astro.props as Props;
+---
+
+<article
+  class={`relative flex flex-col bg-cover bg-ctp-surface0 break-words ${post.tags && post.tags
+    .map((tag: Tag) => `tag-${tag.slug}`)
+    .join(" ")} ${
+    isHome && post.feature_image && index == 0 ? "lg:grid-cols-1 lg:col-span-3 lg:gap-4 lg:border-t-0" : ""
+  }`}
+>
+  <a class="relative grid-cols-1 col-span-2 mb-0" href={`/${post.slug}`}>
+    <img
+      class="relative flex overflow-hidden border-r-2 mb-0"
+      srcset={`
+        ${getGhostImgPath(settings.url, post.feature_image || "", 300)} 300w, 
+        ${getGhostImgPath(settings.url, post.feature_image || "", 600)} 600w
+        ${getGhostImgPath(settings.url, post.feature_image || "", 1000)} 1000w
+        ${getGhostImgPath(settings.url, post.feature_image || "", 2000)} 2000w
+      `}
+      src={`${getGhostImgPath(settings.url, post.feature_image || "", 600)}`}
+      alt={post.title}
+      sizes="(max-width: 1000px) 400px, 800px"
+      loading="lazy"
+      transition:name={`img-${post.title}`}
+    />
+  </a>
+  <div class="relative justify-center">
+    <a class="relative p-0" href={`/${post.slug}`} data-astro-reload>
+      <header class="mt-0 ml-5">
+        {post.primary_tag && (
+          <div class="ml-1 text-ctp-lavender text-sm">{post.primary_tag.name}</div>
+        )}
+        <h2 class="mt-0 text-2xl font-bold text-ctp-red" transition:name={post.title}>{post.title}</h2>
+      </header>
+      <div class="px-4 mb-6 text-base text-ctp-subtext1 max-w-fit">
+        <p>{post.excerpt}</p>
+      </div>
+    </a>
+
+    <footer class="flex align-middle items-center p-2">
+      <AuthorList post={post} settings={settings} />
+      <div class="flex flex-1 flex-col ml-2 text-ctp-teal text-lg">
+        <span class="text-sm">{post.primary_author?.name ?? ""}</span>
+        <span class="text-sm text-ctp-sapphire"
+          ><time datetime={formatDate(post.created_at)}
+            >{formatDate(post.created_at)}
+          </time>
+          <span class="text-ctp-peach"
+            ><span class="text-ctp-overlay2">&bull;</span>
+            {post.reading_time} min read
+          </span>
+      </div>
+    </footer>
+  </div>
+</article>
