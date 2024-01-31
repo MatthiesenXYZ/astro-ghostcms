@@ -1,31 +1,25 @@
-<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w256h256/2024/01/spaceghost.png" width="64px" />
-
-# Welcome to Astro-GhostCMS
+<img src="https://repository-images.githubusercontent.com/742727289/d4fb3f65-0d5f-4a1a-9f8b-9b3e2dc90bde" />
 
 Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
+
+For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
 ## Quick Start
 
 ```sh
-# Run this command and follow the prompt!
+# Its easy run this command and follow the prompt!
 npx @matthiesenxyz/create-astro-ghostcms
-# Want to pass arguments through to the command?  YOU CAN!
-#  `--install`     : Sets Install Dependencies to 'true'
-#  `--git`         : Initiates git Repo
-#  `--pkg-manager` : Specify your Package manager(i.e. npm, yarn | DEFAULT: pnpm)
 ```
 
-For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
+## Our Supporters:
 
-**Demo site Deploy status**:
-
-![Vercel](https://vercelbadge.vercel.app/api/matthiesenxyz/astro-ghostcms)
+Want to be listed here? by name or logo? [Signup Here](https://www.buymeacoffee.com/adammatthiesen/membership) for an Astro-GhostCMS Suppoter Membership *(Silver and up get listed here)* Also All Suppoter Memberships get a Discord rank!
 
 ## Repo Structure
 
-This repo is structured as a monorepo.  All of our astro-ghostcms packages can be found under the `packages` folder.  These are all independently published or internal packages that can be found on [npmjs.com](https://npmjs.com)
+This repo is structured as a `pnpm` monorepo.  All of our packages can be found under the `packages/` folder.  These are all internal packages or independently published that can be found on [npmjs.com](https://npmjs.com)
 
-In this Repo you will also find the Following:
+In this Repo you will find the Following:
 
 - `demo`: [Demo Site](https://demo.astro-ghostcms.xyz)
 - `www`: [Public Site](https://astro-ghostcms.xyz)
