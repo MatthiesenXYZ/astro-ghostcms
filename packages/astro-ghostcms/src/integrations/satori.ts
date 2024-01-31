@@ -34,3 +34,13 @@ const satoriOG = ({ width, height, template }: SatoriAstroOGOptions) => {
 };
 
 export default satoriOG;
+
+export function getOgImagePath(filename = "index"):string {
+	if (filename.startsWith("/")) 
+		filename = filename.substring(1);
+	if (filename.endsWith("/"))
+	  	filename = filename.substring(0, filename.length - 1);
+	if (filename === "") filename = "index";
+	return `./open-graph/${filename}.png`;
+  };
+
