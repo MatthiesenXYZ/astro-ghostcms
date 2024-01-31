@@ -43,7 +43,6 @@
   },
   "scripts": { },
   "devDependencies": {
-    "@matthiesenxyz/astro-ghostcms": "*",
     "@catppuccin/tailwindcss": "0.1.6"
   },
   "peerDependencies": {
