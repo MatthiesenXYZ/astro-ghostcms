@@ -1,0 +1,52 @@
+name: NPM-Theme (Catppuccin Dark)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publishnpm:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/astro-ghostcms-catppuccin-dark
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - name: publish-npm
+        run: |
+          # Change publish registry
+          echo "$(jq '.publishConfig.registry = "https://registry.npmjs.org"' package.json)" > package.json
+          # Publish package
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  githubpackage:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/astro-ghostcms-catppuccin-dark
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+      - name: publish-github
+        run: |
+          # Change publish registry
+          echo "$(jq '.publishConfig.registry = "https://npm.pkg.github.com"' package.json)" > package.json
+          # Publish package
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.ACTION_TOKEN}}
