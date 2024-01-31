@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import ghostcms from "@matthiesenxyz/astro-ghostcms";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
 			disableRSS: false,
 			disableRouteInjection: false,
 			disableConsoleOutput: false,
-			theme: "@matthiesenxyz/astro-ghostcms-theme-catpuccin-dark",
+			theme: "@matthiesenxyz/astro-ghostcms-catppuccin-dark",
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 		})
 	],

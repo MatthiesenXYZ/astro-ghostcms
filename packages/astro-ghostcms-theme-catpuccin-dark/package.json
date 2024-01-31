@@ -25,14 +25,14 @@
     "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
     "email": "issues@astro-ghostcms.xyz"
   },
-  "main": "index.ts",
+  "main": "index.js",
   "files": [
     "src",
-    "index.ts",
+    "index.js",
     "tailwind-preset.js"
   ],
   "exports": {
-    ".": "./index.ts",
+    ".": "./index.js",
     "./index.astro": "./src/routes/index.astro",
     "./[slug].astro": "./src/routes/[slug].astro",
     "./tags.astro": "./src/routes/tags.astro",
