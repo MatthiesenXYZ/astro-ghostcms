@@ -1,6 +1,6 @@
 ---
 title: Manual Install
-description: How to install the Catppuccin Dark theme
+description: How to install the Catppuccin theme
 ---
 
 [Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
@@ -17,7 +17,7 @@ npm create astro@latest
 
 npx astro add @matthiesenxyz/astro-ghostcms tailwind
 
-npm i @matthiesenxyz/astro-ghostcms/astro-ghostcms-catppuccin-dark
+npm i @matthiesenxyz/astro-ghostcms/astro-ghostcms-catppuccin
 ```
 
 Then set your `astro.config.ts` to look like this:
@@ -32,7 +32,7 @@ export default defineConfig({
 	site: "https://YOURDOMAINHERE.com/",
 	integrations: [tailwind(),
 		ghostcms({
-			theme: "@matthiesenxyz/astro-ghostcms-catppuccin-dark",
+			theme: "@matthiesenxyz/astro-ghostcms-catppuccin",
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 		})
 	],
@@ -44,7 +44,7 @@ export default defineConfig({
 ```ts frame="code" title="tailwind.config.cjs"
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin-dark')] 
+  presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin')] 
 };
 ```
 
