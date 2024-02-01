@@ -7,7 +7,7 @@ export default defineConfig({
 	site: "https://catppuccindark-demo.astro-ghostcms.xyz/",
 	integrations: [tailwind(),
 		ghostcms({
-			theme: "@matthiesenxyz/astro-ghostcms-catppuccin-dark",
+			theme: "@matthiesenxyz/astro-ghostcms-catppuccin",
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 		})
 	],
