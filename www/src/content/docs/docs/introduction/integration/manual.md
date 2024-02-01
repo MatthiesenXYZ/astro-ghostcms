@@ -27,7 +27,11 @@ import GhostCMS from '@matthiesenxyz/astro-ghostcms';
 // https://astro.build/config
 export default defineConfig({
   site: "https://YOUR-DOMAIN-HERE.com"
-  integrations: [GhostCMS()],
+  integrations: [GhostCMS({
+    // You can either set your ghostURL here or as a `.env`/environment variable 
+    // THIS WILL TAKE PRIORITY
+    ghostURL: "https://ghostdemo.matthiesen.xyz",
+  })],
 });
 ```
 
