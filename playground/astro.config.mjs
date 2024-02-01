@@ -11,7 +11,7 @@ export default defineConfig({
 			disableRSS: false,
 			disableRouteInjection: false,
 			disableConsoleOutput: false,
-			theme: "@matthiesenxyz/astro-ghostcms-catppuccin-dark",
+			theme: "@matthiesenxyz/astro-ghostcms-catppuccin",
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 		})
 	],
