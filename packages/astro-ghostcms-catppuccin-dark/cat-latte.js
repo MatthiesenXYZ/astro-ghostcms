@@ -12,5 +12,5 @@ export const theme = {
 };
 export const plugins = [
   require("@tailwindcss/typography"),
-  require("@catppuccin/tailwindcss")({ prefix: 'ctp', defaultFlavour: "macchiato" })
+  require("@catppuccin/tailwindcss")({ prefix: 'ctp', defaultFlavour: "latte" })
 ];

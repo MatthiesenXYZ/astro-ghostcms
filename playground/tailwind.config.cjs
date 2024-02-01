@@ -1,4 +1,4 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin-dark/latte.js')] 
+  presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin-dark/macchiato')] 
 };
