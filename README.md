@@ -31,7 +31,7 @@ In this Repo you will find the Following:
   - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
   - `astro-ghostcms`: The main Integration!
   - `astro-ghostcms-theme-default`: The Default theme in integration mode.
-  - `astro-ghostcms-catppuccin-dark`: A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
+  - `astro-ghostcms-catppuccin`: A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
   - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
 
 ## Contributing
