@@ -1,4 +1,4 @@
-name: NPM-Theme (Catppuccin Dark)
+name: NPM-Theme (Catppuccin)
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./packages/astro-ghostcms-catppuccin-dark
+        working-directory: ./packages/astro-ghostcms-catppuccin
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./packages/astro-ghostcms-catppuccin-dark
+        working-directory: ./packages/astro-ghostcms-catppuccin
     steps:
       - name: checkout
         uses: actions/checkout@v4

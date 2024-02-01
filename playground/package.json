@@ -13,7 +13,7 @@
   "dependencies": {
     "astro": "^4.2.8",
     "@matthiesenxyz/astro-ghostcms-theme-default": "workspace:*",
-    "@matthiesenxyz/astro-ghostcms-catppuccin-dark": "workspace:*",
+    "@matthiesenxyz/astro-ghostcms-catppuccin": "workspace:*",
     "@matthiesenxyz/astro-ghostcms": "workspace:*",
     "@astrojs/tailwind": "^5.1.0",
     "tailwindcss": "^3.3.5"

@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily as _fontFamily } from "tailwindcss/defaultTheme";
 export const content = [
-  './node_modules/@matthiesenxyz/astro-ghostcms-catppuccin-dark/src/**/*.{astro,js,css,ts}'
+  './node_modules/@matthiesenxyz/astro-ghostcms-catppuccin/src/**/*.{astro,js,css,ts}'
 ];
 export const theme = {
   extend: {
@@ -12,5 +12,5 @@ export const theme = {
 };
 export const plugins = [
   require("@tailwindcss/typography"),
-  require("@catppuccin/tailwindcss")({ prefix: 'ctp', defaultFlavour: "mocha" })
+  require("@catppuccin/tailwindcss")({ prefix: 'ctp', defaultFlavour: "frappe" })
 ];
