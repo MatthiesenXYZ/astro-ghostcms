@@ -25,14 +25,21 @@
     "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
     "email": "issues@astro-ghostcms.xyz"
   },
-  "main": "index.js",
+  "main": "./cat-macchiato.js",
   "files": [
     "src",
-    "index.js",
-    "tailwind-preset.js"
+    "cat-frappe.js",
+    "cat-latte.js",
+    "cat-macchiato.js",
+    "cat-mocha.js",
+    "index.js"
   ],
   "exports": {
-    ".": "./index.js",
+    ".": "./cat-macchiato.js",
+    "./frappe.js": "./cat-frappe.js",
+    "./latte.js": "./cat-latte.js",
+    "./macchiato.js": "./cat-macchiato.js",
+    "./mocha.js": "./cat-mocha.js",
     "./index.astro": "./src/routes/index.astro",
     "./[slug].astro": "./src/routes/[slug].astro",
     "./tags.astro": "./src/routes/tags.astro",
