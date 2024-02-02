@@ -4,7 +4,6 @@ import Container from "../../components/container.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getAllPosts, getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
 import PostPreview from '../../components/PostPreview.astro';
-import { getGhostImgPath } from '../../utils';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();

@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 /*
-Lots of classes hidden here to showcase the catppuccin color classes
+The ghostimport class's handle html imported from Ghost.
 */
 
-
 #ghostimport h1 {
-  @apply font-black text-5xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-pink;
+    @apply font-black text-5xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-pink;
 }
 
 #ghostimport h2 {
@@ -16,11 +15,11 @@ Lots of classes hidden here to showcase the catppuccin color classes
 }
 
 #ghostimport h3 {
-      @apply font-black text-2xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-sapphire;
+    @apply font-black text-2xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-sapphire;
 }
 
 #ghostimport h4 {
-        @apply font-black text-xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-mauve;
+    @apply font-black text-xl lg:text-6xl mb-4 bg-gradient-to-r bg-clip-text text-ctp-mauve;
 }
   
 #ghostimport pre {
