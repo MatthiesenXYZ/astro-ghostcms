@@ -3,17 +3,30 @@ import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
 import Container from "../../components/container.astro";
 import Layout from "../../layouts/Layout.astro";
 import AuthorDetailCard from '../../components/AuthorDetailCard.astro';
-import { getAllPosts, getAllAuthors, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import { getFeaturedPosts, getAllPosts, getAllAuthors, getSettings, invariant, type Post, type Author } from "@matthiesenxyz/astro-ghostcms/api";
 import PostPreviewList from '../../components/PostPreviewList.astro';
 
-export async function getStaticPaths() {
+export async function cleanPosts(){
   const posts = await getAllPosts();
+  const featuredPosts = await getFeaturedPosts();
+  if(featuredPosts.posts.length === 0) { 
+    const notFeatured = posts;
+    return notFeatured; 
+  } else {
+    const featured = featuredPosts.posts[0]
+    const notFeatured = posts.filter((post: Post) => post.id !== featured.id )
+    return notFeatured;
+  }
+}
+
+export async function getStaticPaths() {
+  const posts = await cleanPosts();
   const { authors } = await getAllAuthors();
   const settings = await getSettings();
 
-  return authors.map((author) => {
-    const filteredPosts = posts.filter((post) =>
-      post.authors?.map((author) => author.slug).includes(author.slug)
+  return authors.map((author: Author) => {
+    const filteredPosts = posts.filter((post: Post) =>
+      post.authors?.map((author: Author) => author.slug).includes(author.slug)
     );
     return {
       params: { slug: author.slug },

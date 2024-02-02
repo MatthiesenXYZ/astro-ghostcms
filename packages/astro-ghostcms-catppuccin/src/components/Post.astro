@@ -1,13 +1,27 @@
 ---
 import PostHero from "../components/PostHero.astro";
 import PostFooter from "../components/PostFooter.astro";
-import {invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { getFeaturedPosts, invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
 export type Props = {
   post: Post;
   settings: Settings;
   posts: Post[];
 };
+
 const { post, settings, posts } = Astro.props as Props;
+
+async function getPostsSet(){
+  const featuredPosts = await getFeaturedPosts();
+  const fposts = posts;
+  if(featuredPosts.posts.length === 0){ return fposts } 
+  else {
+    const featured = featuredPosts.posts[0]
+    return fposts.filter((p: Post)=>p.id !== featured.id)
+  }
+}
+
+const mPosts = await getPostsSet()
+
 invariant(settings, "Settings not found");
 ---
 
@@ -15,5 +29,5 @@ invariant(settings, "Settings not found");
 <div id="ghostimport" class="mt-4 text-ctp-subtext1">
   <Fragment set:html={post.html} />
 </div>
-<PostFooter post={post} settings={settings} posts={posts} />
+<PostFooter post={post} settings={settings} posts={mPosts} />
 

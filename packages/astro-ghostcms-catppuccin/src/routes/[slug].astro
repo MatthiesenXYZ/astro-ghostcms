@@ -26,14 +26,8 @@ invariant(settings, "Settings are required");
 
   <Container>
 
-    {
-      post.primary_author && (
-      <Post
-          post={post}
-          settings={settings}
-          posts={posts}
-        />
-        
+    { post.primary_author && (
+      <Post post={post} settings={settings} posts={posts} />
       )
     }
 
