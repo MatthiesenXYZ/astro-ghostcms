@@ -41,10 +41,29 @@ export default defineConfig({
 
 ## Setup Tailwind
 
+There are multiple color options with Catppuccin.  This theme defaults to one of the 3 darker themes.  The themes in order are 
+
+- Latte (Light) 
+- Frappe (Light Dark)
+- Macchiato (Dark Light) *DEFAULT*
+- Mocha (Darkest)
+
+### To use Default options just call the theme's Node Module
+
 ```ts frame="code" title="tailwind.config.cjs"
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin')] 
+};
+```
+
+### To use Specific options call the theme's Node Module `/` the color option lowercase
+
+```ts frame="code" title="tailwind.config.cjs"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	// OTHER OPTIONS ARE: `/frappe`, `/macchiato`, or `/mocha`
+	presets: [require('@matthiesenxyz/astro-ghostcms-catppuccin/latte')] 
 };
 ```
 
