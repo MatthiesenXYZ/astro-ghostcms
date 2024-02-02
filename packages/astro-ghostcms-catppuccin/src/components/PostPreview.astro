@@ -20,7 +20,7 @@ const { post, settings, index, isHome = false } = Astro.props as Props;
 >
   <a class="relative grid-cols-1 col-span-2 mb-0" href={`/${post.slug}`}>
     <img
-      class="relative flex overflow-hidden border-r-2 mb-0"
+      class="relative flex overflow-hidden border-r-2 mb-0 object-cover h-52 min-w-full"
       srcset={`
         ${getGhostImgPath(settings.url, post.feature_image || "", 300)} 300w, 
         ${getGhostImgPath(settings.url, post.feature_image || "", 600)} 600w
@@ -36,20 +36,20 @@ const { post, settings, index, isHome = false } = Astro.props as Props;
   </a>
   <div class="relative justify-center">
     <a class="relative p-0" href={`/${post.slug}`} data-astro-reload>
-      <header class="mt-0 ml-5">
+      <header class="mt-0 px-4 mt-3">
         {post.primary_tag && (
-          <div class="ml-1 text-ctp-lavender text-sm">{post.primary_tag.name}</div>
+          <div class="text-ctp-lavender text-sm">{post.primary_tag.name}</div>
         )}
-        <h2 class="mt-0 text-2xl font-bold text-ctp-red" transition:name={post.title}>{post.title}</h2>
+        <h2 class="my-2 text-2xl font-bold text-ctp-red line-clamp-1" transition:name={post.title}>{post.title}</h2>
       </header>
-      <div class="px-4 mb-6 text-base text-ctp-subtext1 max-w-fit">
+      <div class="px-4 text-base text-ctp-subtext1 max-w-fit line-clamp-2">
         <p>{post.excerpt}</p>
       </div>
     </a>
 
-    <footer class="flex align-middle items-center p-2">
+    <footer class="flex align-middle items-center p-4">
       <AuthorList post={post} settings={settings} />
-      <div class="flex flex-1 flex-col ml-2 text-ctp-teal text-lg">
+      <div class="flex flex-1 flex-col text-ctp-teal text-lg">
         <span class="text-sm">{post.primary_author?.name ?? ""}</span>
         <span class="text-sm text-ctp-sapphire"
           ><time datetime={formatDate(post.created_at)}
