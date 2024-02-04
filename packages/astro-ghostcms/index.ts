@@ -8,8 +8,7 @@ import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
 import { addVirtualImport } from "./src/utils/add-virtual-import";
 
-export * from "./types.js"
-
+export * from "./types.js";
 /** INTERNAL CONSTANTS */
 const IC = {
     /** INTERNAL PACKAGE NAME */

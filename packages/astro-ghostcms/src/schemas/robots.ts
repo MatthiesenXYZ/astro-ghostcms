@@ -28,7 +28,7 @@ const RobotsPolicySchema = z.object({
      * @example sitemap: false - If you want to get the robots.txt file without the Sitemap: ... entry, set the sitemap parameter to false.
      */
     sitemap: z.union([z.string(), z.string().array(), z.boolean()]).optional(),
-    /** astrojs/sitemap and astro-sitemap integrations have the sitemap-index.xml as their primary output. That is why the default value of sitemapBaseFileName is set to sitemap-index.
+    /** astrojs/sitemap and astro-robots-txt integrations have the sitemap-index.xml as their primary output. That is why the default value of sitemapBaseFileName is set to sitemap-index.
      * @example sitemapBaseFileName: 'custom-sitemap'
      */
     sitemapBaseFileName: z.string().optional(),

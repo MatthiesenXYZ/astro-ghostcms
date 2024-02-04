@@ -43,8 +43,7 @@
     ".env.demo",
     "index.ts",
     "tsconfig.json",
-    "types.ts",
-    "virtual.d.ts"
+    "types.ts"
   ],
   "exports": {
     ".": "./index.ts",
@@ -69,7 +68,7 @@
     "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
   },
   "peerDependencies": {
-    "astro": "^4.2.6"
+    "astro": "^4.2.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.4.1",

@@ -52,6 +52,9 @@
   "peerDependencies": {
     "astro": "^4.2.1"
   },
+  "devDependencies": {
+    "@matthiesenxyz/astro-ghostcms": "workspace:*"
+  },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "@catppuccin/tailwindcss": "0.1.6",

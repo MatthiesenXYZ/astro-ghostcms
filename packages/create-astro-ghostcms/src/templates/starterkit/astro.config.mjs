@@ -8,6 +8,7 @@ export default defineConfig({
     integrations: [
         // Includes GhostCMS API, @astrojs/rss, @astrojs/sitemap, and astro-robots-txt
         GhostCMS({
+            ghostURL: 'https://ghostdemo.matthiesen.xyz',
             // This Option Disables all default theme injection and allows DIY mode.
             disableRouteInjection: true,
             // Enable this to disable the extra console logs

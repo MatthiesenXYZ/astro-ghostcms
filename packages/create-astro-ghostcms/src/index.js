@@ -67,13 +67,14 @@ export async function main() {
 		const answer = await p.select({
 			message: `${c.cyan('Which template would you like to use?')}`,
 			options: [
-				{ 
-					value: "basic", 
-					label: `${c.magenta('Basic')} - ${c.cyan(c.italic('Integration w/ Default Theme'))}` 
+				{ value: "basic", 
+				label: `${c.magenta('Basic')} - ${c.cyan(c.italic('Integration w/ Default Theme'))}` 
 				},
-				{
-					value: "starterkit",
-					label: `${c.magenta('Starter Kit')} - ${c.cyan(c.italic('Integration in API-Only Mode with customizable theme'))}`
+				{ value: "catppuccin",
+				label: `${c.magenta('Catppuccin-TW')} - ${c.cyan(c.italic('Integration w/ Catppuccin TailwindCSS theme'))}`
+				},
+				{ value: "starterkit",
+				label: `${c.magenta('Starter Kit')} - ${c.cyan(c.italic('Integration in API-Only Mode with customizable theme'))}`
 				}
 			],
 			initialValue: "basic",
@@ -99,6 +100,9 @@ export async function main() {
 			await createProject(ctx).catch(console.error);
 			break;
 		case "starterkit":
+			await createProject(ctx).catch(console.error);
+			break;
+		case "catppuccin":
 			await createProject(ctx).catch(console.error);
 			break;
 		default:

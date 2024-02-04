@@ -7,4 +7,4 @@ export interface Context {
 	args: string[];
 }
 
-export type Template = ["basic","starterkit"];
+export type Template = ["basic","starterkit","catppuccin"];
