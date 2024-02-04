@@ -30,4 +30,5 @@ npx @matthiesenxyz/create-astro-ghostcms --<arg>
 |   Template   |   Description                                         |
 | ------------ | ----------------------------------------------------- |
 | `basic`      | Basic Setup with astro-ghostcms and theme-default     |
+| `catppuccin` | Integration w/ Catppuccin & TailwindCSS               |
 | `starterkit` | Integration in API-Only Mode with customizable theme  |
