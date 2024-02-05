@@ -7,6 +7,10 @@ import ghostRobots from "./src/integrations/robots-txt";
 import { loadEnv } from 'vite';
 import { fromZodError } from "zod-validation-error";
 import { addVirtualImport } from "./src/utils/add-virtual-import";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+import fse from "fs-extra";
+import latestVersion from "./src/utils/latestVersion.js";
 
 export * from "./types.js";
 /** INTERNAL CONSTANTS */
@@ -261,6 +265,18 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
             },
             'astro:config:done': async ({ logger }) => { 
                 logger.info(IC.CONFSETUPDONE); 
+
+                // Get Package Version for Intro
+                const pathname = fileURLToPath(import.meta.url);
+                const iJSON = path.resolve(pathname, "..", 'package.json');
+                const pJSON = await fse.readJson(iJSON);
+                const pkgVer = pJSON.version;
+                const npmVER = await latestVersion(IC.PKG);
+
+                if (pkgVer !== npmVER ) {
+                    logger.fork("astro-ghostcms/update-check").warn(`Current Version is v${pkgVer}, Most recent Version is v${npmVER}`)
+                }
+
             }
         }
     }
