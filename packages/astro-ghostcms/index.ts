@@ -174,7 +174,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     if( !GCD.dCO ) { logConfigSetup.info( IC.ITR )}
 
                     injectRoute({ 
-                        pattern: '/', 
+                        pattern: '/',
                         entrypoint: `${GCD.theme}/index.astro` 
                     });
                     injectRoute({ 
