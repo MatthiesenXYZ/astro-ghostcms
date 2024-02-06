@@ -278,9 +278,6 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 const logNpmVersion = logger.fork("astro-ghostcms/npm-pub-version");
                 const logCheck = logger.fork("astro-ghostcms/check");
 
-                // CONFIG DONE
-                logConfigDone.info(IC.CONFSETUPDONE); 
-
                 const pJSON = await fse.readJson(
                     path.resolve(
                         fileURLToPath(import.meta.url), "..", 'package.json')
@@ -295,6 +292,8 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     logCheck.warn("Please consider updating.");
                 }
 
+                // CONFIG DONE
+                logConfigDone.info(`${IC.CONFSETUPDONE} v${pkgVer}`); 
             }
         }
     }
