@@ -4,9 +4,13 @@
 
 *Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided API to link a Headless GhostCMS install in to your Astro project.* 
 
-- [Live Demo](https://demo.astro-ghostcms.xyz/) of the Astro-GhostCMS integration in action!
-- [Live Demo - Unlighthouse Test](https://test.demo.astro-ghostcms.xyz) for a Automatically updated Lighthouse test from every deploy!
-- [Live Demo's Repo](https://github.com/MatthiesenXYZ/astro-ghostcms-demo) for an example of how the setup looks.
+Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
+
+For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
+
+- [Default Theme Demo](https://demo.astro-ghostcms.xyz)
+- [Catppuccin Dark Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
+- [Astro-GhostCMS Website](https://astro-ghostcms.xyz) Check the website for the most up-to-date Documentation!
 - [Ghost.org](https://ghost.org) Get your own Ghost[^1] Install
 
 *Need help but don't have Github? Email us at [issues@astro-ghostcms.xyz](mailto:issues@astroghostcms.xyz) to create an issue here on github!*

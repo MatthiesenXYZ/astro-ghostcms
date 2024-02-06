@@ -45,7 +45,7 @@ const IC = {
     /** INTERNAL STRING */
     CF:"Checking for ",
     /** INTERNAL STRING */
-    CONFSETUPDONE:"GhostCMS Injection Complete.  Integration is now ready.",
+    CONFSETUPDONE:"Step Complete",
     /** INTERNAL STRING */
     F0FR: "Inject `/404` Route",
     /** INTERNAL STRING */
@@ -71,15 +71,9 @@ const ENV = loadEnv(IC.MODE, process.cwd(), IC.PREFIXES);
  */
 export default function GhostCMS(options: UserConfig): AstroIntegration {
     return {
-        name: IC.PKG,
+        name: "astro-ghostcms",
         hooks: {
-            'astro:config:setup': async ({
-                injectRoute,
-                config,
-                updateConfig,
-                logger,
-            }) => {
-
+            'astro:config:setup': async ({ injectRoute, config, updateConfig, logger, }) => {
                 // DEFINE LOGGERS
                 const logConfigCheck = logger.fork("astro-ghostcms/config:check")
                 const logConfigSetup = logger.fork("astro-ghostcms/config:setup")
@@ -107,35 +101,27 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
                 // Check For ENV Variables
                 if(!GCD.dCO) {logConfigCheck.info(IC.CHECK_ENV)}
-
-                // CHECK FOR API KEY
                 if(ENV.CONTENT_API_KEY === undefined){
                     logConfigCheck.error(IC.KEY_MISSING);
                     throw IC.KEY_MISSING;
                 }
-                // CHECK FOR API URL
                 if(GCD.gSite === undefined){
                     logConfigCheck.warn(IC.NOURL)
                     if(ENV.CONTENT_API_URL === undefined){
                         logConfigCheck.error(IC.URL_MISSING);
-                        throw IC.URL_MISSING;
-                    }
+                        throw IC.URL_MISSING; }
                 }
 
                 if(!GCD.dRI){
-
                     // THEME SELECTOR
                     if ( GCD.theme === IC.DT ) { 
                         if( !GCD.dCO ) { logConfigCheck.info( IC.IT + IC.DT )} 
                     } else { 
                         if( !GCD.dCO ) { logConfigCheck.info( IC.IT + GCD.theme )} 
                     }
-
                     // INJECT ROUTES
-
-                    // DEFAULT PROGRAM ROUTES
+                    //// DEFAULT PROGRAM ROUTES
                     if( !GCD.dCO ) { logConfigSetup.info( IC.IDR )}
-
                     if( !GCD.d404 ){
                         if( !GCD.dCO ) { logConfigSetup.info( IC.F0FR )}
                         injectRoute({ 
@@ -191,32 +177,26 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         pattern: '/', 
                         entrypoint: `${GCD.theme}/index.astro` 
                     });
-
                     injectRoute({ 
                         pattern: '/[slug]', 
                         entrypoint: `${GCD.theme}/[slug].astro` 
                     });
-
                     injectRoute({ 
                         pattern: '/tags', 
                         entrypoint: `${GCD.theme}/tags.astro` 
                     });
-
                     injectRoute({ 
                         pattern: '/authors', 
                         entrypoint: `${GCD.theme}/authors.astro` 
-                    });
-
+                    })
                     injectRoute({ 
                         pattern: '/tag/[slug]', 
                         entrypoint: `${GCD.theme}/tag/[slug].astro` 
                     });
-
                     injectRoute({ 
                         pattern: '/author/[slug]', 
                         entrypoint: `${GCD.theme}/author/[slug].astro` 
                     });
-
                     injectRoute({ 
                         pattern: '/archives/[...page]', 
                         entrypoint: `${GCD.theme}/archives/[...page].astro` 
@@ -232,7 +212,6 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 				if (!integrations.find(({ name }) => name === '@astrojs/sitemap' )) {
                     if( !GCD.dCO ) { logConfigSetup.info( `${IC.II}@astrojs/sitemap` )}
 					integrations.push(ghostSitemap(GCD.SM));
-                    
 				} else { if( !GCD.dCO ) { logConfigSetup.info( `${IC.AIbU}@astrojs/sitemap` )}
                 };
 
@@ -253,11 +232,8 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         ghostRobots(GCD.RTXT)
                     ],
                     vite: {
-                        optimizeDeps: {
-                            exclude: ["@resvg/resvg-js"],
-                        }
+                        optimizeDeps: { exclude: ["@resvg/resvg-js"] }
                     }
-                    // LOAD VITE AND SETUP viteGhostCMS Configs
                 }) } catch ( e ) {
                     logConfigSetup.error( e as string );
                     throw e;
@@ -270,29 +246,49 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 })
 
             },
-            'astro:config:done': async ({ logger }) => { 
-                // DEFINE LOGGERS
+            'astro:config:done': async ({ logger }) => {
+                // Config Done
                 const logConfigDone = logger.fork("astro-ghostcms/config:done");
+                const pJSON = await fse.readJson(path.resolve(fileURLToPath(import.meta.url), "..", 'package.json'));
+                const pkgVer = pJSON.version;
+                logConfigDone.info(`Config Done. Current Version: v${pkgVer}`);
+            },
+            'astro:server:setup': async ({ logger }) => {
+                // Dev Server Start
+                const logServerSetup = logger.fork("astro-ghostcms/server:setup");
                 const logCurrentVersion = logger.fork("astro-ghostcms/current-version");
                 const logNpmVersion = logger.fork("astro-ghostcms/npm-pub-version");
                 const logCheck = logger.fork("astro-ghostcms/check");
-
-                const pJSON = await fse.readJson(
-                    path.resolve(
-                        fileURLToPath(import.meta.url), "..", 'package.json')
-                    );
+                const pJSON = await fse.readJson(path.resolve(fileURLToPath(import.meta.url), "..", 'package.json'));
                 const pkgVer = pJSON.version;
-
                 const npmVER = await latestVersion(IC.PKG);
-
                 if (pkgVer !== npmVER ) {
                     logCurrentVersion.warn(`Current Installed Version is v${pkgVer}`);
                     logNpmVersion.warn(`Latest Published Version is v${npmVER}`);
                     logCheck.warn("Please consider updating.");
                 }
-
-                // CONFIG DONE
-                logConfigDone.info(`${IC.CONFSETUPDONE} v${pkgVer}`); 
+                logServerSetup.info("Setting up Astro-GhostCMS server for Development!");
+            },
+            'astro:server:start': async ({ logger }) => {
+                // Server Start
+                const logServerStart = logger.fork("astro-ghostcms/server:start");
+                logServerStart.info("Astro-GhostCMS Integration Ready!");
+            },
+            'astro:build:done': async ({ logger }) => {
+                // Build Done
+                const logBuildDone = logger.fork("astro-ghostcms/build:done");
+                const logCurrentVersion = logger.fork("astro-ghostcms/current-version");
+                const logNpmVersion = logger.fork("astro-ghostcms/npm-pub-version");
+                const logCheck = logger.fork("astro-ghostcms/check");
+                const pJSON = await fse.readJson(path.resolve(fileURLToPath(import.meta.url), "..", 'package.json'));
+                const pkgVer = pJSON.version;
+                const npmVER = await latestVersion(IC.PKG);
+                if (pkgVer !== npmVER ) {
+                    logCurrentVersion.warn(`Current Installed Version is v${pkgVer}`);
+                    logNpmVersion.warn(`Latest Published Version is v${npmVER}`);
+                    logCheck.warn("Please consider updating.");
+                }
+                logBuildDone.info(`Build Complete, Integration Now ready for Production. Astro-GhostCMS v${pkgVer}`);
             }
         }
     }
