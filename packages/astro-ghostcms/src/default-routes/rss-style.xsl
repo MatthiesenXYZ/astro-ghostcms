@@ -33,9 +33,8 @@
                 <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
               </svg>
 
-              Web Feed Preview
+              <xsl:value-of select="/rss/channel/title"/> Web Feed
             </h1>
-            <h2><xsl:value-of select="/rss/channel/title"/></h2>
             <p><xsl:value-of select="/rss/channel/description"/></p>
             <a class="head_link" target="_blank">
               <xsl:attribute name="href">
@@ -44,7 +43,7 @@
               Visit Website &#x2192;
             </a>
           </header>
-          <h2>Recent Items</h2>
+          <h2>Feed</h2>
           <xsl:for-each select="/rss/channel/item">
             <div class="pb-5">
               <h3 class="mb-0">
@@ -59,7 +58,12 @@
                 <xsl:value-of select="description" />
               </p>
               <small class="text-gray">
+                <div>
+                Author: <xsl:value-of select="author" />
+                </div>
+                <div>
                 Published: <xsl:value-of select="pubDate" />
+                </div>
               </small>
             </div>
           </xsl:for-each>

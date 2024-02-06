@@ -5,12 +5,12 @@ import type { APIContext } from 'astro';
 const posts = await getAllPosts();
 const settings = await getSettings();
 
-export async function GET({ site, generator }: APIContext) {
+export async function GET({ site }: APIContext) {
   invariant(settings, "Settings not found");
   const title = settings.title;
   const description = settings.description;
   return rss({
-    title: `${title} [Built on ${generator.slice(0, 8)}]`,
+    title: title,
     description: description,
     site: site?site:"",
     stylesheet: "/rss-style.xsl",
