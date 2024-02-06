@@ -12,7 +12,6 @@ import path from "node:path";
 import fse from "fs-extra";
 import latestVersion from "./src/utils/latestVersion.js";
 
-export * from "./types.js";
 /** INTERNAL CONSTANTS */
 const IC = {
     /** INTERNAL PACKAGE NAME */
@@ -148,12 +147,12 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     if( !GCD.dRSS ) {
                         if( !GCD.dCO ) { logConfigSetup.info( IC.RSS )}
                         injectRoute({ 
-                            pattern: '/rss.xml', 
-                            entrypoint: `${IC.PKG}/rss.xml.ts` 
-                        });
-                        injectRoute({ 
                             pattern: '/rss-style.xsl', 
                             entrypoint: `${IC.PKG}/rss-style.xsl.ts` 
+                        });
+                        injectRoute({ 
+                            pattern: '/rss.xml', 
+                            entrypoint: `${IC.PKG}/rss.xml.ts` 
                         });
                     } else { if( !GCD.dCO ) { logConfigSetup.info(IC.idRSS)}}
 

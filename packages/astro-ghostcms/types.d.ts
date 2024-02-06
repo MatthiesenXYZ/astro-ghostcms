@@ -1,9 +1,9 @@
 import type { Resvg } from "@resvg/resvg-js";
 import type satori from "satori";
 
-export type { UserConfig } from './src/schemas';
+export type { UserConfig, GhostUserConfig } from './src/schemas';
 
-export type * from "./src/api/index.ts";
+export type { Author, AuthorsIncludeSchema, Page, PagesIncludeSchema, Post, PostsIncludeSchema, Settings, Tag, TagsIncludeSchema, Tier, TiersIncludeSchema } from "./src/api/index.ts";
 
 export type { ContentAPICredentials, APIVersions } from "@ts-ghost/core-api";
 

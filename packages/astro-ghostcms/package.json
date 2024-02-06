@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms",
   "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "3.1.9-dev02",
+  "version": "3.2.0",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -37,20 +37,23 @@
     "email": "issues@astro-ghostcms.xyz"
   },
   "main": "index.ts",
-  "types": "types.ts",
+  "types": "types.d.ts",
   "files": [
     "src",
     ".env.demo",
     "index.ts",
     "tsconfig.json",
-    "types.ts"
+    "types.d.ts"
   ],
   "exports": {
     ".": "./index.ts",
     "./api": "./src/api/index.ts",
     "./api-core": "./src/api/content-api/index.ts",
-    "./config": "./src/integrations/virtual-config.ts",
-    "./types": "./types.ts",
+    "./config": { 
+      "default": "./src/integrations/virtual-config.ts",
+      "types": "./src/integrations/virtual.d.ts"
+    },
+    "./types": "./types.d.ts",
     "./satoriOG": "./src/integrations/satori.ts",
     "./404.astro": "./src/default-routes/404/404.astro",
     "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
