@@ -13,6 +13,7 @@ export async function GET({ site, generator }: APIContext) {
     title: `${title} [Built on ${generator.slice(0, 8)}]`,
     description: description,
     site: site?site:"",
+    stylesheet: "/rss-style.xsl",
     items: posts.map((post) => ({
       title: post.title,
       pubDate: new Date(post.published_at?post.published_at:post.created_at),

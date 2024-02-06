@@ -81,12 +81,16 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 logger,
             }) => {
 
+                // DEFINE LOGGERS
+                const logConfigCheck = logger.fork("astro-ghostcms/config:check")
+                const logConfigSetup = logger.fork("astro-ghostcms/config:setup")
+
                 // CHECK USER CONFIG AND MAKE AVAILBLE TO INTEGRATIONS
-                logger.info("Checking Config...")
+                logConfigCheck.info("Checking Config...")
                 const GhostUserConfig = UserConfigSchema.safeParse(options || {}) as SafeParseSuccess<UserConfig>;
                 if (!GhostUserConfig.success) {
                     const validationError = fromZodError((GhostUserConfig as unknown as SafeParseError<UserConfig>).error);
-                    logger.error(`Config Error - ${ validationError }`);
+                    logConfigCheck.error(`Config Error - ${ validationError }`);
                     throw Error("");
                 }
                 const GhostConfig = GhostUserConfig.data;
@@ -103,18 +107,18 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                 }
 
                 // Check For ENV Variables
-                if(!GCD.dCO) {logger.info(IC.CHECK_ENV)}
+                if(!GCD.dCO) {logConfigCheck.info(IC.CHECK_ENV)}
 
                 // CHECK FOR API KEY
                 if(ENV.CONTENT_API_KEY === undefined){
-                    logger.error(IC.KEY_MISSING);
+                    logConfigCheck.error(IC.KEY_MISSING);
                     throw IC.KEY_MISSING;
                 }
                 // CHECK FOR API URL
                 if(GCD.gSite === undefined){
-                    logger.warn(IC.NOURL)
+                    logConfigCheck.warn(IC.NOURL)
                     if(ENV.CONTENT_API_URL === undefined){
-                        logger.error(IC.URL_MISSING);
+                        logConfigCheck.error(IC.URL_MISSING);
                         throw IC.URL_MISSING;
                     }
                 }
@@ -123,34 +127,38 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
                     // THEME SELECTOR
                     if ( GCD.theme === IC.DT ) { 
-                        if( !GCD.dCO ) { logger.info( IC.IT + IC.DT )} 
+                        if( !GCD.dCO ) { logConfigCheck.info( IC.IT + IC.DT )} 
                     } else { 
-                        if( !GCD.dCO ) { logger.info( IC.IT + GCD.theme )} 
+                        if( !GCD.dCO ) { logConfigCheck.info( IC.IT + GCD.theme )} 
                     }
 
                     // INJECT ROUTES
 
                     // DEFAULT PROGRAM ROUTES
-                    if( !GCD.dCO ) { logger.info( IC.IDR )}
+                    if( !GCD.dCO ) { logConfigSetup.info( IC.IDR )}
 
                     if( !GCD.d404 ){
-                        if( !GCD.dCO ) { logger.info( IC.F0FR )}
+                        if( !GCD.dCO ) { logConfigSetup.info( IC.F0FR )}
                         injectRoute({ 
                             pattern: '/404', 
                             entrypoint: `${IC.PKG}/404.astro` 
                         });
-                    } else { if( !GCD.dCO ) { logger.info(IC.id404)}}
+                    } else { if( !GCD.dCO ) { logConfigSetup.info(IC.id404)}}
                     
                     if( !GCD.dRSS ) {
-                        if( !GCD.dCO ) { logger.info( IC.RSS )}
+                        if( !GCD.dCO ) { logConfigSetup.info( IC.RSS )}
                         injectRoute({ 
                             pattern: '/rss.xml', 
                             entrypoint: `${IC.PKG}/rss.xml.ts` 
                         });
-                    } else { if( !GCD.dCO ) { logger.info(IC.idRSS)}}
+                        injectRoute({ 
+                            pattern: '/rss-style.xsl', 
+                            entrypoint: `${IC.PKG}/rss-style.xsl.ts` 
+                        });
+                    } else { if( !GCD.dCO ) { logConfigSetup.info(IC.idRSS)}}
 
                     if ( !GCD.dOG ) {
-                        if( !GCD.dCO ) { logger.info( IC.satori_e )}
+                        if( !GCD.dCO ) { logConfigSetup.info( IC.satori_e )}
                         injectRoute({ 
                             pattern: '/open-graph/[slug].png', 
                             entrypoint: `${IC.PKG}/open-graph/[slug].png.ts` 
@@ -175,10 +183,10 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                             pattern: '/open-graph/tag/[slug].png', 
                             entrypoint: `${IC.PKG}/open-graph/tag/[slug].png.ts` 
                         });
-                    } else { if( !GCD.dCO ) { logger.info( IC.satori_d )}}
+                    } else { if( !GCD.dCO ) { logConfigSetup.info( IC.satori_d )}}
 
                     // THEME ROUTES
-                    if( !GCD.dCO ) { logger.info( IC.ITR )}
+                    if( !GCD.dCO ) { logConfigSetup.info( IC.ITR )}
 
                     injectRoute({ 
                         pattern: '/', 
@@ -215,27 +223,27 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                         entrypoint: `${GCD.theme}/archives/[...page].astro` 
                     });
 
-                } else { if( !GCD.dCO ) { logger.info( IC.IRD )} }
+                } else { if( !GCD.dCO ) { logConfigSetup.info( IC.IRD )} }
 
                 // IMPORT INTEGRATIONS & INTEGRATION ROUTES
                 const integrations = [...config.integrations];
 
                 // IMPORT INTEGRATION: @ASTROJS/SITEMAP
-                if( !GCD.dCO ) { logger.info( `${IC.CF}@astrojs/sitemap` )}
+                if( !GCD.dCO ) { logConfigSetup.info( `${IC.CF}@astrojs/sitemap` )}
 				if (!integrations.find(({ name }) => name === '@astrojs/sitemap' )) {
-                    if( !GCD.dCO ) { logger.info( `${IC.II}@astrojs/sitemap` )}
+                    if( !GCD.dCO ) { logConfigSetup.info( `${IC.II}@astrojs/sitemap` )}
 					integrations.push(ghostSitemap(GCD.SM));
                     
-				} else { if( !GCD.dCO ) { logger.info( `${IC.AIbU}@astrojs/sitemap` )}
+				} else { if( !GCD.dCO ) { logConfigSetup.info( `${IC.AIbU}@astrojs/sitemap` )}
                 };
 
                 // IMPORT INTEGRATION: ASTRO-ROBOTS-TXT
-                if( !GCD.dCO ) { logger.info( `${IC.CF}astro-robots-txt` )}
+                if( !GCD.dCO ) { logConfigSetup.info( `${IC.CF}astro-robots-txt` )}
 				if (!integrations.find(({ name }) => name === 'astro-robots-txt' )) {
-                    if( !GCD.dCO ) { logger.info( `${IC.II}astro-robots-txt` )}
+                    if( !GCD.dCO ) { logConfigSetup.info( `${IC.II}astro-robots-txt` )}
 					integrations.push(ghostRobots(GCD.RTXT));
 				} else {
-                    if( !GCD.dCO ) { logger.info( `${IC.AIbU}astro-robots-txt` )}
+                    if( !GCD.dCO ) { logConfigSetup.info( `${IC.AIbU}astro-robots-txt` )}
                 };
 
                 // FINAL STEP TO KEEP INTEGRATION LIVE
@@ -252,7 +260,7 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
                     }
                     // LOAD VITE AND SETUP viteGhostCMS Configs
                 }) } catch ( e ) {
-                    logger.error( e as string );
+                    logConfigSetup.error( e as string );
                     throw e;
                 };
 
@@ -264,17 +272,27 @@ export default function GhostCMS(options: UserConfig): AstroIntegration {
 
             },
             'astro:config:done': async ({ logger }) => { 
-                logger.info(IC.CONFSETUPDONE); 
+                // DEFINE LOGGERS
+                const logConfigDone = logger.fork("astro-ghostcms/config:done");
+                const logCurrentVersion = logger.fork("astro-ghostcms/current-version");
+                const logNpmVersion = logger.fork("astro-ghostcms/npm-pub-version");
+                const logCheck = logger.fork("astro-ghostcms/check");
 
-                // Get Package Version for Intro
-                const pathname = fileURLToPath(import.meta.url);
-                const iJSON = path.resolve(pathname, "..", 'package.json');
-                const pJSON = await fse.readJson(iJSON);
+                // CONFIG DONE
+                logConfigDone.info(IC.CONFSETUPDONE); 
+
+                const pJSON = await fse.readJson(
+                    path.resolve(
+                        fileURLToPath(import.meta.url), "..", 'package.json')
+                    );
                 const pkgVer = pJSON.version;
+
                 const npmVER = await latestVersion(IC.PKG);
 
                 if (pkgVer !== npmVER ) {
-                    logger.fork("astro-ghostcms/update-check").warn(`Current Version is v${pkgVer}, Most recent Version is v${npmVER}`)
+                    logCurrentVersion.warn(`Current Installed Version is v${pkgVer}`);
+                    logNpmVersion.warn(`Latest Published Version is v${npmVER}`);
+                    logCheck.warn("Please consider updating.");
                 }
 
             }
