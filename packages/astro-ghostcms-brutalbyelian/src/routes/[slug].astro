@@ -3,8 +3,8 @@ import BlogPost from "../layouts/Default.astro"
 import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
 import type { InferGetStaticPropsType } from "astro";
 import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
+import FeatureImage from "../components/generic/Featureimage.astro";
 import { formatDate } from "../utils";
-import FeatureImage from "../components/generic/Featureimage.astro"
 
 export async function getStaticPaths() {
   const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
