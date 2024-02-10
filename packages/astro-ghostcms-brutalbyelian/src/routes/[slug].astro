@@ -3,8 +3,6 @@ import BlogPost from "../layouts/Default.astro"
 import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
 import type { InferGetStaticPropsType } from "astro";
 import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
-import FeatureImage from "../components/generic/Featureimage.astro";
-import { formatDate } from "../utils";
 import BlogPostHeader from "../components/blog/BlogPostHeader.astro";
 
 export async function getStaticPaths() {

@@ -9,14 +9,13 @@ interface Props {
   description: string;
   classList?: string;
   pageTitle?: string;
-  ogImage?: URL;
 }
 
-const { title, description, classList, pageTitle, ogImage } = Astro.props;
+const { title, description, classList, pageTitle } = Astro.props;
 ---
 
 <html lang='en' class='h-full'>
-  <BaseHead ogImage={ogImage} title={title} description={description} />
+  <BaseHead title={title} description={description} />
 
   <body class:list={[classList]}>
     <BaseNavigation {pageTitle} />

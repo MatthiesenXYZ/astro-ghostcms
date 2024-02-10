@@ -12,18 +12,13 @@ const Ghosttitle = settings.title;
 interface Props {
   title: string;
   description: string;
-  ogImage?: URL;
 }
 
 const ogI = new URL(getOgImagePath(Astro.url.pathname), Astro.url.origin).href;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL('/v1/generate/og/default.png', Astro.url);
-}
-
-const { title, description, ogImage } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <head>

@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-brutalbyelian",
   "description": "ElianCodes Brutal theme modified to work with Astro-GhostCMS",
-  "version": "0.0.1-dev03",
+  "version": "0.0.1-dev04",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -45,7 +45,6 @@
     "astro": "^4.2.0"
   },
   "devDependencies": {
-    "@resvg/resvg-js": "^2.6.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.29.1",
