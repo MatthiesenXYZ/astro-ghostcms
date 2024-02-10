@@ -2,7 +2,7 @@
 import LocalFont from '../generic/LocalFont.astro';
 import { ViewTransitions } from 'astro:transitions';
 import { getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
-//import { getOgImagePath } from "@matthiesenxyz/astro-ghostcms/satoriOG";
+import { getOgImagePath } from "@matthiesenxyz/astro-ghostcms/satoriOG";
 
 
 const settings = await getSettings();
@@ -14,8 +14,7 @@ interface Props {
   description: string;
 }
 
-//const ogI = new URL(getOgImagePath(Astro.url.pathname), Astro.url.origin).href;
-const ogI = ""
+const ogI = new URL(getOgImagePath(Astro.url.pathname), Astro.url.origin).href;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
