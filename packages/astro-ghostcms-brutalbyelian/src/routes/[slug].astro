@@ -5,6 +5,7 @@ import type { InferGetStaticPropsType } from "astro";
 import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
 import FeatureImage from "../components/generic/Featureimage.astro";
 import { formatDate } from "../utils";
+import BlogPostHeader from "../components/blog/BlogPostHeader.astro";
 
 export async function getStaticPaths() {
   const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
@@ -22,37 +23,7 @@ invariant(settings, "Settings are required");
 <BlogPost title={post.title} description={post.excerpt}>
   <article class='prose-slate w-sm md:w-prose md:prose poppins pl-4'>
 
-    <header class="article-header gh-canvas">
-    <div class="flex justify-between my-4">
-      <section class="flex flex-grow align-middle">
-        <div class="text-ctp-overlay2">
-          { post.primary_author  && (
-            <h4 class="text-ctp-teal">Author: 
-            {post.primary_author.name}
-          </h4>
-          )}
-          <div class="text-ctp-overlay2">
-            <time class="text-ctp-sapphire" datetime={formatDate(post.created_at)}
-              >{formatDate(post.created_at)}
-            </time>
-            <span class="text-ctp-peach"
-              ><span class="text-ctp-overlay2">&bull;</span>
-              {post.reading_time} min read
-            </span>
-          </div>
-        </div>
-      </section>
-    </div>
-    {post.feature_image && (
-      <FeatureImage
-        image={post.feature_image}
-        alt={post.feature_image_alt ? post.feature_image_alt : post.title}
-        caption={post.feature_image_caption || "" }
-        settings={settings}
-        transitionName={`img-${post.title}`}
-      />
-    )}
-    </header>
+  <BlogPostHeader post={post} settings={settings} />
 
   <Fragment set:html={post.html} />
   </article>
