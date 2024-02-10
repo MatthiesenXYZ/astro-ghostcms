@@ -1,0 +1,24 @@
+{
+  "name": "brutal-demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.3.2",
+    "@matthiesenxyz/astro-ghostcms": "^3.2.0",
+    "@matthiesenxyz/astro-ghostcms-brutalbyelian": "0.0.1",
+    "@unocss/astro": "^0.57.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.4.1",
+    "@unocss/reset": "^0.57.7",
+    "typescript": "^5.3.3",
+    "unocss": "^0.57.7"
+  }
+}

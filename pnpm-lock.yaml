@@ -21,6 +21,34 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2(vitest@1.2.1)
 
+  brutal-demo:
+    dependencies:
+      '@matthiesenxyz/astro-ghostcms':
+        specifier: ^3.2.0
+        version: link:../packages/astro-ghostcms
+      '@matthiesenxyz/astro-ghostcms-brutalbyelian':
+        specifier: 0.0.1
+        version: link:../packages/astro-ghostcms-brutalbyelian
+      '@unocss/astro':
+        specifier: ^0.57.7
+        version: 0.57.7(vite@5.0.12)
+      astro:
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@20.11.16)(typescript@5.3.3)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.4.1
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+      '@unocss/reset':
+        specifier: ^0.57.7
+        version: 0.57.7
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      unocss:
+        specifier: ^0.57.7
+        version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
+
   catppuccin-dark-demo:
     dependencies:
       '@astrojs/tailwind':
