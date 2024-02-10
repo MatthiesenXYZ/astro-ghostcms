@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Default.astro';
+import AuthorCollection from '../components/authors/AuthorCollection.astro';
+import { getAllAuthors, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+const { authors } = await getAllAuthors();
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+const title = settings.title;
+const description = settings.description;
+
+---
+
+<Layout
+  title='Authors'
+  pageTitle=`${title} | Authors`
+  description={description}
+>
+  <main class='bg-pink p-6'>
+    <AuthorCollection authors={authors} settings={settings} />
+  </main>
+</Layout>

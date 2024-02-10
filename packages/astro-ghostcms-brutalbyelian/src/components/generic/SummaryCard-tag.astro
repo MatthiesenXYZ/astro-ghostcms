@@ -1,0 +1,18 @@
+---
+import { Card } from '@eliancodes/brutal-ui';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Card color='white'>
+<center>
+  <h3 class='poppins text-lg md:text-xl'>{title}</h3>
+  <p class='poppins line-clamp-4'>{description}</p>
+  <slot />
+</center>
+</Card>

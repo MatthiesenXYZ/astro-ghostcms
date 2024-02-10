@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Default.astro';
+import BlogList from '../../components/blog/BlogList.astro';
+import { getAllPosts, getSettings, invariant, type Post } from "@matthiesenxyz/astro-ghostcms/api";
+import type { GetStaticPathsOptions, Page } from "astro";
+import Paginator from "../../components/generic/Paginator.astro";
+
+export async function getStaticPaths({ paginate }:GetStaticPathsOptions) {
+  const posts = await getAllPosts();
+  return paginate(posts, {
+    pageSize: 5,
+  });
+}
+
+export type Props = {
+  page: Page<Post>
+};
+
+const settings = await getSettings();
+invariant(settings, "Settings are required");
+
+const title = settings.title;
+const description = settings.description;
+const { page } = Astro.props as Props;
+---
+
+<Layout
+  title='Archives'
+  description=`${title} | On this page you can find a collection of blogposts`
+  pageTitle=`${title} | Archives`
+>
+  <main class='bg-green p-6'>
+    <BlogList posts={page.data} settings={settings} />
+    <Paginator {page} />
+  </main>
+</Layout>

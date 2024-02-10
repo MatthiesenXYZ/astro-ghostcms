@@ -1,0 +1,23 @@
+---
+import AuthorList from './AuthorList.astro';
+import { Card } from '@eliancodes/brutal-ui';
+
+import type { Settings, Post, Author } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  authors: Author[];
+  settings: Settings;
+  isHome?: boolean;
+};
+const { authors, settings } = Astro.props as Props;
+---
+
+<section class='mt-8'>
+  <Card>
+    <div class='flex justify-between items-start'>
+      <h2 class='text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif'>
+        Our Authors
+      </h2>
+    </div>
+    <AuthorList authors={authors} settings={settings}/>
+  </Card>
+</section>

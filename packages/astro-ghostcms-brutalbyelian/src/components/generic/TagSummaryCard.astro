@@ -1,0 +1,22 @@
+---
+import SummaryCard from './SummaryCard-tag.astro';
+import type { Settings, Tag } from "@matthiesenxyz/astro-ghostcms/api";
+import Button from "./button.astro"
+
+interface Props {
+  tag: Tag;
+  settings: Settings;
+};
+
+const { tag } = Astro.props;
+---
+
+<SummaryCard
+  title={tag.name}
+  description={tag.description?tag.description:""}
+>
+  <div class='flex justify-end my-4'>
+      <Button href={`/${tag.slug}/`}>See Posts &rarr;</Button>
+  </div>
+
+</SummaryCard>

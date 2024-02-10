@@ -1,0 +1,46 @@
+---
+import SummaryCard from '../generic/SummaryCard.astro';
+import type { Settings, Post, Tag } from "@matthiesenxyz/astro-ghostcms/api";
+import { getGhostImgPath, formatDate } from "../../utils";
+import { Pill } from '@eliancodes/brutal-ui';
+import Button from "../generic/button.astro"
+
+interface Props {
+  post: Post;
+  settings: Settings;
+};
+
+const { post, settings } = Astro.props;
+---
+
+<SummaryCard
+  title={post.title}
+  imgAlt={post.feature_image_alt 
+  ? post.feature_image_alt : post.feature_image_caption 
+  ? post.feature_image_caption : post.title}
+  imgSrc={getGhostImgPath(settings.url, post.feature_image || "", 800)}
+  description={post.excerpt}
+>
+  <div class='flex justify-end my-4'>
+      <Button href={`/${post.slug}/`}>Read post &rarr;</Button>
+  </div>
+
+  <div class='hidden sm:inline-block'>
+    <p class='poppins mt-2'>tags:</p>
+    <div class='flex justify-between items-center'>
+      <ul class='flex gap-4 mt-2'>
+        {
+          post.tags && post.tags.map((tag) => {
+            return (
+              <li>
+                <a class="sanchez" href={`/tag/${tag.slug}/`}>
+                  <Pill>{tag.name}</Pill>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</SummaryCard>

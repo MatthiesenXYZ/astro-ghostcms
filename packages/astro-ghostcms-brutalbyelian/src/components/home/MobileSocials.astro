@@ -1,0 +1,33 @@
+---
+import { facebook, getSettings, invariant, twitter } from "@matthiesenxyz/astro-ghostcms/api";
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+---
+
+<section class='md:hidden'>
+  <h2 class='hidden'>Socials section</h2>
+  <ul class='flex justify-between'>
+    { settings.facebook && (
+        <li class='bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow'>
+          <a href={facebook(settings.facebook)} target='_blank' title={`Go to Facebook`}>
+            <div class:list={['i-uil-facebook', 'p-6']} />
+          </a>
+        </li>
+      )
+    }
+    { settings.twitter && (
+        <li class='bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow'>
+          <a href={twitter(settings.twitter)} target='_blank' title={`Go to Twitter "X"`}>
+            <div class:list={['i-uil-twitter', 'p-6']} />
+          </a>
+        </li>
+      )
+    }
+    <li class='bg-white px-4 py-2 text-green border-black border-2 rounded card-shadow'>
+      <a href='/rss.xml' target='_blank' title={`See our RSS Feed`}>
+        <div class:list={['i-uil-rss', 'p-6']} />
+      </a>
+    </li>
+
+  </ul>
+</section>

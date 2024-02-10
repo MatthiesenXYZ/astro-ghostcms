@@ -1,0 +1,90 @@
+---
+import { facebook, getSettings, invariant, twitter } from "@matthiesenxyz/astro-ghostcms/api";
+const settings = await getSettings();
+invariant(settings, 'Settings not found');
+
+interface Props {
+  pageTitle?: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<header class='border-b-4 border-black flex justify-between p-6 items-center'>
+  {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
+  <a href='/' title='Back to Home'>
+    <p class='righteous md:text-4xl'>{settings.icon && <img src={settings.icon} width="48" class="inline">}{settings.title}</p>
+  </a>
+  <nav class='hidden md:inline-block'>
+    <h2 class='hidden'>Navigation</h2>
+    <ul class='flex gap-8 poppins'>
+      {
+        settings.navigation.map(({label, url}) => (
+          <li>
+            <a
+              class='font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out'
+              href={url}
+              title={`Go to ${label}`}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+      { settings.facebook && (
+        <li>
+          <a
+            href={facebook(settings.facebook)}
+              class='hover:text-green hover:underline transition-all duration-150 ease-in-out'
+              target='_blank'
+              title={`See @${settings.facebook} on Facebook`}
+            >
+              <div class:list={['i-uil-facebook', 'w-6 h-6']} />
+            </a>
+          </li>
+        )
+      }
+      { settings.twitter && (
+          <li>
+            <a
+              href={twitter(settings.twitter)}
+              class='hover:text-green hover:underline transition-all duration-150 ease-in-out'
+              target='_blank'
+              title={`See @${settings.twitter} on Twitter "X"`}
+            >
+              <div class:list={['i-uil-twitter', 'w-6 h-6']} />
+            </a>
+          </li>
+        )
+      }
+      <li>
+        <a
+          href='/rss.xml'
+          class='hover:text-green hover:underline transition-all duration-150 ease-in-out'
+          target='_blank'
+          title={`See our RSS Feed`}
+        >
+          <div class:list={['i-uil-rss', 'w-6 h-6']} />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav class='md:hidden flex'>
+    <h2 class='hidden'>Mobile Navigation</h2>
+    <ul>
+      {
+        settings.navigation.map(({label, url}) => (
+          <li>
+            <a
+              class='font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out'
+              href={url}
+              title={`Go to ${label}`}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

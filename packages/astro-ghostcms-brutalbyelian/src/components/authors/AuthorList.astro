@@ -1,0 +1,21 @@
+---
+import AuthorSummaryCard from './AuthorSummaryCard.astro';
+import type { Settings, Post, Author } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  authors: Author[];
+  settings: Settings;
+};
+const { authors, settings } = Astro.props as Props;
+---
+
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    authors.map((author: Author) => {
+      return (
+        <li>
+          <AuthorSummaryCard author={author}, settings={settings} />
+        </li>
+      );
+    })
+  }
+</ul>

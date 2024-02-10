@@ -1,0 +1,38 @@
+---
+import SummaryCard from './AuthorSummaryCardHeader.astro';
+import type { Settings, Author } from "@matthiesenxyz/astro-ghostcms/api";
+import { getGhostImgPath, formatDate } from "../../utils";
+import { Pill } from '@eliancodes/brutal-ui';
+import Button from "../generic/button.astro"
+
+interface Props {
+  author: Author;
+  settings: Settings;
+};
+
+const { author, settings } = Astro.props;
+---
+
+<SummaryCard
+  title={author.name}
+  imgAlt={author.name}
+  imgSrc={getGhostImgPath(settings.url, author.profile_image || "", 100)}
+  description={author.bio?author.bio:""}
+>
+  <div class='flex justify-end my-4'>
+      <Button href={`/author/${author.slug}/`}>More Info &rarr;</Button>
+  </div>
+
+  <div class='hidden sm:inline-block'>
+    <div class='flex justify-between items-center'>
+      <ul class='flex gap-4 mt-2'>
+        {author.count && author.count.posts && (
+          <div class="sanchez">
+                  <Pill>{author.count.posts > 0 ? `${author.count.posts} posts` : "No posts"}</Pill>
+            
+          </div>
+        )}
+      </ul>
+    </div>
+  </div>
+</SummaryCard>

@@ -1,0 +1,47 @@
+---
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import Layout from '../../layouts/Default.astro';
+import BlogList from '../../components/blog/BlogList.astro';
+import { Button } from '@eliancodes/brutal-ui';
+
+import { getAllPosts, getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const { tags } = await getAllTags();
+  const settings = await getSettings();
+
+  return tags.map((tag) => {
+    const filteredPosts = posts.filter((post) =>
+      post.tags?.map((tag) => tag.slug).includes(tag.slug)
+    );
+    return {
+      params: { slug: tag.slug },
+      props: {
+        posts: filteredPosts,
+        settings,
+        tag,
+      },
+    };
+  });
+}
+
+export type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { posts, settings, tag } = Astro.props;
+invariant(settings, "Settings are required");
+---
+
+<Layout
+  title={`Blog: ${tag.name}`}
+  description={`${settings.title} | All posts tagged with ${tag}`}
+  pageTitle={`${settings.title} | Blogposts tagged with ${tag}`}
+>
+  <main class='p-6 bg-purple grid gap-4'>
+    <div>
+      <Button href='/'>&larr; Back</Button>
+    </div>
+    <BlogList posts={posts} settings={settings} />
+  </main>
+</Layout>

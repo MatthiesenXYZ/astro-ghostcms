@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Default.astro';
+import AuthorDetailCard from '../../components/authors/AuthorDetailCard.astro';
+import { Card } from '@eliancodes/brutal-ui';
+import { getAllPosts, getAllAuthors, getSettings, invariant, type Post, type Author } from "@matthiesenxyz/astro-ghostcms/api";
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import BlogList from "../../components/blog/BlogList.astro"
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const { authors } = await getAllAuthors();
+  const settings = await getSettings();
+
+  return authors.map((author: Author) => {
+    const filteredPosts = posts.filter((post: Post) =>
+      post.authors?.map((author) => author.slug).includes(author.slug)
+    );
+    return {
+      params: { slug: author.slug },
+      props: {
+        posts: filteredPosts,
+        settings,
+        author,
+      },
+    };
+  });
+}
+
+export type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { posts, settings, author } = Astro.props;
+invariant(settings, "Settings are required");
+const title = `Posts by author: ${author.name}`;
+const description = `All of the articles we've posted and linked so far under the author: ${author.name}`;
+---
+
+<Layout
+  title={title}
+  pageTitle=`${settings.title} | ${title}`
+  description={description}
+>
+  <main class='bg-pink p-6'>
+    <section id='about' class='col mt-4'>
+      <h2 class='hidden'>{title}</h2>
+      <div class='flex'>
+        <Card>
+          <AuthorDetailCard name={author.name} count={author.count?.posts || 0} image={author.profile_image} bio={author.bio} location={author.location} website={author.website} twitter={author.twitter} facebook={author.facebook}/>
+        </Card>
+      </div>
+    </section>
+    <br />
+    <BlogList posts={posts} settings={settings} />
+  </main>
+</Layout>

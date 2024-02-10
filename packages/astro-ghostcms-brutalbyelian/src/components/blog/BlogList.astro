@@ -1,0 +1,21 @@
+---
+import BlogSummaryCard from './BlogSummaryCard.astro';
+import type { Settings, Post } from "@matthiesenxyz/astro-ghostcms/api";
+export type Props = {
+  posts: Post[];
+  settings: Settings;
+};
+const { posts, settings } = Astro.props as Props;
+---
+
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    posts.map((post: Post) => {
+      return (
+        <li>
+          <BlogSummaryCard post={post}, settings={settings} />
+        </li>
+      );
+    })
+  }
+</ul>

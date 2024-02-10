@@ -1,0 +1,62 @@
+---
+import BlogPost from "../layouts/Default.astro"
+import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import type { InferGetStaticPropsType } from "astro";
+import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
+import { formatDate } from "../utils";
+import FeatureImage from "../components/generic/Featureimage.astro"
+
+export async function getStaticPaths() {
+  const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
+  const allPosts = [...posts, ...pages];
+  return allPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, posts, settings },
+  }));
+}
+
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const {post, posts, settings} = Astro.props as Props;
+invariant(settings, "Settings are required");
+---
+<BlogPost title={post.title} description={post.excerpt}>
+  <article class='prose-slate w-sm md:w-prose md:prose poppins pl-4'>
+
+    <header class="article-header gh-canvas">
+    <div class="flex justify-between my-4">
+      <section class="flex flex-grow align-middle">
+        <div class="text-ctp-overlay2">
+          { post.primary_author  && (
+            <h4 class="text-ctp-teal">Author: 
+            {post.primary_author.name}
+          </h4>
+          )}
+          <div class="text-ctp-overlay2">
+            <time class="text-ctp-sapphire" datetime={formatDate(post.created_at)}
+              >{formatDate(post.created_at)}
+            </time>
+            <span class="text-ctp-peach"
+              ><span class="text-ctp-overlay2">&bull;</span>
+              {post.reading_time} min read
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+    {post.feature_image && (
+      <FeatureImage
+        image={post.feature_image}
+        alt={post.feature_image_alt ? post.feature_image_alt : post.title}
+        caption={post.feature_image_caption || "" }
+        settings={settings}
+        transitionName={`img-${post.title}`}
+      />
+    )}
+    </header>
+
+  <Fragment set:html={post.html} />
+  </article>
+  <section class='p-6'>
+    <RecentBlogPosts posts={posts} settings={settings} />
+  </section>
+</BlogPost>

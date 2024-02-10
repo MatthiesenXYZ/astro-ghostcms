@@ -1,0 +1,69 @@
+{
+  "name": "@matthiesenxyz/astro-ghostcms-brutalbyelian",
+  "description": "ElianCodes Brutal theme modified to work with Astro-GhostCMS",
+  "version": "0.0.1",
+  "homepage": "https://astro-ghostcms.xyz/",
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "author": {
+    "email": "adam@matthiesen.xyz",
+    "name": "Adam Matthiesen - MatthiesenXYZ",
+    "url": "https://matthiesen.xyz"
+    },
+    "keywords": [
+      "astro-ghostcms"
+    ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+    "email": "issues@astro-ghostcms.xyz"
+  },
+  "main": "./brutalunocss-preset.ts",
+  "files": [
+    "src",
+    "brutalunocss-preset.ts"
+  ],
+  "exports": {
+    ".": "./brutalunocss-preset.ts",
+    "./index.astro": "./src/routes/index.astro",
+    "./[slug].astro": "./src/routes/[slug].astro",
+    "./tags.astro": "./src/routes/tags.astro",
+    "./authors.astro": "./src/routes/authors.astro",
+    "./tag/[slug].astro": "./src/routes/tag/[slug].astro",
+    "./author/[slug].astro": "./src/routes/author/[slug].astro",
+    "./archives/[...page].astro": "./src/routes/archives/[...page].astro"
+  },
+  "scripts": { },
+  "peerDependencies": {
+    "astro": "^4.2.0"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-astro": "^0.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "prettier": "^3.1.1",
+    "prettier-plugin-astro": "^0.12.2",
+    "sharp": "^0.32.6",
+    "@matthiesenxyz/astro-ghostcms": "workspace:*"
+  },
+  "dependencies": {
+    "@iconify-json/logos": "^1.1.41",
+    "@iconify-json/uil": "^1.1.8",
+    "@matthiesenxyz/astro-ghostcms": "^3.1.8",
+    "@unocss/astro": "^0.57.7",
+    "@unocss/reset": "^0.57.7",
+    "unocss": "^0.57.7",
+    "@eliancodes/brutal-ui": "^0.2.3",
+    "astro-font": "^0.0.72",
+    "typescript": "^5.3.3"
+  }
+}
