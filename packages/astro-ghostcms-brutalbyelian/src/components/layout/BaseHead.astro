@@ -27,12 +27,6 @@ const { title, description } = Astro.props;
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <meta name='generator' content={Astro.generator} />
 
-  <link
-    rel='alternate'
-    href='https://brutal.elian.codes/blog.xml'
-    type='application/rss+xml'
-  />
-
   <meta name='title' content={`${Ghosttitle} | ${title}`} />
   <meta name='description' content={description} />
 
@@ -49,7 +43,7 @@ const { title, description } = Astro.props;
   <meta property='twitter:image' content={ogI} />
 
   <link rel='canonical' href={canonicalURL} />
-  <link rel='icon' type='image/svg' href='/favicon.svg' />
+  <link rel='icon' type='image/svg' href={settings.icon} />
 
   <title>{Ghosttitle} | {title}</title>
 
