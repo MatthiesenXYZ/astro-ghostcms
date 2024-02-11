@@ -27,17 +27,21 @@ export default defineConfig({
         { label: 'Docs Home', link: '/docs/' },
         { label: 'Introduction', items: [
             { label: 'Getting Started', link: '/docs/introduction/getting-started' },
-            { label: 'Integration Mode', items: [
+            { label: 'Integration Mode', badge: { variant: 'default', text: 'Easy' }, items: [
               { label: 'Quick Install', link: '/docs/introduction/integration/quick' },
               { label: 'Manual Install', link: '/docs/introduction/integration/manual' },
-              { label: 'Configuration Options', link: '/docs/introduction/integration/config',
-                badge: { text: 'BETA', variant: 'caution' }, }, ], },
-            { label: 'API ( DIY ) Mode', items: [
+              { label: 'Configuration Options', link: '/docs/introduction/integration/config', }, ], },
+            { label: 'API Only Mode', badge: { variant: 'default', text: 'Advanced' }, items: [
                 { label: 'Install', link: '/docs/introduction/api/install' },
                 { label: 'Basic API Usage', link: '/docs/introduction/api/usage' },
-                { label: 'Templates', link: '/docs/introduction/api/templates', badge: { text: 'NEW', variant: 'success' }, } ], }, ], },
-        { label: 'Default Theme Usage', autogenerate: { directory: 'docs/theme-default'}, },
-        { label: 'Catppuccin Theme Usage', autogenerate: { directory: 'docs/catppuccin'}, },
+                { label: 'Templates', link: '/docs/introduction/api/templates', badge: { text: 'DIY', variant: 'note' }, } ], }, ], },
+        { label: 'Customization', items: [
+          { label: 'Default Theme Usage', autogenerate: { directory: 'docs/customization/theme-default'}, },
+        ]},
+        { label: 'Themes', badge: { text: 'NPM-Module', variant: 'tip' }, items: [
+          { label: 'Catppuccin Theme', autogenerate: { directory: 'docs/themes/catppuccin'}, },
+          { label: 'Brutal by Elian Theme', badge: { text: 'NEW', variant: 'success' }, autogenerate: { directory: 'docs/themes/brutalbyelian'}, },
+        ] },
         { label: 'Tutorials', autogenerate: { directory: 'docs/tutorials' }, },
         { label: 'Reference', autogenerate: { directory: 'docs/reference' }, },
       ],
