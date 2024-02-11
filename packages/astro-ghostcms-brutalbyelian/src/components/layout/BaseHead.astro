@@ -8,6 +8,7 @@ import { getOgImagePath } from "@matthiesenxyz/astro-ghostcms/satoriOG";
 const settings = await getSettings();
 invariant(settings, 'Settings not found');
 const Ghosttitle = settings.title;
+const favicon = await settings.icon;
 
 interface Props {
   title: string;
@@ -43,7 +44,7 @@ const { title, description } = Astro.props;
   <meta property='twitter:image' content={ogI} />
 
   <link rel='canonical' href={canonicalURL} />
-  <link rel='icon' type='image/svg' href={settings.icon} />
+  <link rel='icon' type='image/svg' href={favicon} />
 
   <title>{Ghosttitle} | {title}</title>
 
