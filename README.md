@@ -6,6 +6,7 @@ For a full always up to date documentation please checkout [Our Website](https:/
 
 - [Default Theme Demo](https://demo.astro-ghostcms.xyz)
 - [Catppuccin Dark Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
+- [Brutal by Elian Demo](https://brutal-demo.astro-ghostcms.xyz)
 
 ## Quick Start
 
@@ -24,14 +25,15 @@ This repo is structured as a `pnpm` monorepo.  All of our packages can be found 
 
 In this Repo you will find the Following:
 
-- `demo`: [Demo Site](https://demo.astro-ghostcms.xyz)
-- `www`: [Public Site](https://astro-ghostcms.xyz)
+- `demo`: [Main Demo Site](https://demo.astro-ghostcms.xyz)
+- `www`: [Main Public Site](https://astro-ghostcms.xyz)
 - `playground`: Development and Testing
 - `packages/`:
   - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
   - `astro-ghostcms`: The main Integration!
   - `astro-ghostcms-theme-default`: The Default theme in integration mode.
   - `astro-ghostcms-catppuccin`: A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
+  - `astro-ghostcms-brutalbyelian`: [ElianCodes](https://www.elian.codes/) Brutal theme modified to work with Astro-GhostCMS
   - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
 
 ## Contributing
