@@ -5,7 +5,7 @@ import type { UserConfig } from "./types";
 import ghostSitemap from "./src/integrations/sitemap";
 import ghostRobots from "./src/integrations/robots-txt";
 import { loadEnv } from 'vite';
-import { fromZodError } from "zod-validation-error";
+import { fromZodError } from "./src/utils/zod-validation/fromZodError.js";
 import { addVirtualImport } from "./src/utils/add-virtual-import";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
