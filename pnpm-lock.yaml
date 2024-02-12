@@ -21,34 +21,6 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2(vitest@1.2.1)
 
-  brutal-demo:
-    dependencies:
-      '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.0
-        version: link:../packages/astro-ghostcms
-      '@matthiesenxyz/astro-ghostcms-brutalbyelian':
-        specifier: 0.0.1
-        version: link:../packages/astro-ghostcms-brutalbyelian
-      '@unocss/astro':
-        specifier: ^0.57.7
-        version: 0.57.7(vite@5.0.12)
-      astro:
-        specifier: ^4.3.2
-        version: 4.3.2(@types/node@20.11.16)(typescript@5.3.3)
-    devDependencies:
-      '@astrojs/check':
-        specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
-      '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      unocss:
-        specifier: ^0.57.7
-        version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
-
   catppuccin-dark-demo:
     dependencies:
       '@astrojs/tailwind':
@@ -69,7 +41,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -88,7 +60,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -143,7 +115,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       '@matthiesenxyz/astro-ghostcms-catppuccin':
         specifier: '*'
         version: link:../astro-ghostcms-catppuccin
@@ -172,8 +144,8 @@ importers:
         specifier: ^0.31.3
         version: 0.31.3(eslint@8.56.0)
       prettier:
-        specifier: ^3.2.4
-        version: 3.2.4
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-astro:
         specifier: ^0.13.0
         version: 0.13.0
@@ -199,7 +171,7 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.1.8
+        specifier: ^3.2.1
         version: link:../astro-ghostcms
       '@unocss/astro':
         specifier: ^0.57.7
@@ -220,9 +192,6 @@ importers:
         specifier: ^0.57.7
         version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
     devDependencies:
-      '@resvg/resvg-js':
-        specifier: ^2.6.0
-        version: 2.6.0
       '@typescript-eslint/parser':
         specifier: ^6.15.0
         version: 6.20.0(eslint@8.56.0)(typescript@5.3.3)
@@ -236,11 +205,11 @@ importers:
         specifier: ^6.8.0
         version: 6.8.0(eslint@8.56.0)
       prettier:
-        specifier: ^3.1.1
-        version: 3.2.4
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-astro:
-        specifier: ^0.12.2
-        version: 0.12.3
+        specifier: ^0.13.0
+        version: 0.13.0
       sharp:
         specifier: ^0.32.6
         version: 0.32.6
@@ -292,7 +261,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -349,8 +318,8 @@ importers:
         specifier: ^3.5.3
         version: 3.6.1(@typescript-eslint/parser@6.20.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
       prettier:
-        specifier: ^3.2.4
-        version: 3.2.4
+        specifier: ^3.2.5
+        version: 3.2.5
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -407,7 +376,7 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       '@astrojs/starlight':
         specifier: ^0.17.2
         version: 0.17.2(astro@4.3.2)
@@ -455,13 +424,13 @@ packages:
   /@antfu/utils@0.7.7:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
 
-  /@astrojs/check@0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
+  /@astrojs/check@0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3):
     resolution: {integrity: sha512-XEsuU4TlWkgcsvdeessq5mXLXV1fejtxIioCPv/FfhTzb1bDYe2BtLiSBK+rFTyD9Hl686YOas9AGNMJcpoRsw==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
+      '@astrojs/language-server': 2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3)
       chokidar: 3.5.3
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -481,7 +450,7 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/language-server@2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
+  /@astrojs/language-server@2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.3.3):
     resolution: {integrity: sha512-RYzPRhS/WBXK5JtfR+0+nGj+N3VbJd5jU/uSNUev9baUx/RLmUwDk1f6Oy8QDEfDDLAr76Ig8YeDD/nxPdBSLw==}
     hasBin: true
     peerDependencies:
@@ -503,12 +472,12 @@ packages:
       '@volar/typescript': 1.11.1
       fast-glob: 3.3.2
       muggle-string: 0.3.1
-      prettier: 3.2.4
+      prettier: 3.2.5
       prettier-plugin-astro: 0.13.0
       volar-service-css: 0.0.17(@volar/language-service@1.11.1)
       volar-service-emmet: 0.0.17(@volar/language-service@1.11.1)
       volar-service-html: 0.0.17(@volar/language-service@1.11.1)
-      volar-service-prettier: 0.0.17(@volar/language-service@1.11.1)(prettier@3.2.4)
+      volar-service-prettier: 0.0.17(@volar/language-service@1.11.1)(prettier@3.2.5)
       volar-service-typescript: 0.0.17(@volar/language-service@1.11.1)(@volar/typescript@1.11.1)
       volar-service-typescript-twoslash-queries: 0.0.17(@volar/language-service@1.11.1)
       vscode-html-languageservice: 5.1.2
@@ -2047,6 +2016,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-android-arm64@2.6.0:
@@ -2055,6 +2025,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-darwin-arm64@2.6.0:
@@ -2063,6 +2034,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-darwin-x64@2.6.0:
@@ -2071,6 +2043,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm-gnueabihf@2.6.0:
@@ -2079,6 +2052,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm64-gnu@2.6.0:
@@ -2087,6 +2061,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm64-musl@2.6.0:
@@ -2095,6 +2070,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-x64-gnu@2.6.0:
@@ -2103,6 +2079,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-x64-musl@2.6.0:
@@ -2111,6 +2088,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-arm64-msvc@2.6.0:
@@ -2119,6 +2097,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-ia32-msvc@2.6.0:
@@ -2127,6 +2106,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-x64-msvc@2.6.0:
@@ -2135,6 +2115,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js@2.6.0:
@@ -2153,6 +2134,7 @@ packages:
       '@resvg/resvg-js-win32-arm64-msvc': 2.6.0
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.0
       '@resvg/resvg-js-win32-x64-msvc': 2.6.0
+    dev: false
 
   /@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -7336,21 +7318,12 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-astro@0.12.3:
-    resolution: {integrity: sha512-GthUSu3zCvmtVyqlArosez0xE08vSJ0R1sWurxIWpABaCkNGYFANoUdFkqmIo54EV2uPLGcVJzOucWvCjPBWvg==}
-    engines: {node: ^14.15.0 || >=16.0.0}
-    dependencies:
-      '@astrojs/compiler': 1.8.2
-      prettier: 3.2.4
-      sass-formatter: 0.7.8
-    dev: true
-
   /prettier-plugin-astro@0.13.0:
     resolution: {integrity: sha512-5HrJNnPmZqTUNoA97zn4gNQv9BgVhv+et03314WpQ9H9N8m2L9OSV798olwmG2YLXPl1iSstlJCR1zB3x5xG4g==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@astrojs/compiler': 1.8.2
-      prettier: 3.2.4
+      prettier: 3.2.5
       sass-formatter: 0.7.8
 
   /prettier@2.8.8:
@@ -7358,8 +7331,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  /prettier@3.2.4:
-    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==}
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -9098,7 +9071,7 @@ packages:
       vscode-html-languageservice: 5.1.2
       vscode-uri: 3.0.8
 
-  /volar-service-prettier@0.0.17(@volar/language-service@1.11.1)(prettier@3.2.4):
+  /volar-service-prettier@0.0.17(@volar/language-service@1.11.1)(prettier@3.2.5):
     resolution: {integrity: sha512-YYnzZ+OT0M3Bx+xKuoAfs/uVuxk7ofz4dkZDQqjwa9iC63Ay4YGqONtmHd+xsO3lufkEBXlAQCbofDeZbSz3YQ==}
     peerDependencies:
       '@volar/language-service': ~1.11.0
@@ -9110,7 +9083,7 @@ packages:
         optional: true
     dependencies:
       '@volar/language-service': 1.11.1
-      prettier: 3.2.4
+      prettier: 3.2.5
 
   /volar-service-typescript-twoslash-queries@0.0.17(@volar/language-service@1.11.1):
     resolution: {integrity: sha512-6FHXK5AWeFzCL6uGmEcbkZmQsaQ0m9IjbeLdgOIQ4KGvauqT2aA1BhdfDJu6vRAFIfXe7xjEJ85keIlHl72tSA==}
