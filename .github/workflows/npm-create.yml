@@ -1,4 +1,4 @@
-name: NPM-Create
+name: NPM Publish M:(Create Utility)
 
 on:
   workflow_dispatch:

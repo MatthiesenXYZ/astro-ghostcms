@@ -1,4 +1,4 @@
-name: NPM-Astro-GhostCMS
+name: NPM Publish M:(Astro-GhostCMS)
 
 on:
   workflow_dispatch:

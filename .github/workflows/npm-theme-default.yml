@@ -1,4 +1,4 @@
-name: NPM-Theme (Default)
+name: NPM Publish T:(Default-Casper)
 
 on:
   workflow_dispatch:

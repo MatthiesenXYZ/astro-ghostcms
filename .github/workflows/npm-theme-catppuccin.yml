@@ -1,4 +1,4 @@
-name: NPM-Theme (Catppuccin)
+name: NPM Publish T:(Catppuccin)
 
 on:
   workflow_dispatch:
