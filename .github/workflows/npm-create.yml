@@ -1,4 +1,4 @@
-name: NPM Publish M:(Create Utility)
+name: Publish Create Utility
 
 on:
   workflow_dispatch:

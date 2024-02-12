@@ -1,4 +1,4 @@
-name: NPM Publish T:(Brutal By Elian)
+name: Publish Theme:Brutal By Elian
 
 on:
   workflow_dispatch:
