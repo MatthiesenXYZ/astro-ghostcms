@@ -21,34 +21,6 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2(vitest@1.2.1)
 
-  brutal-demo:
-    dependencies:
-      '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.0
-        version: link:../packages/astro-ghostcms
-      '@matthiesenxyz/astro-ghostcms-brutalbyelian':
-        specifier: 0.0.1
-        version: link:../packages/astro-ghostcms-brutalbyelian
-      '@unocss/astro':
-        specifier: ^0.57.7
-        version: 0.57.7(vite@5.0.12)
-      astro:
-        specifier: ^4.3.2
-        version: 4.3.2(@types/node@20.11.16)(typescript@5.3.3)
-    devDependencies:
-      '@astrojs/check':
-        specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
-      '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      unocss:
-        specifier: ^0.57.7
-        version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
-
   catppuccin-dark-demo:
     dependencies:
       '@astrojs/tailwind':
@@ -199,7 +171,7 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.1.8
+        specifier: ^3.2.1
         version: link:../astro-ghostcms
       '@unocss/astro':
         specifier: ^0.57.7
@@ -220,9 +192,6 @@ importers:
         specifier: ^0.57.7
         version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
     devDependencies:
-      '@resvg/resvg-js':
-        specifier: ^2.6.0
-        version: 2.6.0
       '@typescript-eslint/parser':
         specifier: ^6.15.0
         version: 6.20.0(eslint@8.56.0)(typescript@5.3.3)
@@ -239,8 +208,8 @@ importers:
         specifier: ^3.1.1
         version: 3.2.4
       prettier-plugin-astro:
-        specifier: ^0.12.2
-        version: 0.12.3
+        specifier: ^0.13.0
+        version: 0.13.0
       sharp:
         specifier: ^0.32.6
         version: 0.32.6
@@ -2047,6 +2016,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-android-arm64@2.6.0:
@@ -2055,6 +2025,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-darwin-arm64@2.6.0:
@@ -2063,6 +2034,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-darwin-x64@2.6.0:
@@ -2071,6 +2043,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm-gnueabihf@2.6.0:
@@ -2079,6 +2052,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm64-gnu@2.6.0:
@@ -2087,6 +2061,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-arm64-musl@2.6.0:
@@ -2095,6 +2070,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-x64-gnu@2.6.0:
@@ -2103,6 +2079,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-linux-x64-musl@2.6.0:
@@ -2111,6 +2088,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-arm64-msvc@2.6.0:
@@ -2119,6 +2097,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-ia32-msvc@2.6.0:
@@ -2127,6 +2106,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js-win32-x64-msvc@2.6.0:
@@ -2135,6 +2115,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@resvg/resvg-js@2.6.0:
@@ -2153,6 +2134,7 @@ packages:
       '@resvg/resvg-js-win32-arm64-msvc': 2.6.0
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.0
       '@resvg/resvg-js-win32-x64-msvc': 2.6.0
+    dev: false
 
   /@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -7334,15 +7316,6 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-    dev: true
-
-  /prettier-plugin-astro@0.12.3:
-    resolution: {integrity: sha512-GthUSu3zCvmtVyqlArosez0xE08vSJ0R1sWurxIWpABaCkNGYFANoUdFkqmIo54EV2uPLGcVJzOucWvCjPBWvg==}
-    engines: {node: ^14.15.0 || >=16.0.0}
-    dependencies:
-      '@astrojs/compiler': 1.8.2
-      prettier: 3.2.4
-      sass-formatter: 0.7.8
     dev: true
 
   /prettier-plugin-astro@0.13.0:
