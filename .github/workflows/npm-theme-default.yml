@@ -1,4 +1,4 @@
-name: Publish Theme Default-Casper
+name: Publish Theme Default (Casper)
 
 on:
   workflow_dispatch:
