@@ -1,7 +1,3 @@
 packages:
   - "packages/*"
   - "playground"
-  - "www"
-  - "demo"
-  - "brutal-demo"
-  - "catppuccin-dark-demo"

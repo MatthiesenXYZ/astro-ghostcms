@@ -5,8 +5,11 @@ Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
 For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
 - [Default Theme Demo](https://demo.astro-ghostcms.xyz)
-- [Catppuccin Dark Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
+  - [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-themedefault)
+- [Catppuccin Demo](https://catppuccindark-demo.astro-ghostcms.xyz/)
+  - [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-catppuccin)
 - [Brutal by Elian Demo](https://brutal-demo.astro-ghostcms.xyz)
+  - [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-brutalbyelian)
 
 ## Quick Start
 
@@ -25,8 +28,6 @@ This repo is structured as a `pnpm` monorepo.  All of our packages can be found 
 
 In this Repo you will find the Following:
 
-- `demo`: [Main Demo Site](https://demo.astro-ghostcms.xyz)
-- `www`: [Main Public Site](https://astro-ghostcms.xyz)
 - `playground`: Development and Testing
 - `packages/`:
   - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
