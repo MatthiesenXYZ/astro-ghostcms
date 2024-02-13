@@ -13,7 +13,7 @@ The most basic function of `astro-ghostcms-rendercontent` is to convert a string
 import { GhostRender } from "@matthiesenxyz/astro-ghostcms-rendercontent";
 ---
 
-<Markup content={post.html} />
+<GhostRender content={post.html} />
 ```
 
 ### Customization
