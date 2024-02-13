@@ -56,3 +56,5 @@ pnpm playground:dev
 ### Notices
 
 *Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided JavaScript tools to link a Headless GhostCMS install in to your Astro project.* 
+
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/medium.svg)](https://astro.build)
