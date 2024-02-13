@@ -31,6 +31,7 @@ In this Repo you will find the Following:
 - `packages/`:
   - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
   - `astro-ghostcms`: The main Integration!
+  - `astro-ghostcms-rendercontent`: Allows rendering of remote GhostCMS HTML with Custom Astro Components
   - `astro-ghostcms-theme-default`: The Default theme in integration mode.
   - `astro-ghostcms-catppuccin`: A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
   - `astro-ghostcms-brutalbyelian`: [ElianCodes](https://www.elian.codes/) Brutal theme modified to work with Astro-GhostCMS
