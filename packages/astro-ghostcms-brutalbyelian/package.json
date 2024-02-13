@@ -51,7 +51,9 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "prettier-plugin-astro": "^0.13.0",
     "prettier": "^3.2.5",
-    "@matthiesenxyz/astro-ghostcms": "workspace:*"
+    "@matthiesenxyz/astro-ghostcms": "workspace:*",
+    "@matthiesenxyz/astro-ghostcms-rendercontent": "workspace:*",
+    "node-html-parser": "6.1.12"
   },
   "dependencies": {
     "@iconify-json/logos": "^1.1.41",
@@ -62,6 +64,7 @@
     "unocss": "^0.57.7",
     "@eliancodes/brutal-ui": "^0.2.3",
     "astro-font": "^0.0.72",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "ultrahtml": "^1.5.2"
   }
 }

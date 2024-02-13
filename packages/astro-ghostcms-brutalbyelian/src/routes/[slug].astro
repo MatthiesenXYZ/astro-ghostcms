@@ -4,6 +4,9 @@ import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz
 import type { InferGetStaticPropsType } from "astro";
 import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
 import BlogPostHeader from "../components/blog/BlogPostHeader.astro";
+import { GhostRender } from "@matthiesenxyz/astro-ghostcms-rendercontent";
+import * as C from "../components/ghostrender";
+import { Card } from "@eliancodes/brutal-ui";
 
 export async function getStaticPaths() {
   const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
@@ -19,11 +22,29 @@ const {post, posts, settings} = Astro.props as Props;
 invariant(settings, "Settings are required");
 ---
 <BlogPost title={post.title} description={post.excerpt}>
-  <article class='prose-slate w-sm md:w-prose md:prose poppins pl-4'>
+  <article class='w-auto md:w-vmax p-10 poppins'>
 
-  <BlogPostHeader post={post} settings={settings} />
+  <Card>
+    <BlogPostHeader post={post} settings={settings} />
+  </Card>
 
-  <Fragment set:html={post.html} />
+  <div class="my-5"/>
+  <div id="ghost">
+    <GhostRender 
+      content={post.html} 
+      components={{ 
+        h1: C.H1,
+        h2: C.H2,
+        h3: C.H3,
+        h4: C.H4,
+        h5: C.H5,
+        h6: C.H6,
+        pre: C.CodeSlot,
+        p: C.Paragraph,
+      }}
+    />
+  </div>
+
   </article>
   <section class='p-6'>
     <RecentBlogPosts posts={posts} settings={settings} />

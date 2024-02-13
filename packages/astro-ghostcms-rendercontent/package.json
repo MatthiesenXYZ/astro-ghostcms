@@ -1,0 +1,47 @@
+{
+  "name": "@matthiesenxyz/astro-ghostcms-rendercontent",
+  "type": "module",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+    "email": "issues@astro-ghostcms.xyz"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "homepage": "https://astro-ghostcms.xyz",
+  "files": [
+    "examples",
+    "lib",
+    "index.ts",
+    "CHANGELOG.md"
+  ],
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "astro-ghostcms"
+  ],
+  "author": {
+    "email": "adam@matthiesen.xyz",
+    "name": "Adam Matthiesen - MatthiesenXYZ",
+    "url": "https://matthiesen.xyz"
+    },
+  "license": "MIT",
+  "dependencies": {
+    "entities": "^4.5.0",
+    "ultrahtml": "^1.5.2",
+    "node-html-parser": "6.1.12"
+  },
+  "devDependencies": {
+    "astro": "4.0.0"
+  }
+}

@@ -11,12 +11,12 @@ export type Props = {
 const { post, settings } = Astro.props as Props;
 ---
 <header class="article-header gh-canvas">
-    <div class="flex justify-between my-4">
+    <div class="flex justify-between">
       <section class="flex flex-grow align-middle">
         <div class="text-ctp-overlay2">
           { post.primary_author  && (
             <h4 class="text-ctp-teal">Author: 
-            {post.primary_author.name}
+            <a href={`/author/${post.primary_author.slug}`}>{post.primary_author.name}</a>
           </h4>
           )}
           <div class="text-ctp-overlay2">
@@ -31,6 +31,7 @@ const { post, settings } = Astro.props as Props;
         </div>
       </section>
     </div>
+    <center><h1 class="text-5xl righteous pb-5">{post.title}</h1></center>
     {post.feature_image && (
       <FeatureImage
         image={post.feature_image}

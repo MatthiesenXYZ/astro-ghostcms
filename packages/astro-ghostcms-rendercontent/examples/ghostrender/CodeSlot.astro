@@ -1,0 +1,12 @@
+---
+import { Code } from "astro/components"
+import { parse } from "node-html-parser"
+
+const html = await Astro.slots.render("default")
+const parsed = parse(html)
+
+const code = parsed.querySelectorAll('code')
+---
+{code.map(item => (
+<Code lang={"js"} code={item.innerHTML} theme={"dracula"}/>
+))}
