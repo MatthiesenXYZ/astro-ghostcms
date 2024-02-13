@@ -38,8 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "entities": "^4.5.0",
-    "ultrahtml": "^1.5.2",
-    "node-html-parser": "6.1.12"
+    "ultrahtml": "^1.5.2"
   },
   "devDependencies": {
     "astro": "4.0.0"
