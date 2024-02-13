@@ -1,10 +1,8 @@
 ---
-import type { SanitizeOptions } from 'ultrahtml/transformers/sanitize'
 import { createComponentProxy, html } from './utils';
 
 export interface Props {
   content?: string;
-  sanitize?: SanitizeOptions;
   components?: Record<string, any>;
 }
 
@@ -14,7 +12,7 @@ if (!input) {
 }
 // @ts-ignore
 const components = createComponentProxy($$result, Astro.props.components);
-const content = await html(input, { sanitize: Astro.props.sanitize, components });
+const content = await html(input, { components });
 ---
 
 <Fragment set:html={content} />

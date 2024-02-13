@@ -46,8 +46,6 @@ export function dedent(str: string): string {
 
 export interface HTMLOptions {
   // biome-ignore lint/complexity/noBannedTypes: <explanation>
-sanitize?: {};
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
 components?: {};
 }
 

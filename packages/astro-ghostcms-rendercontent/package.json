@@ -25,6 +25,7 @@
   "exports": {
     ".": "./index.ts",
     "./lib/*": "./lib/*",
+    "./examples/*": "./examples/*",
     "./package.json": "./package.json"
   },
   "keywords": [
