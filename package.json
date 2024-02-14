@@ -8,7 +8,7 @@
 	"scripts": {
 		"lint": "biome check .",
 		"ci:version": "pnpm changeset version",
-		"vi:publish": "pnpm changeset publish",
+		"vi:publish": "pnpm publish -r",
 		"lint:fix": "biome check --apply .",
 		"playground:dev": "pnpm --filter playground dev",
 		"api:test": "pnpm --filter astro-ghostcms test",
