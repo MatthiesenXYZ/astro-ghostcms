@@ -1,5 +1,19 @@
 # @matthiesenxyz/astro-ghostcms-brutalbyelian
 
+## 0.0.9
+
+### Patch Changes
+
+- e235ad0: Bump dependencies:
+
+  - @astrojs/rss from to
+  - vite from to
+  - unocss from to
+  - astro-font from to
+
+- Updated dependencies [e235ad0]
+  - @matthiesenxyz/astro-ghostcms@3.2.6
+
 ## 0.0.8
 
 ### Patch Changes

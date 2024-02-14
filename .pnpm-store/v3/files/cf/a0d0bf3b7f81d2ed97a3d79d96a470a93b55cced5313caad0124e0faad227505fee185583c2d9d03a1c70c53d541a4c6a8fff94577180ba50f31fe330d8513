@@ -1,0 +1,2 @@
+import { ServicePlugin } from '@volar/language-server';
+export declare const create: (ts: typeof import('typescript')) => ServicePlugin;

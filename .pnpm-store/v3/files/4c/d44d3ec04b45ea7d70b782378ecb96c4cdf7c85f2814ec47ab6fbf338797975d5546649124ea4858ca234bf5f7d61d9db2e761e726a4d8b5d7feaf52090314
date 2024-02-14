@@ -1,0 +1,96 @@
+import type { Mapping, Stack } from '@volar/source-map';
+import type * as ts from 'typescript';
+import type { FileRegistry } from './fileRegistry';
+export interface SourceFile {
+    /**
+     * uri or fileName
+     */
+    id: string;
+    languageId: string;
+    snapshot: ts.IScriptSnapshot;
+    generated?: {
+        code: VirtualCode;
+        languagePlugin: LanguagePlugin;
+    };
+}
+export type CodeMapping = Mapping<CodeInformation>;
+export interface VirtualCode<T extends string = string> {
+    id: T;
+    languageId: string;
+    snapshot: ts.IScriptSnapshot;
+    mappings: CodeMapping[];
+    embeddedCodes: VirtualCode[];
+    codegenStacks?: Stack[];
+    linkedCodeMappings?: Mapping[];
+}
+export interface CodeInformation {
+    /** virtual code is expected to support verification */
+    verification: boolean | {
+        shouldReport?(): boolean;
+    };
+    /** virtual code is expected to support assisted completion */
+    completion: boolean | {
+        isAdditional?: boolean;
+        onlyImport?: boolean;
+    };
+    /** virtual code is expected correctly reflect semantic of the source code */
+    semantic: boolean | {
+        shouldHighlight?(): boolean;
+    };
+    /** virtual code is expected correctly reflect reference relationships of the source code */
+    navigation: boolean | {
+        shouldRename?(): boolean;
+        resolveRenameNewName?(newName: string): string;
+        resolveRenameEditText?(newText: string): string;
+    };
+    /** virtual code is expected correctly reflect the structural information of the source code */
+    structure: boolean;
+    /** virtual code is expected correctly reflect the format information of the source code */
+    format: boolean;
+}
+export interface ServiceScript {
+    code: VirtualCode;
+    extension: '.ts' | '.js' | '.mts' | '.mjs' | '.cjs' | '.cts' | '.d.ts' | string;
+    scriptKind: ts.ScriptKind;
+}
+export interface ExtraServiceScript extends ServiceScript {
+    fileName: string;
+}
+export interface LanguagePlugin<T extends VirtualCode = VirtualCode> {
+    createVirtualCode(fileId: string, languageId: string, snapshot: ts.IScriptSnapshot, files?: FileRegistry): T | undefined;
+    updateVirtualCode(fileId: string, virtualCode: T, newSnapshot: ts.IScriptSnapshot, files?: FileRegistry): T;
+    disposeVirtualCode?(fileId: string, virtualCode: T, files?: FileRegistry): void;
+    typescript?: {
+        /**
+         * LSP + TS Plugin
+         */
+        extraFileExtensions: ts.FileExtensionInfo[];
+        /**
+         * LSP + TS Plugin
+         */
+        getScript(rootVirtualCode: T): ServiceScript | undefined;
+        /**
+         * LSP only
+         */
+        getExtraScripts?(fileName: string, rootVirtualCode: T): ExtraServiceScript[];
+        /**
+         * LSP only
+         */
+        resolveLanguageServiceHost?(host: ts.LanguageServiceHost): ts.LanguageServiceHost;
+    };
+}
+export interface LanguageContext {
+    files: FileRegistry;
+    typescript?: {
+        configFileName: string | undefined;
+        sys: ts.System & {
+            sync?(): Promise<number>;
+        };
+        projectHost: TypeScriptProjectHost;
+        languageServiceHost: ts.LanguageServiceHost;
+        getExtraScript(fileName: string): ExtraServiceScript | undefined;
+    };
+}
+export interface TypeScriptProjectHost extends Pick<ts.LanguageServiceHost, 'getLocalizedDiagnosticMessages' | 'getCompilationSettings' | 'getProjectReferences' | 'getCurrentDirectory' | 'getScriptFileNames' | 'getProjectVersion' | 'getScriptSnapshot'> {
+    getLanguageId(fileName: string): string;
+}

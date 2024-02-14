@@ -1,0 +1,42 @@
+{
+	"name": "volar-service-emmet",
+	"version": "0.0.29",
+	"description": "Integrate @vscode/emmet-helper into Volar",
+	"homepage": "https://github.com/volarjs/services/tree/master/packages/emmet",
+	"bugs": "https://github.com/volarjs/services/issues",
+	"sideEffects": false,
+	"keywords": [
+		"volar-service"
+	],
+	"license": "MIT",
+	"files": [
+		"**/*.js",
+		"**/*.d.ts"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/volarjs/services.git",
+		"directory": "packages/emmet"
+	},
+	"author": {
+		"name": "Johnson Chu",
+		"email": "johnsoncodehk@gmail.com",
+		"url": "https://github.com/johnsoncodehk"
+	},
+	"dependencies": {
+		"@vscode/emmet-helper": "^2.9.2",
+		"volar-service-html": "0.0.29"
+	},
+	"peerDependencies": {
+		"@volar/language-service": "~2.0.1"
+	},
+	"peerDependenciesMeta": {
+		"@volar/language-service": {
+			"optional": true
+		}
+	},
+	"browser": {
+		"./index.js": "./empty.js"
+	},
+	"gitHead": "6927645293abcc249e7a39c98e52b9f5a2c08469"
+}
