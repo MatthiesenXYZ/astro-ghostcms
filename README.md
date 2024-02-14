@@ -41,19 +41,7 @@ In this Repo you will find the Following:
 
 ## Contributing
 
-This is a `pnpm` workspace and requires `pnpm` to function properly
-
-To setup this workspace clone this repo and run the following command:
-
-```sh
-pnpm install --frozen-lockfile
-```
-
-Then you can run the playground:
-
-```sh
-pnpm playground:dev
-```
+- [Contributing Doc](./CONTRIBUTING.md)
 
 ### Acknolegments
 
