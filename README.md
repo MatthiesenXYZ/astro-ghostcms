@@ -4,6 +4,8 @@ Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
 
 For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
+Don't like GitHub, and prefer GitLab?  This Repo is Auto Cloned to Gitlab! Check it out here: [GitLab: Astro-GhostCMS](https://gitlab.com/matthiesenxyz/astro-ghostcms)
+
 ## Demos
 
 - [Default Theme](https://demo.astro-ghostcms.xyz) - ( [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-themedefault) )
