@@ -30,7 +30,7 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: ^0.1.9
+        specifier: ^0.1.10
         version: link:../astro-ghostcms-theme-default
       '@resvg/resvg-js':
         specifier: ^2.6.0
@@ -124,11 +124,11 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.1
+        specifier: ^3.2.3
         version: link:../astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-rendercontent':
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: ^0.0.3
+        version: link:../astro-ghostcms-rendercontent
       '@unocss/astro':
         specifier: ^0.57.7
         version: 0.57.7(vite@5.0.12)
@@ -185,7 +185,7 @@ importers:
         specifier: ^5.0.16
         version: 5.0.16
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.1.8
+        specifier: ^3.2.3
         version: link:../astro-ghostcms
       '@tailwindcss/typography':
         specifier: ^0.5.10
@@ -219,7 +219,7 @@ importers:
   packages/astro-ghostcms-theme-default:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.1.8
+        specifier: ^3.2.3
         version: link:../astro-ghostcms
       astro:
         specifier: ^4.2.1
@@ -1499,13 +1499,6 @@ packages:
       fs-extra: 8.1.0
       globby: 11.1.0
       read-yaml-file: 1.1.0
-
-  /@matthiesenxyz/astro-ghostcms-rendercontent@0.0.1:
-    resolution: {integrity: sha512-2zXmCnAoFHZqvkEuccUY0uN/legpXxn0LzVvERc2w8bjTnOPTB+fQN35fc+OiyFZJEy+jgcvwM76ZA3dVgPayQ==}
-    dependencies:
-      entities: 4.5.0
-      ultrahtml: 1.5.2
-    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
