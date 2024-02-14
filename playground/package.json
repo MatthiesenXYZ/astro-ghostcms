@@ -11,17 +11,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.3.2",
+    "astro": "^4.3.7",
     "@matthiesenxyz/astro-ghostcms-theme-default": "workspace:*",
     "@matthiesenxyz/astro-ghostcms-catppuccin": "workspace:*",
     "@matthiesenxyz/astro-ghostcms-brutalbyelian": "workspace:*",
     "@matthiesenxyz/astro-ghostcms": "workspace:*",
     "@astrojs/tailwind": "^5.1.0",
-    "@unocss/astro": "^0.57.7",
+    "@unocss/astro": "^0.58.5",
     "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
-    "@unocss/reset": "^0.57.7",
+    "@unocss/reset": "^0.58.5",
     "typescript": "^5.3.3",
     "unocss": "^0.57.7"
   }
