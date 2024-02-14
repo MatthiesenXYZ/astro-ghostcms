@@ -1,5 +1,16 @@
 # @matthiesenxyz/create-astro-ghostcms
 
+## 0.0.12
+
+### Patch Changes
+
+- e235ad0: Bump dependencies:
+
+  - @astrojs/rss from to
+  - vite from to
+  - unocss from to
+  - astro-font from to
+
 ## 0.0.11
 
 ### Patch Changes

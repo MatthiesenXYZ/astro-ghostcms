@@ -1,0 +1,304 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createLanguage = void 0;
+const language_core_1 = require("@volar/language-core");
+const language_core_2 = require("@volar/language-core");
+const path = require("path-browserify");
+const resolveModuleName_1 = require("../resolveModuleName");
+const scriptVersions = new Map();
+const fsFileSnapshots = new Map();
+function createLanguage(ts, sys, languagePlugins, configFileName, projectHost, { fileIdToFileName, fileNameToFileId }) {
+    const files = (0, language_core_1.createFileRegistry)(languagePlugins, sys.useCaseSensitiveFileNames, fileId => {
+        const fileName = fileIdToFileName(fileId);
+        // opened files
+        let snapshot = projectHost.getScriptSnapshot(fileName);
+        if (!snapshot) {
+            // fs files
+            const cache = fsFileSnapshots.get(fileName);
+            const modifiedTime = sys.getModifiedTime?.(fileName)?.valueOf();
+            if (!cache || cache[0] !== modifiedTime) {
+                if (sys.fileExists(fileName)) {
+                    const text = sys.readFile(fileName);
+                    const snapshot = text !== undefined ? ts.ScriptSnapshot.fromString(text) : undefined;
+                    fsFileSnapshots.set(fileName, [modifiedTime, snapshot]);
+                }
+                else {
+                    fsFileSnapshots.set(fileName, [modifiedTime, undefined]);
+                }
+            }
+            snapshot = fsFileSnapshots.get(fileName)?.[1];
+        }
+        if (snapshot) {
+            files.set(fileId, projectHost.getLanguageId(fileId), snapshot);
+        }
+        else {
+            files.delete(fileId);
+        }
+    });
+    let { languageServiceHost, getExtraScript } = createLanguageServiceHost();
+    for (const language of languagePlugins) {
+        if (language.typescript?.resolveLanguageServiceHost) {
+            languageServiceHost = language.typescript.resolveLanguageServiceHost(languageServiceHost);
+        }
+    }
+    if (languagePlugins.some(language => language.typescript?.extraFileExtensions.length)) {
+        // TODO: can this share between monorepo packages?
+        const moduleCache = ts.createModuleResolutionCache(languageServiceHost.getCurrentDirectory(), languageServiceHost.useCaseSensitiveFileNames ? s => s : s => s.toLowerCase(), languageServiceHost.getCompilationSettings());
+        const resolveModuleName = (0, resolveModuleName_1.createResolveModuleName)(ts, languageServiceHost, languagePlugins, fileName => files.get(fileNameToFileId(fileName)));
+        let lastSysVersion = 'version' in sys ? sys.version : undefined;
+        languageServiceHost.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, sourceFile) => {
+            if ('version' in sys && lastSysVersion !== sys.version) {
+                lastSysVersion = sys.version;
+                moduleCache.clear();
+            }
+            return moduleLiterals.map(moduleLiteral => {
+                return resolveModuleName(moduleLiteral.text, containingFile, options, moduleCache, redirectedReference, sourceFile.impliedNodeFormat);
+            });
+        };
+        languageServiceHost.resolveModuleNames = (moduleNames, containingFile, _reusedNames, redirectedReference, options) => {
+            if ('version' in sys && lastSysVersion !== sys.version) {
+                lastSysVersion = sys.version;
+                moduleCache.clear();
+            }
+            return moduleNames.map(moduleName => {
+                return resolveModuleName(moduleName, containingFile, options, moduleCache, redirectedReference).resolvedModule;
+            });
+        };
+    }
+    return {
+        files,
+        typescript: {
+            configFileName,
+            sys,
+            projectHost,
+            languageServiceHost,
+            getExtraScript,
+        },
+    };
+    function createLanguageServiceHost() {
+        let lastProjectVersion;
+        let tsProjectVersion = 0;
+        let tsFileRegistry = new language_core_1.FileMap(sys.useCaseSensitiveFileNames);
+        let extraScriptRegistry = new language_core_1.FileMap(sys.useCaseSensitiveFileNames);
+        let lastTsVirtualFileSnapshots = new Set();
+        let lastOtherVirtualFileSnapshots = new Set();
+        const languageServiceHost = {
+            ...sys,
+            getCurrentDirectory: projectHost.getCurrentDirectory,
+            getCompilationSettings() {
+                const options = projectHost.getCompilationSettings();
+                if (languagePlugins.some(language => language.typescript?.extraFileExtensions.length)) {
+                    options.allowNonTsExtensions ??= true;
+                    if (!options.allowNonTsExtensions) {
+                        console.warn('`allowNonTsExtensions` must be `true`.');
+                    }
+                }
+                return options;
+            },
+            getLocalizedDiagnosticMessages: projectHost.getLocalizedDiagnosticMessages,
+            getProjectReferences: projectHost.getProjectReferences,
+            getDefaultLibFileName: options => {
+                try {
+                    return ts.getDefaultLibFilePath(options);
+                }
+                catch {
+                    // web
+                    return `/node_modules/typescript/lib/${ts.getDefaultLibFileName(options)}`;
+                }
+            },
+            useCaseSensitiveFileNames() {
+                return sys.useCaseSensitiveFileNames;
+            },
+            getNewLine() {
+                return sys.newLine;
+            },
+            getTypeRootsVersion: () => {
+                return 'version' in sys ? sys.version : -1; // TODO: only update for /node_modules changes?
+            },
+            getDirectories(dirName) {
+                return sys.getDirectories(dirName);
+            },
+            readDirectory(dirName, extensions, excludes, includes, depth) {
+                const exts = new Set(extensions);
+                for (const languagePlugin of languagePlugins) {
+                    for (const ext of languagePlugin.typescript?.extraFileExtensions ?? []) {
+                        exts.add('.' + ext.extension);
+                    }
+                }
+                extensions = [...exts];
+                return sys.readDirectory(dirName, extensions, excludes, includes, depth);
+            },
+            readFile(fileName) {
+                const snapshot = getScriptSnapshot(fileName);
+                if (snapshot) {
+                    return snapshot.getText(0, snapshot.getLength());
+                }
+            },
+            fileExists(fileName) {
+                return getScriptVersion(fileName) !== '';
+            },
+            getProjectVersion() {
+                sync();
+                return tsProjectVersion + ('version' in sys ? `:${sys.version}` : '');
+            },
+            getScriptFileNames() {
+                sync();
+                return [...tsFileRegistry.keys()];
+            },
+            getScriptKind(fileName) {
+                sync();
+                if (extraScriptRegistry.has(fileName)) {
+                    return extraScriptRegistry.get(fileName).scriptKind;
+                }
+                const sourceFile = files.get(fileNameToFileId(fileName));
+                if (sourceFile?.generated) {
+                    const tsCode = sourceFile.generated.languagePlugin.typescript?.getScript(sourceFile.generated.code);
+                    if (tsCode) {
+                        return tsCode.scriptKind;
+                    }
+                }
+                switch (path.extname(fileName)) {
+                    case '.js':
+                    case '.cjs':
+                    case '.mjs':
+                        return ts.ScriptKind.JS;
+                    case '.jsx':
+                        return ts.ScriptKind.JSX;
+                    case '.ts':
+                    case '.cts':
+                    case '.mts':
+                        return ts.ScriptKind.TS;
+                    case '.tsx':
+                        return ts.ScriptKind.TSX;
+                    case '.json':
+                        return ts.ScriptKind.JSON;
+                    default:
+                        return ts.ScriptKind.Unknown;
+                }
+            },
+            getScriptVersion,
+            getScriptSnapshot,
+        };
+        return {
+            languageServiceHost,
+            getExtraScript,
+        };
+        function getExtraScript(fileName) {
+            sync();
+            return extraScriptRegistry.get(fileName);
+        }
+        function sync() {
+            const newProjectVersion = projectHost.getProjectVersion?.();
+            const shouldUpdate = newProjectVersion === undefined || newProjectVersion !== lastProjectVersion;
+            if (!shouldUpdate) {
+                return;
+            }
+            lastProjectVersion = newProjectVersion;
+            extraScriptRegistry.clear();
+            const newTsVirtualFileSnapshots = new Set();
+            const newOtherVirtualFileSnapshots = new Set();
+            const tsFileNamesSet = new Set();
+            for (const fileName of projectHost.getScriptFileNames()) {
+                const sourceFile = files.get(fileNameToFileId(fileName));
+                if (sourceFile?.generated) {
+                    const script = sourceFile.generated.languagePlugin.typescript?.getScript(sourceFile.generated.code);
+                    if (script) {
+                        newTsVirtualFileSnapshots.add(script.code.snapshot);
+                        tsFileNamesSet.add(fileName);
+                    }
+                    for (const extraScript of sourceFile.generated.languagePlugin.typescript?.getExtraScripts?.(fileName, sourceFile.generated.code) ?? []) {
+                        newTsVirtualFileSnapshots.add(extraScript.code.snapshot);
+                        tsFileNamesSet.add(extraScript.fileName);
+                        extraScriptRegistry.set(extraScript.fileName, extraScript);
+                    }
+                    for (const code of (0, language_core_2.forEachEmbeddedCode)(sourceFile.generated.code)) {
+                        newOtherVirtualFileSnapshots.add(code.snapshot);
+                    }
+                }
+                else {
+                    tsFileNamesSet.add(fileName);
+                }
+            }
+            if (!setEquals(lastTsVirtualFileSnapshots, newTsVirtualFileSnapshots)) {
+                tsProjectVersion++;
+            }
+            else if (setEquals(lastOtherVirtualFileSnapshots, newOtherVirtualFileSnapshots)) {
+                // no any meta language files update, it mean project version was update by source files this time
+                tsProjectVersion++;
+            }
+            lastTsVirtualFileSnapshots = newTsVirtualFileSnapshots;
+            lastOtherVirtualFileSnapshots = newOtherVirtualFileSnapshots;
+            tsFileRegistry.clear();
+            for (const fileName of tsFileNamesSet) {
+                tsFileRegistry.set(fileName, true);
+            }
+        }
+        function getScriptSnapshot(fileName) {
+            sync();
+            if (extraScriptRegistry.has(fileName)) {
+                return extraScriptRegistry.get(fileName).code.snapshot;
+            }
+            const sourceFile = files.get(fileNameToFileId(fileName));
+            if (sourceFile?.generated) {
+                const script = sourceFile.generated.languagePlugin.typescript?.getScript(sourceFile.generated.code);
+                if (script) {
+                    return script.code.snapshot;
+                }
+            }
+            else if (sourceFile) {
+                return sourceFile.snapshot;
+            }
+        }
+        function getScriptVersion(fileName) {
+            sync();
+            if (!scriptVersions.has(fileName)) {
+                scriptVersions.set(fileName, { lastVersion: 0, map: new WeakMap() });
+            }
+            const version = scriptVersions.get(fileName);
+            if (extraScriptRegistry.has(fileName)) {
+                const snapshot = extraScriptRegistry.get(fileName).code.snapshot;
+                if (!version.map.has(snapshot)) {
+                    version.map.set(snapshot, version.lastVersion++);
+                }
+                return version.map.get(snapshot).toString();
+            }
+            const sourceFile = files.get(fileNameToFileId(fileName));
+            if (sourceFile?.generated) {
+                const script = sourceFile.generated.languagePlugin.typescript?.getScript(sourceFile.generated.code);
+                if (script) {
+                    if (!version.map.has(script.code.snapshot)) {
+                        version.map.set(script.code.snapshot, version.lastVersion++);
+                    }
+                    return version.map.get(script.code.snapshot).toString();
+                }
+            }
+            const isOpenedFile = !!projectHost.getScriptSnapshot(fileName);
+            if (isOpenedFile) {
+                const sourceFile = files.get(fileNameToFileId(fileName));
+                if (sourceFile && !sourceFile.generated) {
+                    if (!version.map.has(sourceFile.snapshot)) {
+                        version.map.set(sourceFile.snapshot, version.lastVersion++);
+                    }
+                    return version.map.get(sourceFile.snapshot).toString();
+                }
+            }
+            if (sys.fileExists(fileName)) {
+                return sys.getModifiedTime?.(fileName)?.valueOf().toString() ?? '0';
+            }
+            return '';
+        }
+    }
+}
+exports.createLanguage = createLanguage;
+function setEquals(a, b) {
+    if (a.size !== b.size) {
+        return false;
+    }
+    for (const item of a) {
+        if (!b.has(item)) {
+            return false;
+        }
+    }
+    return true;
+}
+//# sourceMappingURL=createProject.js.map

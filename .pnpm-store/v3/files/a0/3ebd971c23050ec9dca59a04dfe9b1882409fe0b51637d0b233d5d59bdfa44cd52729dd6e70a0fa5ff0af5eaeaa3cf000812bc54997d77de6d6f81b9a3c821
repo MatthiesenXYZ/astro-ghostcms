@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.register = void 0;
+const shared_1 = require("../shared");
+const transforms_1 = require("../utils/transforms");
+function register(ctx) {
+    return (uri, position) => {
+        const document = ctx.getTextDocument(uri);
+        if (!document)
+            return [];
+        const fileName = ctx.uriToFileName(document.uri);
+        const offset = document.offsetAt(position);
+        const entries = (0, shared_1.safeCall)(() => ctx.languageService.getImplementationAtPosition(fileName, offset));
+        if (!entries)
+            return [];
+        return (0, transforms_1.entriesToLocationLinks)([...entries], ctx);
+    };
+}
+exports.register = register;
+//# sourceMappingURL=implementation.js.map

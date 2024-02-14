@@ -1,0 +1,18 @@
+---
+import { createComponentProxy, html } from './utils';
+
+export interface Props {
+  content?: string;
+  components?: Record<string, any>;
+}
+
+const input = Astro.props.content ?? await Astro.slots.render('default');
+if (!input) {
+  throw new Error('Unable to render <GhostRender> without a content prop or children')
+}
+// @ts-ignore
+const components = createComponentProxy($$result, Astro.props.components);
+const content = await html(input, { components });
+---
+
+<Fragment set:html={content} />

@@ -1,0 +1,36 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.register = void 0;
+const cancellation_1 = require("../utils/cancellation");
+const transform_1 = require("../utils/transform");
+function register(context) {
+    return async (item, token = cancellation_1.NoneCancellationToken) => {
+        const data = item.data;
+        if (data) {
+            const service = context.services[data.serviceIndex];
+            if (!service[1].resolveCompletionItem) {
+                return item;
+            }
+            item = Object.assign(item, data.original);
+            if (data.virtualDocumentUri) {
+                const [virtualCode] = context.documents.getVirtualCodeByUri(data.virtualDocumentUri);
+                if (virtualCode) {
+                    for (const map of context.documents.getMaps(virtualCode)) {
+                        item = await service[1].resolveCompletionItem(item, token);
+                        item = service[1].transformCompletionItem?.(item) ?? (0, transform_1.transformCompletionItem)(item, embeddedRange => map.getSourceRange(embeddedRange), map.virtualFileDocument, context);
+                    }
+                }
+            }
+            else {
+                item = await service[1].resolveCompletionItem(item, token);
+            }
+        }
+        // TODO: monkey fix import ts file icon
+        if (item.detail !== item.detail + '.ts') {
+            item.detail = item.detail;
+        }
+        return item;
+    };
+}
+exports.register = register;
+//# sourceMappingURL=resolveCompletionItem.js.map
