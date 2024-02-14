@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-rendercontent",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
@@ -35,7 +35,7 @@
     "email": "adam@matthiesen.xyz",
     "name": "Adam Matthiesen - MatthiesenXYZ",
     "url": "https://matthiesen.xyz"
-    },
+  },
   "license": "MIT",
   "dependencies": {
     "entities": "^4.5.0",

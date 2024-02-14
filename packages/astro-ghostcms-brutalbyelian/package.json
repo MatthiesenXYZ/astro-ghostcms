@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-brutalbyelian",
   "description": "ElianCodes Brutal theme modified to work with Astro-GhostCMS",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -13,10 +13,10 @@
     "email": "adam@matthiesen.xyz",
     "name": "Adam Matthiesen - MatthiesenXYZ",
     "url": "https://matthiesen.xyz"
-    },
-    "keywords": [
-      "astro-ghostcms"
-    ],
+  },
+  "keywords": [
+    "astro-ghostcms"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
@@ -40,7 +40,7 @@
     "./author/[slug].astro": "./src/routes/author/[slug].astro",
     "./archives/[...page].astro": "./src/routes/archives/[...page].astro"
   },
-  "scripts": { },
+  "scripts": {},
   "peerDependencies": {
     "astro": "^4.2.0"
   },
@@ -58,8 +58,8 @@
   "dependencies": {
     "@iconify-json/logos": "^1.1.41",
     "@iconify-json/uil": "^1.1.8",
-    "@matthiesenxyz/astro-ghostcms": "^3.2.1",
-    "@matthiesenxyz/astro-ghostcms-rendercontent": "^0.0.1",
+    "@matthiesenxyz/astro-ghostcms": "^3.2.3",
+    "@matthiesenxyz/astro-ghostcms-rendercontent": "^0.0.3",
     "@unocss/astro": "^0.57.7",
     "@unocss/reset": "^0.57.7",
     "unocss": "^0.57.7",

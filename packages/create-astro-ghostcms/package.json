@@ -1,6 +1,6 @@
 {
 	"name": "@matthiesenxyz/create-astro-ghostcms",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Utility to quickly get started with our Integration and astro",
 	"type": "module",
 	"main": "./create-astro-ghostcms.mjs",
@@ -10,22 +10,21 @@
 	"exports": {
 		".": "./create-astro-ghostcms.mjs"
 	},
-	"scripts": {
-	},
+	"scripts": {},
 	"sideEffects": false,
 	"author": {
-	  "email": "adam@matthiesen.xyz",
-	  "name": "Adam Matthiesen - MatthiesenXYZ",
-	  "url": "https://matthiesen.xyz"
-	  },
+		"email": "adam@matthiesen.xyz",
+		"name": "Adam Matthiesen - MatthiesenXYZ",
+		"url": "https://matthiesen.xyz"
+	},
 	"homepage": "https://astro-ghostcms.xyz/",
 	"repository": {
-	  "type": "git",
-	  "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+		"type": "git",
+		"url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
 	},
 	"bugs": {
-	  "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
-	  "email": "issues@astro-ghostcms.xyz"
+		"url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+		"email": "issues@astro-ghostcms.xyz"
 	},
 	"license": "MIT",
 	"files": [

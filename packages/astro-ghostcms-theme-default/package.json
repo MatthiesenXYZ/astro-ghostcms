@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-theme-default",
   "description": "Default Theme for astro-ghostcms",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -13,10 +13,10 @@
     "email": "adam@matthiesen.xyz",
     "name": "Adam Matthiesen - MatthiesenXYZ",
     "url": "https://matthiesen.xyz"
-    },
-    "keywords": [
-      "astro-ghostcms"
-    ],
+  },
+  "keywords": [
+    "astro-ghostcms"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
@@ -40,7 +40,7 @@
     "./author/[slug].astro": "./src/routes/author/[slug].astro",
     "./archives/[...page].astro": "./src/routes/archives/[...page].astro"
   },
-  "scripts": { },
+  "scripts": {},
   "devDependencies": {
     "@matthiesenxyz/astro-ghostcms": "*",
     "@astrojs/check": "^0.4.1",
@@ -50,7 +50,7 @@
     "astro": "^4.2.1"
   },
   "dependencies": {
-    "@matthiesenxyz/astro-ghostcms": "^3.1.8",
+    "@matthiesenxyz/astro-ghostcms": "^3.2.3",
     "astro-font": "^0.0.77",
     "sass": "^1.70.0"
   }
