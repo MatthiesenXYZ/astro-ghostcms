@@ -133,8 +133,8 @@ importers:
         specifier: ^0.58.5
         version: 0.58.5(vite@5.0.12)
       '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
+        specifier: ^0.58.5
+        version: 0.58.5
       astro:
         specifier: ^4.2.0
         version: 4.3.2(typescript@5.3.3)
@@ -194,8 +194,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.8
       astro-navbar:
-        specifier: ^2.3.0
-        version: 2.3.0
+        specifier: ^2.3.1
+        version: 2.3.1
       astro-seo:
         specifier: ^0.8.0
         version: 0.8.0
@@ -335,8 +335,8 @@ importers:
         version: 3.4.1
     devDependencies:
       '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
+        specifier: ^0.58.5
+        version: 0.58.5
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -2323,7 +2323,6 @@ packages:
 
   /@unocss/reset@0.58.5:
     resolution: {integrity: sha512-2wMrkCj3SSb5hrx9TKs5jZa34QIRkHv9FotbJutAPo7o8hx+XXn56ogzdoUrcFPJZJUx2R2nyOVbSlGMIjtFtw==}
-    dev: false
 
   /@unocss/rule-utils@0.57.7:
     resolution: {integrity: sha512-gLqbKTIetvRynLkhonu1znr+bmWnw+Cl3dFVNgZPGjiqGHd78PGS0gXQKvzuyN0iO2ADub1A7GlCWs826iEHjA==}
@@ -2735,8 +2734,8 @@ packages:
     resolution: {integrity: sha512-dh5TX2uxwqdFq15DF9cbRZgEdE9o8q522MP6xZYs+rnd3dexfDsIJMeEIDNVO7rkRxwJ7sphhCqTmdWvUJaiDg==}
     dev: false
 
-  /astro-navbar@2.3.0:
-    resolution: {integrity: sha512-5xnSuEuFM27FyWguZNRWv210P8J4MHCabkj+oHd94x+96peL3QRXWKpupGyHoo4Vdz4aNYe1GolcoOJRoJb7cA==}
+  /astro-navbar@2.3.1:
+    resolution: {integrity: sha512-lLvhWS03Qc3heMU23adFwEnBUJFlL6gxYi0xPvIyX1atb2oCov4kOS/MaWOPGnvj2nK63szebUzlG+NdIoUZzQ==}
     dev: false
 
   /astro-robots-txt@1.0.0:
