@@ -7,6 +7,8 @@
 	},
 	"scripts": {
 		"lint": "biome check .",
+		"changeset": "changeset",
+		"release": "changeset publish",
 		"lint:fix": "biome check --apply .",
 		"playground:dev": "pnpm --filter playground dev",
 		"api:test": "pnpm --filter astro-ghostcms test",
