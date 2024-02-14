@@ -1,5 +1,18 @@
 # @matthiesenxyz/astro-ghostcms-brutalbyelian
 
+## 0.0.8
+
+### Patch Changes
+
+- 0f3d47f: Bump @unocss/reset from 0.57.7 to 0.58.5
+- 12be739: Depencency updates
+- a358b7d: Bump @unocss/astro from 0.57.7 to 0.58.5
+- Updated dependencies [455ad3f]
+- Updated dependencies [12be739]
+- Updated dependencies [455ad3f]
+  - @matthiesenxyz/astro-ghostcms-rendercontent@0.0.5
+  - @matthiesenxyz/astro-ghostcms@3.2.5
+
 ## 0.0.7
 
 ### Patch Changes

@@ -1,0 +1,33 @@
+{
+    "name": "@types/tar-fs",
+    "version": "2.0.4",
+    "description": "TypeScript definitions for tar-fs",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/tar-fs",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Umoxfo",
+            "githubUsername": "Umoxfo",
+            "url": "https://github.com/Umoxfo"
+        },
+        {
+            "name": "Chris Wiggins",
+            "githubUsername": "chriswiggins",
+            "url": "https://github.com/chriswiggins"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/tar-fs"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*",
+        "@types/tar-stream": "*"
+    },
+    "typesPublisherContentHash": "a6de2bf419d8ca9568e69887e857b365cdb33375a00801df953b08f91b9d28c8",
+    "typeScriptVersion": "4.5"
+}

@@ -1,0 +1,83 @@
+import type { AstroConfig, Locales } from '../@types/astro.js';
+import type { RoutingStrategies } from '../core/config/schema.js';
+type GetLocaleRelativeUrl = GetLocaleOptions & {
+    locale: string;
+    base: string;
+    locales: Locales;
+    trailingSlash: AstroConfig['trailingSlash'];
+    format: AstroConfig['build']['format'];
+    routing?: RoutingStrategies;
+    defaultLocale: string;
+    domains: Record<string, string> | undefined;
+    path?: string;
+};
+export type GetLocaleOptions = {
+    /**
+     * Makes the locale URL-friendly by replacing underscores with dashes, and converting the locale to lower case.
+     * @default true
+     */
+    normalizeLocale?: boolean;
+    /**
+     *  An optional path to prepend to `locale`.
+     */
+    prependWith?: string;
+};
+type GetLocaleAbsoluteUrl = GetLocaleRelativeUrl & {
+    site: AstroConfig['site'];
+    isBuild: boolean;
+};
+/**
+ * The base URL
+ */
+export declare function getLocaleRelativeUrl({ locale, base, locales: _locales, trailingSlash, format, path, prependWith, normalizeLocale, routing, defaultLocale, }: GetLocaleRelativeUrl): string;
+/**
+ * The absolute URL
+ */
+export declare function getLocaleAbsoluteUrl({ site, isBuild, ...rest }: GetLocaleAbsoluteUrl): string;
+interface GetLocalesRelativeUrlList extends GetLocaleOptions {
+    base: string;
+    path?: string;
+    locales: Locales;
+    trailingSlash: AstroConfig['trailingSlash'];
+    format: AstroConfig['build']['format'];
+    routing?: RoutingStrategies;
+    defaultLocale: string;
+    domains: Record<string, string> | undefined;
+}
+export declare function getLocaleRelativeUrlList({ base, locales: _locales, trailingSlash, format, path, prependWith, normalizeLocale, routing, defaultLocale, }: GetLocalesRelativeUrlList): string[];
+interface GetLocalesAbsoluteUrlList extends GetLocalesRelativeUrlList {
+    site?: AstroConfig['site'];
+    isBuild: boolean;
+}
+export declare function getLocaleAbsoluteUrlList({ base, locales: _locales, trailingSlash, format, path, prependWith, normalizeLocale, routing, defaultLocale, isBuild, domains, site, }: GetLocalesAbsoluteUrlList): string[];
+/**
+ * Given a locale (code), it returns its corresponding path
+ * @param locale
+ * @param locales
+ */
+export declare function getPathByLocale(locale: string, locales: Locales): string;
+/**
+ * An utility function that retrieves the preferred locale that correspond to a path.
+ *
+ * @param path
+ * @param locales
+ */
+export declare function getLocaleByPath(path: string, locales: Locales): string;
+/**
+ *
+ * Given a locale, this function:
+ * - replaces the `_` with a `-`;
+ * - transforms all letters to be lower case;
+ */
+export declare function normalizeTheLocale(locale: string): string;
+/**
+ * Returns an array of only locales, by picking the `code`
+ * @param locales
+ */
+export declare function toCodes(locales: Locales): string[];
+/**
+ * It returns the array of paths
+ * @param locales
+ */
+export declare function toPaths(locales: Locales): string[];
+export {};
