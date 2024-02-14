@@ -194,8 +194,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.8
       astro-navbar:
-        specifier: ^2.3.0
-        version: 2.3.0
+        specifier: ^2.3.1
+        version: 2.3.1
       astro-seo:
         specifier: ^0.8.0
         version: 0.8.0
@@ -2654,8 +2654,8 @@ packages:
     resolution: {integrity: sha512-dh5TX2uxwqdFq15DF9cbRZgEdE9o8q522MP6xZYs+rnd3dexfDsIJMeEIDNVO7rkRxwJ7sphhCqTmdWvUJaiDg==}
     dev: false
 
-  /astro-navbar@2.3.0:
-    resolution: {integrity: sha512-5xnSuEuFM27FyWguZNRWv210P8J4MHCabkj+oHd94x+96peL3QRXWKpupGyHoo4Vdz4aNYe1GolcoOJRoJb7cA==}
+  /astro-navbar@2.3.1:
+    resolution: {integrity: sha512-lLvhWS03Qc3heMU23adFwEnBUJFlL6gxYi0xPvIyX1atb2oCov4kOS/MaWOPGnvj2nK63szebUzlG+NdIoUZzQ==}
     dev: false
 
   /astro-robots-txt@1.0.0:
@@ -7969,7 +7969,7 @@ packages:
       vitest: '>=0.16.0'
     dependencies:
       cross-fetch: 3.1.8
-      vitest: 1.2.1
+      vitest: 1.2.1(@types/node@20.11.17)
     transitivePeerDependencies:
       - encoding
     dev: true
