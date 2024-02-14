@@ -1,4 +1,4 @@
-name: Changesets
+name: "Changesets: Publish Packages from main"
 on:
   push:
     branches:
@@ -33,6 +33,6 @@ jobs:
           version: pnpm ci:version
           commit: "chore: update versions"
           title: "chore: update versions"
-          publish: pnpm changeset publish
+          publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}

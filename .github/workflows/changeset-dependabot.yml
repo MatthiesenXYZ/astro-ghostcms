@@ -1,4 +1,4 @@
-name: "Dependabot Changesets"
+name: "Changesets: Build Changesets for Dependabot"
 
 on: pull_request
 
