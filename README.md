@@ -43,7 +43,7 @@ In this Repo you will find the Following:
 
 - [Contributing Doc](./CONTRIBUTING.md)
 
-### Acknolegments
+### Acknowledgments
 
 *Ghost is a trademark of [The Ghost Foundation](https://ghost.org/trademark/). This project is not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided JavaScript tools to link a Headless GhostCMS install in to your Astro project.* 
 
