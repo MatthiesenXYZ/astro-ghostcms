@@ -1,0 +1,15 @@
+name: "Dependabot Changesets"
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  changesets:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot Changesets
+        uses: feelepxyz/dependabot-changesets@v1
