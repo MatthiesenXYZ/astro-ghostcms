@@ -30,7 +30,7 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: ^0.1.10
+        specifier: ^0.1.11
         version: link:../astro-ghostcms-theme-default
       '@resvg/resvg-js':
         specifier: ^2.6.0
@@ -124,10 +124,10 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.3
+        specifier: ^3.2.4
         version: link:../astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-rendercontent':
-        specifier: ^0.0.3
+        specifier: ^0.0.4
         version: link:../astro-ghostcms-rendercontent
       '@unocss/astro':
         specifier: ^0.57.7
@@ -185,7 +185,7 @@ importers:
         specifier: ^5.0.16
         version: 5.0.16
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.3
+        specifier: ^3.2.4
         version: link:../astro-ghostcms
       '@tailwindcss/typography':
         specifier: ^0.5.10
@@ -219,7 +219,7 @@ importers:
   packages/astro-ghostcms-theme-default:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.3
+        specifier: ^3.2.4
         version: link:../astro-ghostcms
       astro:
         specifier: ^4.2.1
