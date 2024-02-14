@@ -52,8 +52,7 @@
     "prettier-plugin-astro": "^0.13.0",
     "prettier": "^3.2.5",
     "@matthiesenxyz/astro-ghostcms": "workspace:*",
-    "@matthiesenxyz/astro-ghostcms-rendercontent": "workspace:*",
-    "node-html-parser": "6.1.12"
+    "@matthiesenxyz/astro-ghostcms-rendercontent": "workspace:*"
   },
   "dependencies": {
     "@iconify-json/logos": "^1.1.41",
