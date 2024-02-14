@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["playground","@ts-ghost/tsconfig"]
+  "ignore": ["playground"]
 }
