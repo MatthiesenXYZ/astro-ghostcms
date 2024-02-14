@@ -28,7 +28,7 @@ jobs:
       - name: install dependencies
         run: pnpm install --no-frozen-lockfile
       - name: create and publish versions
-        uses: changesets/action@v1
+        uses: matthiesenxyz/changeset-action@main
         with:
           version: pnpm ci:version
           commit: "chore: update versions"
