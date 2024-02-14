@@ -1,5 +1,13 @@
 # @matthiesenxyz/astro-ghostcms-theme-default
 
+## 0.1.11
+
+### Patch Changes
+
+- Fix License File
+- Updated dependencies
+  - @matthiesenxyz/astro-ghostcms@3.2.4
+
 ## 0.1.10
 
 ### Patch Changes
