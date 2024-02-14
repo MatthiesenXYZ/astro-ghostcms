@@ -7,8 +7,13 @@ We love your input! We want to make contributing to this project as easy and tra
 - Proposing new features
 - Becoming a maintainer
 
-## We Develop with Github
-We use github to host code, to track issues and feature requests, as well as accept pull requests.
+## We Develop with Github & Sync our Code to GitLab
+We use github to host code, to track issues and feature requests, as well as accept pull requests. Then All of our Code is Mirrored to GitLab.
+
+## We Use Changesets to aid with Development!
+This repo uses [changesets](https://github.com/changesets/changesets) to make releasing updates easier. For you, the contributor, this means you should run `pnpm changeset` when you've got your changes ready. 
+
+For more details, see this short document on [adding a changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md#i-am-in-a-single-package-repository).
 
 ## We Use Github, So All Code Changes Happen Through Pull Requests and Commits
 Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
