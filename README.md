@@ -46,7 +46,7 @@ This is a `pnpm` workspace and requires `pnpm` to function properly
 To setup this workspace clone this repo and run the following command:
 
 ```sh
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 Then you can run the playground:
