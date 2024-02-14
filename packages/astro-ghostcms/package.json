@@ -72,22 +72,22 @@
     "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.4.1",
+    "@astrojs/check": "^0.5.4",
     "@ts-ghost/core-api": "*",
     "@ts-ghost/tsconfig": "*",
     "@matthiesenxyz/astro-ghostcms-theme-default": "*",
     "@matthiesenxyz/astro-ghostcms-catppuccin": "*",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.11.17",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.31.3",
+    "eslint-plugin-astro": "^0.31.4",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.1.0",
+    "vitest": "^1.2.2",
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
