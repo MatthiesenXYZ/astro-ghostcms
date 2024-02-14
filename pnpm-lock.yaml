@@ -133,8 +133,8 @@ importers:
         specifier: ^0.57.7
         version: 0.57.7(vite@5.0.12)
       '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
+        specifier: ^0.58.5
+        version: 0.58.5
       astro:
         specifier: ^4.2.0
         version: 4.3.2(typescript@5.3.3)
@@ -335,8 +335,8 @@ importers:
         version: 3.4.1
     devDependencies:
       '@unocss/reset':
-        specifier: ^0.57.7
-        version: 0.57.7
+        specifier: ^0.58.5
+        version: 0.58.5
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -2283,6 +2283,9 @@ packages:
 
   /@unocss/reset@0.57.7:
     resolution: {integrity: sha512-oN9024WVrMewGbornnAPIpzHeKPIfVmZ5IsZGilWR761TnI5jTjHUkswsVoFx7tZdpCN2/bqS3JK/Ah0aot3NQ==}
+
+  /@unocss/reset@0.58.5:
+    resolution: {integrity: sha512-2wMrkCj3SSb5hrx9TKs5jZa34QIRkHv9FotbJutAPo7o8hx+XXn56ogzdoUrcFPJZJUx2R2nyOVbSlGMIjtFtw==}
 
   /@unocss/rule-utils@0.57.7:
     resolution: {integrity: sha512-gLqbKTIetvRynLkhonu1znr+bmWnw+Cl3dFVNgZPGjiqGHd78PGS0gXQKvzuyN0iO2ADub1A7GlCWs826iEHjA==}
