@@ -23,6 +23,6 @@
   "devDependencies": {
     "@unocss/reset": "^0.58.5",
     "typescript": "^5.3.3",
-    "unocss": "^0.57.7"
+    "unocss": "^0.58.5"
   }
 }

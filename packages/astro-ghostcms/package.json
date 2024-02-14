@@ -92,7 +92,7 @@
   },
   "dependencies": {
     "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.11",
-    "@astrojs/rss": "^4.0.4",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
     "@resvg/resvg-js": "^2.6.0",
     "@ts-ghost/core-api": "^5.1.2",
@@ -102,7 +102,7 @@
     "package-json": "9.0.0",
     "satori": "^0.10.11",
     "satori-html": "^0.3.2",
-    "vite": "^5.0.12",
+    "vite": "^5.1.2",
     "vite-tsconfig-paths": "^4.2.2",
     "zod": "^3.22.4"
   }
