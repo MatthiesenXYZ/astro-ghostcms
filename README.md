@@ -31,12 +31,12 @@ In this Repo you will find the Following:
 
 - `playground`: Development and Testing
 - `packages/`:
-  - `create-astro-ghostcms`: CLI Utility to quickly deploy new Astro-GhostCMS projects.
-  - `astro-ghostcms`: The main Integration!
-  - `astro-ghostcms-rendercontent`: Allows rendering of remote GhostCMS HTML with Custom Astro Components
-  - `astro-ghostcms-theme-default`: The Default theme in integration mode.
-  - `astro-ghostcms-catppuccin`: A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
-  - `astro-ghostcms-brutalbyelian`: [ElianCodes](https://www.elian.codes/) Brutal theme modified to work with Astro-GhostCMS
+  - [`create-astro-ghostcms`](./packages/create-astro-ghostcms/): CLI Utility to quickly deploy new Astro-GhostCMS projects.
+  - [`astro-ghostcms`](./packages/astro-ghostcms/): The main Integration!
+  - [`astro-ghostcms-rendercontent`](./packages/astro-ghostcms-rendercontent/): Allows rendering of remote GhostCMS HTML with Custom Astro Components
+  - [`astro-ghostcms-theme-default`](./packages/astro-ghostcms-theme-default/): The Default theme in integration mode.
+  - [`astro-ghostcms-catppuccin`](./packages/astro-ghostcms-catppuccin/): A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
+  - [`astro-ghostcms-brutalbyelian`](./packages/astro-ghostcms-brutalbyelian/): [ElianCodes](https://www.elian.codes/) Brutal theme modified to work with Astro-GhostCMS
   - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
 
 ## Contributing
