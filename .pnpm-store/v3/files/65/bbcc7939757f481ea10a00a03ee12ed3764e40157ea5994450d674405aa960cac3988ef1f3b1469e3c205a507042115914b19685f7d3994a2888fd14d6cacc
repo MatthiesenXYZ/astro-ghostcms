@@ -1,0 +1,53 @@
+{
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "version": "0.0.72",
+  "name": "astro-font",
+  "types": "index.d.ts",
+  "exports": {
+    "./AstroFont": "./AstroFont.astro",
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./utils": {
+      "types": "./dist/util.d.ts",
+      "default": "./dist/util.js"
+    }
+  },
+  "files": [
+    "dist",
+    "index.js",
+    "index.d.ts",
+    "AstroFont.astro",
+    "../../README.md"
+  ],
+  "keywords": [
+    "astro-component",
+    "seo",
+    "performance",
+    "perf",
+    "google-fonts",
+    "fonts"
+  ],
+  "repository": {
+    "url": "https://github.com/rishi-raj-jain/astro-font"
+  },
+  "homepage": "https://www.launchfa.st/features/astro-font",
+  "description": "An Astro integration to optimize Local & Google fonts inspired by @next/font",
+  "devDependencies": {
+    "@types/fontkit": "^2.0.6",
+    "@types/node": "^20.10.5",
+    "fontkit": "^2.0.2",
+    "prettier": "^3.1.1",
+    "prettier-plugin-astro": "^0.12.2",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsup && tsx patch-fontkit.ts",
+    "fmt": "prettier --write '**/*' --ignore-unknown"
+  }
+}

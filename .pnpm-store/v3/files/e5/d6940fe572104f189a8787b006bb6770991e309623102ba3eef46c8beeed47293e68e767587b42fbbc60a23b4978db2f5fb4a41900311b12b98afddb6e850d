@@ -1,0 +1,27 @@
+{
+    "name": "@types/gunzip-maybe",
+    "version": "1.4.2",
+    "description": "TypeScript definitions for gunzip-maybe",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/gunzip-maybe",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Thomas Hobson",
+            "githubUsername": "hexf",
+            "url": "https://github.com/hexf"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/gunzip-maybe"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*"
+    },
+    "typesPublisherContentHash": "485c02fb9b18e6904418e49ebacf50c2988f205662c093efe6fe42a6e6a2e1ed",
+    "typeScriptVersion": "4.5"
+}
