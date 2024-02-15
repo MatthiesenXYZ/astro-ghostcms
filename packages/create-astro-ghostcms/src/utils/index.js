@@ -33,7 +33,7 @@ export function isPackageManager(str) {
 }
 
 /**
- * @typedef {import("../../types").PackageManager} PackageManager
+ * @typedef {import("../types.js").PackageManager} PackageManager
  */
 
 /**

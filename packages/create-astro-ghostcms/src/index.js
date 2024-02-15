@@ -101,6 +101,12 @@ export async function main() {
 					)}`,
 				},
 				{
+					value: "brutal",
+					label: `${c.magenta("BrutalbyElian")} - ${c.cyan(
+						c.italic("Integration w/ BrutalbyElian UnoCSS theme"),
+					)}`,
+				},
+				{
 					value: "starterkit",
 					label: `${c.magenta("Starter Kit")} - ${c.cyan(
 						c.italic("Integration in API-Only Mode with customizable theme"),
@@ -135,6 +141,9 @@ export async function main() {
 		case "catppuccin":
 			await createProject(ctx).catch(console.error);
 			break;
+		case "brutal":
+			await createProject(ctx).catch(console.error);
+			break;
 		default:
 			throw new Error(c.red(`Unknown template: ${template}`));
 	}
@@ -160,11 +169,11 @@ function getHelp() {
  * @returns {template is Template}
  */
 function isValidTemplate(template) {
-	return ["basic", "starterkit"].includes(template);
+	return ["basic", "starterkit", "catppuccin", "brutal"].includes(template);
 }
 
 /**
- * @typedef {import("../types.js").Template} Template
- * @typedef {import("../types.js").PackageManager} PackageManager
- * @typedef {import("../types.js").Context} Context
+ * @typedef {import("./types.js").Template} Template
+ * @typedef {import("./types.js").PackageManager} PackageManager
+ * @typedef {import("./types.js").Context} Context
  */
