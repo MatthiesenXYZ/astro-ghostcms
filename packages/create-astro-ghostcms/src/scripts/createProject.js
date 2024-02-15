@@ -1,10 +1,15 @@
 import path from "node:path";
-import fse from "fs-extra";
-import c from 'picocolors';
 import * as p from "@clack/prompts";
 import { execa } from "execa";
-import { exitPrompt, getModulePaths, isPathname,
-	normalizePath, wait } from "../utils/index.js";
+import fse from "fs-extra";
+import c from "picocolors";
+import {
+	exitPrompt,
+	getModulePaths,
+	isPathname,
+	normalizePath,
+	wait,
+} from "../utils/index.js";
 
 //const runnerName = "basic";
 
@@ -26,37 +31,57 @@ export async function createProject(ctx) {
 	// 2. Create the damned thing
 	cwd = project.pathname;
 	const relativePath = path.relative(process.cwd(), project.pathname);
-	s.start(`${c.yellow(`Creating a new Astro-GhostCMS project in ${relativePath}`)}`);
+	s.start(
+		`${c.yellow(`Creating a new Astro-GhostCMS project in ${relativePath}`)}`,
+	);
 	if (dryRun) {
 		await wait(2000);
 	} else {
 		await createApp(project.name, project.pathname, template, {
 			onError(error) {
-				s.stop(`${c.red('Failed to create new project')}`);
+				s.stop(`${c.red("Failed to create new project")}`);
 				p.cancel();
 				console.error(error);
 				process.exit(1);
 			},
 		});
 	}
-	s.stop(`${c.green('New Astro-GhostCMS project')} '${project.name}' ${c.green('created')} 🚀`);
-	const fCheck = await p.group({
-		installDeps: () => p.confirm({
-			message: `${c.cyan('Install dependencies? (Recommended)')}`,
-			initialValue: true,
-		}), 
-		//GitRepo: () => p.confirm({
-		//	message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray("( Tip: This Option gets Stuck Press Enter Twice if you get no reponse! )"))}`,
-		//	initialValue: false,
-		//}),
-		readyCheck: () => p.confirm({
-			message: `${c.bgYellow(c.black(c.bold(' CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ')))}`,
-			initialValue: true,
-		}),
-	},
-	{ onCancel: () => { exitPrompt(); } });
+	s.stop(
+		`${c.green("New Astro-GhostCMS project")} '${project.name}' ${c.green(
+			"created",
+		)} 🚀`,
+	);
+	const fCheck = await p.group(
+		{
+			installDeps: () =>
+				p.confirm({
+					message: `${c.cyan("Install dependencies? (Recommended)")}`,
+					initialValue: true,
+				}),
+			//GitRepo: () => p.confirm({
+			//	message: `${c.cyan('Initialize a Git repository?')} ${c.italic(c.gray("( Tip: This Option gets Stuck Press Enter Twice if you get no reponse! )"))}`,
+			//	initialValue: false,
+			//}),
+			readyCheck: () =>
+				p.confirm({
+					message: `${c.bgYellow(
+						c.black(
+							c.bold(
+								" CONFIRM: Press Enter Twice to continue or `Ctrl+C` to Cancel. ",
+							),
+						),
+					)}`,
+					initialValue: true,
+				}),
+		},
+		{
+			onCancel: () => {
+				exitPrompt();
+			},
+		},
+	);
 
-	if(fCheck.readyCheck){;
+	if (fCheck.readyCheck) {
 		// 3. Initialize git repo
 		if (initGitRepo) {
 			if (dryRun) {
@@ -68,9 +93,19 @@ export async function createProject(ctx) {
 		} else {
 			p.log.info(`${c.gray("Skipped Git initialization")}`);
 		}
-	
-		const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow('npm install')} / ${c.yellow('pnpm install')} / ${c.yellow('yarn install')} inside your project directory! \n \n ${c.bgYellow(c.black(c.bold(" Dont forget to modify your .env file for YOUR ghost install! ")))} `
-		
+
+		const nextSteps = `If you didnt opt to install Dependencies dont forget to run: \n ${c.yellow(
+			"npm install",
+		)} / ${c.yellow("pnpm install")} / ${c.yellow(
+			"yarn install",
+		)} inside your project directory! \n \n ${c.bgYellow(
+			c.black(
+				c.bold(
+					" Dont forget to modify your .env file for YOUR ghost install! ",
+				),
+			),
+		)} `;
+
 		// 4. Install dependencies
 		installDeps = installDeps ?? fCheck.installDeps;
 		const pm = ctx.pkgManager ?? "pnpm";
@@ -82,17 +117,16 @@ export async function createProject(ctx) {
 				await installDependencies(pm, { cwd });
 			}
 			s.stop(`${c.green(`Dependencies installed with ${pm}`)}`);
-			success()
+			success();
 		} else {
-			p.log.info(`${c.gray('Skipped dependency installation')}`);
-			success()
+			p.log.info(`${c.gray("Skipped dependency installation")}`);
+			success();
 		}
-	
+
 		async function success() {
 			p.note(nextSteps);
 			p.outro(c.green("Deployment Complete!"));
 		}
-
 	} else {
 		exitPrompt();
 	}
@@ -125,7 +159,7 @@ async function createApp(projectName, projectPathname, template, { onError }) {
 		},
 	];
 	await Promise.all(
-		filesToCopy.map(async ({ src, dest }) => await fse.copy(src, dest))
+		filesToCopy.map(async ({ src, dest }) => await fse.copy(src, dest)),
 	);
 
 	/** @type {Array<{ pathname: string; getUpdates: (contents: string) => string }>} */
@@ -140,7 +174,7 @@ async function createApp(projectName, projectPathname, template, { onError }) {
 			const contents = await fse.readFile(pathname, "utf-8");
 			const updatedContents = getUpdates(contents);
 			await fse.writeFile(pathname, updatedContents, "utf-8");
-		})
+		}),
 	);
 
 	/** @param {string} contents */
@@ -171,7 +205,10 @@ async function getProjectDetails(projectNameInput, opts) {
 	let pathname;
 
 	if (isPathname(projectName)) {
-		const dir = path.resolve(opts.cwd, path.dirname(normalizePath(projectName)));
+		const dir = path.resolve(
+			opts.cwd,
+			path.dirname(normalizePath(projectName)),
+		);
 		projectName = toValidProjectName(path.basename(projectName));
 		pathname = path.join(dir, projectName);
 	} else {
@@ -234,7 +271,7 @@ function toValidProjectName(projectName) {
  */
 function isValidProjectName(projectName) {
 	return /^(?:@[a-z\d\-*~][a-z\d\-*._~]*\/)?[a-z\d\-~][a-z\d\-._~]*$/.test(
-		projectName
+		projectName,
 	);
 }
 

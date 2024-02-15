@@ -1,1 +1,1 @@
-export * from './tiers';
+export * from "./tiers";

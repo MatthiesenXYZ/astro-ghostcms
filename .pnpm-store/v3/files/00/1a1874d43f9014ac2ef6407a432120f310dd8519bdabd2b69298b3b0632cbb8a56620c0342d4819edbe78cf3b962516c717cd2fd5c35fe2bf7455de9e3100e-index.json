@@ -1,1 +1,28 @@
-{"files":{"LICENSE":{"checkedAt":1707919831712,"integrity":"sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==","mode":420,"size":1141},"README.md":{"checkedAt":1707919832332,"integrity":"sha512-hmeohqsWqvEp2krMX6HUSBOWH+otvPY6d9nmJ+zqyBklhi09Y7bmm+9TKRq8UnoPlyp1l/GDui7Np6iMNY7FNA==","mode":420,"size":622},"index.d.ts":{"checkedAt":1707919832332,"integrity":"sha512-FEAP4/N8lWETGOG6uOzk188VcikGeOv21aurF8SsUV5Unc8aZn5KASa/+2FhIjRYPbKCdvNTXPvOk4oRAIHWIg==","mode":420,"size":4335},"package.json":{"checkedAt":1707919832332,"integrity":"sha512-YebQXVNHhGIcXiHowbgdNlmV6g+BoNZ66wSKYgFOi6YVyDr2ze98Awklvj916upjdaE5DpuHqptkLZzV5VicnA==","mode":420,"size":1151}}}
+{
+	"files": {
+		"LICENSE": {
+			"checkedAt": 1707919831712,
+			"integrity": "sha512-HQaIQk9pwOcyKutyDk4o2a87WnotwYuLGYFW43emGm4FvIJFKPyg+OYaw5sTegKAKf+C5SKa1ACjzCLivbaHrQ==",
+			"mode": 420,
+			"size": 1141
+		},
+		"README.md": {
+			"checkedAt": 1707919832332,
+			"integrity": "sha512-hmeohqsWqvEp2krMX6HUSBOWH+otvPY6d9nmJ+zqyBklhi09Y7bmm+9TKRq8UnoPlyp1l/GDui7Np6iMNY7FNA==",
+			"mode": 420,
+			"size": 622
+		},
+		"index.d.ts": {
+			"checkedAt": 1707919832332,
+			"integrity": "sha512-FEAP4/N8lWETGOG6uOzk188VcikGeOv21aurF8SsUV5Unc8aZn5KASa/+2FhIjRYPbKCdvNTXPvOk4oRAIHWIg==",
+			"mode": 420,
+			"size": 4335
+		},
+		"package.json": {
+			"checkedAt": 1707919832332,
+			"integrity": "sha512-YebQXVNHhGIcXiHowbgdNlmV6g+BoNZ66wSKYgFOi6YVyDr2ze98Awklvj916upjdaE5DpuHqptkLZzV5VicnA==",
+			"mode": 420,
+			"size": 1151
+		}
+	}
+}

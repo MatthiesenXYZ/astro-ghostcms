@@ -6,15 +6,15 @@
 		"node": ">=18.19.0"
 	},
 	"scripts": {
-		"ci:version": "pnpm changeset version",
-		"ci:publish": "pnpm changeset publish",
+		"dev": "pnpm --filter playground dev",
 		"lint": "biome check .",
 		"lint:fix": "biome check --apply .",
-		"playground:dev": "pnpm --filter playground dev",
-		"api:test": "pnpm --filter astro-ghostcms test",
-		"api:test:watch": "pnpm --filter astro-ghostcms test:watch",
-		"api:test:coverage": "pnpm --filter astro-ghostcms test:coverage",
-		"api:test:ci": "pnpm --filter astro-ghostcms test:ci"
+		"changeset": "pnpm changeset",
+		"ci:version": "pnpm changeset version",
+		"ci:publish": "pnpm changeset publish",
+		"ci:test:api": "pnpm --filter astro-ghostcms test:ci",		"test:api": "pnpm --filter astro-ghostcms test",
+		"test:api:watch": "pnpm --filter astro-ghostcms test:watch",
+		"test:api:coverage": "pnpm --filter astro-ghostcms test:coverage"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.5.3",

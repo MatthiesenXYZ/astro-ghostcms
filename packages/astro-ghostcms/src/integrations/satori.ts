@@ -1,13 +1,21 @@
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-import type { SatoriAstroOGOptions, ToSvgOptions, ToImageOptions, ToResponseOptions } from "../../types.js";
+import type {
+	SatoriAstroOGOptions,
+	ToImageOptions,
+	ToResponseOptions,
+	ToSvgOptions,
+} from "../../types.js";
 
 const satoriOG = ({ width, height, template }: SatoriAstroOGOptions) => {
 	return {
 		async toSvg(options: ToSvgOptions) {
 			return await satori(template, { width, height, ...options });
 		},
-		async toImage({ satori: satoriOptions, resvg: _resvgOptions }: ToImageOptions) {
+		async toImage({
+			satori: satoriOptions,
+			resvg: _resvgOptions,
+		}: ToImageOptions) {
 			const resvgOptions =
 				typeof _resvgOptions === "function"
 					? _resvgOptions({ width, height })
@@ -16,12 +24,15 @@ const satoriOG = ({ width, height, template }: SatoriAstroOGOptions) => {
 			return new Resvg(await this.toSvg(satoriOptions), {
 				fitTo: { mode: "width", value: width },
 				...resvgOptions,
-			}).render().asPng();
+			})
+				.render()
+				.asPng();
 		},
 		async toResponse({ response: init, ...rest }: ToResponseOptions) {
 			const image = await this.toImage(rest);
 
-			return new Response(image, {...init,
+			return new Response(image, {
+				...init,
 				headers: {
 					"Content-Type": "image/png",
 					"Content-Length": image.length.toString(),
@@ -35,12 +46,10 @@ const satoriOG = ({ width, height, template }: SatoriAstroOGOptions) => {
 
 export default satoriOG;
 
-export function getOgImagePath(filename = "index"):string {
-	if (filename.startsWith("/")) 
-		filename = filename.substring(1);
-	if (filename.endsWith("/"))
-	  	filename = filename.substring(0, filename.length - 1);
-	if (filename === "") filename = "index";
+export function getOgImagePath(inputFilename = "index"): string {
+	let filename = inputFilename.replace(/^\/|\/$/g, "");
+	if (!filename) {
+		filename = "index";
+	}
 	return `./open-graph/${filename}.png`;
-  };
-
+}

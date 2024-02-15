@@ -1,1 +1,40 @@
-{"files":{"dist/browser.js":{"checkedAt":1707919833373,"integrity":"sha512-vq+k3QdnT6b6AWYQPnHApNgtri/r3Y4oZWmDLyQjTd6BZpLmLnuRy5w76ZJ+zAgfEhWn7gmlKPtDKVLOzcDOCg==","mode":420,"size":2909},"dist/main.js":{"checkedAt":1707919833373,"integrity":"sha512-zh0WmtMwZwzxfoMlUTmITrZhmO7KA+3r27xCPLhNsxzaLu5D6x4AxZbYGGZ62VJOjWXTHedL7u7HK6rI3jxfLQ==","mode":420,"size":45533},"package.json":{"checkedAt":1707919833373,"integrity":"sha512-DOF22w7pXi/EHtMdPlTkOhEqjbxRS/+S6t09oocC1u8N4vCvct5Sg1FX7/49t2hshmgpW8nIYao3xrWuxMU+3w==","mode":420,"size":1443},"dist/tsdoc-metadata.json":{"checkedAt":1707919833373,"integrity":"sha512-E0jaYfaovkPqtt8qdUnQJ8S06xla9r9rRjQFpPVRg/R5aLHK/OAWu4vA6Wlh3s909TKEBkZXqLN8AgKZMvs4EQ==","mode":420,"size":340},"README.md":{"checkedAt":1707919833374,"integrity":"sha512-X2Bsl3EaCYOvaupCfvnLxmpVsYuOaxsoMb0uRjB3fQFNHsrgjJ6VklvoRQNNycBp4XACVScWfCSMlTaGFDI3tA==","mode":420,"size":1422},"dist/main.d.ts":{"checkedAt":1707919833374,"integrity":"sha512-mYKP8f/p/4s+Q3OzRAYxwHYvVTTBRjf5bXiBa03ajFDCg1AyNbOaEbzHKdDfbEuP/t7UDwqaC68o4Vv2fVV27Q==","mode":420,"size":5601}}}
+{
+	"files": {
+		"dist/browser.js": {
+			"checkedAt": 1707919833373,
+			"integrity": "sha512-vq+k3QdnT6b6AWYQPnHApNgtri/r3Y4oZWmDLyQjTd6BZpLmLnuRy5w76ZJ+zAgfEhWn7gmlKPtDKVLOzcDOCg==",
+			"mode": 420,
+			"size": 2909
+		},
+		"dist/main.js": {
+			"checkedAt": 1707919833373,
+			"integrity": "sha512-zh0WmtMwZwzxfoMlUTmITrZhmO7KA+3r27xCPLhNsxzaLu5D6x4AxZbYGGZ62VJOjWXTHedL7u7HK6rI3jxfLQ==",
+			"mode": 420,
+			"size": 45533
+		},
+		"package.json": {
+			"checkedAt": 1707919833373,
+			"integrity": "sha512-DOF22w7pXi/EHtMdPlTkOhEqjbxRS/+S6t09oocC1u8N4vCvct5Sg1FX7/49t2hshmgpW8nIYao3xrWuxMU+3w==",
+			"mode": 420,
+			"size": 1443
+		},
+		"dist/tsdoc-metadata.json": {
+			"checkedAt": 1707919833373,
+			"integrity": "sha512-E0jaYfaovkPqtt8qdUnQJ8S06xla9r9rRjQFpPVRg/R5aLHK/OAWu4vA6Wlh3s909TKEBkZXqLN8AgKZMvs4EQ==",
+			"mode": 420,
+			"size": 340
+		},
+		"README.md": {
+			"checkedAt": 1707919833374,
+			"integrity": "sha512-X2Bsl3EaCYOvaupCfvnLxmpVsYuOaxsoMb0uRjB3fQFNHsrgjJ6VklvoRQNNycBp4XACVScWfCSMlTaGFDI3tA==",
+			"mode": 420,
+			"size": 1422
+		},
+		"dist/main.d.ts": {
+			"checkedAt": 1707919833374,
+			"integrity": "sha512-mYKP8f/p/4s+Q3OzRAYxwHYvVTTBRjf5bXiBa03ajFDCg1AyNbOaEbzHKdDfbEuP/t7UDwqaC68o4Vv2fVV27Q==",
+			"mode": 420,
+			"size": 5601
+		}
+	}
+}

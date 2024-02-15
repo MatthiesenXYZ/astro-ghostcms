@@ -1,4 +1,4 @@
-import { ValidationError } from './ValidationError';
+import { ValidationError } from "./ValidationError";
 export function isValidationError(err) {
-    return err instanceof ValidationError;
+	return err instanceof ValidationError;
 }

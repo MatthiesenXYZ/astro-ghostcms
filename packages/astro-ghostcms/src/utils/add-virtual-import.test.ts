@@ -19,13 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
-import { afterEach, type Mock, describe, expect, test, vi } from "vitest";
+import { type Mock, afterEach, describe, expect, test, vi } from "vitest";
 import { addVirtualImport } from "./add-virtual-import.js";
 import { addVitePlugin } from "./add-vite-plugin.js";
 
-vi.mock('./add-vite-plugin')
+vi.mock("./add-vite-plugin");
 
-const pluginNameStub = <T extends string>(name: T): `vite-plugin-${T}` => `vite-plugin-${name}`
+const pluginNameStub = <T extends string>(name: T): `vite-plugin-${T}` =>
+	`vite-plugin-${name}`;
 
 describe("add-virtual-import", () => {
 	const name = "test-module";
@@ -56,9 +57,9 @@ describe("add-virtual-import", () => {
 			updateConfig,
 		});
 
-		const expectedName = pluginNameStub(name)
+		const expectedName = pluginNameStub(name);
 
-		const { plugin } = (addVitePlugin as Mock).mock.lastCall[0]
+		const { plugin } = (addVitePlugin as Mock).mock.lastCall[0];
 
 		expect(plugin.name).toEqual(expectedName);
 	});
@@ -72,10 +73,10 @@ describe("add-virtual-import", () => {
 			updateConfig,
 		});
 
-		const { plugin } = (addVitePlugin as Mock).mock.lastCall[0]
+		const { plugin } = (addVitePlugin as Mock).mock.lastCall[0];
 
-		const resolvedVirtualModuleId = plugin.resolveId(name)
+		const resolvedVirtualModuleId = plugin.resolveId(name);
 
-		expect(resolvedVirtualModuleId).toEqual(`\0${ name }`);
+		expect(resolvedVirtualModuleId).toEqual(`\0${name}`);
 	});
 });

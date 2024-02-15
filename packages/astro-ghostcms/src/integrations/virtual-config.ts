@@ -1,6 +1,6 @@
-import config from  'virtual:@matthiesenxyz/astro-ghostcms/config'
-import type { GhostUserConfig } from '../schemas'
+import type { GhostUserConfig } from "../schemas";
+import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
 
-const UserConfig = config as GhostUserConfig
+const UserConfig = config as GhostUserConfig;
 
 export default UserConfig;

@@ -1,1 +1,40 @@
-{"files":{"index.js":{"checkedAt":1707919832230,"integrity":"sha512-P14774BR12ipgegLP8aoL66VNdFiT1ettPurK1LLqHvtxmI0RIfrTDJ+NZXruBcGGAZCbhXtPWFcCw0Hb5tCnQ==","mode":420,"size":81},"lib/index.js":{"checkedAt":1707919832230,"integrity":"sha512-zpe7+Nbpn5QLdwnc64VWG2OF1u2mPfPY0j9v1vbANSpaZkS/PWF1Nk5OPr7tMJuXlC8UQk9OKknAbfDccE1ydg==","mode":420,"size":830},"package.json":{"checkedAt":1707919832230,"integrity":"sha512-/jZLNSzLsAXai0oneso8ZdJuYTLm0SILqrzGwirv6qVPiKfOWqExsl8SsYH9sZTS7Ql5wxjrPvvKqeJ2K1ECfg==","mode":420,"size":1172},"readme.md":{"checkedAt":1707919832230,"integrity":"sha512-7xscLPZ5L0+BDwSn90d8JUKiAdEzmXBQkGu0YUJV179AY1ygudmWinwgWzjfzI9iHxXQKGE4R7P4jVe26JTFRA==","mode":420,"size":15646},"index.d.ts":{"checkedAt":1707919832230,"integrity":"sha512-t/Gdbz2WVqTPZZKiFq6IQaW2GFC2DBxzp09F6qFORdi1iWimPHJwHr/QLTk3z5NFbFCnTpz0HPhxtQ7iFg44Qw==","mode":420,"size":606},"lib/index.d.ts":{"checkedAt":1707919832231,"integrity":"sha512-4mxiQz7tFm3qWatGjRgSEDzy1FeTP21Z08Rhn3iRQiJA1RQ36C3sHjC85ZS+IIRnj9Emq4ug548AEuqoZ3+7qQ==","mode":420,"size":822}}}
+{
+	"files": {
+		"index.js": {
+			"checkedAt": 1707919832230,
+			"integrity": "sha512-P14774BR12ipgegLP8aoL66VNdFiT1ettPurK1LLqHvtxmI0RIfrTDJ+NZXruBcGGAZCbhXtPWFcCw0Hb5tCnQ==",
+			"mode": 420,
+			"size": 81
+		},
+		"lib/index.js": {
+			"checkedAt": 1707919832230,
+			"integrity": "sha512-zpe7+Nbpn5QLdwnc64VWG2OF1u2mPfPY0j9v1vbANSpaZkS/PWF1Nk5OPr7tMJuXlC8UQk9OKknAbfDccE1ydg==",
+			"mode": 420,
+			"size": 830
+		},
+		"package.json": {
+			"checkedAt": 1707919832230,
+			"integrity": "sha512-/jZLNSzLsAXai0oneso8ZdJuYTLm0SILqrzGwirv6qVPiKfOWqExsl8SsYH9sZTS7Ql5wxjrPvvKqeJ2K1ECfg==",
+			"mode": 420,
+			"size": 1172
+		},
+		"readme.md": {
+			"checkedAt": 1707919832230,
+			"integrity": "sha512-7xscLPZ5L0+BDwSn90d8JUKiAdEzmXBQkGu0YUJV179AY1ygudmWinwgWzjfzI9iHxXQKGE4R7P4jVe26JTFRA==",
+			"mode": 420,
+			"size": 15646
+		},
+		"index.d.ts": {
+			"checkedAt": 1707919832230,
+			"integrity": "sha512-t/Gdbz2WVqTPZZKiFq6IQaW2GFC2DBxzp09F6qFORdi1iWimPHJwHr/QLTk3z5NFbFCnTpz0HPhxtQ7iFg44Qw==",
+			"mode": 420,
+			"size": 606
+		},
+		"lib/index.d.ts": {
+			"checkedAt": 1707919832231,
+			"integrity": "sha512-4mxiQz7tFm3qWatGjRgSEDzy1FeTP21Z08Rhn3iRQiJA1RQ36C3sHjC85ZS+IIRnj9Emq4ug548AEuqoZ3+7qQ==",
+			"mode": 420,
+			"size": 822
+		}
+	}
+}
