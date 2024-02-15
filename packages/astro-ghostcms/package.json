@@ -47,13 +47,15 @@
   ],
   "exports": {
     ".": "./index.ts",
-    "./api": "./src/api/index.ts",
+    "./api": {
+      "types": "./src/api/index.ts",
+      "default": "./src/api/index.ts"
+    },
     "./api-core": "./src/api/content-api/index.ts",
     "./config": {
-      "default": "./src/integrations/virtual-config.ts",
-      "types": "./src/integrations/virtual.d.ts"
+      "types": "./src/integrations/virtual.d.ts",
+      "default": "./src/integrations/virtual-config.ts"
     },
-    "./types": "./types.d.ts",
     "./satoriOG": "./src/integrations/satori.ts",
     "./404.astro": "./src/default-routes/404/404.astro",
     "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
