@@ -1,8 +1,8 @@
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import * as p from "@clack/prompts";
 import c from "picocolors";
-import path from "node:path";
-import os from "node:os";
-import { fileURLToPath } from "node:url";
 
 /**
  * @returns {never}

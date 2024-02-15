@@ -1,1 +1,46 @@
-{"files":{"license":{"checkedAt":1707919832297,"integrity":"sha512-7K5ZasbaldfW1EEtOW8fMQSTGOXBxA+vkW0lx/DVkYZcH1gSCRANmYNk1Wyc3dEf2Jvy3u0a4bVPs8Ft8Z1VqA==","mode":420,"size":1150},"index.js":{"checkedAt":1707919832297,"integrity":"sha512-IOFUVGvZlrGJsty/F6C0Z8l5ZqPj643rOPsMtprCKssDUxrIPWLz0EuZ3YivWmG3spDwgnzJBoMv7F1Nc3Bq9A==","mode":420,"size":40},"lib/index.js":{"checkedAt":1707919832298,"integrity":"sha512-mW9e6eWZu7tv/azPuKLTn7zZBA6VUQmIKoKSvJlPII4G2e+xcQLVqGXyLgVrLShcC6Nk1wGvDKqg2Y1xy/MG1Q==","mode":420,"size":690},"package.json":{"checkedAt":1707919832298,"integrity":"sha512-Zs0+wgsraYVVZJWNwwts9dNU0BCNMUfd6waVPvVS0pZRLUP589ir5gvnbZyrmvm+eYSBLRtsKsXgkl/Cy4PcWg==","mode":420,"size":1969},"readme.md":{"checkedAt":1707919832298,"integrity":"sha512-Mhf8viQuSko7VmbgsPmLaFWhTv/SO/eollvmXg+JB6XvGZP2oHguWbugs4BPJXhO2g7a8mq/PJC5D7ZkyjPa8g==","mode":420,"size":5303},"index.d.ts":{"checkedAt":1707919832297,"integrity":"sha512-IOFUVGvZlrGJsty/F6C0Z8l5ZqPj643rOPsMtprCKssDUxrIPWLz0EuZ3YivWmG3spDwgnzJBoMv7F1Nc3Bq9A==","mode":420,"size":40},"lib/index.d.ts":{"checkedAt":1707919832298,"integrity":"sha512-Rd3XAkL85b5y0285oNLx2C8fEXcEJlID2xIbbzub8KsWm3uI5xbgtWDFLsW86QgFZ4ejHT7w0ewHtb+fYcmy8Q==","mode":420,"size":148}}}
+{
+	"files": {
+		"license": {
+			"checkedAt": 1707919832297,
+			"integrity": "sha512-7K5ZasbaldfW1EEtOW8fMQSTGOXBxA+vkW0lx/DVkYZcH1gSCRANmYNk1Wyc3dEf2Jvy3u0a4bVPs8Ft8Z1VqA==",
+			"mode": 420,
+			"size": 1150
+		},
+		"index.js": {
+			"checkedAt": 1707919832297,
+			"integrity": "sha512-IOFUVGvZlrGJsty/F6C0Z8l5ZqPj643rOPsMtprCKssDUxrIPWLz0EuZ3YivWmG3spDwgnzJBoMv7F1Nc3Bq9A==",
+			"mode": 420,
+			"size": 40
+		},
+		"lib/index.js": {
+			"checkedAt": 1707919832298,
+			"integrity": "sha512-mW9e6eWZu7tv/azPuKLTn7zZBA6VUQmIKoKSvJlPII4G2e+xcQLVqGXyLgVrLShcC6Nk1wGvDKqg2Y1xy/MG1Q==",
+			"mode": 420,
+			"size": 690
+		},
+		"package.json": {
+			"checkedAt": 1707919832298,
+			"integrity": "sha512-Zs0+wgsraYVVZJWNwwts9dNU0BCNMUfd6waVPvVS0pZRLUP589ir5gvnbZyrmvm+eYSBLRtsKsXgkl/Cy4PcWg==",
+			"mode": 420,
+			"size": 1969
+		},
+		"readme.md": {
+			"checkedAt": 1707919832298,
+			"integrity": "sha512-Mhf8viQuSko7VmbgsPmLaFWhTv/SO/eollvmXg+JB6XvGZP2oHguWbugs4BPJXhO2g7a8mq/PJC5D7ZkyjPa8g==",
+			"mode": 420,
+			"size": 5303
+		},
+		"index.d.ts": {
+			"checkedAt": 1707919832297,
+			"integrity": "sha512-IOFUVGvZlrGJsty/F6C0Z8l5ZqPj643rOPsMtprCKssDUxrIPWLz0EuZ3YivWmG3spDwgnzJBoMv7F1Nc3Bq9A==",
+			"mode": 420,
+			"size": 40
+		},
+		"lib/index.d.ts": {
+			"checkedAt": 1707919832298,
+			"integrity": "sha512-Rd3XAkL85b5y0285oNLx2C8fEXcEJlID2xIbbzub8KsWm3uI5xbgtWDFLsW86QgFZ4ejHT7w0ewHtb+fYcmy8Q==",
+			"mode": 420,
+			"size": 148
+		}
+	}
+}

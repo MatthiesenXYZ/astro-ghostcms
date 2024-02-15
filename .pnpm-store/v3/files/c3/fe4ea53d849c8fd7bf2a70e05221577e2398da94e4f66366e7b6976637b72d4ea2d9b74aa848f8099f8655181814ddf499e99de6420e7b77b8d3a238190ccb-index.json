@@ -1,1 +1,22 @@
-{"files":{"package.json":{"checkedAt":1707939899039,"integrity":"sha512-9xSOubtgYpv9yli3dPOVNOjNdbXYWzUEHDMinL/9xrH74wo8xptfWxr9X9HB997g0Pug1Y4lUL/ZBdSizpa3WA==","mode":420,"size":417},"README.md":{"checkedAt":1707939899039,"integrity":"sha512-JfylgMnN67sEVrDeTJWU9LPg41B+KsNLLvXH2JHHaqBNw6qpjnfNng//L52tyyS6mexyHlfUW7zF2U1HdfL0gw==","mode":420,"size":95},"rollup.linux-x64-gnu.node":{"checkedAt":1707939899048,"integrity":"sha512-4B7t5/omp6lg/g2JTCIk9Coqa9UgESxVOyq99H/LCHKWCrdAW4cGpXv6mNt61jMl3ZVOzIefal1EdQEZCau57A==","mode":420,"size":2702528}}}
+{
+	"files": {
+		"package.json": {
+			"checkedAt": 1707939899039,
+			"integrity": "sha512-9xSOubtgYpv9yli3dPOVNOjNdbXYWzUEHDMinL/9xrH74wo8xptfWxr9X9HB997g0Pug1Y4lUL/ZBdSizpa3WA==",
+			"mode": 420,
+			"size": 417
+		},
+		"README.md": {
+			"checkedAt": 1707939899039,
+			"integrity": "sha512-JfylgMnN67sEVrDeTJWU9LPg41B+KsNLLvXH2JHHaqBNw6qpjnfNng//L52tyyS6mexyHlfUW7zF2U1HdfL0gw==",
+			"mode": 420,
+			"size": 95
+		},
+		"rollup.linux-x64-gnu.node": {
+			"checkedAt": 1707939899048,
+			"integrity": "sha512-4B7t5/omp6lg/g2JTCIk9Coqa9UgESxVOyq99H/LCHKWCrdAW4cGpXv6mNt61jMl3ZVOzIefal1EdQEZCau57A==",
+			"mode": 420,
+			"size": 2702528
+		}
+	}
+}

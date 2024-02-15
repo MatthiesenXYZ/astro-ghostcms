@@ -1,7 +1,9 @@
 import robotsTxt, { type RobotsTxtOptions } from "astro-robots-txt";
 import type { UserConfig } from "../schemas";
 
-export function getRobotsTxtConfig(opts: UserConfig["robotstxt"]): RobotsTxtOptions {
+export function getRobotsTxtConfig(
+	opts: UserConfig["robotstxt"],
+): RobotsTxtOptions {
 	const robotsConfig: RobotsTxtOptions = {};
 	if (opts?.host) {
 		robotsConfig.host = opts.host;

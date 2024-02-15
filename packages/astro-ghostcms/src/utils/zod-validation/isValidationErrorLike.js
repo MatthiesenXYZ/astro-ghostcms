@@ -1,3 +1,3 @@
 export function isValidationErrorLike(err) {
-    return err instanceof Error && err.name === 'ZodValidationError';
+	return err instanceof Error && err.name === "ZodValidationError";
 }

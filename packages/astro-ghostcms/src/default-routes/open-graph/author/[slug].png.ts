@@ -1,37 +1,46 @@
-import type { APIRoute, GetStaticPaths, GetStaticPathsItem,  InferGetStaticPropsType } from "astro";
-import satoriOG from "../../../integrations/satori.js";
+import type {
+	APIRoute,
+	GetStaticPaths,
+	GetStaticPathsItem,
+	InferGetStaticPropsType,
+} from "astro";
 import { html } from "satori-html";
-import { invariant, getAllPosts, getSettings, getAllAuthors } from "../../../api/index.js";
+import {
+	getAllAuthors,
+	getAllPosts,
+	getSettings,
+	invariant,
+} from "../../../api/index.js";
+import satoriOG from "../../../integrations/satori.js";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const result: GetStaticPathsItem[] = [];
+	const result: GetStaticPathsItem[] = [];
 	const posts = await getAllPosts();
 	const { authors } = await getAllAuthors();
-    invariant(authors, "Settings are required");
+	invariant(authors, "Settings are required");
 	const settings = await getSettings();
-    invariant(settings, "Settings are required");
+	invariant(settings, "Settings are required");
 
 	authors.map((author) => {
 		const filteredPosts = posts.filter((post) =>
-		  post.authors?.map((author) => author.slug).includes(author.slug)
+			post.authors?.map((author) => author.slug).includes(author.slug),
 		);
-		result.push( {
-		  params: { slug: author.slug },
-		  props: {
-			posts: filteredPosts,
-			settings,
-			author,
-		  },
+		result.push({
+			params: { slug: author.slug },
+			props: {
+				posts: filteredPosts,
+				settings,
+				author,
+			},
 		});
-	  });
+	});
 	return result;
-  }
+};
 export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-  
 
 export const GET: APIRoute = async ({ props, site }) => {
-    const settings = await getSettings();
-    invariant(settings, "Settings are required");
+	const settings = await getSettings();
+	invariant(settings, "Settings are required");
 	const fontFile = await fetch(
 		"https://og-playground.vercel.app/inter-latin-ext-700-normal.woff",
 	);

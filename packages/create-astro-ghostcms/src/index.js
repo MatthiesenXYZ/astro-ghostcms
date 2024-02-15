@@ -1,11 +1,10 @@
 import path from "node:path";
+import * as p from "@clack/prompts";
 import arg from "arg";
 import fse from "fs-extra";
-import * as p from "@clack/prompts";
-import c from 'picocolors';
-import { exitPrompt, getModulePaths, isPackageManager } from "./utils/index.js";
+import c from "picocolors";
 import { createProject } from "./scripts/createProject.js";
-
+import { exitPrompt, getModulePaths, isPackageManager } from "./utils/index.js";
 
 export async function main() {
 	const exit = () => process.exit(0);
@@ -28,7 +27,7 @@ export async function main() {
 			"-g": "--git",
 			"-p": "--pkg-manager",
 		},
-		{ argv, permissive: true }
+		{ argv, permissive: true },
 	);
 	const {
 		"--help": help,
@@ -46,16 +45,38 @@ export async function main() {
 
 	// Get Package Version for Intro
 	const { pathname } = getModulePaths(import.meta.url);
-	const iJSON = path.resolve(pathname, "..", "..", 'package.json');
+	const iJSON = path.resolve(pathname, "..", "..", "package.json");
 	const pJSON = await fse.readJson(iJSON);
 	const pkgVer = pJSON.version;
 
 	// 1. Say hello!
-	p.intro(c.bgMagenta(c.black(` ${c.bold("Astro-GhostCMS Create Utility - By MatthiesenXYZ")} ${c.underline(c.bold(c.blue(`( v${pkgVer} )`)))} ${c.italic(dryRun ? "[Dry Run] ":" ")}`)))
+	p.intro(
+		c.bgMagenta(
+			c.black(
+				` ${c.bold(
+					"Astro-GhostCMS Create Utility - By MatthiesenXYZ",
+				)} ${c.underline(c.bold(c.blue(`( v${pkgVer} )`)))} ${c.italic(
+					dryRun ? "[Dry Run] " : " ",
+				)}`,
+			),
+		),
+	);
 
-	const gettingStarted = `${c.white(c.bold('Want to Initiate a git repo at the same time as deploying your project?'))} \n - ${c.white(`Use ${c.yellow('--git')} at the end of the command`)} \n ${c.white(c.bold(`Using a package manager other than ${c.cyan(c.bold('pnpm'))}?`))} \n - ${c.white(`Use ${c.yellow('--pkg-manager npm')} or ${c.yellow('--pkg-manager yarn')}.`)}`
+	const gettingStarted = `${c.white(
+		c.bold(
+			"Want to Initiate a git repo at the same time as deploying your project?",
+		),
+	)} \n - ${c.white(
+		`Use ${c.yellow("--git")} at the end of the command`,
+	)} \n ${c.white(
+		c.bold(`Using a package manager other than ${c.cyan(c.bold("pnpm"))}?`),
+	)} \n - ${c.white(
+		`Use ${c.yellow("--pkg-manager npm")} or ${c.yellow(
+			"--pkg-manager yarn",
+		)}.`,
+	)}`;
 
-	p.note(gettingStarted)
+	p.note(gettingStarted);
 
 	// 2. Get template to set up
 	let [template, ...args] = flags._;
@@ -65,17 +86,26 @@ export async function main() {
 	}
 	if (!template) {
 		const answer = await p.select({
-			message: `${c.cyan('Which template would you like to use?')}`,
+			message: `${c.cyan("Which template would you like to use?")}`,
 			options: [
-				{ value: "basic", 
-				label: `${c.magenta('Basic')} - ${c.cyan(c.italic('Integration w/ Default Theme'))}` 
+				{
+					value: "basic",
+					label: `${c.magenta("Basic")} - ${c.cyan(
+						c.italic("Integration w/ Default Theme"),
+					)}`,
 				},
-				{ value: "catppuccin",
-				label: `${c.magenta('Catppuccin-TW')} - ${c.cyan(c.italic('Integration w/ Catppuccin TailwindCSS theme'))}`
+				{
+					value: "catppuccin",
+					label: `${c.magenta("Catppuccin-TW")} - ${c.cyan(
+						c.italic("Integration w/ Catppuccin TailwindCSS theme"),
+					)}`,
 				},
-				{ value: "starterkit",
-				label: `${c.magenta('Starter Kit')} - ${c.cyan(c.italic('Integration in API-Only Mode with customizable theme'))}`
-				}
+				{
+					value: "starterkit",
+					label: `${c.magenta("Starter Kit")} - ${c.cyan(
+						c.italic("Integration in API-Only Mode with customizable theme"),
+					)}`,
+				},
 			],
 			initialValue: "basic",
 		});
@@ -110,11 +140,19 @@ export async function main() {
 	}
 
 	// 4. Huzzah!
-	p.outro(c.reset(`Problems? ${c.underline(c.cyan('https://github.com/MatthiesenXYZ/astro-ghostcms/issues'))}`));
+	p.outro(
+		c.reset(
+			`Problems? ${c.underline(
+				c.cyan("https://github.com/MatthiesenXYZ/astro-ghostcms/issues"),
+			)}`,
+		),
+	);
 }
 
 function getHelp() {
-	return `${c.yellow('Need Help? Check the Docs!')} ${c.underline(c.cyan('https://astro-ghostcms.xyz/docs'))}`;
+	return `${c.yellow("Need Help? Check the Docs!")} ${c.underline(
+		c.cyan("https://astro-ghostcms.xyz/docs"),
+	)}`;
 }
 
 /**
@@ -122,7 +160,7 @@ function getHelp() {
  * @returns {template is Template}
  */
 function isValidTemplate(template) {
-	return ["basic","starterkit"].includes(template);
+	return ["basic", "starterkit"].includes(template);
 }
 
 /**

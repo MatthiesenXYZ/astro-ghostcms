@@ -1,1 +1,1 @@
-export { default as GhostRender } from './lib/GhostRender.astro';
+export { default as GhostRender } from "./lib/GhostRender.astro";

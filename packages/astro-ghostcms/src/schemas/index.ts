@@ -1,3 +1,3 @@
-export * from './robots';
-export * from './sitemap';
-export * from './userconfig';
+export * from "./robots";
+export * from "./sitemap";
+export * from "./userconfig";

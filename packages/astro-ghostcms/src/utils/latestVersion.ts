@@ -1,4 +1,4 @@
-import packageJson from 'package-json';
+import packageJson from "package-json";
 
 export type Options = {
 	/**
@@ -16,8 +16,11 @@ console.log(await latestVersion('ava'));
 //=> '0.18.0'
 ```
 */
-export default async function latestVersion(packageName: string, options?: Options) {
-	const {version} = await packageJson(packageName.toLowerCase(), options);
+export default async function latestVersion(
+	packageName: string,
+	options?: Options,
+) {
+	const { version } = await packageJson(packageName.toLowerCase(), options);
 
 	return version;
 }
