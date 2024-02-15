@@ -1,5 +1,11 @@
 # @matthiesenxyz/create-astro-ghostcms
 
+## 0.0.13
+
+### Patch Changes
+
+- 3a5aea9: Updated Tests and Linted packages
+
 ## 0.0.12
 
 ### Patch Changes
