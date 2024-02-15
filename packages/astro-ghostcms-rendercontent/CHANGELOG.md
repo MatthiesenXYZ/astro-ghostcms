@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-rendercontent
 
+## 0.0.6
+
+### Patch Changes
+
+- 3a5aea9: Updated Tests and Linted packages
+
 ## 0.0.5
 
 ### Patch Changes

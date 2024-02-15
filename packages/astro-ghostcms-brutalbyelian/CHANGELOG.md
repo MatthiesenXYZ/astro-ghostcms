@@ -1,5 +1,14 @@
 # @matthiesenxyz/astro-ghostcms-brutalbyelian
 
+## 0.0.10
+
+### Patch Changes
+
+- 3a5aea9: Updated Tests and Linted packages
+- Updated dependencies [3a5aea9]
+  - @matthiesenxyz/astro-ghostcms-rendercontent@0.0.6
+  - @matthiesenxyz/astro-ghostcms@3.2.7
+
 ## 0.0.9
 
 ### Patch Changes
