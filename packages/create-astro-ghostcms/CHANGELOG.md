@@ -1,5 +1,11 @@
 # @matthiesenxyz/create-astro-ghostcms
 
+## 0.0.14
+
+### Patch Changes
+
+- 32da6bf: cleanup and add new theme
+
 ## 0.0.13
 
 ### Patch Changes
