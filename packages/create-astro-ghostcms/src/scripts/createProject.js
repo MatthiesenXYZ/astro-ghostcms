@@ -11,8 +11,6 @@ import {
 	wait,
 } from "../utils/index.js";
 
-//const runnerName = "basic";
-
 /** @param {Context} ctx */
 export async function createProject(ctx) {
 	let { args, dryRun, initGitRepo, installDeps, template } = ctx;
@@ -276,8 +274,8 @@ function isValidProjectName(projectName) {
 }
 
 /**
- * @typedef {import("../../types.js").Template} Template
- * @typedef {import("../../types.js").PackageManager} PackageManager
- * @typedef {import("../../types.js").Context} Context
- * @typedef {import("../../types.js").Serializable} Serializable
+ * @typedef {import("../types.js").Template} Template
+ * @typedef {import("../types.js").PackageManager} PackageManager
+ * @typedef {import("../types.js").Context} Context
+ * @typedef {import("../types.js").Serializable} Serializable
  */

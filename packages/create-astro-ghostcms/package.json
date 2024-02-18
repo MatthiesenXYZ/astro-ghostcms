@@ -7,10 +7,9 @@
 	"bin": {
 		"create-astro-ghostcms": "./create-astro-ghostcms.mjs"
 	},
-	"exports": {
-		".": "./create-astro-ghostcms.mjs"
+	"scripts": {
+		"test": "node . --dry"
 	},
-	"scripts": {},
 	"sideEffects": false,
 	"author": {
 		"email": "adam@matthiesen.xyz",

@@ -31,4 +31,5 @@ npx @matthiesenxyz/create-astro-ghostcms --<arg>
 | ------------ | ----------------------------------------------------- |
 | `basic`      | Basic Setup with astro-ghostcms and theme-default     |
 | `catppuccin` | Integration w/ Catppuccin & TailwindCSS               |
+| `brutal`     | Integration w/ BrutalbyElian & UnoCSS                 |
 | `starterkit` | Integration in API-Only Mode with customizable theme  |
