@@ -1,0 +1,23 @@
+---
+import type { StarlightBlogEntry } from '../utils/content'
+
+import Preview from './Preview.astro'
+
+interface Props {
+  entries: StarlightBlogEntry[]
+}
+
+const { entries } = Astro.props
+---
+
+<div class="posts">
+  {entries.map((entry) => <Preview {entry} />)}
+</div>
+
+<style>
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+</style>

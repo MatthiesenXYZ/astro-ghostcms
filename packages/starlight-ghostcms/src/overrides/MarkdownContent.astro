@@ -1,0 +1,37 @@
+---
+import StarlightMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro'
+import type { Props } from '@astrojs/starlight/props'
+
+import PrevNextLinks from '../components/PrevNextLinks.astro'
+import { getBlogEntry, type StarlightBlogEntryPaginated } from '../utils/content'
+import { isAnyBlogPostPage } from '../utils/page'
+import Metadata from '../components/Metadata.astro'
+
+const isBlogPost = isAnyBlogPostPage(Astro.props.slug)
+let blogEntry: StarlightBlogEntryPaginated | undefined = undefined
+
+if (isBlogPost) {
+  blogEntry = await getBlogEntry(Astro.url.pathname)
+}
+---
+
+<StarlightMarkdownContent {...Astro.props}>
+  {isBlogPost && blogEntry ? <Metadata entry={blogEntry.entry} /> : null}
+  <slot />
+  {
+    isBlogPost && blogEntry ? (
+      <div class="post-footer">
+        <PrevNextLinks next={blogEntry.nextLink} prev={blogEntry.prevLink} />
+      </div>
+    ) : null
+  }
+</StarlightMarkdownContent>
+
+<style>
+  .post-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-block-start: 2rem !important;
+  }
+</style>

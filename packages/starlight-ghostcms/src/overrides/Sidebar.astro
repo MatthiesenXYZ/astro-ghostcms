@@ -1,0 +1,61 @@
+---
+import StarlightSidebar from '@astrojs/starlight/components/Sidebar.astro'
+import type { Props } from '@astrojs/starlight/props'
+
+import { getRecentBlogEntries } from '../utils/content'
+import { isAnyBlogPage, isBlogPostPage, isBlogRoot } from '../utils/page'
+
+const isBlog = isAnyBlogPage(Astro.props.slug)
+const recentEntries = isBlog ? await getRecentBlogEntries() : []
+
+const blogSidebar: Props['sidebar'] = isBlog
+  ? [
+      {
+        attrs: {},
+        badge: undefined,
+        href: '/blog',
+        isCurrent: isBlogRoot(Astro.props.slug),
+        label: 'All posts',
+        type: 'link',
+      },
+      {
+        badge: undefined,
+        collapsed: false,
+        entries: recentEntries.map((blogEntry) => ({
+          attrs: {},
+          badge: undefined,
+          href: `/${blogEntry.slug}`,
+          isCurrent: isBlogPostPage(Astro.props.slug, blogEntry.slug),
+          label: blogEntry.data.title,
+          type: 'link',
+        })),
+        label: 'Recent posts',
+        type: 'group',
+      },
+    ]
+  : []
+---
+
+{
+  !isBlog && (
+    <div class="md:sl-hidden">
+      <a href="/blog">Blog</a>
+    </div>
+  )
+}
+<StarlightSidebar {...Astro.props} sidebar={isBlog ? blogSidebar : Astro.props.sidebar} />
+
+<style>
+  div {
+    border-bottom: 1px solid var(--sl-color-gray-6);
+    padding-bottom: 1rem;
+  }
+
+  div a {
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-lg);
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import type { Author } from '../schemas/authors'
+
+interface Props {
+  author: Author
+}
+
+const { author } = Astro.props
+
+const isLink = author.website !== undefined
+const Element = isLink ? 'a' : 'div'
+---
+
+<Element href={isLink ? author.website : undefined} class="author">
+  {author.profile_image && <img alt={author.name} src={author.profile_image} />}
+  <div class="text">
+    <div class="name">{author.name}</div>
+    {author.bio && <div class="title">{author.bio}</div>}
+  </div>
+</Element>
+
+<style>
+  .author {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    line-height: var(--sl-line-height-headings);
+    text-decoration: none;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: var(--sl-text-base);
+    font-weight: 600;
+  }
+
+  .author[href] .name {
+    color: var(--sl-color-text-accent);
+  }
+
+  .title {
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-text);
+  }
+
+  .author[href]:hover .name {
+    color: var(--sl-color-text);
+  }
+
+  img {
+    border: 1px solid var(--sl-color-gray-2);
+    border-radius: 9999px;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+</style>

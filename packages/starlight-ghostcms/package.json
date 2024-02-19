@@ -1,0 +1,57 @@
+{
+  "name": "@matthiesenxyz/starlight-ghostcms",
+  "description": "Starlight GhostCMS plugin to allow easier importing of GhostCMS Content into your starlight website",
+  "version": "0.0.1-dev01",
+  "homepage": "https://astro-ghostcms.xyz/",
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "author": {
+    "email": "adam@matthiesen.xyz",
+    "name": "Adam Matthiesen - MatthiesenXYZ",
+    "url": "https://matthiesen.xyz"
+  },
+  "keywords": [
+    "starlight",
+    "starlight-plugin",
+    "blog",
+    "content",
+    "integration",
+    "ghost",
+    "ghostcms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+    "email": "issues@astro-ghostcms.xyz"
+  },
+  "main": "index.ts",
+  "types": "types.d.ts",
+  "files": [
+    "src",
+    ".env.demo",
+    "index.ts",
+    "tsconfig.json",
+    "types.d.ts"
+  ],
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+    "@astrojs/starlight": "0.19.0",
+    "@ts-ghost/core-api": "5.1.2",
+    "astro": "4.3.7"
+  },
+  "peerdependencies": {
+    "@astrojs/starlight": ">=0.19.0",
+    "astro": ">=4.3.7"
+  }
+}
