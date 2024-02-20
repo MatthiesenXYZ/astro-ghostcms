@@ -26,8 +26,9 @@ export default function starlightBlogPlugin(userConfig?: StarlightGhostConfig): 
                 hooks: {
                     'astro:config:setup': ({ injectRoute, updateConfig }) => {
                         injectRoute({
-                            pattern: '',
-                            entrypoint: ''
+                            pattern: '@matthiesenxyz/starlight-ghostcms/routes/index.astro',
+                            entrypoint: '/blog',
+                            prerender: true,
                         })
 
                         updateConfig({

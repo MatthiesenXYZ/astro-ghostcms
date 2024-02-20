@@ -2,26 +2,28 @@
 import StarlightMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro'
 import type { Props } from '@astrojs/starlight/props'
 
-import PrevNextLinks from '../components/PrevNextLinks.astro'
-import { getBlogEntry, type StarlightBlogEntryPaginated } from '../utils/content'
 import { isAnyBlogPostPage } from '../utils/page'
 import Metadata from '../components/Metadata.astro'
+import type { Post } from '../schemas/posts'
+import { getSluggedPost } from '../utils/api'
 
 const isBlogPost = isAnyBlogPostPage(Astro.props.slug)
-let blogEntry: StarlightBlogEntryPaginated | undefined = undefined
+let blogEntry: Post | undefined = undefined
 
 if (isBlogPost) {
-  blogEntry = await getBlogEntry(Astro.url.pathname)
+  blogEntry = await getSluggedPost(Astro.props.slug)
 }
 ---
 
 <StarlightMarkdownContent {...Astro.props}>
-  {isBlogPost && blogEntry ? <Metadata entry={blogEntry.entry} /> : null}
-  <slot />
+  {isBlogPost && blogEntry ? <Metadata entry={blogEntry} /> : null}
+  
+  <div> PlaceHolder for HTML </div>
+
   {
     isBlogPost && blogEntry ? (
       <div class="post-footer">
-        <PrevNextLinks next={blogEntry.nextLink} prev={blogEntry.prevLink} />
+        <!-- PREV - Next Links /-->
       </div>
     ) : null
   }
