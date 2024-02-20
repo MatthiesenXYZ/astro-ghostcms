@@ -15,9 +15,9 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
             updateStarlightConfig({
                 components: {
                     ...starlightConfig.components,
-                    //...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
-                    //...overrideStarlightComponent(starlightConfig.components, logger, 'Sidebar'),
-                    //...overrideStarlightComponent(starlightConfig.components, logger, "SiteTitle"),
+                    ...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
+                    ...overrideStarlightComponent(starlightConfig.components, logger, 'Sidebar'),
+                    ...overrideStarlightComponent(starlightConfig.components, logger, "SiteTitle"),
                 }
             })
 
