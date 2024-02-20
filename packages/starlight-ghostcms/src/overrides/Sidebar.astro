@@ -35,7 +35,7 @@ const blogSidebar: Props['sidebar'] = isBlog
           attrs: {},
           badge: undefined,
           href: `/blog/${blogEntry.slug}`,
-          isCurrent: isBlogPostPage(Astro.props.slug, blogEntry.slug),
+          isCurrent: isBlogPostPage(Astro.props.slug, `blog/${blogEntry.slug}`),
           label: blogEntry.title,
           type: 'link',
         })),

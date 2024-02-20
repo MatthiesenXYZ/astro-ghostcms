@@ -8,9 +8,7 @@ import Posts from '../components/Posts.astro'
 import { getPageProps } from '../utils/page'
 import { getAllPosts } from '../utils/api'
 
-export const prerender = true
 const entries = await getAllPosts();
-
 
 //const { entries, nextLink, prevLink } = Astro.props
 
@@ -28,22 +26,12 @@ const pageProps = getPageProps(config.title)
 </Page>
 
 <style>
-  :global(.content-panel:first-of-type) {
-    display: none;
-  }
-
-  :global(.content-panel:nth-of-type(2)) {
-    border-top: none;
-  }
-
   #pghost {
     color: gray;
-    margin-top: -1rem;
-    margin-bottom: -0.5rem;
+    position: absolute;
+    top: 4rem;
   }
   #pghost a {
     color: gray;
   }
-
-
 </style>

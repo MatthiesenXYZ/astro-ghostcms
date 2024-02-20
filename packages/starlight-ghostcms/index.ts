@@ -29,6 +29,10 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
                             pattern: '/blog',
                             entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/index.astro'
                         })
+                        injectRoute({
+                            pattern: '/blog/[slug]',
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro'
+                        })
 
                         updateConfig({
                             vite: {
