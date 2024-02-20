@@ -62,12 +62,12 @@
     "vitest": "^1.2.2",
     "vitest-fetch-mock": "^0.2.2"
   },
-  "Dependencies": {
+  "dependencies": {
     "@ts-ghost/core-api": "^5.1.2",
     "vite": "^5.1.2",
     "vite-tsconfig-paths": "^4.2.2"
   },
-  "peerdependencies": {
+  "peerDependencies": {
     "@astrojs/starlight": ">=0.19.0",
     "astro": ">=4.3.7"
   }
