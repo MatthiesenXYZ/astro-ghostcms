@@ -1,0 +1,11 @@
+export { V as VitestExecutor } from './vendor/execute.aFSzc0Da.js';
+import 'node:vm';
+import 'node:url';
+import 'vite-node/client';
+import 'vite-node/utils';
+import 'pathe';
+import '@vitest/utils/error';
+import './path.js';
+import 'node:fs';
+import '@vitest/utils';
+import './vendor/base.knFzp7G3.js';

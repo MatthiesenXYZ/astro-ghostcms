@@ -1,5 +1,16 @@
 # @matthiesenxyz/astro-ghostcms-rendercontent
 
+## 0.0.7
+
+### Patch Changes
+
+- 1f850db: Bump dependencies:
+
+  - astro from to
+  - vite from to
+  - astro-seo from to
+  - sass from to
+
 ## 0.0.6
 
 ### Patch Changes
