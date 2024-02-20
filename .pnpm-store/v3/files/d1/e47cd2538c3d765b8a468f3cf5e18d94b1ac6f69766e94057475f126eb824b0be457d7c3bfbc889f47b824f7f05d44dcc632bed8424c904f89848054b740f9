@@ -1,5 +1,0 @@
----
----
-<h3 class="righteous">
-    <slot />
-</h3>

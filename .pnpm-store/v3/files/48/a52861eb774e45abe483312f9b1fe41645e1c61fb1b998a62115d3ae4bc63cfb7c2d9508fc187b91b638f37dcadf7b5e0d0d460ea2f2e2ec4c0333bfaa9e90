@@ -1,4 +1,0 @@
-const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
-export {
-  REROUTE_DIRECTIVE_HEADER
-};
