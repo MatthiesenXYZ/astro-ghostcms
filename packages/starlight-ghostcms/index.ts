@@ -55,6 +55,7 @@ function overrideStarlightComponent(
     if (components?.[component]) {
       logger.warn(`It looks like you already have a \`${component}\` component override in your Starlight configuration.`)
       logger.warn(`To use \`starlight-ghostcms\`, remove the override for the \`${component}\` component.\n`)
+      logger.warn("This Warning can be ignored if you know what your doing ;)")
   
       return {}
     }

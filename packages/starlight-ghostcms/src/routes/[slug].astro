@@ -1,10 +1,7 @@
 ---
-//import type { InferGetStaticPropsType } from 'astro'
 import config from 'virtual:starlight-ghost-config'
 import { Image } from "astro:assets";
 import Page from '../components/Page.astro'
-import Posts from '../components/Posts.astro'
-//import PrevNextLinks from '../components/PrevNextLinks.astro'
 import { getPageProps } from '../utils/page'
 import { getAllPosts } from '../utils/api'
 import Metadata from '../components/Metadata.astro'
@@ -35,8 +32,8 @@ const pageProps = getPageProps(post.title)
             src={post.feature_image} 
             alt={post.feature_image_alt?post.feature_image_alt:""} 
             title={post.feature_image_alt?post.feature_image_alt:""} 
-            width="1000px" 
-            height="800px"
+            width={1000} 
+            height={800}
           />
           <figcaption>
             <Fragment set:html={post.feature_image_caption} />
@@ -48,7 +45,6 @@ const pageProps = getPageProps(post.title)
     <Fragment set:html={post.html} />
 
   <footer class="not-content">
-    <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
   </footer>
 </Page>
 
