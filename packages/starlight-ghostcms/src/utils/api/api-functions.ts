@@ -11,8 +11,14 @@ const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"CONTENT_",
 );
 
-invariant(CONTENT_API_KEY)
-invariant(CONTENT_API_URL)
+invariant(
+	CONTENT_API_KEY, 
+	"CONTENT_API_KEY Missing from .env"
+	)
+invariant(
+	CONTENT_API_URL,  
+	"CONTENT_API_URL Missing from .env"
+	)
 
 const key:ContentAPICredentials["key"] = CONTENT_API_KEY;
 const url:ContentAPICredentials["url"] = CONTENT_API_URL;

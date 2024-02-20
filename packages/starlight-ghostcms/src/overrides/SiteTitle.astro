@@ -1,26 +1,28 @@
 ---
 import type { Props } from "@astrojs/starlight/props";
 import AstrolightSiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
-//import config from 'virtual:starlight-ghost-config'
+import config from 'virtual:starlight-ghost-config'
 ---
 
 <AstrolightSiteTitle {...Astro.props} />
 <div>
-    <a href="/blog">Blog</a>
+    <a href="/blog">{config.title}</a>
 </div>
 
 <style>
-    div {
+	div {
+		align-items: center;
+		gap: var(--sl-nav-gap);
+		font-size: var(--sl-text-h4);
+		font-weight: 600;
+		color: var(--sl-color-text-accent);
+		text-decoration: none;
+		white-space: nowrap;
+        margin-left: 1rem;
         border-inline-start: 1px solid var(--sl-color-gray-5);
-        display: none;
+        display: flex;
         padding-inline-start: 1rem;
-    }
-  
-    @media (min-width: 50rem) {
-        div {
-            display: flex;
-        }
-    }
+	}
   
     a {
         color: var(--sl-color-text-accent);

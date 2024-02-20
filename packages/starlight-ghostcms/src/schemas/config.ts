@@ -15,6 +15,10 @@ const configSchema = z
      * The title of the blog.
      */
     title: z.string().default('Blog'),
+    /**
+     * Turn on and off "Powered by Ghost" 
+     */
+    supportGhost: z.boolean().default(true),
   })
   .default({})
 

@@ -1,5 +1,4 @@
 ---
-
 import type { Post } from '../schemas/posts'
 import Author from './Author.astro'
 
@@ -10,12 +9,25 @@ interface Props {
 const { entry } = Astro.props
 const { authors, published_at, created_at } = entry
 
+const dateC = new Date(published_at?published_at:created_at)
+const dateISO = dateC.toISOString()
+const dateLocal = dateC
+  .toLocaleDateString( 
+    "en-US", { 
+      year: 'numeric', 
+      month: 'long',
+      day: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    }
+  )
+
 const hasAuthors = authors !== undefined
 ---
 
 <div class="metadata not-content">
-  <time datetime={published_at?published_at:created_at.toString()}>
-    {published_at}
+  <time datetime={dateISO}>
+    {dateLocal}
   </time>
   {
     hasAuthors ? (

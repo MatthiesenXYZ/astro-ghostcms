@@ -18,6 +18,9 @@ const pageProps = getPageProps(config.title)
 ---
 
 <Page {...pageProps}>
+  {config.supportGhost && (
+    <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
+  )}
   <Posts {entries} />
   <footer class="not-content">
     <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
@@ -32,4 +35,15 @@ const pageProps = getPageProps(config.title)
   :global(.content-panel:nth-of-type(2)) {
     border-top: none;
   }
+
+  #pghost {
+    color: gray;
+    margin-top: -1rem;
+    margin-bottom: -0.5rem;
+  }
+  #pghost a {
+    color: gray;
+  }
+
+
 </style>
