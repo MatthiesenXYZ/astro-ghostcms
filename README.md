@@ -11,7 +11,7 @@ Don't like GitHub, and prefer GitLab?  This Repo is Auto Cloned to Gitlab! Check
 - [Default Theme](https://demo.astro-ghostcms.xyz) - ( [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-themedefault) )
 - [Catppuccin Theme](https://catppuccindark-demo.astro-ghostcms.xyz/) - ( [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-catppuccin) )
 - [Brutal by Elian Theme](https://brutal-demo.astro-ghostcms.xyz) - ( [Github Repo](https://github.com/MatthiesenXYZ/demo-astroghostcms-brutalbyelian) )
-- [Starlight GhostCMS](https://starlightdemo.astro-ghostcms.xyz/)
+- [Starlight GhostCMS](https://starlightdemo.astro-ghostcms.xyz/) - ( [Github Repo](https://github.com/MatthiesenXYZ/demo-starlightghostcms) )
 
 ## Quick Start
 
