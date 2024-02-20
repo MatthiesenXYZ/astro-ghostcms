@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-theme-default",
   "description": "Default Theme for astro-ghostcms",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "astro": "^4.2.1"
   },
   "dependencies": {
-    "@matthiesenxyz/astro-ghostcms": "^3.2.7",
+    "@matthiesenxyz/astro-ghostcms": "^3.2.9",
     "astro-font": "^0.0.77",
     "sass": "^1.71.0"
   }
