@@ -134,7 +134,7 @@ importers:
         version: link:../astro-ghostcms-rendercontent
       '@unocss/astro':
         specifier: ^0.58.5
-        version: 0.58.5(vite@5.1.2)
+        version: 0.58.5(vite@5.1.3)
       '@unocss/reset':
         specifier: ^0.58.5
         version: 0.58.5
@@ -152,7 +152,7 @@ importers:
         version: 1.5.2
       unocss:
         specifier: ^0.58.5
-        version: 0.58.5(postcss@8.4.35)(vite@5.1.2)
+        version: 0.58.5(postcss@8.4.35)(vite@5.1.3)
     devDependencies:
       '@typescript-eslint/parser':
         specifier: ^7.0.1
@@ -310,12 +310,24 @@ importers:
       '@ts-ghost/core-api':
         specifier: 5.1.2
         version: 5.1.2
+      '@ts-ghost/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       astro:
         specifier: 4.3.7
         version: 4.3.7(sass@1.70.0)(typescript@5.3.3)
       vite:
         specifier: ^5.1.2
         version: 5.1.2(sass@1.70.0)
+      vite-tsconfig-paths:
+        specifier: ^4.2.2
+        version: 4.3.1(vite@5.1.2)
+      vitest:
+        specifier: ^1.2.2
+        version: 1.2.2(@vitest/ui@1.2.2)
+      vitest-fetch-mock:
+        specifier: ^0.2.2
+        version: 0.2.2(vitest@1.2.2)
 
   packages/tsconfig: {}
 
@@ -338,7 +350,7 @@ importers:
         version: link:../packages/astro-ghostcms-theme-default
       '@unocss/astro':
         specifier: ^0.58.5
-        version: 0.58.5(vite@5.1.2)
+        version: 0.58.5(vite@5.1.3)
       astro:
         specifier: ^4.3.7
         version: 4.3.7(sass@1.70.0)(typescript@5.3.3)
@@ -354,7 +366,7 @@ importers:
         version: 5.3.3
       unocss:
         specifier: ^0.58.5
-        version: 0.58.5(postcss@8.4.35)(vite@5.1.2)
+        version: 0.58.5(postcss@8.4.35)(vite@5.1.3)
 
 packages:
 
@@ -2446,7 +2458,7 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  /@unocss/astro@0.58.5(vite@5.1.2):
+  /@unocss/astro@0.58.5(vite@5.1.3):
     resolution: {integrity: sha512-LtuVnj8oFAK9663OVhQO8KpdJFiOyyPsYfnOZlDCOFK3gHb/2WMrzdBwr1w8LoQF3bDedkFMKirVF7gWjyZiaw==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
@@ -2456,8 +2468,8 @@ packages:
     dependencies:
       '@unocss/core': 0.58.5
       '@unocss/reset': 0.58.5
-      '@unocss/vite': 0.58.5(vite@5.1.2)
-      vite: 5.1.2(sass@1.70.0)
+      '@unocss/vite': 0.58.5(vite@5.1.3)
+      vite: 5.1.3(@types/node@20.11.18)(sass@1.71.0)
     transitivePeerDependencies:
       - rollup
 
@@ -2617,7 +2629,7 @@ packages:
     dependencies:
       '@unocss/core': 0.58.5
 
-  /@unocss/vite@0.58.5(vite@5.1.2):
+  /@unocss/vite@0.58.5(vite@5.1.3):
     resolution: {integrity: sha512-p4o1XNX1rvjmoUqSSdua8XyWNg/d+YUChDd2L/xEty+6j2qv0wUaohs3UQ87vWlv632/UmgdX+2MbrgtqthCtw==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
@@ -2632,7 +2644,7 @@ packages:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       magic-string: 0.30.7
-      vite: 5.1.2(sass@1.70.0)
+      vite: 5.1.3(@types/node@20.11.18)(sass@1.71.0)
     transitivePeerDependencies:
       - rollup
 
@@ -8398,7 +8410,7 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
-  /unocss@0.58.5(postcss@8.4.35)(vite@5.1.2):
+  /unocss@0.58.5(postcss@8.4.35)(vite@5.1.3):
     resolution: {integrity: sha512-0g4P6jLgRRNnhscxw7nQ9RHGrKJ1UPPiHPet+YT3TXUcmy4mTiYgo9+kGQf5bjyrzsELJ10cT6Qz2y6g9Tls4g==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -8410,7 +8422,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@unocss/astro': 0.58.5(vite@5.1.2)
+      '@unocss/astro': 0.58.5(vite@5.1.3)
       '@unocss/cli': 0.58.5
       '@unocss/core': 0.58.5
       '@unocss/extractor-arbitrary-variants': 0.58.5
@@ -8429,8 +8441,8 @@ packages:
       '@unocss/transformer-compile-class': 0.58.5
       '@unocss/transformer-directives': 0.58.5
       '@unocss/transformer-variant-group': 0.58.5
-      '@unocss/vite': 0.58.5(vite@5.1.2)
-      vite: 5.1.2(sass@1.70.0)
+      '@unocss/vite': 0.58.5(vite@5.1.3)
+      vite: 5.1.3(@types/node@20.11.18)(sass@1.71.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -8537,7 +8549,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.1.2(@types/node@20.11.18)
+      vite: 5.1.3(@types/node@20.11.18)(sass@1.71.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8580,6 +8592,23 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  /vite-tsconfig-paths@4.3.1(vite@5.1.2):
+    resolution: {integrity: sha512-cfgJwcGOsIxXOLU/nELPny2/LUD/lcf1IbfyeKTv2bsupVbTH/xpFtdQlBmIP1GEK2CjjLxYhFfB+QODFAx5aw==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 3.0.2(typescript@5.3.3)
+      vite: 5.1.2(sass@1.70.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   /vite@5.1.2(@types/node@20.11.18):
     resolution: {integrity: sha512-uwiFebQbTWRIGbCaTEBVAfKqgqKNKMJ2uPXsXeLIZxM8MVMjoS3j0cG8NrPxdDIadaWnPSjrkLWffLSC+uiP3Q==}

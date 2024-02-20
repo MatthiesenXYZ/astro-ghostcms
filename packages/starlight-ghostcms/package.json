@@ -45,17 +45,24 @@
     "./overrides/Sidebar.astro": "./src/overrides/SideBar.astro",
     "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
     "./routes/index.astro": "./src/routes/index.astro",
-    "./routes/[slug].astro": "./src/routes/[slug].astro",
     "./schema": "./src/schemas/config.ts",
     "./package.json": "./package.json"
   },
   "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
   },
   "devDependencies": {
     "@astrojs/starlight": "0.19.0",
     "@ts-ghost/core-api": "5.1.2",
+    "@ts-ghost/tsconfig": "workspace:*",
+    "astro": "4.3.7",
     "vite": "^5.1.2",
-    "astro": "4.3.7"
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.2.2",
+    "vitest-fetch-mock": "^0.2.2"
   },
   "peerdependencies": {
     "@astrojs/starlight": ">=0.19.0",

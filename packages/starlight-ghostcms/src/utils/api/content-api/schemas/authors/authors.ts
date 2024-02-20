@@ -3,7 +3,7 @@ import {
 	ghostMetaSchema,
 	ghostMetadataSchema,
 } from "@ts-ghost/core-api";
-import { z } from "zod";
+import { z } from "astro/zod";
 
 export const authorsSchema = z.object({
 	...ghostIdentitySchema.shape,

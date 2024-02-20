@@ -15,7 +15,10 @@
 		"test:api": "pnpm --filter astro-ghostcms test",
 		"test:api:watch": "pnpm --filter astro-ghostcms test:watch",
 		"test:api:coverage": "pnpm --filter astro-ghostcms test:coverage",
-		"test:create": "pnpm --filter create-astro-ghostcms test"
+		"test:create": "pnpm --filter create-astro-ghostcms test",
+		"test:slg": "pnpm --filter starlight-ghostcms test",
+		"test:slg:watch": "pnpm --filter starlight-ghostcms test:watch",
+		"test:slg:coverage": "pnpm --filter starlight-ghostcms test:coverage"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.5.3",

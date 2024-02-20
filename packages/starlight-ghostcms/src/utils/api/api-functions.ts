@@ -68,20 +68,19 @@ export const getAllPosts = async () => {
 };
 
 export const getSluggedPost = async (slug:string) => {
-	const result = await api.posts
+	const results = await api.posts
 		.read({slug: slug})
 		.include({
 			authors: true,
 			tags: true,
 		}).fetch()
 	
-	if (result.success) {
-		const post: Post = result.data;
-		return post
-	} 
-	if (result.errors) {
-		console.log(result.errors.map((e) => e.message).join("\n"));
-	}
+		if (!results.success) {
+			throw new Error(results.errors.map((e) => e.message).join(", "));
+		}
+		return {
+			post: results.data,
+		};
 };
 
 export const getAllPages = async () => {

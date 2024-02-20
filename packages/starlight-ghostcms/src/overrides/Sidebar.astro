@@ -1,9 +1,14 @@
 ---
 import StarlightSidebar from '@astrojs/starlight/components/Sidebar.astro'
 import type { Props } from '@astrojs/starlight/props'
-
-import { getRecentBlogEntries } from '../utils/content'
+import config from 'virtual:starlight-ghost-config'
 import { isAnyBlogPage, isBlogPostPage, isBlogRoot } from '../utils/page'
+import { getAllPosts } from '../utils/api'
+
+export async function getRecentBlogEntries(){
+  const entries = await getAllPosts()
+  return entries.slice(0, config.recentPostCount)
+}
 
 const isBlog = isAnyBlogPage(Astro.props.slug)
 const recentEntries = isBlog ? await getRecentBlogEntries() : []
@@ -24,9 +29,9 @@ const blogSidebar: Props['sidebar'] = isBlog
         entries: recentEntries.map((blogEntry) => ({
           attrs: {},
           badge: undefined,
-          href: `/${blogEntry.slug}`,
+          href: `/blog/${blogEntry.slug}`,
           isCurrent: isBlogPostPage(Astro.props.slug, blogEntry.slug),
-          label: blogEntry.data.title,
+          label: blogEntry.title,
           type: 'link',
         })),
         label: 'Recent posts',

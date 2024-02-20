@@ -5,7 +5,7 @@ import {
 	ghostSocialMediaSchema,
 	ghostVisibilitySchema,
 } from "@ts-ghost/core-api";
-import { z } from "zod";
+import { z } from "astro/zod";
 
 import { authorsSchema } from "../authors";
 import { tagsSchema } from "../tags";

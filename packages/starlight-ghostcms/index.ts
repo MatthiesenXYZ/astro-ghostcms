@@ -30,6 +30,13 @@ export default function starlightBlogPlugin(userConfig?: StarlightGhostConfig): 
                             entrypoint: '/blog',
                             prerender: true,
                         })
+                        /** THIS IS NOT READY
+                         * injectRoute({
+                         *    pattern: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro',
+                         *    entrypoint: '/blog/[slug]',
+                         *    prerender: true,
+                         * })
+                         */
 
                         updateConfig({
                             vite: {

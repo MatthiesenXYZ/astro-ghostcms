@@ -11,14 +11,15 @@ const isBlogPost = isAnyBlogPostPage(Astro.props.slug)
 let blogEntry: Post | undefined = undefined
 
 if (isBlogPost) {
-  blogEntry = await getSluggedPost(Astro.props.slug)
+  const post = await getSluggedPost(Astro.props.slug)
+  blogEntry = post.post
 }
 ---
 
 <StarlightMarkdownContent {...Astro.props}>
   {isBlogPost && blogEntry ? <Metadata entry={blogEntry} /> : null}
-  
-  <div> PlaceHolder for HTML </div>
+  <slot />
+  <div> {isBlogPost && blogEntry?.plaintext} </div>
 
   {
     isBlogPost && blogEntry ? (
