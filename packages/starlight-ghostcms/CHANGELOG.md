@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.0.3
+
+### Patch Changes
+
+- dc92877: add Missing license
+
 ## 0.0.2
 
 ### Patch Changes
