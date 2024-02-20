@@ -1,3 +1,5 @@
+name: Auto Issue Branch
+
 on:
   issues:
     types: [ opened, assigned ]
