@@ -11,7 +11,7 @@ Starlight-GhostCMS is a [Starlight](https://starlight.astro.build/) plugin to ad
 
 For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
 
-- [Starlight GhostCMS Demo](https://starlightdemo.astro-ghostcms.xyz/))
+- [Starlight GhostCMS Demo](https://starlightdemo.astro-ghostcms.xyz/)
 - [Astro-GhostCMS Website](https://astro-ghostcms.xyz) Check the website for the most up-to-date Documentation!
 - [Ghost.org](https://ghost.org) Get your own Ghost[^1] Install
 
