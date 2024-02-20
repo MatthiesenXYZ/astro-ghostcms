@@ -1,6 +1,6 @@
 {
 	"name": "@matthiesenxyz/create-astro-ghostcms",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"description": "Utility to quickly get started with our Integration and astro",
 	"type": "module",
 	"main": "./create-astro-ghostcms.mjs",
@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@types/fs-extra": "^11.0.1",
 		"@types/gunzip-maybe": "^1.4.0",
-		"@types/node": "^20.11.17",
+		"@types/node": "^20.11.19",
 		"@types/tar-fs": "^2.0.1",
 		"@typescript-eslint/eslint-plugin": "^7.0.1",
 		"@typescript-eslint/parser": "^7.0.1",
@@ -54,8 +54,8 @@
 		"eslint-import-resolver-typescript": "^3.5.3",
 		"prettier": "^3.2.5",
 		"typescript": "^5.3.3",
-		"vitest": "^1.2.2",
-		"vite": "^5.1.2",
+		"vitest": "^1.3.0",
+		"vite": "^5.1.3",
 		"vite-tsconfig-paths": "^4.2.2"
 	},
 	"publishConfig": {

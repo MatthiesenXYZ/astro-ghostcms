@@ -1,5 +1,19 @@
 # @matthiesenxyz/astro-ghostcms
 
+## 3.2.9
+
+### Patch Changes
+
+- 1f850db: Bump dependencies:
+
+  - astro from to
+  - vite from to
+  - astro-seo from to
+  - sass from to
+
+- Updated dependencies [1f850db]
+  - @matthiesenxyz/astro-ghostcms-theme-default@0.1.13
+
 ## 3.2.8
 
 ### Patch Changes
