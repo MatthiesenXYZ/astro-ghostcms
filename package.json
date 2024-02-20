@@ -7,6 +7,7 @@
 	},
 	"scripts": {
 		"dev": "pnpm --filter playground dev",
+		"starlight:dev": "pnpm --filter starlight-playground dev",
 		"lint": "biome check .",
 		"lint:fix": "biome check --apply .",
 		"ci:version": "pnpm changeset version",

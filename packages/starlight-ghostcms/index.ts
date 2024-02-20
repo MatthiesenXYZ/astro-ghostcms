@@ -5,11 +5,11 @@ import { vitePluginStarlightGhostConfig } from './src/integrations/vite'
 
 export type { StarlightGhostConfig }
 
-export default function starlightBlogPlugin(userConfig?: StarlightGhostConfig): StarlightPlugin {
+export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): StarlightPlugin {
     const config: StarlightGhostConfig = validateConfig(userConfig)
     
     return {
-      name: 'starlight-blog-plugin',
+      name: 'starlight-ghostcms-plugin',
       hooks: {
         setup({ addIntegration, config: starlightConfig, logger, updateConfig: updateStarlightConfig }) {
             updateStarlightConfig({
@@ -58,12 +58,12 @@ function overrideStarlightComponent(
   ) {
     if (components?.[component]) {
       logger.warn(`It looks like you already have a \`${component}\` component override in your Starlight configuration.`)
-      logger.warn(`To use \`starlight-blog\`, remove the override for the \`${component}\` component.\n`)
+      logger.warn(`To use \`starlight-ghostcms\`, remove the override for the \`${component}\` component.\n`)
   
       return {}
     }
   
     return {
-      [component]: `starlight-blog/overrides/${component}.astro`,
+      [component]: `@matthiesenxyz/starlight-ghostcms/overrides/${component}.astro`,
     }
   }

@@ -3,7 +3,7 @@ import type { Page, Post } from "./content-api/schemas";
 import type { ContentAPICredentials } from './content-api/content-api'
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
-import { invariant } from "./invariant";
+import { invariant } from "./invariant.js";
 
 const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"all",

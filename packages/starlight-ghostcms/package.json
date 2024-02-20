@@ -17,9 +17,10 @@
   "keywords": [
     "starlight",
     "starlight-plugin",
+    "astro",
+    "plugin",
     "blog",
     "content",
-    "integration",
     "ghost",
     "ghostcms"
   ],

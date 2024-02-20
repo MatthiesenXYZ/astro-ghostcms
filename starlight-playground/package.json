@@ -1,0 +1,20 @@
+{
+    "name": "starlight-playground",
+    "type": "module",
+    "version": "0.0.1",
+    "private": true,
+    "sideEffects": false,
+    "scripts": {
+      "dev": "astro dev",
+      "start": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview",
+      "astro": "astro"
+    },
+    "dependencies": {
+      "@astrojs/starlight": "^0.19.0",
+      "@matthiesenxyz/starlight-ghostcms": "workspace:*",
+      "astro": "^4.3.7",
+      "sharp": "^0.32.5"
+    }
+  }
