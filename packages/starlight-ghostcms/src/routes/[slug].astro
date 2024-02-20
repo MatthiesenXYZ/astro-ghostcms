@@ -1,0 +1,60 @@
+---
+import config from 'virtual:starlight-ghost-config'
+import { Image } from "astro:assets";
+import Page from '../components/Page.astro'
+import { getPageProps } from '../utils/page'
+import { getAllPosts } from '../utils/api'
+import Metadata from '../components/Metadata.astro'
+
+
+export async function getStaticPaths() {
+  const entries = await getAllPosts();
+  return entries.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, slug:post.slug },
+  }));
+}
+
+const { post } = Astro.props
+const pageProps = getPageProps(post.title)
+---
+
+<Page {...pageProps}>
+  {config.supportGhost && (
+    <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
+  )}
+
+    <header>
+      <Metadata entry={post} />
+      {post.feature_image && (
+        <figure>
+          <Image 
+            src={post.feature_image} 
+            alt={post.feature_image_alt?post.feature_image_alt:""} 
+            title={post.feature_image_alt?post.feature_image_alt:""} 
+            width={1000} 
+            height={800}
+          />
+          <figcaption>
+            <Fragment set:html={post.feature_image_caption} />
+          </figcaption>
+        </figure>
+      )}
+    </header>
+    <br />
+    <Fragment set:html={post.html} />
+
+  <footer class="not-content">
+  </footer>
+</Page>
+
+<style>
+#pghost {
+    color: gray;
+    position: absolute;
+    top: 4rem;
+  }
+  #pghost a {
+    color: gray;
+  }
+</style>

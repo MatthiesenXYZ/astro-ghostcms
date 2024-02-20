@@ -1,0 +1,72 @@
+{
+  "name": "@matthiesenxyz/starlight-ghostcms",
+  "description": "Starlight GhostCMS plugin to allow easier importing of GhostCMS Content into your starlight website",
+  "version": "0.0.1",
+  "homepage": "https://astro-ghostcms.xyz/",
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "author": {
+    "email": "adam@matthiesen.xyz",
+    "name": "Adam Matthiesen - MatthiesenXYZ",
+    "url": "https://matthiesen.xyz"
+  },
+  "keywords": [
+    "starlight",
+    "starlight-plugin",
+    "astro",
+    "plugin",
+    "blog",
+    "content",
+    "ghost",
+    "ghostcms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+    "email": "issues@astro-ghostcms.xyz"
+  },
+  "main": "index.ts",
+  "types": "index.ts",
+  "files": [
+    "src",
+    "index.ts",
+    "tsconfig.json",
+    "types.d.ts"
+  ],
+  "exports": {
+    ".": "./index.ts",
+    "./overrides/MarkdownContent.astro": "./src/overrides/MarkdownContent.astro",
+    "./overrides/Sidebar.astro": "./src/overrides/Sidebar.astro",
+    "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
+    "./routes/index.astro": "./src/routes/index.astro",
+    "./routes/[slug].astro": "./src/routes/[slug].astro",
+    "./schema": "./src/schemas/config.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
+  },
+  "devDependencies": {
+    "@astrojs/starlight": "0.19.0",
+    "@ts-ghost/core-api": "5.1.2",
+    "@ts-ghost/tsconfig": "workspace:*",
+    "astro": "4.4.0",
+    "vite": "^5.1.2",
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.2.2",
+    "vitest-fetch-mock": "^0.2.2"
+  },
+  "peerdependencies": {
+    "@astrojs/starlight": ">=0.19.0",
+    "astro": ">=4.3.7"
+  }
+}

@@ -1,0 +1,22 @@
+---
+import Preview from './Preview.astro'
+import type { Post } from '../schemas/posts'
+
+interface Props {
+  entries: Post[]
+}
+
+const { entries } = Astro.props
+---
+
+<div class="posts">
+  {entries.map((entry) => <Preview {entry} />)}
+</div>
+
+<style>
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+</style>

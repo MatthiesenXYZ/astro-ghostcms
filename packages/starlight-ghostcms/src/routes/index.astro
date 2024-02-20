@@ -1,0 +1,37 @@
+---
+//import type { InferGetStaticPropsType } from 'astro'
+import config from 'virtual:starlight-ghost-config'
+
+import Page from '../components/Page.astro'
+import Posts from '../components/Posts.astro'
+//import PrevNextLinks from '../components/PrevNextLinks.astro'
+import { getPageProps } from '../utils/page'
+import { getAllPosts } from '../utils/api'
+
+const entries = await getAllPosts();
+
+//const { entries, nextLink, prevLink } = Astro.props
+
+const pageProps = getPageProps(config.title)
+---
+
+<Page {...pageProps}>
+  {config.supportGhost && (
+    <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
+  )}
+  <Posts {entries} />
+  <footer class="not-content">
+    <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
+  </footer>
+</Page>
+
+<style>
+  #pghost {
+    color: gray;
+    position: absolute;
+    top: 4rem;
+  }
+  #pghost a {
+    color: gray;
+  }
+</style>

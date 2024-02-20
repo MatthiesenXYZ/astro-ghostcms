@@ -1,0 +1,33 @@
+---
+import StarlightMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro'
+import type { Props } from '@astrojs/starlight/props'
+
+import { isAnyBlogPostPage } from '../utils/page'
+import Metadata from '../components/Metadata.astro'
+import type { Post } from '../schemas/posts'
+
+const isBlogPost = isAnyBlogPostPage(Astro.props.slug)
+let blogEntry: Post | undefined = undefined
+
+---
+
+<StarlightMarkdownContent {...Astro.props}>
+  {isBlogPost && blogEntry ? <Metadata entry={blogEntry} /> : null}
+  <slot />
+
+  {
+    isBlogPost && blogEntry ? (
+      <div class="post-footer">
+      </div>
+    ) : null
+  }
+</StarlightMarkdownContent>
+
+<style>
+  .post-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-block-start: 2rem !important;
+  }
+</style>

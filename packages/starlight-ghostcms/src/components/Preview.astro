@@ -1,0 +1,40 @@
+---
+import type { Post } from '../schemas/posts'
+import Metadata from './Metadata.astro'
+
+interface Props {
+  entry: Post
+}
+
+const { entry } = Astro.props
+
+const Excerpt = entry.excerpt
+---
+
+<article class="preview">
+  <header>
+    <h2>
+      <a href={`/blog/${entry.slug}`}>{entry.title}</a>
+    </h2>
+    <Metadata entry={entry} />
+  </header>
+  <div class="sl-markdown-content">
+    {typeof Excerpt === 'string' ? Excerpt : entry.excerpt}
+  </div>
+</article>
+
+<style>
+  .preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 a {
+    text-decoration: none;
+  }
+</style>
