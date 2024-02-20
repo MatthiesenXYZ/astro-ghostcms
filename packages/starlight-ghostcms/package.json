@@ -43,11 +43,10 @@
   "exports": {
     ".": "./index.ts",
     "./overrides/MarkdownContent.astro": "./src/overrides/MarkdownContent.astro",
-    "./overrides/Sidebar.astro": "./src/overrides/SideBar.astro",
+    "./overrides/Sidebar.astro": "./src/overrides/Sidebar.astro",
     "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
     "./routes/index.astro": "./src/routes/index.astro",
-    "./schema": "./src/schemas/config.ts",
-    "./package.json": "./package.json"
+    "./schema": "./src/schemas/config.ts"
   },
   "scripts": {
     "test": "vitest run",

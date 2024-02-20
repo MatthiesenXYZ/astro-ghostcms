@@ -374,7 +374,7 @@ importers:
         specifier: ^0.19.0
         version: 0.19.0(astro@4.3.7)
       '@matthiesenxyz/starlight-ghostcms':
-        specifier: workspace:*
+        specifier: 0.0.1-dev01
         version: link:../packages/starlight-ghostcms
       astro:
         specifier: ^4.3.7

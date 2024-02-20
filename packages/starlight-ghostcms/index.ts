@@ -9,34 +9,26 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
     const config: StarlightGhostConfig = validateConfig(userConfig)
     
     return {
-      name: 'starlight-ghostcms-plugin',
+      name: '@matthiesenxyz/starlight-ghostcms-plugin',
       hooks: {
         setup({ addIntegration, config: starlightConfig, logger, updateConfig: updateStarlightConfig }) {
             updateStarlightConfig({
                 components: {
                     ...starlightConfig.components,
-                    ...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
-                    ...overrideStarlightComponent(starlightConfig.components, logger, 'Sidebar'),
-                    ...overrideStarlightComponent(starlightConfig.components, logger, "SiteTitle"),
+                    //...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
+                    //...overrideStarlightComponent(starlightConfig.components, logger, 'Sidebar'),
+                    //...overrideStarlightComponent(starlightConfig.components, logger, "SiteTitle"),
                 }
             })
 
             addIntegration({
-                name: 'starlight-ghostcms',
+                name: '@matthiesenxyz/starlight-ghostcms',
                 hooks: {
                     'astro:config:setup': ({ injectRoute, updateConfig }) => {
                         injectRoute({
-                            pattern: '@matthiesenxyz/starlight-ghostcms/routes/index.astro',
-                            entrypoint: '/blog',
-                            prerender: true,
+                            pattern: '/blog',
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/index.astro'
                         })
-                        /** THIS IS NOT READY
-                         * injectRoute({
-                         *    pattern: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro',
-                         *    entrypoint: '/blog/[slug]',
-                         *    prerender: true,
-                         * })
-                         */
 
                         updateConfig({
                             vite: {

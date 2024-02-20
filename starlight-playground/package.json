@@ -11,9 +11,12 @@
       "preview": "astro preview",
       "astro": "astro"
     },
+    "devDependencies": {
+      "@matthiesenxyz/starlight-ghostcms": "workspace:*"
+    },
     "dependencies": {
       "@astrojs/starlight": "^0.19.0",
-      "@matthiesenxyz/starlight-ghostcms": "workspace:*",
+      "@matthiesenxyz/starlight-ghostcms": "0.0.1-dev01",
       "astro": "^4.3.7",
       "sharp": "^0.32.5"
     }

@@ -2,7 +2,7 @@
 import StarlightSidebar from '@astrojs/starlight/components/Sidebar.astro'
 import type { Props } from '@astrojs/starlight/props'
 import config from 'virtual:starlight-ghost-config'
-import { isAnyBlogPage, isBlogPostPage, isBlogRoot } from '../utils/page'
+import { isBlogPostPage, isBlogRoot } from '../utils/page'
 import { getAllPosts } from '../utils/api'
 
 export async function getRecentBlogEntries(){
@@ -10,7 +10,12 @@ export async function getRecentBlogEntries(){
   return entries.slice(0, config.recentPostCount)
 }
 
-const isBlog = isAnyBlogPage(Astro.props.slug)
+export function checkpath(path: string){
+  if ( path.slice(0, 5) === "/blog" ){
+    return true
+  } else { return false }
+}
+const isBlog = checkpath(Astro.url.pathname)
 const recentEntries = isBlog ? await getRecentBlogEntries() : []
 
 const blogSidebar: Props['sidebar'] = isBlog

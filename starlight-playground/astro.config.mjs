@@ -8,6 +8,11 @@ export default defineConfig({
 		starlight({
 			title: 'My Docs',
 			plugins: [starlightGhostCMS()],
+			components: {
+				Sidebar: '@matthiesenxyz/starlight-ghostcms/overrides/Sidebar.astro',
+				MarkdownContent: '@matthiesenxyz/starlight-ghostcms/overrides/MarkdownContent.astro',
+				SiteTitle: '@matthiesenxyz/starlight-ghostcms/overrides/SiteTitle.astro'
+			},
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
