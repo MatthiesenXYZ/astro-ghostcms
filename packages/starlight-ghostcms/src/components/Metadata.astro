@@ -1,21 +1,21 @@
 ---
-import { getBlogEntryMetadata, type StarlightBlogEntry } from '../utils/content'
 
+import type { Post } from '../schemas/posts'
 import Author from './Author.astro'
 
 interface Props {
-  entry: StarlightBlogEntry
+  entry: Post
 }
 
 const { entry } = Astro.props
-const { authors, date } = getBlogEntryMetadata(entry)
+const { authors, published_at, created_at } = entry
 
-const hasAuthors = authors.length > 0
+const hasAuthors = authors !== undefined
 ---
 
 <div class="metadata not-content">
-  <time datetime={entry.data.date.toISOString()}>
-    {date}
+  <time datetime={published_at?published_at:created_at.toString()}>
+    {published_at}
   </time>
   {
     hasAuthors ? (

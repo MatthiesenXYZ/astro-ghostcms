@@ -1,10 +1,9 @@
 ---
-import type { StarlightBlogEntry } from '../utils/content'
-
 import Preview from './Preview.astro'
+import type { Post } from '../schemas/posts'
 
 interface Props {
-  entries: StarlightBlogEntry[]
+  entries: Post[]
 }
 
 const { entries } = Astro.props

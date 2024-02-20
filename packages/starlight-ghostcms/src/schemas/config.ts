@@ -1,9 +1,16 @@
-/** @ts-expect-error */
 import { AstroError } from 'astro/errors'
 import { z } from 'astro/zod'
 
 const configSchema = z
   .object({
+    /**
+     * The number of blog posts to display per page in the blog post list.
+     */
+    postCount: z.number().min(1).default(5),
+    /**
+     * The number of recent blog posts to display in the sidebar.
+     */
+    recentPostCount: z.number().min(1).default(10),
     /**
      * The title of the blog.
      */

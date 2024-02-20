@@ -17,6 +17,7 @@ export default function starlightBlogPlugin(userConfig?: StarlightGhostConfig): 
                     ...starlightConfig.components,
                     ...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
                     ...overrideStarlightComponent(starlightConfig.components, logger, 'Sidebar'),
+                    ...overrideStarlightComponent(starlightConfig.components, logger, "SiteTitle"),
                 }
             })
 

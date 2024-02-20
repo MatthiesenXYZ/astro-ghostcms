@@ -1,0 +1,30 @@
+---
+import type { Props } from "@astrojs/starlight/props";
+import AstrolightSiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
+//import config from 'virtual:starlight-ghost-config'
+---
+
+<AstrolightSiteTitle {...Astro.props} />
+<div>
+    <a href="/blog">Blog</a>
+</div>
+
+<style>
+    div {
+        border-inline-start: 1px solid var(--sl-color-gray-5);
+        display: none;
+        padding-inline-start: 1rem;
+    }
+  
+    @media (min-width: 50rem) {
+        div {
+            display: flex;
+        }
+    }
+  
+    a {
+        color: var(--sl-color-text-accent);
+        font-weight: 600;
+        text-decoration: none;
+    }
+</style>
