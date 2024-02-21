@@ -47,6 +47,7 @@
     "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
     "./routes/index.astro": "./src/routes/index.astro",
     "./routes/[slug].astro": "./src/routes/[slug].astro",
+    "./routes/rss.xml.ts": "./src/routes/rss.xml.ts",
     "./schema": "./src/schemas/config.ts"
   },
   "scripts": {

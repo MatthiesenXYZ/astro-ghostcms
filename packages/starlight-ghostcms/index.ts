@@ -11,8 +11,12 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
     return {
       name: '@matthiesenxyz/starlight-ghostcms-plugin',
       hooks: {
-        setup({ addIntegration, config: starlightConfig, logger, updateConfig: updateStarlightConfig }) {
+        setup({ astroConfig, addIntegration, config: starlightConfig, logger, updateConfig: updateStarlightConfig }) {
             updateStarlightConfig({
+                social: {
+                    ...starlightConfig.social,
+                    rss: `${astroConfig.site}/rss.xml`
+                },
                 components: {
                     ...starlightConfig.components,
                     ...overrideStarlightComponent(starlightConfig.components, logger, 'MarkdownContent'),
@@ -27,11 +31,17 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
                     'astro:config:setup': ({ injectRoute, updateConfig }) => {
                         injectRoute({
                             pattern: '/blog',
-                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/index.astro'
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/index.astro',
+                            prerender: true,
                         })
                         injectRoute({
                             pattern: '/blog/[slug]',
-                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro'
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro',
+                            prerender: true,
+                        })
+                        injectRoute({
+                            pattern: '/rss.xml',
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/rss.xml.ts'
                         })
 
                         updateConfig({

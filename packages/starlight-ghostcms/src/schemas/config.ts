@@ -18,7 +18,7 @@ const configSchema = z
     /**
      * The description of the blog on the RSS Feed.
      */
-    rssDescription: z.string(),
+    rssDescription: z.string().default('My Awesome Starlight-GhostCMS Blog'),
     /**
      * Turn on and off "Powered by Ghost" 
      */

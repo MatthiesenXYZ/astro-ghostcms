@@ -4,10 +4,16 @@ import starlightGhostCMS from '@matthiesenxyz/starlight-ghostcms';
 
 // https://astro.build/config
 export default defineConfig({
+	site: "http://localhost:4321",
 	integrations: [
 		starlight({
 			title: 'My Docs',
-			plugins: [starlightGhostCMS()],
+			plugins: [
+				starlightGhostCMS({
+					title: "Demo Blog",
+					rssDescription: "Starlight Playground"
+				})
+			],
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
