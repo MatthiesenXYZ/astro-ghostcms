@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.0.5
+
+### Patch Changes
+
+- 95171f3: fixed spelling issues in package.json
+
 ## 0.0.4
 
 ### Patch Changes
