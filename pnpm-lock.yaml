@@ -304,6 +304,9 @@ importers:
 
   packages/starlight-ghostcms:
     dependencies:
+      '@astrojs/rss':
+        specifier: ^4.0.5
+        version: 4.0.5
       '@ts-ghost/core-api':
         specifier: ^5.1.2
         version: 5.1.2

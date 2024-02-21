@@ -63,6 +63,7 @@
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.5",
     "@ts-ghost/core-api": "^5.1.2",
     "vite": "^5.1.2",
     "vite-tsconfig-paths": "^4.2.2"

@@ -16,6 +16,10 @@ const configSchema = z
      */
     title: z.string().default('Blog'),
     /**
+     * The description of the blog on the RSS Feed.
+     */
+    rssDescription: z.string(),
+    /**
      * Turn on and off "Powered by Ghost" 
      */
     supportGhost: z.boolean().default(true),
