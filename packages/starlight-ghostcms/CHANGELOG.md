@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.0.6
+
+### Patch Changes
+
+- 40d6454: add rss feeds, also adds a link in the socials based on the astro `site` config option
+
 ## 0.0.5
 
 ### Patch Changes
