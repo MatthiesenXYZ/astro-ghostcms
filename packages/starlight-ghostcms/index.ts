@@ -2,12 +2,16 @@ import type { StarlightPlugin, StarlightUserConfig } from '@astrojs/starlight/ty
 import type { AstroIntegrationLogger } from 'astro'
 import { type StarlightGhostConfig, validateConfig } from './src/schemas/config'
 import { vitePluginStarlightGhostConfig } from './src/integrations/vite'
+import { facebook, getSettings, invariant, twitter } from './src/utils/api'
+
+const settings = await getSettings()
 
 export type { StarlightGhostConfig }
 
 export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): StarlightPlugin {
     const config: StarlightGhostConfig = validateConfig(userConfig)
-    
+    invariant(settings, "Settings not available... check your api key/url")
+
     return {
       name: '@matthiesenxyz/starlight-ghostcms-plugin',
       hooks: {
@@ -15,7 +19,9 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
             updateStarlightConfig({
                 social: {
                     ...starlightConfig.social,
-                    rss: `${astroConfig.site}/rss.xml`
+                    rss: `${astroConfig.site}/rss.xml`,
+                    twitter: twitter(settings.twitter?settings.twitter:""),
+                    facebook: facebook(settings.facebook?settings.facebook:""),
                 },
                 components: {
                     ...starlightConfig.components,
@@ -38,6 +44,15 @@ export default function starlightGhostCMS(userConfig?: StarlightGhostConfig): St
                             pattern: '/blog/[slug]',
                             entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/[slug].astro',
                             prerender: true,
+                        })
+                        injectRoute({
+                            pattern: '/blog/about',
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/about.astro',
+                            prerender: true,
+                        })
+                        injectRoute({
+                            pattern: '/blog/authors',
+                            entrypoint: '@matthiesenxyz/starlight-ghostcms/routes/authors.astro',
                         })
                         injectRoute({
                             pattern: '/rss.xml',
