@@ -1,0 +1,36 @@
+---
+import config from 'virtual:starlight-ghost-config'
+import Metadata from '../components/Metadata.astro'
+import Page from '../components/Page.astro'
+//import PrevNextLinks from '../components/PrevNextLinks.astro'
+import { getPageProps } from '../utils/page'
+import { getSluggedPage } from '../utils/api'
+
+const aboutPage = await getSluggedPage("about");
+
+//const { entries, nextLink, prevLink } = Astro.props
+
+const pageProps = getPageProps(aboutPage?.post?.title)
+---
+
+<Page {...pageProps}>
+  {config.supportGhost && (
+    <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
+  )}
+      <Metadata entry={aboutPage.post} />
+      <Fragment set:html={aboutPage.post.html} />
+  <footer class="not-content">
+    <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
+  </footer>
+</Page>
+
+<style>
+  #pghost {
+    color: gray;
+    position: absolute;
+    top: 4rem;
+  }
+  #pghost a {
+    color: gray;
+  }
+</style>

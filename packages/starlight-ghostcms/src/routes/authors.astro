@@ -1,0 +1,48 @@
+---
+import config from 'virtual:starlight-ghost-config'
+import Page from '../components/Page.astro'
+//import PrevNextLinks from '../components/PrevNextLinks.astro'
+import { getAllAuthors } from '../utils/api/api-functions'
+import { getPageProps } from '../utils/page'
+import AdvancedAuthorCard from '../components/AdvancedAuthorCard.astro';
+
+//const { entries, nextLink, prevLink } = Astro.props
+
+const { authors } = await getAllAuthors();
+
+const pageProps = getPageProps("Our Authors")
+---
+
+<Page {...pageProps}>
+  {config.supportGhost && (
+    <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
+  )}
+
+  
+<div class="authors">
+  <ul>
+    {authors.map((author: any) => (
+      <li>
+      <AdvancedAuthorCard {author} />
+      </li>
+    ))}
+  </ul>
+
+  <footer class="not-content">
+    <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
+  </footer>
+</Page>
+
+<style>
+  #pghost {
+    color: gray;
+    position: absolute;
+    top: 4rem;
+  }
+  #pghost a {
+    color: gray;
+  }
+  ul {
+    list-style: none;
+  }
+</style>

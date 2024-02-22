@@ -106,6 +106,22 @@ export const getAllPages = async () => {
 	return pages;
 };
 
+export const getSluggedPage = async (slug:string) => {
+	const results = await api.pages
+		.read({slug: slug})
+		.include({
+			authors: true,
+			tags: true,
+		}).fetch()
+	
+		if (!results.success) {
+			throw new Error(results.errors.map((e) => e.message).join(", "));
+		}
+		return {
+			post: results.data,
+		};
+};
+
 export const getSettings = async () => {
 	const res = await api.settings.fetch();
 	if (res.success) {

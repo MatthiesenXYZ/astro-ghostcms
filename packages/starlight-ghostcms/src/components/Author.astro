@@ -7,11 +7,11 @@ interface Props {
 
 const { author } = Astro.props
 
-const isLink = author.website !== undefined
+const isLink = author.slug !== undefined
 const Element = isLink ? 'a' : 'div'
 ---
 
-<Element href={isLink ? author.website : undefined} class="author">
+<Element href={isLink ? '/blog/authors' : undefined} class="author">
   {author.profile_image && <img alt={author.name} src={author.profile_image} />}
   <div class="text">
     <div class="name">{author.name}</div>
