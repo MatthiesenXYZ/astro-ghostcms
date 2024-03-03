@@ -7,6 +7,7 @@ import c from "picocolors";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
+import latestVersion from "./utils/latestVersion";
 
 // Import External Integrations
 import sitemap from "@astrojs/sitemap";
@@ -16,7 +17,6 @@ import robotsTxt from "astro-robots-txt";
 import ghostOGImages from "./integrations/satoriog"
 import ghostRSS from "./integrations/rssfeed"
 import ghostThemeProvider from "./integrations/themeprovider"
-import latestVersion from "./utils/latestVersion";
 
 // Load environment variables
 const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
