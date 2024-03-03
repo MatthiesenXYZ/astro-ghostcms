@@ -120,7 +120,7 @@ export default defineIntegration({
 				);
 
 				// Theme Provider
-				if (!options.disableThemeProvider) {
+				if (!options.ThemeProvider?.disableThemeProvider) {
 					addIntegration(
 						ghostThemeProvider({
 							theme: options.ThemeProvider?.theme,
@@ -162,7 +162,7 @@ export default defineIntegration({
 							),
 						);
 					}
-					addIntegration(sitemap());
+					addIntegration(sitemap(options.sitemap));
 				} else {
 					if (verbose) {
 						GhostIntegrationLogger.info(
@@ -173,7 +173,7 @@ export default defineIntegration({
 					}
 				}
 				// ASTRO-ROBOTS-TXT
-				if (!hasIntegration("@astro-robots-txt")) {
+				if (!hasIntegration("astro-robots-txt")) {
 					if (verbose) {
 						GhostIntegrationLogger.info(
 							c.bold(
@@ -181,7 +181,7 @@ export default defineIntegration({
 							),
 						);
 					}
-					addIntegration(robotsTxt());
+					addIntegration(robotsTxt(options.robotsTxt));
 				} else {
 					if (verbose) {
 						GhostIntegrationLogger.info(

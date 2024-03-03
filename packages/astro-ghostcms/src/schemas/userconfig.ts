@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
-import { RobotsTxtSchema } from "./robots.ts";
-import { SitemapSchema } from "./sitemap.ts";
+import type { RobotsTxtOptions } from "astro-robots-txt";
+import type { SitemapOptions } from "@astrojs/sitemap";
 
 export const GhostUserConfigSchema = z.object({
 	/** OPTIONAL - Either set the URL in your .env or put it here
@@ -14,12 +14,12 @@ export const GhostUserConfigSchema = z.object({
 	 *   ],
 	 * }); */
 	ghostURL: z.string().url().optional(),
-	/** OPTIONAL - Disable the theme provider
-	 * @default false
-	 */
-	disableThemeProvider: z.boolean().optional().default(false),
 	ThemeProvider: z
 		.object({
+			/** OPTIONAL - Disable the theme provider
+			 * @default false
+			 */
+			disableThemeProvider: z.boolean().optional().default(false),
 			/** OPTIONAL - Set the theme you want to use
 			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
 			 */
@@ -37,22 +37,22 @@ export const GhostUserConfigSchema = z.object({
 	 * @default true
 	 */
 	enableOGImages: z.boolean().optional().default(true),
-	/** OPTIONAL - astrojs/sitemap
-	 * This option allows the user to configure the included integration
-	 * Options shown are the availble options
-	 * REFERENCE https://docs.astro.build/en/guides/integrations-guide/sitemap
-	 */
-	sitemap: SitemapSchema.optional(),
-	/** OPTIONAL - astro-robots-txt
-	 * This option allows the user to configure the included integration
-	 * Options shown are the availble options
-	 * REFERENCE https://www.npmjs.com/package/astro-robots-txt#configuration
-	 */
-	robotstxt: RobotsTxtSchema.optional(),
 	/** Allows the user to turn on/off Full Console Logs
 	 * @default true
 	 */
 	fullConsoleLogs: z.boolean().optional().default(false),
+	/** Optional - astro-robots-txt
+	 * This option allows the user to configure the included integration
+	 * Options shown are the availble options
+	 * @see https://www.npmjs.com/package/astro-robots-txt#configuration
+	 */
+	robotsTxt: z.custom<RobotsTxtOptions>().optional(),
+	/** OPTIONAL - astrojs/sitemap
+	 * This option allows the user to configure the included integration
+	 * Options shown are the availble options
+	 * @see https://docs.astro.build/en/guides/integrations-guide/sitemap
+	 */
+	sitemap: z.custom<SitemapOptions>().optional(),
 });
 
 /** USER CONFIGURATION SCHEMA */

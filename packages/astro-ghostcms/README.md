@@ -63,14 +63,22 @@ export default defineConfig({
     GhostCMS({
       // Config Options
       ghostURL: "http://example.com"; // Recommended to set here, Can also set in .env as CONTENT_API_URL
-      disableThemeProvider: false; // OPTIONAL - Default False
       ThemeProvider: { // Allows you to pass config options to our ThemeProvider if enabled.
+        disableThemeProvider: false; // OPTIONAL - Default False
         theme: "@matthiesenxyz/astro-ghostcms-theme-default"; // OPTIONAL - Default Theme shown.
       };
       disableDefault404: false; // Allows the user to disable the default `/404 page, to be able to create their own under `/src/pages/404.astro`.
       enableRSSFeed: true; // Allows the user to Enable or disable RSS Feed Generation. Default: true
       enableOGImages: true; // Allows the user to Enable or disable OG Image Generation. Default: true
       fullConsoleLogs: false; // Show the full Log output from All parts of Astro-GhostCMS
+	    robotsTxt: {
+        // OPTIONAL
+        // ADVANCED USAGE - https://www.npmjs.com/package/astro-robots-txt#configuration
+      } 
+	    sitemap: {
+        // OPTIONAL
+        // ADVANCED USAGE - https://docs.astro.build/en/guides/integrations-guide/sitemap
+      }
     })
   ],
 });
