@@ -41,18 +41,24 @@ export const GhostUserConfigSchema = z.object({
 	 * @default true
 	 */
 	fullConsoleLogs: z.boolean().optional().default(false),
-	/** Optional - astro-robots-txt
-	 * This option allows the user to configure the included integration
+	/** OPTIONAL - Integrations Configuration
+	 * This option allows the user to configure the included integrations
 	 * Options shown are the availble options
-	 * @see https://www.npmjs.com/package/astro-robots-txt#configuration
 	 */
-	robotsTxt: z.custom<RobotsTxtOptions>().optional(),
-	/** OPTIONAL - astrojs/sitemap
-	 * This option allows the user to configure the included integration
-	 * Options shown are the availble options
-	 * @see https://docs.astro.build/en/guides/integrations-guide/sitemap
-	 */
-	sitemap: z.custom<SitemapOptions>().optional(),
+	Integrations: z.object({
+		/** Optional - astro-robots-txt
+		 * This option allows the user to configure the included integration
+		 * Options shown are the availble options
+		 * @see https://www.npmjs.com/package/astro-robots-txt#configuration
+		 */
+		robotsTxt: z.custom<RobotsTxtOptions>().optional(),
+		/** OPTIONAL - astrojs/sitemap
+		 * This option allows the user to configure the included integration
+		 * Options shown are the availble options
+		 * @see https://docs.astro.build/en/guides/integrations-guide/sitemap
+		 */
+		sitemap: z.custom<SitemapOptions>().optional(),
+	}).optional(),
 });
 
 /** USER CONFIGURATION SCHEMA */

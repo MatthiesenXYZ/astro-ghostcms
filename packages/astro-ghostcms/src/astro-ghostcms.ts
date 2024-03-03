@@ -162,7 +162,7 @@ export default defineIntegration({
 							),
 						);
 					}
-					addIntegration(sitemap(options.sitemap));
+					addIntegration(sitemap(options.Integrations?.sitemap));
 				} else {
 					if (verbose) {
 						GhostIntegrationLogger.info(
@@ -181,7 +181,7 @@ export default defineIntegration({
 							),
 						);
 					}
-					addIntegration(robotsTxt(options.robotsTxt));
+					addIntegration(robotsTxt(options.Integrations?.robotsTxt));
 				} else {
 					if (verbose) {
 						GhostIntegrationLogger.info(
