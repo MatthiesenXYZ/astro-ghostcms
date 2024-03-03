@@ -4,6 +4,9 @@ import { GhostUserConfigSchema } from "./schemas/userconfig";
 import { loadEnv } from "vite";
 import { AstroError } from "astro/errors";
 import c from "picocolors";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import fse from "fs-extra";
 
 // Import External Integrations
 import sitemap from "@astrojs/sitemap";
@@ -13,6 +16,7 @@ import robotsTxt from "astro-robots-txt";
 import ghostOGImages from "./integrations/satoriog"
 import ghostRSS from "./integrations/rssfeed"
 import ghostThemeProvider from "./integrations/themeprovider"
+import latestVersion from "./utils/latestVersion";
 
 // Load environment variables
 const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
@@ -154,16 +158,32 @@ export default defineIntegration({
 
             },
             "astro:config:done": ({ logger }) => {
-				const GhostLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.green('Config')}`);
+				const GhostLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.green('CONFIG')}`);
                 GhostLogger.info(c.bold(c.green('Integration Setup & Configuration Complete')))
             },
-            "astro:server:start": ({ logger }) => {
+            "astro:server:start": async ({ logger }) => {
                 const GhostLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.bold(c.green('DEV'))}`);
-                GhostLogger.info(c.bold(c.magenta('Running Astro-GhostCMS in Deveopment mode')))
+                const GhostUpdateLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.bold(c.green('VERSION CHECK'))}`);
+                const verbose = options.fullConsoleLogs;
+
+                // Start the DEV server
+                GhostLogger.info(c.bold(c.magenta('Running Astro-GhostCMS in Deveopment mode 🚀')))
+
+                // Check for updates
+                const currentNPMVersion = await latestVersion("@matthiesenxyz/astro-ghostcms");
+                const packageJson = await fse.readJson(path.resolve(fileURLToPath(import.meta.url), "../../package.json"));
+                const localVersion = packageJson.version;
+
+                if (currentNPMVersion !== localVersion) {
+                    GhostUpdateLogger.warn(`\n${c.bgYellow(c.bold(c.black(" There is a new version of Astro-GhostCMS available! ")))}\n${c.bold(c.white(" Current Installed Version: ")) + c.bold(c.red(`${localVersion} `))} \n ${c.bold(c.white("New Available Version: "))} ${c.green(currentNPMVersion)} \n ${c.bold(c.white("Please consider updating to the latest version by running: "))} ${c.bold(c.green("npm i @matthiesenxyz/astro-ghostcms@latest"))} \n`)
+                } else {
+                    GhostUpdateLogger.info(c.bold(c.green(`Astro-GhostCMS is up to date! v${localVersion}`)))
+                }
+
             },
             "astro:build:done": ({ logger }) => {
                 const GhostLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.bold(c.green('BUILD'))}`);
-                GhostLogger.info(c.bold(c.magenta('Running Astro-GhostCMS in Production mode')))
+                GhostLogger.info(c.bold(c.magenta('Running Astro-GhostCMS in Production mode 🚀')))
             }
         }
     }
