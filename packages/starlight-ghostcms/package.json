@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
-    "@ts-ghost/core-api": "^5.1.2",
+    "@ts-ghost/core-api": "5.1.2",
     "vite": "^5.1.2",
     "vite-tsconfig-paths": "^4.2.2"
   },
