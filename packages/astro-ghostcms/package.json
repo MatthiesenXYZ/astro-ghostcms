@@ -38,7 +38,9 @@
     },
     "files": [
       "src",
-      "index.ts"
+      "CHANGELOG.md",
+      "LICENSE",
+      "README.md"
     ],
     "exports": {
       ".": "./src/index.ts",

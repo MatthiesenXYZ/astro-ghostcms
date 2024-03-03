@@ -75,7 +75,7 @@ export default defineIntegration({
                 if ( !options.disableThemeProvider ) {
                     addIntegration(
                         ghostThemeProvider({ 
-                            theme: options.ThemeProvider.theme, 
+                            theme: options.ThemeProvider?.theme, 
                             verbose 
                         })
                     )
@@ -164,7 +164,6 @@ export default defineIntegration({
             "astro:server:start": async ({ logger }) => {
                 const GhostLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.bold(c.green('DEV'))}`);
                 const GhostUpdateLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.bold(c.green('VERSION CHECK'))}`);
-                const verbose = options.fullConsoleLogs;
 
                 // Start the DEV server
                 GhostLogger.info(c.bold(c.magenta('Running Astro-GhostCMS in Deveopment mode 🚀')))

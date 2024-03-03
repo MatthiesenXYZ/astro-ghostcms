@@ -4,18 +4,22 @@ import type { Page, Post } from "../schemas/api";
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
 
-import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
-
-const CONF_URL = config.ghostURL;
-
-const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
+const { 
+	CONTENT_API_KEY, 
+	CONTENT_API_URL 
+} = loadEnv(
 	"all",
 	process.cwd(),
 	"CONTENT_",
 );
 
-const ghostApiKey = CONTENT_API_KEY;
-const ghostUrl = CONF_URL ? CONF_URL : CONTENT_API_URL;
+// LOAD CONFIG
+import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
+const CONF_URL = config.ghostURL;
+
+// SETUP GHOST API
+const ghostApiKey = CONTENT_API_KEY || "";
+const ghostUrl = CONF_URL || CONTENT_API_URL || "";
 const version = "v5.0";
 const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
 
