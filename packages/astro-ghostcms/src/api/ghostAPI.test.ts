@@ -5,7 +5,11 @@ import { TSGhostContentAPI } from "@ts-ghost/content-api";
 describe("content-api", () => {
 	let api: TSGhostContentAPI;
 	beforeEach(() => {
-		api = new TSGhostContentAPI("https://ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
+		api = new TSGhostContentAPI(
+			"https://ghost.org",
+			"59d4bf56c73c04a18c867dc3ba",
+			"v5.0",
+		);
 	});
 
 	test("content-api", () => {
@@ -14,7 +18,11 @@ describe("content-api", () => {
 
 	test("content-api shouldn't instantiate with an incorrect url", () => {
 		assert.throws(() => {
-			const api = new TSGhostContentAPI("ghost.org", "59d4bf56c73c04a18c867dc3ba", "v5.0");
+			const api = new TSGhostContentAPI(
+				"ghost.org",
+				"59d4bf56c73c04a18c867dc3ba",
+				"v5.0",
+			);
 			api.settings;
 		});
 	});

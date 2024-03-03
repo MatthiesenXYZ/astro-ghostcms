@@ -1,33 +1,33 @@
 export function isAnyBlogPage(slug: string) {
-  return slug.match(/^blog(\/?$|\/.+\/?$)/) !== null
+	return slug.match(/^blog(\/?$|\/.+\/?$)/) !== null;
 }
 
 export function isBlogRoot(slug: string) {
-  return slug === 'blog'
+	return slug === "blog";
 }
 
 export function isAnyBlogPostPage(slug: string) {
-  return slug.match(/^blog\/(?!(\d+\/?|tags\/.+)$).+$/) !== null
+	return slug.match(/^blog\/(?!(\d+\/?|tags\/.+)$).+$/) !== null;
 }
 
 export function isBlogPostPage(slug: string, postSlug: string) {
-  return slug === postSlug
+	return slug === postSlug;
 }
 
 export function isBlogTagsPage(slug: string, tag: string) {
-  return slug === `blog/tags/${tag}`
+	return slug === `blog/tags/${tag}`;
 }
 
 export function getPageProps(title: string): StarlightPageProps {
-  return {
-    frontmatter: {
-      title,
-    },
-  }
+	return {
+		frontmatter: {
+			title,
+		},
+	};
 }
 
 interface StarlightPageProps {
-  frontmatter: {
-    title: string
-  }
+	frontmatter: {
+		title: string;
+	};
 }

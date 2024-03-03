@@ -4,10 +4,7 @@ import type { Page, Post } from "../schemas/api";
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
 
-const { 
-	CONTENT_API_KEY, 
-	CONTENT_API_URL 
-} = loadEnv(
+const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"all",
 	process.cwd(),
 	"CONTENT_",

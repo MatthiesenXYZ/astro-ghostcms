@@ -18,12 +18,17 @@ export const GhostUserConfigSchema = z.object({
 	 * @default false
 	 */
 	disableThemeProvider: z.boolean().optional().default(false),
-	ThemeProvider: z.object({
-		/** OPTIONAL - Set the theme you want to use
-		 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
-		 */
-		theme: z.string().optional().default("@matthiesenxyz/astro-ghostcms-theme-default"),
-	}).optional(),
+	ThemeProvider: z
+		.object({
+			/** OPTIONAL - Set the theme you want to use
+			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
+			 */
+			theme: z
+				.string()
+				.optional()
+				.default("@matthiesenxyz/astro-ghostcms-theme-default"),
+		})
+		.optional(),
 	/** Allows the user to disable the provided 404 page */
 	disableDefault404: z.boolean().optional().default(false),
 	/** Allows the user to disable the provided RSS Feed */

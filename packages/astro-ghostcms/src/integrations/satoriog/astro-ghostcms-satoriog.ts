@@ -1,31 +1,37 @@
 import { createResolver, defineIntegration } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
-import c from "picocolors";
 import { z } from "astro/zod";
+import c from "picocolors";
 
 export default defineIntegration({
-    name: "@matthiesenxyz/astro-ghostcms-satoriog",
-    optionsSchema: z.object({
+	name: "@matthiesenxyz/astro-ghostcms-satoriog",
+	optionsSchema: z.object({
 		verbose: z.boolean().optional().default(false),
-    }),
-    plugins: [...corePlugins],
-    setup({ options }) {
-        const { resolve } = createResolver(import.meta.url);
+	}),
+	plugins: [...corePlugins],
+	setup({ options }) {
+		const { resolve } = createResolver(import.meta.url);
 
-        return {
-            "astro:config:setup": ({ 
-                watchIntegration, 
-                updateConfig,
-                injectRoute,
-                logger 
-            }) => {
-                watchIntegration(resolve())
+		return {
+			"astro:config:setup": ({
+				watchIntegration,
+				updateConfig,
+				injectRoute,
+				logger,
+			}) => {
+				watchIntegration(resolve());
 
-				const SatoriLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.blue('SatoriOG')}`);
+				const SatoriLogger = logger.fork(
+					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
+						"SatoriOG",
+					)}`,
+				);
 
-                SatoriLogger.info(c.bold(c.magenta('OG Image Integration Enabled. Setting up...')))
+				SatoriLogger.info(
+					c.bold(c.magenta("OG Image Integration Enabled. Setting up...")),
+				);
 
-				const pkgname = "@matthiesenxyz/astro-ghostcms/open-graph"
+				const pkgname = "@matthiesenxyz/astro-ghostcms/open-graph";
 
 				injectRoute({
 					pattern: "/open-graph/[slug].png",
@@ -57,17 +63,23 @@ export default defineIntegration({
 					entrypoint: `${pkgname}/tag/[slug].png.ts`,
 				});
 
-                updateConfig({
-                    vite: { optimizeDeps: { exclude: ["@resvg/resvg-js"] } }
-                })
-            },
-            "astro:config:done": ({ logger }) => {
-				const SatoriLogger = logger.fork(`${c.bold(c.blue('👻 Astro-GhostCMS'))}${c.gray("/")}${c.blue('SatoriOG')}`);
+				updateConfig({
+					vite: { optimizeDeps: { exclude: ["@resvg/resvg-js"] } },
+				});
+			},
+			"astro:config:done": ({ logger }) => {
+				const SatoriLogger = logger.fork(
+					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
+						"SatoriOG",
+					)}`,
+				);
 
 				if (options.verbose) {
-					SatoriLogger.info(c.bold(c.green('OG Image Integration Setup Complete')))
+					SatoriLogger.info(
+						c.bold(c.green("OG Image Integration Setup Complete")),
+					);
 				}
-            }
-        }
-    }
-})
+			},
+		};
+	},
+});

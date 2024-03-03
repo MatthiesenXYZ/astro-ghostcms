@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
-import { defineProject } from 'vitest/config'
+import { defineProject } from "vitest/config";
 
 export default defineProject({
 	test: {
@@ -9,4 +9,4 @@ export default defineProject({
 		watchExclude: [".*\\/node_modules\\/.*", ".*\\/build\\/.*"],
 		exclude: ["node_modules", "dist", ".idea", ".git", ".cache"],
 	},
-})
+});

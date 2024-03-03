@@ -12,7 +12,7 @@ export default defineConfig({
 		ghostcms({
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
 			ThemeProvider: {
-				theme: '@matthiesenxyz/astro-ghostcms-brutalbyelian',
+				theme: "@matthiesenxyz/astro-ghostcms-brutalbyelian",
 			},
 		}),
 	],

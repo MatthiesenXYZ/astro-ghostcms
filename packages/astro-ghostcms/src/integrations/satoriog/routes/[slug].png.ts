@@ -5,12 +5,7 @@ import type {
 	InferGetStaticPropsType,
 } from "astro";
 import { html } from "satori-html";
-import {
-	getAllPages,
-	getAllPosts,
-	getSettings,
-	invariant,
-} from "../../../api";
+import { getAllPages, getAllPosts, getSettings, invariant } from "../../../api";
 import satoriOG from "../satori";
 
 export const getStaticPaths: GetStaticPaths = async () => {

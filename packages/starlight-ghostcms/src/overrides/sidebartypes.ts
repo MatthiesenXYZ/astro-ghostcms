@@ -1,15 +1,19 @@
-import { z } from 'astro/zod';
-import type { AstroBuiltinAttributes } from 'astro';
-import type { HTMLAttributes } from 'astro/types';
+import type { AstroBuiltinAttributes } from "astro";
+import type { HTMLAttributes } from "astro/types";
+import { z } from "astro/zod";
 
 const linkHTMLAttributesSchema = z.record(
-	z.union([z.string(), z.number(), z.boolean(), z.undefined()])
-) as z.Schema<Omit<HTMLAttributes<'a'>, keyof AstroBuiltinAttributes | 'children'>>;
+	z.union([z.string(), z.number(), z.boolean(), z.undefined()]),
+) as z.Schema<
+	Omit<HTMLAttributes<"a">, keyof AstroBuiltinAttributes | "children">
+>;
 export type LinkHTMLAttributes = z.infer<typeof linkHTMLAttributesSchema>;
 
 const badgeSchema = () =>
 	z.object({
-		variant: z.enum(['note', 'danger', 'success', 'caution', 'tip', 'default']).default('default'),
+		variant: z
+			.enum(["note", "danger", "success", "caution", "tip", "default"])
+			.default("default"),
 		text: z.string(),
 	});
 
@@ -17,8 +21,8 @@ export const BadgeConfigSchema = () =>
 	z
 		.union([z.string(), badgeSchema()])
 		.transform((badge) => {
-			if (typeof badge === 'string') {
-				return { variant: 'default' as const, text: badge };
+			if (typeof badge === "string") {
+				return { variant: "default" as const, text: badge };
 			}
 			return badge;
 		})
@@ -27,7 +31,7 @@ export const BadgeConfigSchema = () =>
 export type Badge = z.output<ReturnType<typeof badgeSchema>>;
 
 export interface Link {
-	type: 'link';
+	type: "link";
 	label: string;
 	href: string;
 	isCurrent: boolean;
@@ -36,7 +40,7 @@ export interface Link {
 }
 
 interface Group {
-	type: 'group';
+	type: "group";
 	label: string;
 	entries: (Link | Group)[];
 	collapsed: boolean;
