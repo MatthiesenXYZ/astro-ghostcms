@@ -113,4 +113,3 @@ For more information and to see the docs please check our website: [Astro-GhostC
 # Foot Notes & Credits
 
 [^1]: Ghost.org, Ghost.io, Ghost are all trademarks of [The Ghost Foundation](https://ghost.org/). This project is Open Source and not directly related to or provided by The Ghost Foundation and is intended to help create a easier method to utilize their provided JavaScript tools to link a Headless GhostCMS install in to your Astro project.
-

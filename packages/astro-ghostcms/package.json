@@ -1,111 +1,73 @@
 {
-  "name": "@matthiesenxyz/astro-ghostcms",
-  "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
-  "version": "3.2.9",
-  "homepage": "https://astro-ghostcms.xyz/",
-  "type": "module",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
-  "author": {
-    "email": "adam@matthiesen.xyz",
-    "name": "Adam Matthiesen - MatthiesenXYZ",
-    "url": "https://matthiesen.xyz"
-  },
-  "keywords": [
-    "astro-component",
-    "astro-integration",
-    "withastro",
-    "astro",
-    "blog",
-    "content",
-    "integration",
-    "ghost",
-    "ghostcms",
-    "ghostcms-theme",
-    "ghost-theme",
-    "astro-theme"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
-  },
-  "bugs": {
-    "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
-    "email": "issues@astro-ghostcms.xyz"
-  },
-  "main": "index.ts",
-  "types": "types.d.ts",
-  "files": [
-    "src",
-    ".env.demo",
-    "index.ts",
-    "tsconfig.json",
-    "types.d.ts"
-  ],
-  "exports": {
-    ".": "./index.ts",
-    "./api": {
-      "types": "./src/api/index.ts",
-      "default": "./src/api/index.ts"
+    "name": "@matthiesenxyz/astro-ghostcms",
+    "description": "Astro GhostCMS integration to allow easier importing of GhostCMS Content",
+    "version": "3.3.0-dev.1",
+    "homepage": "https://astro-ghostcms.xyz/",
+    "type": "module",
+    "license": "MIT",
+    "publishConfig": {
+      "access": "public"
     },
-    "./api-core": "./src/api/content-api/index.ts",
-    "./config": {
-      "types": "./src/integrations/virtual.d.ts",
-      "default": "./src/integrations/virtual-config.ts"
+    "sideEffects": false,
+    "author": {
+      "email": "adam@matthiesen.xyz",
+      "name": "Adam Matthiesen - MatthiesenXYZ",
+      "url": "https://matthiesen.xyz"
     },
-    "./satoriOG": "./src/integrations/satori.ts",
-    "./404.astro": "./src/default-routes/404/404.astro",
-    "./rss.xml.ts": "./src/default-routes/rss.xml.ts",
-    "./rss-style.xsl.ts": "./src/default-routes/rss-style.xsl.ts",
-    "./open-graph/index.png.ts": "./src/default-routes/open-graph/index.png.ts",
-    "./open-graph/authors.png.ts": "./src/default-routes/open-graph/authors.png.ts",
-    "./open-graph/tags.png.ts": "./src/default-routes/open-graph/tags.png.ts",
-    "./open-graph/[slug].png.ts": "./src/default-routes/open-graph/[slug].png.ts",
-    "./open-graph/author/[slug].png.ts": "./src/default-routes/open-graph/author/[slug].png.ts",
-    "./open-graph/tag/[slug].png.ts": "./src/default-routes/open-graph/tag/[slug].png.ts"
-  },
-  "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.5.4",
-    "@ts-ghost/core-api": "*",
-    "@ts-ghost/tsconfig": "*",
-    "@matthiesenxyz/astro-ghostcms-theme-default": "*",
-    "@matthiesenxyz/astro-ghostcms-catppuccin": "*",
-    "@types/fs-extra": "^11.0.1",
-    "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
-    "@typescript-eslint/parser": "^7.0.1",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.31.4",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "typescript": "^5.3.3",
-    "vitest": "^1.3.0",
-    "vitest-fetch-mock": "^0.2.2"
-  },
-  "dependencies": {
-    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.13",
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.0.5",
-    "@resvg/resvg-js": "^2.6.0",
-    "@ts-ghost/core-api": "^5.1.2",
-    "astro": "^4.4.0",
-    "astro-robots-txt": "^1.0.0",
-    "fs-extra": "^11.1.0",
-    "package-json": "9.0.0",
-    "satori": "^0.10.11",
-    "satori-html": "^0.3.2",
-    "vite": "^5.1.3",
-    "vite-tsconfig-paths": "^4.2.2",
-    "zod": "^3.22.4"
+    "keywords": [
+      "astro-component",
+      "astro-integration",
+      "withastro",
+      "astro",
+      "blog",
+      "content",
+      "integration",
+      "ghost",
+      "ghostcms",
+      "ghostcms-theme",
+      "ghost-theme",
+      "astro-theme"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
+    },
+    "bugs": {
+      "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
+      "email": "issues@astro-ghostcms.xyz"
+    },
+    "files": [
+      "src",
+      "index.ts"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./api": "./src/api/index.ts",
+      "./404.astro": "./src/routes/404.astro",
+      "./rss-routes/*": "./src/integrations/rssfeed/routes/*",
+      "./satoriOG": "./src/integrations/satoriog/satori.ts",
+      "./open-graph/*": "./src/integrations/satoriog/routes/*"
+    },
+    "scripts": {
+    },
+    "peerDependencies": {
+      "astro": "^4.4.1"
+    },
+    "devDependencies": {
+    },
+    "dependencies": {
+      "@astrojs/rss": "^4.0.5",
+      "@astrojs/sitemap": "^3.0.5",
+      "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.13",
+      "@resvg/resvg-js": "^2.6.0",
+      "@ts-ghost/core-api": "^6.0.0",
+      "@ts-ghost/content-api": "^4.0.12",
+      "astro-integration-kit": "^0.5.0",
+      "astro-robots-txt": "^1.0.0",
+      "picocolors": "1.0.0",
+      "satori": "^0.10.13",
+      "satori-html": "0.3.2",
+      "vite": "^5.1.4"
+    }
   }
-}
+  

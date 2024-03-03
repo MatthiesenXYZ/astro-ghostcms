@@ -1,7 +1,8 @@
 import { z } from "astro/zod";
-import { RobotsTxtSchema, SitemapSchema } from "./index";
+import { RobotsTxtSchema } from "./robots.ts";
+import { SitemapSchema } from "./sitemap.ts";
 
-export const UserConfigSchema = z.object({
+export const GhostUserConfigSchema = z.object({
 	/** OPTIONAL - Either set the URL in your .env or put it here
 	 * @example
 	 * // https://astro.build/config
@@ -13,31 +14,24 @@ export const UserConfigSchema = z.object({
 	 *   ],
 	 * }); */
 	ghostURL: z.string().url().optional(),
-	/** OPTIONAL - Allows the user to disable the `/rss.xml` injection */
-	disableRSS: z.boolean().default(false),
-	/** OPTIONAL - Allows the user to disable the `/open-graph/*` route injection
-	 * @ This feature uses `satori` to generate OpenGraph Images
+	/** OPTIONAL - Disable the theme provider
+	 * @default false
 	 */
-	disableSatoriOG: z.boolean().default(false),
-	/** OPTIONAL - Allows the user to disable the `/404` injection */
-	disable404: z.boolean().default(false),
-	/** OPTIONAL - Disable Route Injector
-	 * This option allows the user to disable the route injection system and utilize just the integraions other functions. Such as API, sitemap and robotstxt integrations. */
-	disableRouteInjection: z.boolean().default(false),
-	/** OPTIONAL - (Default: true) Allows the user to disable "info" console output */
-	disableConsoleOutput: z.boolean().default(true),
-	/** OPTIONAL - Theme Selector
-	 * This option allows the user to replace the included theme with an external npm module
-	 * @example
-	 * // https://astro.build/config
-	 * export default defineConfig({
-	 *   integrations: [
-	 *     ghostcms({
-	 *       theme: "@matthiesenxyz/astro-ghostcms-theme-default"
-	 *     })
-	 *   ],
-	 * }); */
-	theme: z.string().default("@matthiesenxyz/astro-ghostcms-theme-default"),
+	disableThemeProvider: z.boolean().optional().default(false),
+	ThemeProvider: z.object({
+		/** OPTIONAL - Set the theme you want to use
+		 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
+		 */
+		theme: z.string().optional().default("@matthiesenxyz/astro-ghostcms-theme-default"),
+	}).optional(),
+	/** Allows the user to disable the provided 404 page */
+	disableDefault404: z.boolean().optional().default(false),
+	/** Allows the user to disable the provided RSS Feed */
+	enableRSSFeed: z.boolean().optional().default(true),
+	/** Allows the user to Enable or Disable the default Satori OG Image Generation
+	 * @default true
+	 */
+	enableOGImages: z.boolean().optional().default(true),
 	/** OPTIONAL - astrojs/sitemap
 	 * This option allows the user to configure the included integration
 	 * Options shown are the availble options
@@ -50,8 +44,11 @@ export const UserConfigSchema = z.object({
 	 * REFERENCE https://www.npmjs.com/package/astro-robots-txt#configuration
 	 */
 	robotstxt: RobotsTxtSchema.optional(),
+	/** Allows the user to turn on/off Full Console Logs
+	 * @default true
+	 */
+	fullConsoleLogs: z.boolean().optional().default(false),
 });
 
 /** USER CONFIGURATION SCHEMA */
-export type UserConfig = z.infer<typeof UserConfigSchema>;
-export type GhostUserConfig = z.infer<typeof UserConfigSchema>;
+export type GhostUserConfig = z.infer<typeof GhostUserConfigSchema>;

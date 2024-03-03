@@ -6,7 +6,7 @@
 		"node": ">=18.19.0"
 	},
 	"scripts": {
-		"dev": "pnpm --filter playground dev",
+		"astro:dev": "pnpm --filter astro-playground dev",
 		"starlight:dev": "pnpm --filter starlight-playground dev",
 		"lint": "biome check .",
 		"lint:fix": "biome check --apply .",
