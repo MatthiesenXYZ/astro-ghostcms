@@ -1,3 +1,3 @@
-import astroghostcms from "./astro-ghostcms.js";
+import astroghostcms from "./astro-ghostcms";
 
 export default astroghostcms;

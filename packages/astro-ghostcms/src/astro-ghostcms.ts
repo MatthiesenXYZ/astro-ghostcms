@@ -1,25 +1,30 @@
+// Node Modules
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import fse from "fs-extra";
+
+// Utils
 import { createResolver, defineIntegration } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
 import { AstroError } from "astro/errors";
-import fse from "fs-extra";
-import c from "picocolors";
 import { loadEnv } from "vite";
-import { GhostUserConfigSchema } from "./schemas/userconfig";
 import latestVersion from "./utils/latestVersion";
+import c from "picocolors";
 
-// Import External Integrations
+// External Integrations
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
-import ghostRSS from "./integrations/rssfeed";
-// Import Internal Integrations
+// Internal Integrations
 import ghostOGImages from "./integrations/satoriog";
+import ghostRSS from "./integrations/rssfeed";
 import ghostThemeProvider from "./integrations/themeprovider";
 
 // Load environment variables
 const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
+
+// Import User Configuration Zod Schema
+import { GhostUserConfigSchema } from "./schemas/userconfig";
 
 /** Astro-GhostCMS Integration
  * @description This integration allows you to use GhostCMS as a headless CMS for your Astro project
@@ -34,14 +39,11 @@ export default defineIntegration({
 
 		return {
 			"astro:config:setup": ({
-				watchIntegration,
-				hasIntegration,
-				addIntegration,
-				addVirtualImports,
-				addDts,
-				injectRoute,
-				logger,
+				watchIntegration, hasIntegration, addIntegration,
+				addVirtualImports, addDts,
+				injectRoute, logger,
 			}) => {
+                // Configure Loggers
 				const GhostLogger = logger.fork(c.bold(c.blue("👻 Astro-GhostCMS")));
 				const GhostENVLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
@@ -59,9 +61,11 @@ export default defineIntegration({
 					)}`,
 				);
 
+                // Setup Watch Integration for Hot Reload during DEV
 				watchIntegration(resolve());
 				GhostLogger.info("Initializing @matthiesenxyz/astro-ghostcms...");
 
+                // Set up verbose logging
 				const verbose = options.fullConsoleLogs;
 
 				// Check for GhostCMS environment variables
@@ -72,6 +76,7 @@ export default defineIntegration({
 						),
 					),
 				);
+                
 				if (ENV.CONTENT_API_KEY === undefined) {
 					GhostENVLogger.error(
 						c.bgRed(
@@ -229,16 +234,20 @@ export default defineIntegration({
 				});
 			},
 			"astro:config:done": ({ logger }) => {
+                // Configure Loggers
 				const GhostLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.green(
 						"CONFIG",
 					)}`,
 				);
+
+                // Log Configuration Complete
 				GhostLogger.info(
 					c.bold(c.green("Integration Setup & Configuration Complete")),
 				);
 			},
 			"astro:server:start": async ({ logger }) => {
+                // Configure Loggers
 				const GhostLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.bold(
 						c.green("DEV"),
@@ -256,14 +265,19 @@ export default defineIntegration({
 				);
 
 				// Check for updates
+
+                // Get the latest version of Astro-GhostCMS
 				const currentNPMVersion = await latestVersion(
 					"@matthiesenxyz/astro-ghostcms",
 				);
+
+                // Get the local version of Astro-GhostCMS
 				const packageJson = await fse.readJson(
 					path.resolve(fileURLToPath(import.meta.url), "../../package.json"),
 				);
 				const localVersion = packageJson.version;
 
+                // Log the version check
 				if (currentNPMVersion !== localVersion) {
 					GhostUpdateLogger.warn(
 						`\n${c.bgYellow(
@@ -292,11 +306,14 @@ export default defineIntegration({
 				}
 			},
 			"astro:build:done": ({ logger }) => {
+                // Configure Loggers
 				const GhostLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.bold(
 						c.green("BUILD"),
 					)}`,
 				);
+
+                // Log Build Complete
 				GhostLogger.info(
 					c.bold(c.magenta("Running Astro-GhostCMS in Production mode 🚀")),
 				);
