@@ -49,11 +49,17 @@
       "./open-graph/*": "./src/integrations/satoriog/routes/*"
     },
     "scripts": {
+      "test": "vitest run",
+      "test:watch": "vitest",
+      "test:coverage": "vitest run --coverage",
+      "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
     },
     "peerDependencies": {
       "astro": "^4.4.1"
     },
     "devDependencies": {
+      "vitest": "^1.3.0",
+      "vitest-fetch-mock": "^0.2.2"
     },
     "dependencies": {
       "@astrojs/rss": "^4.0.5",
