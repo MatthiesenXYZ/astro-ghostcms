@@ -44,7 +44,9 @@ export default defineIntegration({
 				injectRoute, logger,
 			}) => {
                 // Configure Loggers
-				const GhostLogger = logger.fork(c.bold(c.blue("👻 Astro-GhostCMS")));
+				const GhostLogger = logger.fork(
+                    c.bold(c.blue("👻 Astro-GhostCMS"))
+                    );
 				const GhostENVLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
 						"ENV Check",
