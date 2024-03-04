@@ -12,7 +12,7 @@ describe("GhostUserConfigSchema", () => {
 			disableDefault404: false,
 			enableRSSFeed: true,
 			enableOGImages: true,
-			fullConsoleLogs: false,
+			verbose: false,
 		};
 
 		const result = GhostUserConfigSchema.safeParse(validConfig);
@@ -32,13 +32,15 @@ describe("GhostUserConfigSchema", () => {
 			disableDefault404: "false",
 			enableRSSFeed: "true",
 			enableOGImages: "true",
-			sitemap: {
-				// invalid sitemap configuration
+			Integrations: {
+				sitemap: {
+					// invalid sitemap configuration
+				},
+				robotstxt: {
+					// invalid robotstxt configuration
+				},
 			},
-			robotstxt: {
-				// invalid robotstxt configuration
-			},
-			fullConsoleLogs: "false",
+			verbose: "false",
 		};
 
 		const result = GhostUserConfigSchema.safeParse(invalidConfig);
