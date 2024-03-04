@@ -41,10 +41,13 @@ export default defineIntegration({
 						"RSSGenerator",
 					)}`,
 				);
+				const verboseLogsInfo = (message:string) => {
+					if (options.verbose) {
+						RSSLogger.info(message);
+					}
+				};
 
-				if (options.verbose) {
-					RSSLogger.info(c.bold(c.green("RSS Feed Setup Complete")));
-				}
+				verboseLogsInfo(c.bold(c.green("RSS Feed Setup Complete")));
 			},
 		};
 	},

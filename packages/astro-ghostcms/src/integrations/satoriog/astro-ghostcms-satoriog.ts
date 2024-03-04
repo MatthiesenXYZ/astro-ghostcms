@@ -73,12 +73,13 @@ export default defineIntegration({
 						"SatoriOG",
 					)}`,
 				);
+				const verboseLogsInfo = (message:string) => {
+					if (options.verbose) {
+						SatoriLogger.info(message);
+					}
+				};
 
-				if (options.verbose) {
-					SatoriLogger.info(
-						c.bold(c.green("OG Image Integration Setup Complete")),
-					);
-				}
+				verboseLogsInfo(c.bold(c.green("OG Image Integration Setup Complete")));
 			},
 		};
 	},

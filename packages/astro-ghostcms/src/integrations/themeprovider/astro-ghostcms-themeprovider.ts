@@ -25,24 +25,26 @@ export default defineIntegration({
 						"Theme Provider",
 					)}`,
 				);
+				const verboseLogsInfo = (message:string) => {
+					if (options.verbose) {
+						themeLogger.info(message);
+					}
+				};
+
 
 				themeLogger.info(
 					c.bold(c.magenta("Theme Provider enabled. Setting up...")),
 				);
 
-				if (options.verbose) {
-					if (options.theme === "@matthiesenxyz/astro-ghostcms-theme-default") {
-						themeLogger.info(
+
+				if (options.theme === "@matthiesenxyz/astro-ghostcms-theme-default") {
+					verboseLogsInfo(
 							c.blue("No theme is set, injecting default theme"),
 						);
-					} else {
-						themeLogger.info(
-							`${c.bold(c.cyan("Injecting Theme:"))} ${c.bold(
-								c.underline(c.magenta(options.theme)),
-							)}`,
-						);
-					}
+				} else {
+					verboseLogsInfo(`${c.bold(c.cyan("Injecting Theme:"))} ${c.bold(c.underline(c.magenta(options.theme)))}`);
 				}
+				
 
 				injectRoute({
 					pattern: "/",
@@ -85,10 +87,13 @@ export default defineIntegration({
 						"Theme Provider",
 					)}`,
 				);
+				const verboseLogsInfo = (message:string) => {
+					if (options.verbose) {
+						themeLogger.info(message);
+					}
+				};
 
-				if (options.verbose) {
-					themeLogger.info(c.bold(c.green("Provider Setup Complete")));
-				}
+				verboseLogsInfo(c.bold(c.green("Provider Setup Complete")));
 			},
 		};
 	},
