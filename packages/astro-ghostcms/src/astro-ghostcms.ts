@@ -15,8 +15,8 @@ import latestVersion from "./utils/latestVersion";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
-import ghostRSS from "./integrations/rssfeed";
 // Internal Integrations
+import ghostRSS from "./integrations/rssfeed";
 import ghostOGImages from "./integrations/satoriog";
 import ghostThemeProvider from "./integrations/themeprovider";
 
@@ -25,6 +25,7 @@ const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
 
 // Import User Configuration Zod Schema
 import { GhostUserConfigSchema } from "./schemas/userconfig";
+import type { AstroIntegration } from "astro";
 
 /** Astro-GhostCMS Integration
  * @description This integration allows you to use GhostCMS as a headless CMS for your Astro project
@@ -168,20 +169,24 @@ export default defineIntegration({
 					intLogInfo(c.gray("RSS Feed is disabled"));
 				}
 
-				// @ASTROJS/SITEMAP
-				if (!hasIntegration("@astrojs/sitemap")) {
-					intLogInfo(c.bold(c.magenta(`Adding ${c.blue("@astrojs/sitemap")} integration`)));
-					addIntegration(sitemap(options.Integrations?.sitemap));
-				} else {
-					intLogInfo(c.gray("@astrojs/sitemap integration already exists, skipping..."));
+				const checkIntegration = (name: string, integration: AstroIntegration) => {
+					if (!hasIntegration(name)) {
+						intLogInfo(c.bold(c.magenta(`Adding ${c.blue(name)} integration`)));
+						addIntegration(integration);
+					} else {
+						intLogInfo(c.gray(`${name} integration already exists, skipping...`));
+					}
 				}
-				// ASTRO-ROBOTS-TXT
-				if (!hasIntegration("astro-robots-txt")) {
-					intLogInfo(c.bold(c.magenta(`Adding ${c.blue("astro-robots-txt")} integration`)));
-					addIntegration(robotsTxt(options.Integrations?.robotsTxt));
-				} else {
-					intLogInfo(c.gray("astro-robots-txt integration already exists, skipping..."));
-				}
+
+				checkIntegration(
+					"@astrojs/sitemap",
+					sitemap(options.Integrations?.sitemap)
+					);
+				checkIntegration(
+					"astro-robots-txt", 
+					robotsTxt(options.Integrations?.robotsTxt)
+					);
+				
 
 				// Set up default 404 page
 				if (!options.disableDefault404) {
