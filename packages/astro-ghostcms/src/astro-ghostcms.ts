@@ -1,5 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
 import fse from "fs-extra";
 import { createResolver, defineIntegration } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
@@ -37,7 +38,6 @@ export default defineIntegration({
 				hasIntegration,
 				addIntegration,
 				addVirtualImports,
-				addDts,
 				injectRoute,
 				logger,
 			}) => {
@@ -220,14 +220,6 @@ export default defineIntegration({
 					)}`,
 				});
 
-				// Add types for user configuration
-				addDts({
-					name: "@matthiesenxyz/astro-ghostcms/config",
-					content: `declare module "virtual:@matthiesenxyz/astro-ghostcms/config" {
-                        const Config: import("../schemas/userconfig").GhostUserConfig;
-                        export default Config;
-                    }`,
-				});
 			},
 			"astro:config:done": ({ logger }) => {
 				// Configure Loggers
