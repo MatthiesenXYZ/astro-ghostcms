@@ -25,6 +25,7 @@ const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
 
 // Import User Configuration Zod Schema
 import { GhostUserConfigSchema } from "./schemas/userconfig";
+import type { string } from "astro/zod";
 
 /** Astro-GhostCMS Integration
  * @description This integration allows you to use GhostCMS as a headless CMS for your Astro project
@@ -47,6 +48,8 @@ export default defineIntegration({
 				injectRoute,
 				logger,
 			}) => {
+				// Set up verbose logging
+				const verbose = options.verbose;
 				// Configure Loggers
 				const GhostLogger = logger.fork(c.bold(c.blue("👻 Astro-GhostCMS")));
 				const GhostENVLogger = logger.fork(
@@ -54,23 +57,35 @@ export default defineIntegration({
 						"ENV Check",
 					)}`,
 				);
+				// Configure Integration Loggers & verbose logging
 				const GhostIntegrationLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
 						"Integrations",
 					)}`,
 				);
+				const intLogInfo = (message:string) => {
+					if (verbose) {
+						GhostIntegrationLogger.info(message);
+					}
+				};
+
+				// Configure Route Logger & verbose logging
 				const GhostRouteLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
 						"Router",
 					)}`,
 				);
+				const routeLogInfo = (message:string) => {
+					if (verbose) {
+						GhostRouteLogger.info(message);
+					}
+				};
+
 
 				// Setup Watch Integration for Hot Reload during DEV
 				watchIntegration(resolve());
 				GhostLogger.info("Initializing @matthiesenxyz/astro-ghostcms...");
 
-				// Set up verbose logging
-				const verbose = options.fullConsoleLogs;
 
 				// Check for GhostCMS environment variables
 				GhostENVLogger.info(
@@ -136,77 +151,49 @@ export default defineIntegration({
 							verbose,
 						}),
 					);
-				} else if (verbose) {
-						GhostIntegrationLogger.info(c.gray("Theme Provider is disabled"));
+				} else {
+					intLogInfo(c.gray("Theme Provider is disabled"));
 				}
 
 				// Satori OG Images
 				if (options.enableOGImages) {
 					addIntegration(ghostOGImages({ verbose }));
-				} else if (verbose) {
-						GhostIntegrationLogger.info(
-							c.gray("OG Image Provider is disabled"),
-						);
+				} else {
+					intLogInfo(c.gray("OG Image Provider is disabled"));
 				}
 
 				// RSS Feed
 				if (options.enableRSSFeed) {
 					addIntegration(ghostRSS({ verbose }));
-				} else if (verbose) {
-						GhostIntegrationLogger.info(c.gray("RSS Feed is disabled"));
+				} else {
+					intLogInfo(c.gray("RSS Feed is disabled"));
 				}
 
 				// @ASTROJS/SITEMAP
 				if (!hasIntegration("@astrojs/sitemap")) {
-					if (verbose) {
-						GhostIntegrationLogger.info(
-							c.bold(
-								c.magenta(`Adding ${c.blue("@astrojs/sitemap")} integration`),
-							),
-						);
-					}
+					intLogInfo(c.bold(c.magenta(`Adding ${c.blue("@astrojs/sitemap")} integration`)));
 					addIntegration(sitemap(options.Integrations?.sitemap));
-				} else if (verbose) {
-						GhostIntegrationLogger.info(
-							c.gray(
-								"@astrojs/sitemap integration already exists, skipping...",
-							),
-						);
+				} else {
+					intLogInfo(c.gray("@astrojs/sitemap integration already exists, skipping..."));
 				}
 				// ASTRO-ROBOTS-TXT
 				if (!hasIntegration("astro-robots-txt")) {
-					if (verbose) {
-						GhostIntegrationLogger.info(
-							c.bold(
-								c.magenta(`Adding ${c.blue("astro-robots-txt")} integration`),
-							),
-						);
-					}
+					intLogInfo(c.bold(c.magenta(`Adding ${c.blue("astro-robots-txt")} integration`)));
 					addIntegration(robotsTxt(options.Integrations?.robotsTxt));
-				} else if (verbose) {
-						GhostIntegrationLogger.info(
-							c.gray(
-								"astro-robots-txt integration already exists, skipping...",
-							),
-						);
+				} else {
+					intLogInfo(c.gray("astro-robots-txt integration already exists, skipping..."));
 				}
 
 				// Set up default 404 page
 				if (!options.disableDefault404) {
-					if (verbose) {
-						GhostRouteLogger.info(
-							c.bold(c.cyan("Setting up default 404 page")),
-						);
-					}
+					routeLogInfo(c.bold(c.cyan("Setting up default 404 page")));
 					injectRoute({
 						pattern: "/404",
 						entrypoint: `${name}/404.astro`,
 						prerender: true,
 					});
-				} else if (verbose) {
-						GhostRouteLogger.info(
-							c.gray("Default 404 page is disabled, Skipping..."),
-						);
+				} else {
+					routeLogInfo(c.gray("Default 404 page is disabled, Skipping..."));
 				}
 
 				// Add virtual imports for user configuration

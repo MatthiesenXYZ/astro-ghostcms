@@ -40,7 +40,7 @@ export const GhostUserConfigSchema = z.object({
 	/** Allows the user to turn on/off Full Console Logs
 	 * @default true
 	 */
-	fullConsoleLogs: z.boolean().optional().default(false),
+	verbose: z.boolean().optional().default(false),
 	/** OPTIONAL - Integrations Configuration
 	 * This option allows the user to configure the included integrations
 	 * Options shown are the availble options

@@ -70,7 +70,7 @@ export default defineConfig({
       disableDefault404: false, // Allows the user to disable the default `/404 page, to be able to create their own under `/src/pages/404.astro`.
       enableRSSFeed: true, // Allows the user to Enable or disable RSS Feed Generation. Default: true
       enableOGImages: true, // Allows the user to Enable or disable OG Image Generation. Default: true
-      fullConsoleLogs: false, // Show the full Log output from All parts of Astro-GhostCMS
+      verbose: false, // Show the full Log output from All parts of Astro-GhostCMS
       Integrations: {
         // This allows user config passthrough from Astro-GhostCMS to the Included Integrations
         robotsTxt: {
