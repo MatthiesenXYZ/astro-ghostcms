@@ -56,6 +56,9 @@
       "test:coverage": "vitest run --coverage",
       "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
     },
+    "enginesStrict": {
+      "node": ">=18.19.0"
+    },
     "peerDependencies": {
       "astro": ">=4.4.1"
     },

@@ -50,19 +50,25 @@ export default defineIntegration({
 			}) => {
 				// Set up verbose logging
 				const verbose = options.verbose;
+
 				// Configure Loggers
 				const GhostLogger = logger.fork(c.bold(c.blue("👻 Astro-GhostCMS")));
+
+				// Configure ENV Logger
 				const GhostENVLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
 						"ENV Check",
 					)}`,
 				);
+
 				// Configure Integration Loggers & verbose logging
 				const GhostIntegrationLogger = logger.fork(
 					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
 						"Integrations",
 					)}`,
 				);
+
+				// Log Info Helper
 				const intLogInfo = (message:string) => {
 					if (verbose) {
 						GhostIntegrationLogger.info(message);
@@ -75,12 +81,46 @@ export default defineIntegration({
 						"Router",
 					)}`,
 				);
+
+				// Log Route Info Helper
 				const routeLogInfo = (message:string) => {
 					if (verbose) {
 						GhostRouteLogger.info(message);
 					}
 				};
 
+				// Local Integration Helper
+				const localIntegration = (enabled: boolean, name: string, integration: AstroIntegration) => {
+					if (enabled) {
+						addIntegration(integration);
+					} else {
+						intLogInfo(c.gray(`${name} integration is disabled`));
+					}
+				}
+				
+				// Check External Integration Helper
+				const checkIntegration = (name: string, integration: AstroIntegration) => {
+					if (!hasIntegration(name)) {
+						intLogInfo(c.bold(c.magenta(`Adding ${c.blue(name)} integration`)));
+						addIntegration(integration);
+					} else {
+						intLogInfo(c.gray(`${name} integration already exists, skipping...`));
+					}
+				}
+
+				// Inject Route Helper
+				const routeHelper = (routename: string, enabled: boolean, pattern: string, entrypoint: string) => {
+					if (enabled) {
+						routeLogInfo(c.bold(c.cyan(`Setting up ${routename} route`)));
+						injectRoute({
+							pattern: pattern,
+							entrypoint: `${name}${entrypoint}`,
+							prerender: true,
+						});
+					} else {
+						routeLogInfo(c.gray(`${routename} route is disabled, Skipping...`));
+					}
+				}
 
 				// Setup Watch Integration for Hot Reload during DEV
 				watchIntegration(resolve());
@@ -142,39 +182,6 @@ export default defineIntegration({
 				GhostIntegrationLogger.info(
 					c.bold(c.magenta("Configuring Enabled Integrations")),
 				);
-
-				// Local Integration Helper
-				const localIntegration = (enabled: boolean, name: string, integration: AstroIntegration) => {
-					if (enabled) {
-						addIntegration(integration);
-					} else {
-						intLogInfo(c.gray(`${name} integration is disabled`));
-					}
-				}
-				
-				// Check External Integration Helper
-				const checkIntegration = (name: string, integration: AstroIntegration) => {
-					if (!hasIntegration(name)) {
-						intLogInfo(c.bold(c.magenta(`Adding ${c.blue(name)} integration`)));
-						addIntegration(integration);
-					} else {
-						intLogInfo(c.gray(`${name} integration already exists, skipping...`));
-					}
-				}
-
-				// Inject Route Helper
-				const routeHelper = (routename: string, enabled: boolean, pattern: string, entrypoint: string) => {
-					if (enabled) {
-						routeLogInfo(c.bold(c.cyan(`Setting up ${routename} route`)));
-						injectRoute({
-							pattern: pattern,
-							entrypoint: `${name}${entrypoint}`,
-							prerender: true,
-						});
-					} else {
-						routeLogInfo(c.gray(`${routename} route is disabled, Skipping...`));
-					}
-				}
 
 				localIntegration(
 					!options.ThemeProvider?.disableThemeProvider,
