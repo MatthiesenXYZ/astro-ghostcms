@@ -143,32 +143,16 @@ export default defineIntegration({
 					c.bold(c.magenta("Configuring Enabled Integrations")),
 				);
 
-				// Theme Provider
-				if (!options.ThemeProvider?.disableThemeProvider) {
-					addIntegration(
-						ghostThemeProvider({
-							theme: options.ThemeProvider?.theme,
-							verbose,
-						}),
-					);
-				} else {
-					intLogInfo(c.gray("Theme Provider is disabled"));
+				// Local Integration Helper
+				const localIntegration = (enabled: boolean, name: string, integration: AstroIntegration) => {
+					if (enabled) {
+						addIntegration(integration);
+					} else {
+						intLogInfo(c.gray(`${name} integration is disabled`));
+					}
 				}
-
-				// Satori OG Images
-				if (options.enableOGImages) {
-					addIntegration(ghostOGImages({ verbose }));
-				} else {
-					intLogInfo(c.gray("OG Image Provider is disabled"));
-				}
-
-				// RSS Feed
-				if (options.enableRSSFeed) {
-					addIntegration(ghostRSS({ verbose }));
-				} else {
-					intLogInfo(c.gray("RSS Feed is disabled"));
-				}
-
+				
+				// Check External Integration Helper
 				const checkIntegration = (name: string, integration: AstroIntegration) => {
 					if (!hasIntegration(name)) {
 						intLogInfo(c.bold(c.magenta(`Adding ${c.blue(name)} integration`)));
@@ -178,6 +162,41 @@ export default defineIntegration({
 					}
 				}
 
+				// Inject Route Helper
+				const routeHelper = (routename: string, enabled: boolean, pattern: string, entrypoint: string) => {
+					if (enabled) {
+						routeLogInfo(c.bold(c.cyan(`Setting up ${routename} route`)));
+						injectRoute({
+							pattern: pattern,
+							entrypoint: `${name}${entrypoint}`,
+							prerender: true,
+						});
+					} else {
+						routeLogInfo(c.gray(`${routename} route is disabled, Skipping...`));
+					}
+				}
+
+				localIntegration(
+					!options.ThemeProvider?.disableThemeProvider,
+					"Theme Provider",
+					ghostThemeProvider({
+						theme: options.ThemeProvider?.theme,
+						verbose,
+					})
+				);
+
+				localIntegration(
+					options.enableOGImages,
+					"Satori OG Images",
+					ghostOGImages({ verbose })
+				);
+				
+				localIntegration(
+					options.enableRSSFeed,
+					"RSS Feed",
+					ghostRSS({ verbose })
+				);
+
 				checkIntegration(
 					"@astrojs/sitemap",
 					sitemap(options.Integrations?.sitemap)
@@ -186,19 +205,13 @@ export default defineIntegration({
 					"astro-robots-txt", 
 					robotsTxt(options.Integrations?.robotsTxt)
 					);
-				
 
-				// Set up default 404 page
-				if (!options.disableDefault404) {
-					routeLogInfo(c.bold(c.cyan("Setting up default 404 page")));
-					injectRoute({
-						pattern: "/404",
-						entrypoint: `${name}/404.astro`,
-						prerender: true,
-					});
-				} else {
-					routeLogInfo(c.gray("Default 404 page is disabled, Skipping..."));
-				}
+				routeHelper(
+					"Default 404 Page",
+					!options.disableDefault404,
+					"/404",
+					"/404.astro"
+				);
 
 				// Add virtual imports for user configuration
 				addVirtualImports({
