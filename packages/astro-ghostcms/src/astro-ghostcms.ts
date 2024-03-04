@@ -1,31 +1,24 @@
-// Node Modules
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
-
-// Utils
 import { createResolver, defineIntegration } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
 import { AstroError } from "astro/errors";
+import type { AstroIntegration } from "astro";
 import c from "picocolors";
 import { loadEnv } from "vite";
-import latestVersion from "./utils/latestVersion";
-
-// External Integrations
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
-// Internal Integrations
+// Internal Imports
+import { GhostUserConfigSchema } from "./schemas/userconfig";
 import ghostRSS from "./integrations/rssfeed";
 import ghostOGImages from "./integrations/satoriog";
 import ghostThemeProvider from "./integrations/themeprovider";
+import latestVersion from "./utils/latestVersion";
 
 // Load environment variables
 const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
-
-// Import User Configuration Zod Schema
-import { GhostUserConfigSchema } from "./schemas/userconfig";
-import type { AstroIntegration } from "astro";
 
 /** Astro-GhostCMS Integration
  * @description This integration allows you to use GhostCMS as a headless CMS for your Astro project
