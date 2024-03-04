@@ -126,6 +126,7 @@ export default defineIntegration({
 					),
 				);
 
+				// Check for GhostCMS API Key
 				if (ENV.CONTENT_API_KEY === undefined) {
 					GhostENVLogger.error(
 						c.bgRed(
@@ -139,6 +140,7 @@ export default defineIntegration({
 					);
 				}
 
+				// Check for GhostCMS URL
 				if (options.ghostURL === undefined) {
 					GhostENVLogger.warn(
 						c.bgYellow(
@@ -173,6 +175,7 @@ export default defineIntegration({
 					c.bold(c.magenta("Configuring Enabled Integrations")),
 				);
 
+				// Setup GhostCMS Theme Provider
 				localIntegration(
 					!options.ThemeProvider?.disableThemeProvider,
 					"Theme Provider",
@@ -182,28 +185,33 @@ export default defineIntegration({
 					})
 				);
 
+				// Setup GhostCMS OG Image Provider
 				localIntegration(
 					options.enableOGImages,
 					"Satori OG Images",
 					ghostOGImages({ verbose })
 				);
 				
+				// Setup GhostCMS RSS Feed Provider
 				localIntegration(
 					options.enableRSSFeed,
 					"RSS Feed",
 					ghostRSS({ verbose })
 				);
 
+				// Setup @astrojs/sitemap Integration
 				checkIntegration(
 					"@astrojs/sitemap",
 					sitemap(options.Integrations?.sitemap)
 					);
 
+				// Setup astro-robots-txt Integration
 				checkIntegration(
 					"astro-robots-txt", 
 					robotsTxt(options.Integrations?.robotsTxt)
 					);
 
+				// Setup Default 404 Page
 				routeHelper(
 					"Default 404 Page",
 					!options.disableDefault404,
