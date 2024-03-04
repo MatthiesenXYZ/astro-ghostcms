@@ -136,30 +136,24 @@ export default defineIntegration({
 							verbose,
 						}),
 					);
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostIntegrationLogger.info(c.gray("Theme Provider is disabled"));
-					}
 				}
 
 				// Satori OG Images
 				if (options.enableOGImages) {
 					addIntegration(ghostOGImages({ verbose }));
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostIntegrationLogger.info(
 							c.gray("OG Image Provider is disabled"),
 						);
-					}
 				}
 
 				// RSS Feed
 				if (options.enableRSSFeed) {
 					addIntegration(ghostRSS({ verbose }));
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostIntegrationLogger.info(c.gray("RSS Feed is disabled"));
-					}
 				}
 
 				// @ASTROJS/SITEMAP
@@ -172,14 +166,12 @@ export default defineIntegration({
 						);
 					}
 					addIntegration(sitemap(options.Integrations?.sitemap));
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostIntegrationLogger.info(
 							c.gray(
 								"@astrojs/sitemap integration already exists, skipping...",
 							),
 						);
-					}
 				}
 				// ASTRO-ROBOTS-TXT
 				if (!hasIntegration("astro-robots-txt")) {
@@ -191,14 +183,12 @@ export default defineIntegration({
 						);
 					}
 					addIntegration(robotsTxt(options.Integrations?.robotsTxt));
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostIntegrationLogger.info(
 							c.gray(
 								"astro-robots-txt integration already exists, skipping...",
 							),
 						);
-					}
 				}
 
 				// Set up default 404 page
@@ -213,12 +203,10 @@ export default defineIntegration({
 						entrypoint: `${name}/404.astro`,
 						prerender: true,
 					});
-				} else {
-					if (verbose) {
+				} else if (verbose) {
 						GhostRouteLogger.info(
 							c.gray("Default 404 page is disabled, Skipping..."),
 						);
-					}
 				}
 
 				// Add virtual imports for user configuration
