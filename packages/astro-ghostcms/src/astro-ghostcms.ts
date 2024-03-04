@@ -1,5 +1,3 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
 import { createResolver, defineIntegration } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
@@ -200,7 +198,7 @@ export default defineIntegration({
 					"@astrojs/sitemap",
 					sitemap(options.Integrations?.sitemap)
 					);
-					
+
 				checkIntegration(
 					"astro-robots-txt", 
 					robotsTxt(options.Integrations?.robotsTxt)
@@ -260,9 +258,7 @@ export default defineIntegration({
 				);
 
 				// Get the local version of Astro-GhostCMS
-				const packageJson = await fse.readJson(
-					path.resolve(fileURLToPath(import.meta.url), "../../package.json"),
-				);
+				const packageJson = await fse.readJson(resolve("../package.json"));
 				const localVersion = packageJson.version;
 
 				// Log the version check
