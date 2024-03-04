@@ -25,7 +25,6 @@ const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
 
 // Import User Configuration Zod Schema
 import { GhostUserConfigSchema } from "./schemas/userconfig";
-import type { string } from "astro/zod";
 
 /** Astro-GhostCMS Integration
  * @description This integration allows you to use GhostCMS as a headless CMS for your Astro project
