@@ -200,6 +200,7 @@ export default defineIntegration({
 					"@astrojs/sitemap",
 					sitemap(options.Integrations?.sitemap)
 					);
+					
 				checkIntegration(
 					"astro-robots-txt", 
 					robotsTxt(options.Integrations?.robotsTxt)
