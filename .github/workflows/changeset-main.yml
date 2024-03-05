@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  pull-requests: write
+  contents: write
 env:
   CI: true
 jobs:
@@ -17,7 +20,7 @@ jobs:
       - name: setup node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: install pnpm
         run: npm i pnpm@latest -g
       - name: Setup npmrc
@@ -25,7 +28,7 @@ jobs:
       - name: install dependencies
         run: pnpm install
       - name: create and publish versions
-        uses: matthiesenxyz/changeset-action@v1
+        uses: changesets/action@v1
         with:
           version: pnpm ci:version
           commit: "chore: update versions"
