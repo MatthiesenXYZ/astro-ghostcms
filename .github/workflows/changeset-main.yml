@@ -32,4 +32,4 @@ jobs:
           title: "Chore: Ready for Release"
           publish: pnpm ci:publish
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
