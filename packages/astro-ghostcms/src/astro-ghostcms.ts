@@ -177,10 +177,10 @@ export default defineIntegration({
 
 				// Setup GhostCMS Theme Provider
 				localIntegration(
-					!options.ThemeProvider?.disableThemeProvider,
+					!options.ThemeProvider.disableThemeProvider,
 					"Theme Provider",
 					ghostThemeProvider({
-						theme: options.ThemeProvider?.theme,
+						theme: options.ThemeProvider.theme,
 						verbose,
 					})
 				);

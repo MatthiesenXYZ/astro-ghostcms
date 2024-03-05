@@ -6,15 +6,14 @@ import c from "picocolors";
 export default defineIntegration({
 	name: "@matthiesenxyz/astro-ghostcms-themeprovider",
 	optionsSchema: z.object({
-		theme: z
-			.string()
-			.optional()
-			.default("@matthiesenxyz/astro-ghostcms-theme-default"),
-		verbose: z.boolean().optional().default(false),
+		theme: z.string(),
+		verbose: z.coerce.boolean().optional(),
 	}),
 	plugins: [...corePlugins],
 	setup({ options }) {
 		const { resolve } = createResolver(import.meta.url);
+
+		const DEFAULT_THEME = "@matthiesenxyz/astro-ghostcms-theme-default";
 
 		return {
 			"astro:config:setup": ({ watchIntegration, injectRoute, logger }) => {
@@ -37,7 +36,7 @@ export default defineIntegration({
 				);
 
 
-				if (options.theme === "@matthiesenxyz/astro-ghostcms-theme-default") {
+				if (options.theme === DEFAULT_THEME) {
 					verboseLogsInfo(
 							c.blue("No theme is set, injecting default theme"),
 						);

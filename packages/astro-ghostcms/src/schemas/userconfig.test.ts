@@ -13,6 +13,7 @@ describe("GhostUserConfigSchema", () => {
 			enableRSSFeed: true,
 			enableOGImages: true,
 			verbose: false,
+			Integrations: {},
 		};
 
 		const result = GhostUserConfigSchema.safeParse(validConfig);

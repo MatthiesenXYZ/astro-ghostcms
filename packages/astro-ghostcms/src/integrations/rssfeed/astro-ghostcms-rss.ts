@@ -6,7 +6,7 @@ import c from "picocolors";
 export default defineIntegration({
 	name: "@matthiesenxyz/astro-ghostcms-rss",
 	optionsSchema: z.object({
-		verbose: z.boolean().optional().default(false),
+		verbose: z.coerce.boolean().optional(),
 	}),
 	plugins: [...corePlugins],
 	setup({ options }) {

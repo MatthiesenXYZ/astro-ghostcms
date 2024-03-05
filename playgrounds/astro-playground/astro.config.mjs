@@ -14,7 +14,7 @@ export default defineConfig({
 			ThemeProvider: {
 				theme: "@matthiesenxyz/astro-ghostcms-brutalbyelian",
 			},
-			verbose: false,
+			verbose: true,
 		}),
 	],
 });

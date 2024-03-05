@@ -13,34 +13,38 @@ export const GhostUserConfigSchema = z.object({
 	 *     })
 	 *   ],
 	 * }); */
-	ghostURL: z.string().url().optional(),
+	ghostURL: z.coerce.string().url("Must be a URL").optional(),
+	/** OPTIONAL - Configure the Theme Provider 
+	 * @ This option allows the user to configure the Theme Provider
+	 */
 	ThemeProvider: z
 		.object({
 			/** OPTIONAL - Disable the theme provider
 			 * @default false
 			 */
-			disableThemeProvider: z.boolean().optional().default(false),
+			disableThemeProvider: z.coerce.boolean(),
 			/** OPTIONAL - Set the theme you want to use
 			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
 			 */
-			theme: z
-				.string()
-				.optional()
-				.default("@matthiesenxyz/astro-ghostcms-theme-default"),
+			theme: z.string(),
 		})
-		.optional(),
+		.optional()
+		.default({
+			disableThemeProvider: false,
+			theme: "@matthiesenxyz/astro-ghostcms-theme-default"
+		}),
 	/** Allows the user to disable the provided 404 page */
-	disableDefault404: z.boolean().optional().default(false),
+	disableDefault404: z.coerce.boolean().optional(),
 	/** Allows the user to disable the provided RSS Feed */
-	enableRSSFeed: z.boolean().optional().default(true),
+	enableRSSFeed: z.coerce.boolean().optional().default(true),
 	/** Allows the user to Enable or Disable the default Satori OG Image Generation
 	 * @default true
 	 */
-	enableOGImages: z.boolean().optional().default(true),
+	enableOGImages: z.coerce.boolean().optional().default(true),
 	/** Allows the user to turn on/off Full Console Logs
 	 * @default true
 	 */
-	verbose: z.boolean().optional().default(false),
+	verbose: z.coerce.boolean().optional(),
 	/** OPTIONAL - Integrations Configuration
 	 * This option allows the user to configure the included integrations
 	 * Options shown are the availble options
@@ -60,7 +64,7 @@ export const GhostUserConfigSchema = z.object({
 			 */
 			sitemap: z.custom<SitemapOptions>().optional(),
 		})
-		.optional(),
+		.optional().default({}),
 });
 
 /** USER CONFIGURATION SCHEMA */
