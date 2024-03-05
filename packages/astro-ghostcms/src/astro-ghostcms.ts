@@ -44,19 +44,18 @@ export default defineIntegration({
 				// Configure Loggers
 				const GhostLogger = logger.fork(c.bold(c.blue("👻 Astro-GhostCMS")));
 
+				const loggerTagged = (message: string) => {
+					return logger.fork(`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(message)}`)
+				}
+
 				// Configure ENV Logger
-				const GhostENVLogger = logger.fork(
-					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
-						"ENV Check",
-					)}`,
-				);
+				const GhostENVLogger = loggerTagged("ENV Check");
 
 				// Configure Integration Loggers & verbose logging
-				const GhostIntegrationLogger = logger.fork(
-					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
-						"Integrations",
-					)}`,
-				);
+				const GhostIntegrationLogger = loggerTagged("Integrations");
+
+				// Configure Route Logger & verbose logging
+				const GhostRouteLogger = loggerTagged("Router");
 
 				// Log Info Helper
 				const intLogInfo = (message:string) => {
@@ -64,13 +63,6 @@ export default defineIntegration({
 						GhostIntegrationLogger.info(message);
 					}
 				};
-
-				// Configure Route Logger & verbose logging
-				const GhostRouteLogger = logger.fork(
-					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.blue(
-						"Router",
-					)}`,
-				);
 
 				// Log Route Info Helper
 				const routeLogInfo = (message:string) => {
@@ -241,17 +233,13 @@ export default defineIntegration({
 				);
 			},
 			"astro:server:start": async ({ logger }) => {
+				const loggerTagged = (message: string) => {
+					return logger.fork(`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.green(message)}`)
+				}
 				// Configure Loggers
-				const GhostLogger = logger.fork(
-					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.bold(
-						c.green("DEV"),
-					)}`,
-				);
-				const GhostUpdateLogger = logger.fork(
-					`${c.bold(c.blue("👻 Astro-GhostCMS"))}${c.gray("/")}${c.bold(
-						c.green("VERSION CHECK"),
-					)}`,
-				);
+				const GhostLogger = loggerTagged("DEV");
+
+				const GhostUpdateLogger = loggerTagged("VERSION CHECK");
 
 				// Start the DEV server
 				GhostLogger.info(
