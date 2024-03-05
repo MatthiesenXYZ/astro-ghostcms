@@ -45,10 +45,7 @@
     "exports": {
       ".": "./src/index.ts",
       "./api": "./src/api/index.ts",
-      "./404.astro": "./src/routes/404.astro",
-      "./rss-routes/*": "./src/integrations/rssfeed/routes/*",
-      "./satoriOG": "./src/integrations/satoriog/satori.ts",
-      "./open-graph/*": "./src/integrations/satoriog/routes/*"
+      "./satoriOG": "./src/integrations/satoriog/satori.ts"
     },
     "scripts": {
       "test": "vitest run",

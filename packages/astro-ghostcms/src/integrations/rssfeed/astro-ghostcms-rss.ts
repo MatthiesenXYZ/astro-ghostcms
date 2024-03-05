@@ -23,16 +23,14 @@ export default defineIntegration({
 
 				RSSLogger.info(c.bold(c.magenta("RSS Feed Enabled. Setting up...")));
 
-				const rssRoute = "@matthiesenxyz/astro-ghostcms/rss-routes";
-
 				injectRoute({
 					pattern: "/rss-style.xsl",
-					entrypoint: `${rssRoute}/rss-style.xsl.ts`,
+					entrypoint: resolve("./routes/rss-style.xsl.ts"),
 				});
 
 				injectRoute({
 					pattern: "/rss.xml",
-					entrypoint: `${rssRoute}/rss.xml.ts`,
+					entrypoint: resolve("./routes/rss.xml.ts"),
 				});
 			},
 			"astro:config:done": ({ logger }) => {

@@ -96,7 +96,7 @@ export default defineIntegration({
 						routeLogInfo(c.bold(c.cyan(`Setting up ${routename} route`)));
 						injectRoute({
 							pattern: pattern,
-							entrypoint: `${name}${entrypoint}`,
+							entrypoint: resolve(`./routes${entrypoint}`),
 							prerender: true,
 						});
 					} else {

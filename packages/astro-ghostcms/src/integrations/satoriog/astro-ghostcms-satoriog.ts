@@ -31,36 +31,34 @@ export default defineIntegration({
 					c.bold(c.magenta("OG Image Integration Enabled. Setting up...")),
 				);
 
-				const pkgname = "@matthiesenxyz/astro-ghostcms/open-graph";
-
 				injectRoute({
 					pattern: "/open-graph/[slug].png",
-					entrypoint: `${pkgname}/[slug].png.ts`,
+					entrypoint: resolve("./routes/[slug].png.ts"),
 				});
 
 				injectRoute({
 					pattern: "/open-graph/index.png",
-					entrypoint: `${pkgname}/index.png.ts`,
+					entrypoint: resolve("./routes/index.png.ts"),
 				});
 
 				injectRoute({
 					pattern: "/open-graph/authors.png",
-					entrypoint: `${pkgname}/authors.png.ts`,
+					entrypoint: resolve("./routes/authors.png.ts"),
 				});
 
 				injectRoute({
 					pattern: "/open-graph/author/[slug].png",
-					entrypoint: `${pkgname}/author/[slug].png.ts`,
+					entrypoint: resolve("./routes/author/[slug].png.ts"),
 				});
 
 				injectRoute({
 					pattern: "/open-graph/tags.png",
-					entrypoint: `${pkgname}/tags.png.ts`,
+					entrypoint: resolve("./routes/tags.png.ts"),
 				});
 
 				injectRoute({
 					pattern: "/open-graph/tag/[slug].png",
-					entrypoint: `${pkgname}/tag/[slug].png.ts`,
+					entrypoint: resolve("./routes/tag/[slug].png.ts"),
 				});
 
 				updateConfig({
