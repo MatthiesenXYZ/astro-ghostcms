@@ -202,13 +202,13 @@ export default defineIntegration({
 				// Setup @astrojs/sitemap Integration
 				checkIntegration(
 					"@astrojs/sitemap",
-					sitemap(options.Integrations?.sitemap)
+					sitemap(options.Integrations.sitemap)
 					);
 
 				// Setup astro-robots-txt Integration
 				checkIntegration(
 					"astro-robots-txt", 
-					robotsTxt(options.Integrations?.robotsTxt)
+					robotsTxt(options.Integrations.robotsTxt)
 					);
 
 				// Setup Default 404 Page
