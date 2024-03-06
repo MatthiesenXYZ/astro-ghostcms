@@ -68,14 +68,16 @@ export default function starlightGhostCMS(
 function overrideRSS(
 	socials: StarlightUserConfig["social"], 
 	url: string | undefined
-	) { if (socials?.rss) { return {}; }
+	) { 
+		if (socials?.rss) { return {}; }
 		if (url === undefined) { return undefined; }
 		return { rss: `${url}/rss.xml` };
 }
 
 function overrideTwitter(
 	socials: StarlightUserConfig["social"],
-	) { if (socials?.twitter) { return {}; }
+	) { 
+		if (socials?.twitter) { return {}; }
 		if (settings?.twitter) {
 			return { twitter: twitter(settings.twitter), } 
 		}
@@ -84,7 +86,8 @@ function overrideTwitter(
 
 function overrideFacebook(
 	socials: StarlightUserConfig["social"],
-	) { if (socials?.facebook) { return {}; }
+	) { 
+		if (socials?.facebook) { return {}; }
 		if (settings?.facebook) {
 			return { facebook: facebook(settings.facebook), } 
 		}
