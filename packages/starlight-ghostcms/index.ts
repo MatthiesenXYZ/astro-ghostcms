@@ -30,6 +30,7 @@ export default function starlightGhostCMS(
 				logger,
 				updateConfig: updateStarlightConfig,
 			}) {
+				// Update the Starlight config with the GhostCMS config
 				updateStarlightConfig({
 					social: {
 						...starlightConfig.social,
@@ -57,47 +58,36 @@ export default function starlightGhostCMS(
 					},
 				});
 
+				// Add the Starlight-GhostCMS integration
 				addIntegration({
 					name: "@matthiesenxyz/starlight-ghostcms",
 					hooks: {
 						"astro:config:setup": ({ injectRoute, updateConfig }) => {
-							injectRoute({
-								pattern: "/blog",
-								entrypoint:
-									"@matthiesenxyz/starlight-ghostcms/routes/index.astro",
-								prerender: true,
-							});
-							injectRoute({
-								pattern: "/blog/[slug]",
-								entrypoint:
-									"@matthiesenxyz/starlight-ghostcms/routes/[slug].astro",
-								prerender: true,
-							});
-							injectRoute({
-								pattern: "/blog/about",
-								entrypoint:
-									"@matthiesenxyz/starlight-ghostcms/routes/about.astro",
-								prerender: true,
-							});
-							injectRoute({
-								pattern: "/blog/authors",
-								entrypoint:
-									"@matthiesenxyz/starlight-ghostcms/routes/authors.astro",
-							});
-							injectRoute({
-								pattern: "/rss.xml",
-								entrypoint:
-									"@matthiesenxyz/starlight-ghostcms/routes/rss.xml.ts",
-							});
 
 							updateConfig({
 								vite: {
 									plugins: [vitePluginStarlightGhostConfig(config)],
 								},
 							});
+
+							const makeRoute = (endpoint: string, entrypoint: string) => {
+								injectRoute({
+									pattern: `/${endpoint}`,
+									entrypoint: `@matthiesenxyz/starlight-ghostcms/routes/${entrypoint}`,
+									prerender: true,
+								});
+							};
+
+							makeRoute("blog", "index.astro");
+							makeRoute("blog/[slug]", "[slug].astro");
+							makeRoute("blog/about", "about.astro");
+							makeRoute("blog/authors", "authors.astro");
+							makeRoute("rss.xml", "rss.xml.ts");
+
 						},
 					},
 				});
+				
 			},
 		},
 	};

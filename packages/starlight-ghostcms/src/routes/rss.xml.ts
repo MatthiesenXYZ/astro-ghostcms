@@ -5,7 +5,7 @@ import { getAllPosts, getSettings, invariant } from "../utils/api";
 const posts = await getAllPosts();
 const settings = await getSettings();
 
-import config from "virtual:starlight-ghost-config";
+import config from "virtual:starlight-ghostcms/config";
 
 export async function GET({ site }: APIContext) {
 	invariant(settings, "Settings is not defined");

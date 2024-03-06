@@ -3,12 +3,16 @@ import type { Page, Post } from "./schemas";
 
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
+//import StarlightGhostConfig from "virtual:starlight-ghostcms/config";
 
 const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"all",
 	process.cwd(),
 	"CONTENT_",
 );
+
+
+//const ConfURL = StarlightGhostConfig.ghostURL || "";
 
 // SETUP GHOST API
 const ghostApiKey = CONTENT_API_KEY || "";

@@ -6,12 +6,12 @@ import type { StarlightGhostConfig } from "../schemas/config.ts";
 export function vitePluginStarlightGhostConfig(
 	config: StarlightGhostConfig,
 ): VitePlugin {
-	const moduleId = "virtual:starlight-ghost-config";
+	const moduleId = 'virtual:starlight-ghostcms/config';
 	const resolvedModuleId = `\0${moduleId}`;
 	const moduleContent = `export default ${JSON.stringify(config)}`;
 
 	return {
-		name: "vite-plugin-starlight-ghost-config",
+		name: "vite-plugin-starlight-ghostcms-config",
 		load(id) {
 			return id === resolvedModuleId ? moduleContent : undefined;
 		},
