@@ -10,11 +10,11 @@ export default defineConfig({
 		//tailwind(),
 		UnoCSS({ injectReset: true }),
 		ghostcms({
-			ghostURL: "https://ghostdemo.matthiesen.xyz",
+			ghostURL: 'https://ghostdemo.matthiesen.xyz',
 			ThemeProvider: {
 				theme: "@matthiesenxyz/astro-ghostcms-brutalbyelian",
 			},
-			verbose: false,
+			verbose: true,
 		}),
 	],
 });

@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.3.2",
-    "@matthiesenxyz/astro-ghostcms": "^3.2.2",
-    "@matthiesenxyz/astro-ghostcms-brutalbyelian": "^0.0.5",
+    "astro": "^4.4.0",
+    "@matthiesenxyz/astro-ghostcms": "^3.3.0",
+    "@matthiesenxyz/astro-ghostcms-brutalbyelian": "^0.0.11",
     "@unocss/astro": "^0.57.7"
   },
   "devDependencies": {

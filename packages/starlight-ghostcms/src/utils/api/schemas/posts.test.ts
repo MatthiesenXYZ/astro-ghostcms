@@ -1,14 +1,14 @@
 import { describe, expect, test } from "vitest";
 
-import TS_API from "../../content-api";
-import type { Post } from "./posts";
+import { TSGhostContentAPI } from "@ts-ghost/content-api";
+import type { Post } from "./index";
 
 const url = process.env.VITE_GHOST_URL || "https://my-ghost-blog.com";
 const key =
 	process.env.VITE_GHOST_CONTENT_API_KEY || "59d4bf56c73c04a18c867dc3ba";
 
 describe("posts api .browse() Args Type-safety", () => {
-	const api = new TS_API(url, key, "v5.0");
+	const api = new TSGhostContentAPI(url, key, "v5.0");
 	test(".browse() params shouldnt accept invalid params", () => {
 		// @ts-expect-error - shouldnt accept invalid params
 		const browse = api.posts.browse({ pp: 2 });
@@ -21,8 +21,7 @@ describe("posts api .browse() Args Type-safety", () => {
 			foo: true,
 		} satisfies { [k in keyof Post]?: true | undefined };
 
-		// biome-ignore lint/style/useConst: <explanation>
-		let test = api.posts
+		const test = api.posts
 			.browse()
 			// @ts-expect-error - shouldnt accept invalid params
 			.fields(outputFields);
@@ -45,8 +44,7 @@ describe("posts api .browse() Args Type-safety", () => {
 			title: true,
 		} satisfies { [k in keyof Post]?: true | undefined };
 
-		// biome-ignore lint/style/useConst: <explanation>
-		let test = api.posts.browse().fields(outputFields);
+		const test = api.posts.browse().fields(outputFields);
 		expect(test.getOutputFields()).toEqual(["slug", "title"]);
 
 		// @ts-expect-error - shouldnt accept invalid params

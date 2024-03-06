@@ -1,4 +1,4 @@
-import ghostcms from "@matthiesenxyz/astro-ghostcms";
+import astroGhostCMS from "@matthiesenxyz/astro-ghostcms";
 import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
 
@@ -8,9 +8,11 @@ export default defineConfig({
 	trailingSlash: "ignore",
 	integrations: [
 		UnoCSS({ injectReset: true }),
-		ghostcms({
-			theme: "@matthiesenxyz/astro-ghostcms-brutalbyelian",
+		astroGhostCMS({
 			ghostURL: "https://ghostdemo.matthiesen.xyz",
+			ThemeProvider: {
+				theme: "@matthiesenxyz/astro-ghostcms-brutal",
+			},
 		}),
 	],
 });

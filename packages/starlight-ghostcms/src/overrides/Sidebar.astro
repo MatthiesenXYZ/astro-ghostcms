@@ -3,7 +3,7 @@ import StarlightSidebar from '@astrojs/starlight/components/Sidebar.astro'
 import type { Props } from '@astrojs/starlight/props'
 import config from 'virtual:starlight-ghost-config'
 import { isBlogPostPage, isBlogRoot } from '../utils/page'
-import { getAllPages, getAllPosts, getSluggedPage } from '../utils/api/api-functions.js'
+import { getAllPages, getAllPosts, getSluggedPage } from '../utils/api'
 import type { SidebarEntry } from './sidebartypes'
 
 export async function getRecentBlogEntries(){

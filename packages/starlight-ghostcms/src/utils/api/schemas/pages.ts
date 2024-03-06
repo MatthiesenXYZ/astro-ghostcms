@@ -7,8 +7,8 @@ import {
 } from "@ts-ghost/core-api";
 import { z } from "astro/zod";
 
-import { authorsSchema } from "../authors";
-import { tagsSchema } from "../tags";
+import { authorsSchema } from "./authors";
+import { tagsSchema } from "./tags";
 
 const postsAuthorSchema = authorsSchema.extend({
 	url: z.string().nullish(),
