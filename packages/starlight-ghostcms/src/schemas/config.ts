@@ -3,21 +3,6 @@ import { z } from "astro/zod";
 
 const configSchema = z
 	.object({
-		/** OPTIONAL - Either set the URL in your .env or put it here
-		 * @example
-		 * // https://astro.build/config
-		 * export default defineConfig({
-		 *   integrations: [
-		 *     starlight({
-		 *       plugins: [
-		 *         starlightGhost({
-		 *           ghostURL: "https://ghostdemo.matthiesen.xyz"
-		 *         })
-		 *       ],
-		 *     })
-		 *   ],
-		 * }); */
-		ghostURL: z.string().url("Must be a URL").optional(),
 		/**
 		 * The number of blog posts to display per page in the blog post list.
 		 */
