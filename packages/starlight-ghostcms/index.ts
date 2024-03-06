@@ -78,11 +78,16 @@ export default function starlightGhostCMS(
 								});
 							};
 
-							makeRoute("blog", "index.astro");
-							makeRoute("blog/[slug]", "[slug].astro");
-							makeRoute("blog/about", "about.astro");
-							makeRoute("blog/authors", "authors.astro");
-							makeRoute("rss.xml", "rss.xml.ts");
+							makeRoute(`${config.route}`,
+							"index.astro");
+							makeRoute(`${config.route}/[slug]`, 
+							"[slug].astro");
+							makeRoute(`${config.route}/about`, 
+							"about.astro");
+							makeRoute(`${config.route}/authors`, 
+							"authors.astro");
+							makeRoute("rss.xml", 
+							"rss.xml.ts");
 
 						},
 					},

@@ -22,7 +22,7 @@ export async function GET({ site }: APIContext) {
 				post.published_at ? post.published_at : post.created_at,
 			),
 			description: post.excerpt,
-			link: `/blog/${post.slug}/`,
+			link: `/${config.route}/${post.slug}/`,
 			author: post.primary_author?.name,
 		})),
 	});

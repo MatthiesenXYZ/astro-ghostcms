@@ -11,6 +11,14 @@ const configSchema = z
 		 * The number of recent blog posts to display in the sidebar.
 		 */
 		recentPostCount: z.number().min(1).default(10),
+		/** 
+		 * Allows you to change the default route for the blog.
+		 */
+		route: z.string().default("blog"),
+		/**
+		 * The name of the blog link in the navigation.
+		 */
+		linkName: z.string().default("Blog"),
 		/**
 		 * The title of the blog.
 		 */
@@ -24,7 +32,7 @@ const configSchema = z
 		 */
 		supportGhost: z.boolean().default(true),
 	})
-	.default({});
+	.default({ postCount: 5, recentPostCount: 10, route: "blog", title: "Blog", rssDescription: "My Awesome Starlight-GhostCMS Blog", supportGhost: true});
 
 export function validateConfig(userConfig: unknown): StarlightGhostConfig {
 	const config = configSchema.safeParse(userConfig);

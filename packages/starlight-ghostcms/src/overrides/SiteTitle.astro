@@ -1,11 +1,12 @@
 ---
 import type { Props } from "@astrojs/starlight/props";
 import AstrolightSiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
+import config from 'virtual:starlight-ghostcms/config'
 ---
 
 <AstrolightSiteTitle {...Astro.props} />
 <div>
-    <a href="/blog">Blog</a>
+    <a href={`/${config.route}`}>{config.linkName}</a>
 </div>
 
 <style>

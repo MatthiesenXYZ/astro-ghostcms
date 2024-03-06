@@ -1,13 +1,13 @@
-export function isAnyBlogPage(slug: string) {
-	return slug.match(/^blog(\/?$|\/.+\/?$)/) !== null;
-}
+import config from 'virtual:starlight-ghostcms/config'
 
 export function isBlogRoot(slug: string) {
 	return slug === "blog";
 }
 
 export function isAnyBlogPostPage(slug: string) {
-	return slug.match(/^blog\/(?!(\d+\/?|tags\/.+)$).+$/) !== null;
+	const group = slug.split("/").pop();
+	const currentslug = group?.[0];
+	return currentslug;
 }
 
 export function isBlogPostPage(slug: string, postSlug: string) {
