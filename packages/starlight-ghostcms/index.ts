@@ -3,12 +3,12 @@ import type {
 	StarlightUserConfig,
 } from "@astrojs/starlight/types";
 import type { AstroIntegrationLogger } from "astro";
-import { vitePluginStarlightGhostConfig } from "./src/integrations/vite";
 import {
 	type StarlightGhostConfig,
 	validateConfig,
 } from "./src/schemas/config";
 import { facebook, getSettings, invariant, twitter } from "./src/utils/api";
+import starlightGhostcms from "./src/integrations/starlight-ghostcms";
 
 const settings = await getSettings();
 
@@ -30,13 +30,16 @@ export default function starlightGhostCMS(
 				logger,
 				updateConfig: updateStarlightConfig,
 			}) {
+				// Add the Starlight-GhostCMS integration
+				addIntegration(starlightGhostcms(config));
+				
 				// Update the Starlight config with the GhostCMS config
 				updateStarlightConfig({
 					social: {
 						...starlightConfig.social,
-						rss: `${astroConfig.site}/rss.xml`,
-						twitter: twitter(settings.twitter ? settings.twitter : ""),
-						facebook: facebook(settings.facebook ? settings.facebook : ""),
+						...overrideRSS(starlightConfig.social, astroConfig.site),
+						...overrideTwitter(starlightConfig.social),
+						...overrideFacebook(starlightConfig.social),
 					},
 					components: {
 						...starlightConfig.components,
@@ -57,45 +60,35 @@ export default function starlightGhostCMS(
 						),
 					},
 				});
-
-				// Add the Starlight-GhostCMS integration
-				addIntegration({
-					name: "@matthiesenxyz/starlight-ghostcms",
-					hooks: {
-						"astro:config:setup": ({ injectRoute, updateConfig }) => {
-
-							updateConfig({
-								vite: {
-									plugins: [vitePluginStarlightGhostConfig(config)],
-								},
-							});
-
-							const makeRoute = (endpoint: string, entrypoint: string) => {
-								injectRoute({
-									pattern: `/${endpoint}`,
-									entrypoint: `@matthiesenxyz/starlight-ghostcms/routes/${entrypoint}`,
-									prerender: true,
-								});
-							};
-
-							makeRoute(`${config.route}`,
-							"index.astro");
-							makeRoute(`${config.route}/[slug]`, 
-							"[slug].astro");
-							makeRoute(`${config.route}/about`, 
-							"about.astro");
-							makeRoute(`${config.route}/authors`, 
-							"authors.astro");
-							makeRoute("rss.xml", 
-							"rss.xml.ts");
-
-						},
-					},
-				});
-				
 			},
 		},
 	};
+}
+
+function overrideRSS(
+	socials: StarlightUserConfig["social"], 
+	url: string | undefined
+	) { if (socials?.rss) { return {}; }
+		if (url === undefined) { return undefined; }
+		return { rss: `${url}/rss.xml` };
+}
+
+function overrideTwitter(
+	socials: StarlightUserConfig["social"],
+	) { if (socials?.twitter) { return {}; }
+		if (settings?.twitter) {
+			return { twitter: twitter(settings.twitter), } 
+		}
+		return undefined;
+}
+
+function overrideFacebook(
+	socials: StarlightUserConfig["social"],
+	) { if (socials?.facebook) { return {}; }
+		if (settings?.facebook) {
+			return { facebook: facebook(settings.facebook), } 
+		}
+		return undefined;
 }
 
 function overrideStarlightComponent(
