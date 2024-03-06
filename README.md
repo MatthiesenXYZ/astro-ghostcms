@@ -30,7 +30,9 @@ This repo is structured as a `pnpm` monorepo.  All of our packages can be found 
 
 In this Repo you will find the Following:
 
-- `playground`: Development and Testing
+- `playgrounds/`:
+  - [`astro-playground`](./playgrounds/astro-playground/): Playground for Astro-GhostCMS development and testing.
+  - [`starlight-playground`](./playgrounds/starlight-playground/): Playground of Starlight-GhostCMS development and testing.
 - `packages/`:
   - [`create-astro-ghostcms`](./packages/create-astro-ghostcms/): CLI Utility to quickly deploy new Astro-GhostCMS projects.
   - [`astro-ghostcms`](./packages/astro-ghostcms/): The main Integration!
@@ -39,7 +41,6 @@ In this Repo you will find the Following:
   - [`astro-ghostcms-catppuccin`](./packages/astro-ghostcms-catppuccin/): A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS Integration Mode.
   - [`astro-ghostcms-brutalbyelian`](./packages/astro-ghostcms-brutalbyelian/): [ElianCodes](https://www.elian.codes/) Brutal theme modified to work with Astro-GhostCMS
   - [`starlight-ghostcms`](./packages/starlight-ghostcms/) A [Starlight Plugin](https://starlight.astro.build/resources/plugins/) to integrate your GhostCMS into your documentation website
-  - `tsconfig`: *LOCAL* Development package for `@ts-ghost/core-api`.
 
 ## Contributing
 
