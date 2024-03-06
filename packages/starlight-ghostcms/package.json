@@ -36,21 +36,15 @@
   "types": "index.ts",
   "files": [
     "src",
+    "CHANGELOG.md",
     "index.ts",
-    "tsconfig.json",
-    "types.d.ts"
+    "LICENSE",
+    "package.json",
+    "README.md"
   ],
   "exports": {
     ".": "./index.ts",
-    "./overrides/MarkdownContent.astro": "./src/overrides/MarkdownContent.astro",
-    "./overrides/Sidebar.astro": "./src/overrides/Sidebar.astro",
-    "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
-    "./routes/index.astro": "./src/routes/index.astro",
-    "./routes/about.astro": "./src/routes/about.astro",
-    "./routes/authors.astro": "./src/routes/authors.astro",
-    "./routes/[slug].astro": "./src/routes/[slug].astro",
-    "./routes/rss.xml.ts": "./src/routes/rss.xml.ts",
-    "./schema": "./src/schemas/config.ts"
+    "./overrides/*": "./src/overrides/*"
   },
   "scripts": {
     "test": "vitest run",
@@ -69,7 +63,7 @@
     "@ts-ghost/core-api": "^6.0.0",
     "@ts-ghost/content-api": "^4.0.12",
     "astro-integration-kit": "^0.5.1",
-    "vite": "^5.1.5",
+    "vite": "^5.1.4",
     "vite-tsconfig-paths": "^4.3.1"
   },
   "peerDependencies": {

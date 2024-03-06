@@ -4,7 +4,6 @@ import {
 } from "astro-integration-kit";
 import { corePlugins } from "astro-integration-kit/plugins";
 import { z } from "astro/zod";
-import { vitePluginStarlightGhostConfig } from "./vite";
 import { type StarlightGhostConfig } from "../schemas/config";
 
 export default defineIntegration({
@@ -15,13 +14,15 @@ export default defineIntegration({
         const { resolve } = createResolver(import.meta.url);
 
         return {
-            "astro:config:setup": ({ watchIntegration, updateConfig, injectRoute }) => {
+            "astro:config:setup": ({ 
+                watchIntegration, 
+                addVirtualImports, 
+                injectRoute 
+            }) => {
                 watchIntegration(resolve());
 
-                updateConfig({
-                    vite: {
-                        plugins: [vitePluginStarlightGhostConfig(options)],
-                    },
+                addVirtualImports({
+                    'virtual:starlight-ghostcms/config': `export default ${JSON.stringify(options)}`,
                 });
 
                 const makeRoute = (endpoint: string, entrypoint: string) => {
