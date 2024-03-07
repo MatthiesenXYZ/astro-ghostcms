@@ -36,21 +36,15 @@
   "types": "index.ts",
   "files": [
     "src",
+    "CHANGELOG.md",
     "index.ts",
-    "tsconfig.json",
-    "types.d.ts"
+    "LICENSE",
+    "package.json",
+    "README.md"
   ],
   "exports": {
     ".": "./index.ts",
-    "./overrides/MarkdownContent.astro": "./src/overrides/MarkdownContent.astro",
-    "./overrides/Sidebar.astro": "./src/overrides/Sidebar.astro",
-    "./overrides/SiteTitle.astro": "./src/overrides/SiteTitle.astro",
-    "./routes/index.astro": "./src/routes/index.astro",
-    "./routes/about.astro": "./src/routes/about.astro",
-    "./routes/authors.astro": "./src/routes/authors.astro",
-    "./routes/[slug].astro": "./src/routes/[slug].astro",
-    "./routes/rss.xml.ts": "./src/routes/rss.xml.ts",
-    "./schema": "./src/schemas/config.ts"
+    "./overrides/*": "./src/overrides/*"
   },
   "scripts": {
     "test": "vitest run",
@@ -60,19 +54,20 @@
   },
   "devDependencies": {
     "@astrojs/starlight": "^0.19.0",
-    "@ts-ghost/tsconfig": "workspace:*",
-    "astro": "^4.4.0",
-    "vitest": "^1.2.2",
+    "astro": "^4.4.1",
+    "vitest": "^1.3.1",
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
-    "@ts-ghost/core-api": "^5.1.2",
-    "vite": "^5.1.2",
-    "vite-tsconfig-paths": "^4.2.2"
+    "@ts-ghost/core-api": "^6.0.0",
+    "@ts-ghost/content-api": "^4.0.12",
+    "astro-integration-kit": "^0.5.1",
+    "vite": "^5.1.4",
+    "vite-tsconfig-paths": "^4.3.1"
   },
   "peerDependencies": {
     "@astrojs/starlight": ">=0.19.0",
-    "astro": ">=4.3.7"
+    "astro": ">=4.4.1"
   }
 }

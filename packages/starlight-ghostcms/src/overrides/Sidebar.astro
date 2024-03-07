@@ -1,9 +1,9 @@
 ---
 import StarlightSidebar from '@astrojs/starlight/components/Sidebar.astro'
 import type { Props } from '@astrojs/starlight/props'
-import config from 'virtual:starlight-ghost-config'
+import config from 'virtual:starlight-ghostcms/config'
 import { isBlogPostPage, isBlogRoot } from '../utils/page'
-import { getAllPages, getAllPosts, getSluggedPage } from '../utils/api/api-functions.js'
+import { getAllPages, getAllPosts, getSluggedPage } from '../utils/api'
 import type { SidebarEntry } from './sidebartypes'
 
 export async function getRecentBlogEntries(){
@@ -17,19 +17,17 @@ export async function getBlogPageEntries(){
 }
 
 export function checkpath(path: string){
-  if ( path.slice(0, 5) === "/blog" ){
-    return true
-  } else { return false }
+  return path.split('/').includes(config.route) ? true : false
 }
 
 export function isAbout(path: string){
-  if ( path === "/blog/about" ){
+  if ( path === `/${config.route}/about` ){
     return true
   } else { return false }
 }
 
 export function isAuthors(path: string){
-  if ( path === "/blog/authors" ){
+  if ( path === `/${config.route}/authors` ){
     return true
   } else { return false }
 }
@@ -38,7 +36,7 @@ const recentEntries = isBlog ? await getRecentBlogEntries() : []
 const aboutPage = await getSluggedPage("about");
 const AboutEntry:SidebarEntry = {
   attrs: {}, badge: undefined, 
-  href: '/blog/about',
+  href: `/${config.route}/about`,
   isCurrent: isAbout(Astro.url.pathname),
   type: 'link', 
   label: aboutPage?.post?.title
@@ -55,7 +53,7 @@ const blogSidebar: Props['sidebar'] = isBlog
       {
         attrs: {},
         badge: undefined,
-        href: '/blog/authors',
+        href: `/${config.route}/authors`,
         isCurrent: isAuthors(Astro.url.pathname),
         label: 'Our Authors',
         type: 'link',
@@ -63,7 +61,7 @@ const blogSidebar: Props['sidebar'] = isBlog
       {
         attrs: {},
         badge: undefined,
-        href: '/blog',
+        href: `/${config.route}`,
         isCurrent: isBlogRoot(Astro.props.slug),
         label: 'All posts',
         type: 'link',
@@ -74,8 +72,8 @@ const blogSidebar: Props['sidebar'] = isBlog
         entries: recentEntries.map((blogEntry) => ({
           attrs: {},
           badge: blogEntry.featured?({text: "⭐", variant: "note"}):undefined,
-          href: `/blog/${blogEntry.slug}`,
-          isCurrent: isBlogPostPage(Astro.props.slug, `blog/${blogEntry.slug}`),
+          href: `/${config.route}/${blogEntry.slug}`,
+          isCurrent: isBlogPostPage(Astro.props.slug, `${config.route}/${blogEntry.slug}`),
           label: blogEntry.title,
           type: 'link',
         })),
@@ -89,7 +87,7 @@ const blogSidebar: Props['sidebar'] = isBlog
 {
   !isBlog && (
     <div class="md:sl-hidden">
-      <a href="/blog">Blog</a>
+      <a href={`/${config.route}`}>Blog</a>
     </div>
   )
 }

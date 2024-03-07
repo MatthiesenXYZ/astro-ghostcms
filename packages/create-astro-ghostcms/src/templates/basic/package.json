@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.2.8",
-    "@matthiesenxyz/astro-ghostcms": "^3.1.5",
-    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.5"
+    "astro": "^4.4.0",
+    "@matthiesenxyz/astro-ghostcms": "^3.3.0",
+    "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.13"
   },
   "devDependencies": {
     "@astrojs/check": "^0.4.1",

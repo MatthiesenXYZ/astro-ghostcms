@@ -48,7 +48,9 @@ import starlightGhostCMS from '@matthiesenxyz/starlight-ghostcms';
 export default defineConfig({
   integrations: [
     starlight({
-      plugins: [starlightGhostCMS()],
+      plugins: [
+        starlightGhostCMS()
+      ],
       title: 'My Docs',
     }),
   ],

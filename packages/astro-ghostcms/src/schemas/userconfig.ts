@@ -1,7 +1,8 @@
+import type { SitemapOptions } from "@astrojs/sitemap";
+import type { RobotsTxtOptions } from "astro-robots-txt";
 import { z } from "astro/zod";
-import { RobotsTxtSchema, SitemapSchema } from "./index";
 
-export const UserConfigSchema = z.object({
+export const GhostUserConfigSchema = z.object({
 	/** OPTIONAL - Either set the URL in your .env or put it here
 	 * @example
 	 * // https://astro.build/config
@@ -12,46 +13,59 @@ export const UserConfigSchema = z.object({
 	 *     })
 	 *   ],
 	 * }); */
-	ghostURL: z.string().url().optional(),
-	/** OPTIONAL - Allows the user to disable the `/rss.xml` injection */
-	disableRSS: z.boolean().default(false),
-	/** OPTIONAL - Allows the user to disable the `/open-graph/*` route injection
-	 * @ This feature uses `satori` to generate OpenGraph Images
+	ghostURL: z.coerce.string().url("Must be a URL").optional(),
+	/** OPTIONAL - Configure the Theme Provider 
+	 * @ This option allows the user to configure the Theme Provider
 	 */
-	disableSatoriOG: z.boolean().default(false),
-	/** OPTIONAL - Allows the user to disable the `/404` injection */
-	disable404: z.boolean().default(false),
-	/** OPTIONAL - Disable Route Injector
-	 * This option allows the user to disable the route injection system and utilize just the integraions other functions. Such as API, sitemap and robotstxt integrations. */
-	disableRouteInjection: z.boolean().default(false),
-	/** OPTIONAL - (Default: true) Allows the user to disable "info" console output */
-	disableConsoleOutput: z.boolean().default(true),
-	/** OPTIONAL - Theme Selector
-	 * This option allows the user to replace the included theme with an external npm module
-	 * @example
-	 * // https://astro.build/config
-	 * export default defineConfig({
-	 *   integrations: [
-	 *     ghostcms({
-	 *       theme: "@matthiesenxyz/astro-ghostcms-theme-default"
-	 *     })
-	 *   ],
-	 * }); */
-	theme: z.string().default("@matthiesenxyz/astro-ghostcms-theme-default"),
-	/** OPTIONAL - astrojs/sitemap
-	 * This option allows the user to configure the included integration
+	ThemeProvider: z
+		.object({
+			/** OPTIONAL - Disable the theme provider
+			 * @default false
+			 */
+			disableThemeProvider: z.coerce.boolean(),
+			/** OPTIONAL - Set the theme you want to use
+			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
+			 */
+			theme: z.string(),
+		})
+		.optional()
+		.default({
+			disableThemeProvider: false,
+			theme: "@matthiesenxyz/astro-ghostcms-theme-default"
+		}),
+	/** Allows the user to disable the provided 404 page */
+	disableDefault404: z.coerce.boolean().optional(),
+	/** Allows the user to disable the provided RSS Feed */
+	enableRSSFeed: z.coerce.boolean().optional().default(true),
+	/** Allows the user to Enable or Disable the default Satori OG Image Generation
+	 * @default true
+	 */
+	enableOGImages: z.coerce.boolean().optional().default(true),
+	/** Allows the user to turn on/off Full Console Logs
+	 * @default true
+	 */
+	verbose: z.coerce.boolean().optional(),
+	/** OPTIONAL - Integrations Configuration
+	 * This option allows the user to configure the included integrations
 	 * Options shown are the availble options
-	 * REFERENCE https://docs.astro.build/en/guides/integrations-guide/sitemap
 	 */
-	sitemap: SitemapSchema.optional(),
-	/** OPTIONAL - astro-robots-txt
-	 * This option allows the user to configure the included integration
-	 * Options shown are the availble options
-	 * REFERENCE https://www.npmjs.com/package/astro-robots-txt#configuration
-	 */
-	robotstxt: RobotsTxtSchema.optional(),
+	Integrations: z
+		.object({
+			/** Optional - astro-robots-txt
+			 * This option allows the user to configure the included integration
+			 * Options shown are the availble options
+			 * @see https://www.npmjs.com/package/astro-robots-txt#configuration
+			 */
+			robotsTxt: z.custom<RobotsTxtOptions>().optional(),
+			/** OPTIONAL - astrojs/sitemap
+			 * This option allows the user to configure the included integration
+			 * Options shown are the availble options
+			 * @see https://docs.astro.build/en/guides/integrations-guide/sitemap
+			 */
+			sitemap: z.custom<SitemapOptions>().optional(),
+		})
+		.optional().default({}),
 });
 
 /** USER CONFIGURATION SCHEMA */
-export type UserConfig = z.infer<typeof UserConfigSchema>;
-export type GhostUserConfig = z.infer<typeof UserConfigSchema>;
+export type GhostUserConfig = z.infer<typeof GhostUserConfigSchema>;
