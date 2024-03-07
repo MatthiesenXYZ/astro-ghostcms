@@ -1,5 +1,22 @@
 # @matthiesenxyz/astro-ghostcms-rendercontent
 
+## 0.0.8
+
+### Patch Changes
+
+- f921005: Bump dependencies:
+
+  - vite from to
+  - @eliancodes/brutal-ui from to
+  - typescript from to
+  - ultrahtml from to
+  - @fontsource-variable/inter from to
+  - astro-seo from to
+  - astro from to
+  - sass from to
+  - @astrojs/starlight from to
+  - sharp from to
+
 ## 0.0.7
 
 ### Patch Changes

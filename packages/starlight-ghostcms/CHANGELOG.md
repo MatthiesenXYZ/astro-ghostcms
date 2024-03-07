@@ -1,5 +1,22 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.1
+
+### Patch Changes
+
+- f921005: Bump dependencies:
+
+  - vite from to
+  - @eliancodes/brutal-ui from to
+  - typescript from to
+  - ultrahtml from to
+  - @fontsource-variable/inter from to
+  - astro-seo from to
+  - astro from to
+  - sass from to
+  - @astrojs/starlight from to
+  - sharp from to
+
 ## 0.1.0
 
 ### Minor Changes

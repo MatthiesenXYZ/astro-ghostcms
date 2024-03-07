@@ -1,5 +1,25 @@
 # @matthiesenxyz/astro-ghostcms-theme-default
 
+## 0.1.14
+
+### Patch Changes
+
+- f921005: Bump dependencies:
+
+  - vite from to
+  - @eliancodes/brutal-ui from to
+  - typescript from to
+  - ultrahtml from to
+  - @fontsource-variable/inter from to
+  - astro-seo from to
+  - astro from to
+  - sass from to
+  - @astrojs/starlight from to
+  - sharp from to
+
+- Updated dependencies [f921005]
+  - @matthiesenxyz/astro-ghostcms@3.3.1
+
 ## 0.1.13
 
 ### Patch Changes
