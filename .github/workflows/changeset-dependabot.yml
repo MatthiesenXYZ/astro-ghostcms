@@ -1,8 +1,7 @@
 name: "Changesets: Build Changesets for Dependabot"
 
-#on: pull_request
-on:
-  workflow_dispatch:
+on: pull_request
+
 
 permissions:
   contents: write
