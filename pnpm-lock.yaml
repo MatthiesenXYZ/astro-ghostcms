@@ -33,7 +33,7 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: ^0.1.13
+        specifier: ^0.1.14
         version: link:../astro-ghostcms-theme-default
       '@resvg/resvg-js':
         specifier: ^2.6.0
@@ -97,10 +97,10 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.3.0
+        specifier: ^3.3.1
         version: link:../astro-ghostcms
       '@matthiesenxyz/astro-ghostcms-rendercontent':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../astro-ghostcms-rendercontent
       '@unocss/astro':
         specifier: ^0.58.5
@@ -155,7 +155,7 @@ importers:
         specifier: ^5.0.17
         version: 5.0.17
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.3.0
+        specifier: ^3.3.1
         version: link:../astro-ghostcms
       '@tailwindcss/typography':
         specifier: ^0.5.10
@@ -189,7 +189,7 @@ importers:
   packages/astro-ghostcms-theme-default:
     dependencies:
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.2.9
+        specifier: ^3.3.1
         version: link:../astro-ghostcms
       astro:
         specifier: ^4.2.1
@@ -8292,7 +8292,7 @@ packages:
       vitest: '>=0.16.0'
     dependencies:
       cross-fetch: 3.1.8
-      vitest: 1.3.1(@types/node@20.11.25)(@vitest/ui@1.3.1)
+      vitest: 1.3.1(@vitest/ui@1.3.1)
     transitivePeerDependencies:
       - encoding
     dev: true
