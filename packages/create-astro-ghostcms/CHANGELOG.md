@@ -1,5 +1,11 @@
 # @matthiesenxyz/create-astro-ghostcms
 
+## 0.1.0
+
+### Minor Changes
+
+- 9ec2a61: Bumb all templates to new `astro-ghostcms` version v3.3
+
 ## 0.0.15
 
 ### Patch Changes
