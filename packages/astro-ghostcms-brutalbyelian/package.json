@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-brutalbyelian",
   "description": "ElianCodes Brutal theme modified to work with Astro-GhostCMS",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -57,8 +57,8 @@
   "dependencies": {
     "@iconify-json/logos": "^1.1.41",
     "@iconify-json/uil": "^1.1.8",
-    "@matthiesenxyz/astro-ghostcms": "^3.3.0",
-    "@matthiesenxyz/astro-ghostcms-rendercontent": "^0.0.7",
+    "@matthiesenxyz/astro-ghostcms": "^3.3.1",
+    "@matthiesenxyz/astro-ghostcms-rendercontent": "^0.0.8",
     "@unocss/astro": "^0.58.5",
     "@unocss/reset": "^0.58.5",
     "unocss": "^0.58.5",
