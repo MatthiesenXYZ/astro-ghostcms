@@ -44,7 +44,7 @@
   "devDependencies": {
     "@matthiesenxyz/astro-ghostcms": "*",
     "@astrojs/check": "^0.5.6",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "astro": "^4.2.1"
@@ -52,6 +52,6 @@
   "dependencies": {
     "@matthiesenxyz/astro-ghostcms": "^3.2.9",
     "astro-font": "^0.0.77",
-    "sass": "^1.71.0"
+    "sass": "^1.71.1"
   }
 }
