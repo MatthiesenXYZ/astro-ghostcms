@@ -32,14 +32,17 @@ export default defineIntegration({
                         prerender: true,
                     });
                 };
+                const sanitisedRoute = options.route
+                .replace(/^\//, '')
+                .replace(/\/$/, '');
 
-                makeRoute(`${options.route}`,
+                makeRoute(`${sanitisedRoute}`,
                 "index.astro");
-                makeRoute(`${options.route}/[slug]`, 
+                makeRoute(`${sanitisedRoute}/[slug]`, 
                 "[slug].astro");
-                makeRoute(`${options.route}/about`, 
+                makeRoute(`${sanitisedRoute}/about`, 
                 "about.astro");
-                makeRoute(`${options.route}/authors`, 
+                makeRoute(`${sanitisedRoute}/authors`, 
                 "authors.astro");
                 makeRoute("rss.xml", 
                 "rss.xml.ts");
