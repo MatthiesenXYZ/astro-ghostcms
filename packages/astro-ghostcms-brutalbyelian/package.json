@@ -57,7 +57,7 @@
   "dependencies": {
     "@iconify-json/logos": "^1.1.41",
     "@iconify-json/uil": "^1.1.8",
-    "@matthiesenxyz/astro-ghostcms": "^3.2.9",
+    "@matthiesenxyz/astro-ghostcms": "^3.3.0",
     "@matthiesenxyz/astro-ghostcms-rendercontent": "^0.0.7",
     "@unocss/astro": "^0.58.5",
     "@unocss/reset": "^0.58.5",
