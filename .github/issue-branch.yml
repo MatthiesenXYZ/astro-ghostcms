@@ -2,6 +2,11 @@ branchName: 'issue-${issue.number}-${issue.title[0,32]}'
 gitReplaceChars: '/<>'
 autoLinkIssue: true
 openDraftPR: true
+copyIssueDescriptionToPR: true
+copyIssueLabelsToPR: true
+copyIssueAssigneeToPR: true
+copyIssueProjectsToPR: true
+copyIssueMilestoneToPR: true
 conventionalPrTitles: true
 conventionalLabels:
   fix:
