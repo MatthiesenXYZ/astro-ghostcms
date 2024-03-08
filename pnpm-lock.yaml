@@ -97,11 +97,8 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.3.1
+        specifier: '>=3.3.1'
         version: link:../astro-ghostcms
-      '@matthiesenxyz/astro-ghostcms-rendercontent':
-        specifier: ^0.0.8
-        version: link:../astro-ghostcms-rendercontent
       '@unocss/astro':
         specifier: ^0.58.5
         version: 0.58.5(vite@5.1.5)
@@ -109,11 +106,14 @@ importers:
         specifier: ^0.58.5
         version: 0.58.5
       astro:
-        specifier: ^4.2.0
-        version: 4.3.7(sass@1.71.1)(typescript@5.4.2)
+        specifier: '>=4.4.1'
+        version: 4.4.13(typescript@5.4.2)
       astro-font:
         specifier: ^0.0.77
         version: 0.0.77
+      astro-remote:
+        specifier: 0.3.2
+        version: 0.3.2
       typescript:
         specifier: ^5.4.2
         version: 5.4.2

@@ -4,7 +4,7 @@ import { getAllPosts, getAllPages, getSettings, invariant } from "@matthiesenxyz
 import type { InferGetStaticPropsType } from "astro";
 import RecentBlogPosts from "../components/generic/RecentBlogPosts.astro";
 import BlogPostHeader from "../components/blog/BlogPostHeader.astro";
-import { GhostRender } from "@matthiesenxyz/astro-ghostcms-rendercontent";
+import { Markup } from 'astro-remote';
 import * as C from "../components/ghostrender";
 import { Card } from "@eliancodes/brutal-ui";
 
@@ -30,8 +30,12 @@ invariant(settings, "Settings are required");
 
   <div class="my-5"/>
   <div id="ghost">
-    <GhostRender 
+    <Markup 
       content={post.html} 
+      sanitize={{ 
+        allowComponents: true, 
+        allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
+      }}
       components={{ 
         h1: C.H1,
         h2: C.H2,
