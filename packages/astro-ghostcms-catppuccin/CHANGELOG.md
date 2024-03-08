@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-catppuccin
 
+## 0.0.10
+
+### Patch Changes
+
+- 2724119: Migrate to `astro-remote` for internal processing of GhostCMS HTML. No user changes required.
+
 ## 0.0.9
 
 ### Patch Changes

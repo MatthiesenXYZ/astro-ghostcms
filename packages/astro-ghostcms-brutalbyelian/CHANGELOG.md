@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-brutalbyelian
 
+## 0.0.13
+
+### Patch Changes
+
+- 2724119: Migrate from `astro-ghostcms-rendercontent` to `astro-remote` for internal processing of GhostCMS HTML. no user changes required.
+
 ## 0.0.12
 
 ### Patch Changes
