@@ -32,7 +32,7 @@ jobs:
         with:
           version: pnpm ci:version
           commit: "chore: update versions"
-          title: "Chore: Ready for Release"
+          title: "👷 [ci]: Ready for Release"
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
