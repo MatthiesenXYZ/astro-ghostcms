@@ -147,7 +147,7 @@ importers:
     dependencies:
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.3.7)(tailwindcss@3.4.1)
+        version: 5.1.0(astro@4.4.13)(tailwindcss@3.4.1)
       '@catppuccin/tailwindcss':
         specifier: 0.1.6
         version: 0.1.6(tailwindcss@3.4.1)
@@ -161,17 +161,23 @@ importers:
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.4.1)
       astro:
-        specifier: ^4.2.1
-        version: 4.3.7(sass@1.71.1)(typescript@5.4.2)
+        specifier: '>=4.4.0'
+        version: 4.4.13(typescript@5.4.2)
       astro-navbar:
         specifier: ^2.3.1
         version: 2.3.1
+      astro-remote:
+        specifier: ^0.3.2
+        version: 0.3.2
       astro-seo:
         specifier: ^0.8.3
         version: 0.8.3(typescript@5.4.2)
       tailwindcss:
         specifier: ^3.3.5
         version: 3.4.1
+      ultrahtml:
+        specifier: 1.5.3
+        version: 1.5.3
 
   packages/astro-ghostcms-rendercontent:
     dependencies:
@@ -296,6 +302,9 @@ importers:
       '@matthiesenxyz/astro-ghostcms-brutalbyelian':
         specifier: workspace:*
         version: link:../../packages/astro-ghostcms-brutalbyelian
+      '@matthiesenxyz/astro-ghostcms-catppuccin':
+        specifier: workspace:*
+        version: link:../../packages/astro-ghostcms-catppuccin
       '@matthiesenxyz/astro-ghostcms-theme-default':
         specifier: workspace:*
         version: link:../../packages/astro-ghostcms-theme-default
@@ -511,21 +520,6 @@ packages:
       vfile: 6.0.1
     transitivePeerDependencies:
       - supports-color
-
-  /@astrojs/tailwind@5.1.0(astro@4.3.7)(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
-    peerDependencies:
-      astro: ^3.0.0 || ^4.0.0
-      tailwindcss: ^3.0.24
-    dependencies:
-      astro: 4.3.7(sass@1.71.1)(typescript@5.4.2)
-      autoprefixer: 10.4.17(postcss@8.4.35)
-      postcss: 8.4.35
-      postcss-load-config: 4.0.2(postcss@8.4.35)
-      tailwindcss: 3.4.1
-    transitivePeerDependencies:
-      - ts-node
-    dev: false
 
   /@astrojs/tailwind@5.1.0(astro@4.4.13)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
