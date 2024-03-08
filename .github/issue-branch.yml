@@ -1,0 +1,32 @@
+branchName: 'issue-${issue.number}-${issue.title[0,32]}'
+gitReplaceChars: '/<>'
+autoLinkIssue: true
+openDraftPR: true
+conventionalPrTitles: true
+conventionalLabels:
+  fix:
+    bug: '🐛'
+    dependencies: '⬆️'
+    security: '🔒'
+  feat:
+    enhancement: '✨'
+    new-stuff: '🚀'
+  build:
+    build: '🔧'
+  chore:
+    chore: '♻️'
+  ci:
+    ci: '👷'
+  docs:
+    documentation: '📝'
+  style:
+    style: '💎'
+  refactor:
+    refactor: '♻️'
+  perf:
+    performance: '⚡️'
+  test:
+    test: '✅'
+  breaking:
+    breaking-change: '💥'
+    breaking change: '💥'
