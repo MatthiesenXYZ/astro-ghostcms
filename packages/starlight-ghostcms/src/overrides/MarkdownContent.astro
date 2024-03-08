@@ -2,7 +2,6 @@
 import StarlightMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro'
 import type { Props } from '@astrojs/starlight/props'
 import config from 'virtual:starlight-ghostcms/config'
-import { isAnyBlogPostPage } from '../utils/page'
 import Metadata from '../components/Metadata.astro'
 import type { Post } from '../schemas/posts'
 
@@ -11,7 +10,6 @@ export function checkpath(path: string){
 }
 
 const isBlog = checkpath(Astro.url.pathname)
-const isBlogPost = isAnyBlogPostPage(Astro.props.slug)
 let blogEntry: Post | undefined = undefined
 
 ---

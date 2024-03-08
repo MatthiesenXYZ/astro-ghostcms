@@ -1,6 +1,7 @@
 ---
 import type { Post } from '../schemas/posts'
 import Metadata from './Metadata.astro'
+import config from 'virtual:starlight-ghostcms/config';
 
 interface Props {
   entry: Post
@@ -14,7 +15,7 @@ const Excerpt = entry.excerpt
 <article class="preview">
   <header>
     <h2>
-      <a href={`/blog/${entry.slug}`}>{entry.title}</a>
+      <a href={`/${config.route}/${entry.slug}`}>{entry.title}</a>
     </h2>
     <Metadata entry={entry} />
   </header>

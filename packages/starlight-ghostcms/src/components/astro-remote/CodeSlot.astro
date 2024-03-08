@@ -1,0 +1,17 @@
+---
+import { Code } from "@astrojs/starlight/components"
+import { parse } from "ultrahtml"
+import { querySelector } from "ultrahtml/selector"
+
+const html = await Astro.slots.render("default")
+const ast = await parse(html)
+const codetag = querySelector(ast,'code')
+const { children, attributes } = codetag
+
+const code = children[0].value
+const checkLang = attributes.class ? attributes.class.slice(9) : undefined
+
+const lang = checkLang ? checkLang : 'txt'
+---
+
+<Code code={code} lang={lang}/>

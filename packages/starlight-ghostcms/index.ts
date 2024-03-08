@@ -1,12 +1,6 @@
-import type {
-	StarlightPlugin,
-	StarlightUserConfig,
-} from "@astrojs/starlight/types";
+import type { StarlightPlugin, StarlightUserConfig } from "@astrojs/starlight/types";
 import type { AstroIntegrationLogger } from "astro";
-import {
-	type StarlightGhostConfig,
-	validateConfig,
-} from "./src/schemas/config";
+import { type StarlightGhostConfig, validateConfig } from "./src/schemas/config";
 import { facebook, getSettings, invariant, twitter } from "./src/utils/api";
 import starlightGhostcms from "./src/integrations/starlight-ghostcms";
 
@@ -32,7 +26,7 @@ export default function starlightGhostCMS(
 			}) {
 				// Add the Starlight-GhostCMS integration
 				addIntegration(starlightGhostcms(config));
-				
+
 				// Update the Starlight config with the GhostCMS config
 				updateStarlightConfig({
 					social: {
