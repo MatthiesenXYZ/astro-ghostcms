@@ -2,6 +2,8 @@
 import PostHero from "../components/PostHero.astro";
 import PostFooter from "../components/PostFooter.astro";
 import {invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { Markup } from 'astro-remote';
+import * as render from '../components/astro-remote';
 export type Props = {
   post: Post;
   settings: Settings;
@@ -16,7 +18,15 @@ invariant(settings, "Settings not found");
   <article class={`article post ${postClass}`}>
     <PostHero post={post} settings={settings} />
     <section class="gh-content gh-canvas">
-      <Fragment set:html={post.html} />
+      <Markup 
+    content={post.html} 
+    sanitize={{ 
+      allowComponents: true, 
+      allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'getgist', 'getgistgroup', 'astrocard'],
+    }}
+    components={{
+      pre: render.CodeSlot
+    }} />
     </section>
   </article>
   <PostFooter post={post} settings={settings} posts={posts} />
