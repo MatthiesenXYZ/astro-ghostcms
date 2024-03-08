@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-rendercontent
 
+## 0.0.9
+
+### Patch Changes
+
+- 2724119: Prep to deprecate this package. Moving to `astro-remote`
+
 ## 0.0.8
 
 ### Patch Changes

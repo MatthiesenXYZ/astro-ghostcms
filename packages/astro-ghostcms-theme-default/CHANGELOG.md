@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-theme-default
 
+## 0.1.15
+
+### Patch Changes
+
+- 2724119: Migrate to `astro-remote` for internal processing of GhostCMS HTML. No user changes required.
+
 ## 0.1.14
 
 ### Patch Changes

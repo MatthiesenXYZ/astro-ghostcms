@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-rendercontent",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatthiesenXYZ/astro-ghostcms.git"
