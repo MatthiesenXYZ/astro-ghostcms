@@ -1,5 +1,7 @@
 # Astro GhostCMS Content API HTML Processor
 
+## NOTE: This package is no longer in use - Please switch to [`astro-remote`](https://github.com/natemoo-re/astro-remote)
+
 Render remote GhostCMS HTML in Astro with full control over the output.
 
 Powered by [`ultrahtml`](https://github.com/natemoo-re/ultrahtml).

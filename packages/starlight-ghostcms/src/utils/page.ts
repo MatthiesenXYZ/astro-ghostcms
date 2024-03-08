@@ -1,7 +1,7 @@
 import config from 'virtual:starlight-ghostcms/config'
 
 export function isBlogRoot(slug: string) {
-	return slug === "blog";
+	return slug === `${config.route}`;
 }
 
 export function isAnyBlogPostPage(slug: string) {
@@ -15,7 +15,7 @@ export function isBlogPostPage(slug: string, postSlug: string) {
 }
 
 export function isBlogTagsPage(slug: string, tag: string) {
-	return slug === `blog/tags/${tag}`;
+	return slug === `${config.route}/tags/${tag}`;
 }
 
 export function getPageProps(title: string): StarlightPageProps {

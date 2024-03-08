@@ -1,5 +1,5 @@
 ---
-import { Code } from "astro/components"
+import { Code } from "@astrojs/starlight/components"
 import { parse } from "ultrahtml"
 import { querySelector } from "ultrahtml/selector"
 
@@ -11,7 +11,7 @@ const { children, attributes } = codetag
 const code = children[0].value
 const checkLang = attributes.class ? attributes.class.slice(9) : undefined
 
-const lang = checkLang ? checkLang : 'plaintxt'
+const lang = checkLang ? checkLang : 'txt'
 ---
 
 <Code code={code} lang={lang}/>

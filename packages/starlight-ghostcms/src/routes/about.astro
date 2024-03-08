@@ -5,6 +5,8 @@ import Page from '../components/Page.astro'
 //import PrevNextLinks from '../components/PrevNextLinks.astro'
 import { getPageProps } from '../utils/page'
 import { getSluggedPage } from '../utils/api'
+import { Markup } from 'astro-remote'
+import * as render from '../components/astro-remote';
 
 const aboutPage = await getSluggedPage("about");
 
@@ -18,7 +20,15 @@ const pageProps = getPageProps(aboutPage?.post?.title)
     <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
   )}
       <Metadata entry={aboutPage.post} />
-      <Fragment set:html={aboutPage.post.html} />
+      <Markup 
+        content={aboutPage.post.html} 
+        sanitize={{ 
+          allowComponents: true, 
+          allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span'],
+        }}
+        components={{
+          pre: render.CodeSlot
+        }} />
   <footer class="not-content">
     <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
   </footer>

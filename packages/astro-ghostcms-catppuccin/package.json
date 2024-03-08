@@ -50,7 +50,8 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "astro": "^4.2.1"
+    "@matthiesenxyz/astro-ghostcms": ">=3.3.1",
+    "astro": ">=4.4.0"
   },
   "devDependencies": {
     "@matthiesenxyz/astro-ghostcms": "workspace:*"
@@ -61,8 +62,10 @@
     "@fontsource-variable/inter": "^5.0.17",
     "@matthiesenxyz/astro-ghostcms": "^3.3.1",
     "@tailwindcss/typography": "^0.5.10",
-    "tailwindcss": "^3.3.5",
     "astro-navbar": "^2.3.1",
-    "astro-seo": "^0.8.3"
+    "astro-remote": "^0.3.2",
+    "astro-seo": "^0.8.3",
+    "tailwindcss": "^3.3.5",
+    "ultrahtml": "1.5.3"
   }
 }

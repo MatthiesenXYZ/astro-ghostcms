@@ -1,6 +1,7 @@
 ---
 import { getGhostImgPath } from "../../utils";
 import type { Settings } from "@matthiesenxyz/astro-ghostcms/api";
+import { Markup } from 'astro-remote';
 export type Props = {
   image: string;
   alt?: string;
@@ -22,5 +23,5 @@ const { image, alt, caption = "", settings, transitionName } = Astro.props as Pr
     alt={alt}
     transition:name={transitionName}
   />
-  {caption && <figcaption class="text-ctp-overlay2"><Fragment set:html={caption}></figcaption>}
+  {caption && <figcaption class="text-ctp-overlay2"><Markup content={caption} /></figcaption>}
 </figure>

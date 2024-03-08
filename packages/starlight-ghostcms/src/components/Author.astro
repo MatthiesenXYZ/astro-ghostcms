@@ -1,5 +1,6 @@
 ---
 import type { Author } from '../schemas/authors'
+import config from 'virtual:starlight-ghostcms/config';
 
 interface Props {
   author: Author
@@ -11,7 +12,7 @@ const isLink = author.slug !== undefined
 const Element = isLink ? 'a' : 'div'
 ---
 
-<Element href={isLink ? '/blog/authors' : undefined} class="author">
+<Element href={isLink ? `/${config.route}/authors` : undefined} class="author">
   {author.profile_image && <img alt={author.name} src={author.profile_image} />}
   <div class="text">
     <div class="name">{author.name}</div>

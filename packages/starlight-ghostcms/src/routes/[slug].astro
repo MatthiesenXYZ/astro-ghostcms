@@ -1,11 +1,13 @@
 ---
-import config from 'virtual:starlight-ghostcms/config'
+import config from 'virtual:starlight-ghostcms/config';
 import { Image } from "astro:assets";
-import Page from '../components/Page.astro'
-import { getPageProps } from '../utils/page'
-import { getAllPosts } from '../utils/api'
-import Metadata from '../components/Metadata.astro'
-
+import Page from '../components/Page.astro';
+import { getPageProps } from '../utils/page';
+import { getAllPosts } from '../utils/api';
+import Metadata from '../components/Metadata.astro';
+import { Markup } from 'astro-remote';
+import * as render from '../components/astro-remote';
+import * as Gists from '@matthiesenxyz/astro-gists/components';
 
 export async function getStaticPaths() {
   const entries = await getAllPosts();
@@ -36,13 +38,25 @@ const pageProps = getPageProps(post.title)
             height={800}
           />
           <figcaption>
-            <Fragment set:html={post.feature_image_caption} />
+            <Markup content={post.feature_image_caption? post.feature_image_caption : "<div />"} />
           </figcaption>
         </figure>
       )}
     </header>
     <br />
-    <Fragment set:html={post.html} />
+
+    <Markup 
+      content={post.html} 
+      sanitize={{ 
+        allowComponents: true, 
+        allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'getgist', 'getgistgroup', 'astrocard'],
+      }}
+      components={{
+        pre: render.CodeSlot,
+        getgist: Gists.GetGist,
+        getgistgroup: Gists.GetGistGroup,
+      }}
+    />
 
   <footer class="not-content">
   </footer>

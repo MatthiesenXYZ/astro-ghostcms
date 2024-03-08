@@ -64,6 +64,7 @@ You must also create 2 environment variables in a `.env` file with the following
 ```env
 CONTENT_API_KEY=a33da3965a3a9fb2c6b3f63b48
 CONTENT_API_URL=https://ghostdemo.matthiesen.xyz
+GITHUB_PERSONAL_TOKEN=ghp_ //OPTIONAL - This is for Astro-Gists if you choose to use it!
 ```
 
 **When you deploy your install dont forget to set the above ENVIRONMENT VARIABLES on your provider!**
