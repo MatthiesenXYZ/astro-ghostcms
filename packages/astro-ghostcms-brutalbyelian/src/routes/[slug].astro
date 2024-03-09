@@ -33,8 +33,7 @@ invariant(settings, "Settings are required");
     <Markup 
       content={post.html} 
       sanitize={{ 
-        allowComponents: true, 
-        allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
+        allowComponents: true,
       }}
       components={{ 
         h1: C.H1,
