@@ -260,8 +260,8 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5
       '@matthiesenxyz/astro-gists':
-        specifier: ^0.2.1
-        version: 0.2.1(astro@4.4.13)
+        specifier: ^0.2.3
+        version: 0.2.3(astro@4.4.13)
       '@ts-ghost/content-api':
         specifier: ^4.0.12
         version: 4.0.12
@@ -1723,8 +1723,8 @@ packages:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  /@matthiesenxyz/astro-gists@0.2.1(astro@4.4.13):
-    resolution: {integrity: sha512-6fZTZxnfQExNBlFdzecC/fdyonbhhAUfU7Pva4wMIN0lABAw480aobOqsY3NpI3D8VWafpKochqoNZjOIn7uIQ==}
+  /@matthiesenxyz/astro-gists@0.2.3(astro@4.4.13):
+    resolution: {integrity: sha512-uS4jYjigf1+sKQPoIT1uaxoXESITyn+ZbH0UpICkvwH/we9eRgc73TJ9jF5tUbnziuICIgxFzDB1e59SLK1dqA==}
     peerDependencies:
       astro: ^4.4.1
     dependencies:
