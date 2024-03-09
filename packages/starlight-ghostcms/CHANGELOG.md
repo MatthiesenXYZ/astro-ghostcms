@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.5
+
+### Patch Changes
+
+- a02c78b: bump starlight-ghostcms
+
 ## 0.1.4
 
 ### Patch Changes
