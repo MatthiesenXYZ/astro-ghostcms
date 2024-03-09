@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- 209e99b: update deps
+
+## 0.1.4
+
+### Patch Changes
+
 - 746fcc5: Fix html rendering to allow custom components
 
 ## 0.1.3
