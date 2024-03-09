@@ -1,10 +1,7 @@
 import type { StarlightPlugin, StarlightUserConfig } from "@astrojs/starlight/types";
 import type { AstroIntegrationLogger } from "astro";
 import { type StarlightGhostConfig, validateConfig } from "./src/schemas/config";
-import { facebook, getSettings, invariant, twitter } from "./src/utils/api";
 import starlightGhostcms from "./src/integrations/starlight-ghostcms";
-
-const settings = await getSettings();
 
 export type { StarlightGhostConfig };
 
@@ -12,7 +9,6 @@ export default function starlightGhostCMS(
 	userConfig?: StarlightGhostConfig,
 ): StarlightPlugin {
 	const config: StarlightGhostConfig = validateConfig(userConfig);
-	invariant(settings, "Settings not available... check your api key/url");
 
 	return {
 		name: "@matthiesenxyz/starlight-ghostcms-plugin",
@@ -32,8 +28,6 @@ export default function starlightGhostCMS(
 					social: {
 						...starlightConfig.social,
 						...overrideRSS(starlightConfig.social, astroConfig.site),
-						...overrideTwitter(starlightConfig.social),
-						...overrideFacebook(starlightConfig.social),
 					},
 					components: {
 						...starlightConfig.components,
@@ -59,6 +53,7 @@ export default function starlightGhostCMS(
 	};
 }
 
+
 function overrideRSS(
 	socials: StarlightUserConfig["social"], 
 	url: string | undefined
@@ -66,26 +61,6 @@ function overrideRSS(
 		if (socials?.rss) { return {}; }
 		if (url === undefined) { return undefined; }
 		return { rss: `${url}/rss.xml` };
-}
-
-function overrideTwitter(
-	socials: StarlightUserConfig["social"],
-	) { 
-		if (socials?.twitter) { return {}; }
-		if (settings?.twitter) {
-			return { twitter: twitter(settings.twitter), } 
-		}
-		return undefined;
-}
-
-function overrideFacebook(
-	socials: StarlightUserConfig["social"],
-	) { 
-		if (socials?.facebook) { return {}; }
-		if (settings?.facebook) {
-			return { facebook: facebook(settings.facebook), } 
-		}
-		return undefined;
 }
 
 function overrideStarlightComponent(

@@ -10,6 +10,7 @@ export default defineConfig({
 			title: "My Docs",
 			plugins: [
 				starlightGhostCMS({
+					ghostURL: "https://ghostdemo.matthiesen.xyz",
 					title: "Demo Blog",
 					rssDescription: "Starlight Playground",
 					route: "blog",

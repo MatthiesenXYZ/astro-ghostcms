@@ -3,7 +3,7 @@ import type { Page, Post } from "./schemas";
 
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
-//import StarlightGhostConfig from "virtual:starlight-ghostcms/config";
+import config from "virtual:starlight-ghostcms/config";
 
 const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"all",
@@ -11,12 +11,9 @@ const { CONTENT_API_KEY, CONTENT_API_URL } = loadEnv(
 	"CONTENT_",
 );
 
-
-//const ConfURL = StarlightGhostConfig.ghostURL || "";
-
 // SETUP GHOST API
 const ghostApiKey = CONTENT_API_KEY || "";
-const ghostUrl = CONTENT_API_URL || "";
+const ghostUrl = config.ghostURL || CONTENT_API_URL || "";
 const version = "v5.0";
 const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
 
@@ -101,6 +98,15 @@ export const getAllPages = async () => {
 	return pages;
 };
 
+
+export const getSettings = async () => {
+	const res = await api.settings.fetch();
+	if (res.success) {
+		return res.data;
+	}
+	return null;
+};
+
 export const getSluggedPage = async (slug:string) => {
 	const results = await api.pages
 		.read({slug: slug})
@@ -110,19 +116,14 @@ export const getSluggedPage = async (slug:string) => {
 		}).fetch()
 	
 		if (!results.success) {
-			throw new Error(results.errors.map((e) => e.message).join(", "));
+			if (config.verbose === true){
+				console.log(`[Starlight-GhostCMS]: ${results.errors.map((e) => e.message).join(", ")}Resource: (${slug})`);
+			}
+			return null;
 		}
 		return {
 			post: results.data,
 		};
-};
-
-export const getSettings = async () => {
-	const res = await api.settings.fetch();
-	if (res.success) {
-		return res.data;
-	}
-	return null;
 };
 
 export const getAllTags = async () => {
