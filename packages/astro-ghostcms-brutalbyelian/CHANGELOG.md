@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-brutalbyelian
 
+## 0.0.14
+
+### Patch Changes
+
+- 746fcc5: Fix html rendering to allow custom components
+
 ## 0.0.13
 
 ### Patch Changes

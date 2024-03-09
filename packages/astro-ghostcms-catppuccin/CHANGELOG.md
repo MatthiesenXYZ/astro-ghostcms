@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-catppuccin
 
+## 0.0.11
+
+### Patch Changes
+
+- 746fcc5: Fix html rendering to allow custom components
+
 ## 0.0.10
 
 ### Patch Changes
