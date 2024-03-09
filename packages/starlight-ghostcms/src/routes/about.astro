@@ -12,23 +12,24 @@ const aboutPage = await getSluggedPage("about");
 
 //const { entries, nextLink, prevLink } = Astro.props
 
-const pageProps = getPageProps(aboutPage?.post?.title)
+const pageProps = getPageProps(aboutPage ? aboutPage.post.title : "")
 ---
 
 <Page {...pageProps}>
   {config.supportGhost && (
     <div id="pghost">Powered by <a href="https://ghost.org">Ghost</a></div>
   )}
+  {aboutPage && 
       <Metadata entry={aboutPage.post} />
       <Markup 
         content={aboutPage.post.html} 
         sanitize={{ 
           allowComponents: true, 
-          allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span'],
         }}
         components={{
           pre: render.CodeSlot
         }} />
+  }
   <footer class="not-content">
     <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
   </footer>
