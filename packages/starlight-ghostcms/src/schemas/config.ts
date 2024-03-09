@@ -4,6 +4,10 @@ import { z } from "astro/zod";
 const configSchema = z
 	.object({
 		/**
+		 * The URL of the GhostCMS instance.
+		 */
+		ghostURL: z.string().url().optional(),
+		/**
 		 * The number of blog posts to display per page in the blog post list.
 		 */
 		postCount: z.number().min(1).default(5),
@@ -31,8 +35,8 @@ const configSchema = z
 		 * Turn on and off "Powered by Ghost"
 		 */
 		supportGhost: z.boolean().default(true),
-	})
-	.default({ postCount: 5, recentPostCount: 10, route: "blog", title: "Blog", rssDescription: "My Awesome Starlight-GhostCMS Blog", supportGhost: true});
+		verbose: z.boolean().default(false),
+	});
 
 export function validateConfig(userConfig: unknown): StarlightGhostConfig {
 	const config = configSchema.safeParse(userConfig);

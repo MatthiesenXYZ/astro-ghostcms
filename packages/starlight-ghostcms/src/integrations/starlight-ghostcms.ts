@@ -6,12 +6,17 @@ import { corePlugins } from "astro-integration-kit/plugins";
 import { z } from "astro/zod";
 import { type StarlightGhostConfig } from "../schemas/config";
 import astroGists from "@matthiesenxyz/astro-gists";
+import { AstroError } from "astro/errors";
+import { loadEnv } from "vite";
+
+// Load environment variables
+const ENV = loadEnv("all", process.cwd(), "CONTENT_API");
 
 export default defineIntegration({
     name: "@matthiesenxyz/starlight-ghostcms",
     optionsSchema: z.custom<StarlightGhostConfig>(),
     plugins: [...corePlugins],
-    setup({ options }) {
+    setup({ options, name }) {
         const { resolve } = createResolver(import.meta.url);
 
         return {
@@ -23,6 +28,23 @@ export default defineIntegration({
                 addIntegration,
             }) => {
                 watchIntegration(resolve());
+
+				// Check for GhostCMS API Key
+				if (ENV.CONTENT_API_KEY === undefined) {
+					throw new AstroError(
+						`${name} CONTENT_API_KEY is not set in environment variables`,
+					);
+				}
+
+				// Check for GhostCMS URL
+				if (options.ghostURL === undefined) {
+					logger.warn("ghostURL is not set in user configuration falling back to environment variable");
+					if (ENV.CONTENT_API_URL === undefined) {
+						throw new AstroError(
+							`${name} CONTENT_API_URL is not set in environment variables`,
+						);
+					}
+				}
 
 				// Add the AstroGist integration if enabled
 				logger.info("Adding @matthiesenxyz/astro-gists integration ...");
