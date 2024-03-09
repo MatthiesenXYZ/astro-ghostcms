@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.3
+
+### Patch Changes
+
+- 205738c: fix bug, and resolved config issue that was now will allow users to pass the ghostURL within their `astro.config.mjs`
+
 ## 0.1.2
 
 ### Patch Changes
