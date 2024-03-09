@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.4
+
+### Patch Changes
+
+- 746fcc5: Fix html rendering to allow custom components
+
 ## 0.1.3
 
 ### Patch Changes

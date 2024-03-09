@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms-theme-default
 
+## 0.1.16
+
+### Patch Changes
+
+- 746fcc5: Fix html rendering to allow custom components
+
 ## 0.1.15
 
 ### Patch Changes
