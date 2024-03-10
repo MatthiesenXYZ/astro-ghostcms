@@ -8,7 +8,7 @@ import { getAllPosts, getAllTags, getSettings, invariant } from "@matthiesenxyz/
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
-  const { tags } = await getAllTags();
+  const tags = await getAllTags();
   const settings = await getSettings();
 
   return tags.map((tag) => {

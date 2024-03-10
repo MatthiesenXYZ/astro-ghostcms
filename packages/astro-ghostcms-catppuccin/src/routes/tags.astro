@@ -6,7 +6,7 @@ import { getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcm
 
 let title = "All Tags";
 let description = "All the tags used so far...";
-const { tags } = await getAllTags();
+const tags = await getAllTags();
 const settings = await getSettings();
 invariant(settings, 'Settings not found');
 
