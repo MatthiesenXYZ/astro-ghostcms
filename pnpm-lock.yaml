@@ -33,7 +33,7 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       '@matthiesenxyz/astro-ghostcms-theme-default':
-        specifier: ^0.1.14
+        specifier: ^0.1.17
         version: link:../astro-ghostcms-theme-default
       '@resvg/resvg-js':
         specifier: ^2.6.0
@@ -97,7 +97,7 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8
       '@matthiesenxyz/astro-ghostcms':
-        specifier: '>=3.3.1'
+        specifier: '>=3.3.2'
         version: link:../astro-ghostcms
       '@unocss/astro':
         specifier: ^0.58.5
@@ -155,7 +155,7 @@ importers:
         specifier: ^5.0.17
         version: 5.0.17
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.3.1
+        specifier: ^3.3.2
         version: link:../astro-ghostcms
       '@tailwindcss/typography':
         specifier: ^0.5.10
