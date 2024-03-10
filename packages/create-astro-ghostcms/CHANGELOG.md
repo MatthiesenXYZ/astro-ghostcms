@@ -1,5 +1,11 @@
 # @matthiesenxyz/create-astro-ghostcms
 
+## 0.1.2
+
+### Patch Changes
+
+- 4c1002a: fix getAllTags bug for themes and bump other packages deps
+
 ## 0.1.1
 
 ### Patch Changes
