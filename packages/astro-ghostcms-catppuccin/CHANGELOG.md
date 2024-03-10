@@ -1,5 +1,13 @@
 # @matthiesenxyz/astro-ghostcms-catppuccin
 
+## 0.0.12
+
+### Patch Changes
+
+- 4c1002a: fix getAllTags bug for themes and bump other packages deps
+- Updated dependencies [4c1002a]
+  - @matthiesenxyz/astro-ghostcms@3.3.2
+
 ## 0.0.11
 
 ### Patch Changes

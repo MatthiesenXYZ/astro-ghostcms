@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.6
+
+### Patch Changes
+
+- 4c1002a: fix getAllTags bug for themes and bump other packages deps
+
 ## 0.1.5
 
 ### Patch Changes
