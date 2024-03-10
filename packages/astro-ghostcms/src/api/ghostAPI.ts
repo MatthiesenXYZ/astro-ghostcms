@@ -1,5 +1,5 @@
 import { TSGhostContentAPI } from "@ts-ghost/content-api";
-import type { Page, Post } from "../schemas/api";
+import type { Page, Post, Tag } from "../schemas/api";
 
 // LOAD ENVIRONMENT VARIABLES
 import { loadEnv } from "vite";
@@ -94,17 +94,20 @@ export const getSettings = async () => {
 };
 
 export const getAllTags = async () => {
-	const results = await api.tags
-		.browse()
+	const tags: Tag[] = [];
+	let cursor = await api.tags
+		.browse({
+			limit: 'all'
+		})
 		.include({ "count.posts": true })
-		.fetch();
-	if (!results.success) {
-		throw new Error(results.errors.map((e) => e.message).join(", "));
+		.paginate();
+
+	if (cursor.current.success) tags.push(...cursor.current.data);
+	while (cursor.next) {
+		cursor = await cursor.next.paginate();
+		if (cursor.current.success) tags.push(...cursor.current.data);
 	}
-	return {
-		tags: results.data,
-		meta: results.meta,
-	};
+	return tags;
 };
 
 export const getFeaturedPosts = async () => {

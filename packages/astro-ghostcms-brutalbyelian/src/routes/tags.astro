@@ -2,7 +2,7 @@
 import Layout from '../layouts/Default.astro';
 import { getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
 import TagSummaryCard from '../components/generic/TagSummaryCard.astro';
-const { tags } = await getAllTags();
+const tags = await getAllTags();
 const settings = await getSettings();
 invariant(settings, 'Settings not found');
 const title = settings.title;
@@ -16,7 +16,7 @@ const description = settings.description;
   description={description}
 >
   <main class='bg-pink p-6'>
-    { 
+    {
       tags
         .filter((tag) => tag.slug && !tag.slug.startsWith("hash-"))
         .map((tag) => (

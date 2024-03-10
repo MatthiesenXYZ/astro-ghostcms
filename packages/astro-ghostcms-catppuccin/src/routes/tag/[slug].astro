@@ -7,7 +7,7 @@ import PostPreview from '../../components/PostPreview.astro';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
-  const { tags } = await getAllTags();
+  const tags = await getAllTags();
   const settings = await getSettings();
 
   return tags.map((tag) => {
@@ -37,7 +37,7 @@ const description = `All of the articles we've posted and linked so far under th
 <Layout title={title} description={description} settings={settings}>
   <Container>
     <section class="post-card post-card-large">
-      
+
       <div class="post-card-content">
         <div class="post-card-content-link">
           <header class="post-card-header">
