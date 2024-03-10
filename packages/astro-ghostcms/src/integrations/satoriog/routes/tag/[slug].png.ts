@@ -16,7 +16,7 @@ import satoriOG from "../../satori";
 export const getStaticPaths: GetStaticPaths = async () => {
 	const result: GetStaticPathsItem[] = [];
 	const posts = await getAllPosts();
-	const { tags } = await getAllTags();
+	const tags = await getAllTags();
 	const settings = await getSettings();
 	invariant(settings, "Settings are required");
 

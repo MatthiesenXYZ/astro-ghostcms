@@ -1,13 +1,13 @@
 ---
-import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
-import DefaultPageLayout from "../../layouts/default.astro";
-import PostPreview from "../../components/PostPreview.astro";
 import { getAllPosts, getAllTags, getSettings, invariant } from "@matthiesenxyz/astro-ghostcms/api";
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import PostPreview from "../../components/PostPreview.astro";
+import DefaultPageLayout from "../../layouts/default.astro";
 import { getGhostImgPath } from "../../utils";
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
-  const { tags } = await getAllTags();
+  const tags = await getAllTags();
   const settings = await getSettings();
 
   return tags.map((tag) => {
