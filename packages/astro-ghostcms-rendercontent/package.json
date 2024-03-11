@@ -42,6 +42,6 @@
     "ultrahtml": "^1.5.3"
   },
   "devDependencies": {
-    "astro": "4.4.13"
+    "astro": "4.5.0"
   }
 }
