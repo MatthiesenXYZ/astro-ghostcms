@@ -155,7 +155,7 @@ importers:
         specifier: ^5.0.17
         version: 5.0.17
       '@matthiesenxyz/astro-ghostcms':
-        specifier: ^3.3.2
+        specifier: ^3.3.3
         version: link:../astro-ghostcms
       '@tailwindcss/typography':
         specifier: ^0.5.10
