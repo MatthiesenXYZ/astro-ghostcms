@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/starlight-ghostcms",
   "description": "Starlight GhostCMS plugin to allow easier importing of GhostCMS Content into your starlight website",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",

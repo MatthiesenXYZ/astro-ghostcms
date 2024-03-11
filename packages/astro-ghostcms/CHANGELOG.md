@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-ghostcms
 
+## 3.3.3
+
+### Patch Changes
+
+- b685e66: Update Deps
+
 ## 3.3.2
 
 ### Patch Changes

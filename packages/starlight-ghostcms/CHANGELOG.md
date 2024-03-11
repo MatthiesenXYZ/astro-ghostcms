@@ -1,5 +1,11 @@
 # @matthiesenxyz/starlight-ghostcms
 
+## 0.1.7
+
+### Patch Changes
+
+- b685e66: Update Deps
+
 ## 0.1.6
 
 ### Patch Changes
