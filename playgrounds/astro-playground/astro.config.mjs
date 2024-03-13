@@ -14,7 +14,7 @@ export default defineConfig({
 			ThemeProvider: {
 				theme: "@matthiesenxyz/astro-ghostcms-theme-default",
 				astroRemote: {
-					enable: false,
+					enable: true,
 				},
 			},
 			verbose: true,
