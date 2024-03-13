@@ -2,6 +2,8 @@ import type { SitemapOptions } from "@astrojs/sitemap";
 import type { RobotsTxtOptions } from "astro-robots-txt";
 import { z } from "astro/zod";
 
+type CATPPUCCINFLAVOURS = "latte" | "frappe" | "macchiato" | "mocha";
+
 export const GhostUserConfigSchema = z.object({
 	/** OPTIONAL - Either set the URL in your .env or put it here
 	 * @example
@@ -26,7 +28,23 @@ export const GhostUserConfigSchema = z.object({
 			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
 			 */
 			theme: z.string().default("@matthiesenxyz/astro-ghostcms-theme-default"),
+			/**
+			 * OPTIONAL - Catppuccin Theme Options
+			 */
+			catppuccinThemeOptions: z.object({
+				/** OPTIONAL - Set the default flavor for the catppuccino theme
+				 * @default "macchiato"
+				 */
+				defaultFlavor: z.custom<CATPPUCCINFLAVOURS>().optional().default("macchiato"),
+			}).optional().default({}),
+			/**
+			 * OPTIONAL - Astro Remote Configuration
+			 */
 			astroRemote: z.object({
+				/**
+				 * OPTIONAL - Enable or Disable the Astro Remote
+				 * @default true
+				 */
 				enable: z.boolean().default(true),
 			}).optional().default({}),
 		}).optional().default({}),

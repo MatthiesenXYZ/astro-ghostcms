@@ -173,6 +173,7 @@ export default defineIntegration({
 					"Theme Provider",
 					ghostThemeProvider({
 						theme: options.ThemeProvider.theme,
+						catppuccinThemeOptions: options.ThemeProvider.catppuccinThemeOptions,
 						verbose,
 					})
 				);

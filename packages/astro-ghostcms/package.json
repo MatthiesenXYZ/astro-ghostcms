@@ -62,16 +62,21 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.25",
+    "@unocss/transformer-directives": "0.58.5",
     "vitest": "^1.3.1",
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
+    "@iconify-json/logos": "^1.1.41",
+    "@iconify-json/uil": "^1.1.8",
     "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.19",
     "@resvg/resvg-js": "^2.6.0",
     "@ts-ghost/core-api": "^6.0.0",
     "@ts-ghost/content-api": "^4.0.12",
+    "@unocss/astro": "^0.58.5",
+    "@unocss/reset": "^0.58.5",
     "astro-integration-kit": "^0.5.1",
     "astro-robots-txt": "^1.0.0",
     "fs-extra": "^11.2.0",
@@ -79,6 +84,8 @@
     "picocolors": "^1.0.0",
     "satori": "^0.10.13",
     "satori-html": "^0.3.2",
+    "unocss": "^0.58.5",
+    "unocss-preset-catppuccin": "0.1.0",
     "vite": "^5.1.6"
   }
 }

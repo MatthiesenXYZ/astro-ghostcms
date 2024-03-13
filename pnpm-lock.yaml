@@ -32,6 +32,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.1.1
         version: 3.1.1
+      '@iconify-json/logos':
+        specifier: ^1.1.41
+        version: 1.1.42
+      '@iconify-json/uil':
+        specifier: ^1.1.8
+        version: 1.1.8
       '@matthiesenxyz/astro-ghostcms-theme-default':
         specifier: ^0.1.19
         version: link:../astro-ghostcms-theme-default
@@ -44,6 +50,12 @@ importers:
       '@ts-ghost/core-api':
         specifier: ^6.0.0
         version: 6.0.0
+      '@unocss/astro':
+        specifier: ^0.58.5
+        version: 0.58.5(vite@5.1.6)
+      '@unocss/reset':
+        specifier: ^0.58.5
+        version: 0.58.5
       astro:
         specifier: '>=4.4.1'
         version: 4.5.0(@types/node@20.11.25)
@@ -68,6 +80,12 @@ importers:
       satori-html:
         specifier: ^0.3.2
         version: 0.3.2
+      unocss:
+        specifier: ^0.58.5
+        version: 0.58.5(postcss@8.4.35)(vite@5.1.6)
+      unocss-preset-catppuccin:
+        specifier: 0.1.0
+        version: 0.1.0
       vite:
         specifier: ^5.1.6
         version: 5.1.6(@types/node@20.11.25)
@@ -78,6 +96,9 @@ importers:
       '@types/node':
         specifier: ^20.11.25
         version: 20.11.25
+      '@unocss/transformer-directives':
+        specifier: 0.58.5
+        version: 0.58.5
       vitest:
         specifier: ^1.3.1
         version: 1.3.1(@types/node@20.11.25)(@vitest/ui@1.3.1)
@@ -940,6 +961,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@catppuccin/palette@0.1.8:
+    resolution: {integrity: sha512-41quIj08vgPMy8kQxQb0+VqxuTlo2xfNYGSgOuiJXNojWnGuhLxBc61jgu2jiZYGNXVqgVNGWwmWEUf6s32jiA==}
+    dev: false
 
   /@catppuccin/tailwindcss@0.1.6(tailwindcss@3.4.1):
     resolution: {integrity: sha512-V+Y0AwZ5SSyvOVAcDl7Ng30xy+m82OKnEJ+9+kcZZ7lRyXuZrAb2GScdq9XR3v+ggt8qiZ/G4TvaC9cJ88AAXA==}
@@ -2656,7 +2681,7 @@ packages:
       '@unocss/core': 0.58.5
       '@unocss/reset': 0.58.5
       '@unocss/vite': 0.58.5(vite@5.1.6)
-      vite: 5.1.6(sass@1.71.1)
+      vite: 5.1.6(@types/node@20.11.25)
     transitivePeerDependencies:
       - rollup
 
@@ -2831,7 +2856,7 @@ packages:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       magic-string: 0.30.8
-      vite: 5.1.6(sass@1.71.1)
+      vite: 5.1.6(@types/node@20.11.25)
     transitivePeerDependencies:
       - rollup
 
@@ -8539,6 +8564,12 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
+  /unocss-preset-catppuccin@0.1.0:
+    resolution: {integrity: sha512-/NU+FcwLMzh0ZzIJHZ/0O4RAFy+KdwrehUy8rBS8rtP0ER3TUdTytzxnGYlehu3bcmlSIsi6yOQ9X08YMnR8dw==}
+    dependencies:
+      '@catppuccin/palette': 0.1.8
+    dev: false
+
   /unocss@0.58.5(postcss@8.4.35)(vite@5.1.6):
     resolution: {integrity: sha512-0g4P6jLgRRNnhscxw7nQ9RHGrKJ1UPPiHPet+YT3TXUcmy4mTiYgo9+kGQf5bjyrzsELJ10cT6Qz2y6g9Tls4g==}
     engines: {node: '>=14'}
@@ -8571,7 +8602,7 @@ packages:
       '@unocss/transformer-directives': 0.58.5
       '@unocss/transformer-variant-group': 0.58.5
       '@unocss/vite': 0.58.5(vite@5.1.6)
-      vite: 5.1.6(sass@1.71.1)
+      vite: 5.1.6(@types/node@20.11.25)
     transitivePeerDependencies:
       - postcss
       - rollup

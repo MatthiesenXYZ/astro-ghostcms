@@ -25,13 +25,11 @@
     "url": "https://github.com/MatthiesenXYZ/astro-ghostcms/issues",
     "email": "issues@astro-ghostcms.xyz"
   },
-  "main": "./brutalunocss-preset.ts",
   "files": [
     "src",
     "brutalunocss-preset.ts"
   ],
   "exports": {
-    ".": "./brutalunocss-preset.ts",
     "./index.astro": "./src/routes/index.astro",
     "./[slug].astro": "./src/routes/[slug].astro",
     "./tags.astro": "./src/routes/tags.astro",
