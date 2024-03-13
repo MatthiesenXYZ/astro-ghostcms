@@ -1,5 +1,13 @@
 # @matthiesenxyz/astro-ghostcms-catppuccin
 
+## 0.0.14
+
+### Patch Changes
+
+- f097c6a: Adds a toggleswitch to allow users to disable astro-remote usage for rendering ghost-content
+- Updated dependencies [f097c6a]
+  - @matthiesenxyz/astro-ghostcms@3.3.4
+
 ## 0.0.13
 
 ### Patch Changes
