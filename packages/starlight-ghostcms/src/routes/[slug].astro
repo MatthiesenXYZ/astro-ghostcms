@@ -6,7 +6,6 @@ import { getPageProps } from '../utils/page';
 import { getAllPosts } from '../utils/api';
 import Metadata from '../components/Metadata.astro';
 import { Markup } from 'astro-remote';
-import * as render from '../components/astro-remote';
 import * as Gists from '@matthiesenxyz/astro-gists/components';
 
 export async function getStaticPaths() {
@@ -51,7 +50,6 @@ const pageProps = getPageProps(post.title)
         allowComponents: true,
       }}
       components={{
-        pre: render.CodeSlot,
         getgist: Gists.GetGist,
         getgistgroup: Gists.GetGistGroup,
       }}

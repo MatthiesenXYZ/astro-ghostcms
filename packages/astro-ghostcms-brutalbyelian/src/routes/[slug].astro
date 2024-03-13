@@ -34,6 +34,7 @@ invariant(settings, "Settings are required");
       content={post.html} 
       sanitize={{ 
         allowComponents: true,
+        allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
       }}
       components={{ 
         h1: C.H1,
@@ -42,7 +43,6 @@ invariant(settings, "Settings are required");
         h4: C.H4,
         h5: C.H5,
         h6: C.H6,
-        pre: C.CodeSlot,
         p: C.Paragraph,
         astrocard: C.astrocard,
       }}

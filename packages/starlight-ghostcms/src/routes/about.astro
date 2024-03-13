@@ -6,7 +6,6 @@ import Page from '../components/Page.astro'
 import { getPageProps } from '../utils/page'
 import { getSluggedPage } from '../utils/api'
 import { Markup } from 'astro-remote'
-import * as render from '../components/astro-remote';
 
 const aboutPage = await getSluggedPage("about");
 
@@ -26,9 +25,7 @@ const pageProps = getPageProps(aboutPage ? aboutPage.post.title : "")
         sanitize={{ 
           allowComponents: true, 
         }}
-        components={{
-          pre: render.CodeSlot
-        }} />
+      />
   }
   <footer class="not-content">
     <!--PrevNextLinks next={nextLink} prev={prevLink} /-->
