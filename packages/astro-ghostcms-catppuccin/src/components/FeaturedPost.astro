@@ -4,7 +4,6 @@ import FeatureImage from "./FeatureImage.astro";
 import AuthorList from "./AuthorList.astro";
 import { formatDate } from "../utils";
 import { Markup } from 'astro-remote';
-import * as render from '../components/astro-remote';
 
 export type Props = {
   posts: Post[];
@@ -66,10 +65,7 @@ const latestFeatured = posts[0]
     content={latestFeatured.html} 
     sanitize={{ 
       allowComponents: true, 
-      allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'getgist', 'getgistgroup', 'astrocard'],
-    }}
-    components={{
-      pre: render.CodeSlot
+      allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
     }}
   /> }
       </section>
