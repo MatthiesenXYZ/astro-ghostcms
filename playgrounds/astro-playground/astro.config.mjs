@@ -9,9 +9,6 @@ export default defineConfig({
 			ghostURL: 'https://ghostdemo.matthiesen.xyz',
 			ThemeProvider: {
 				theme: "@matthiesenxyz/astro-ghostcms-catppuccin",
-				catppuccinThemeOptions: {
-					defaultFlavor: "latte",
-				},
 				astroRemote: {
 					enable: true,
 				},
