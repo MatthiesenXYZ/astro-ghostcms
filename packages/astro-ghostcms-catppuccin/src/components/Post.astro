@@ -3,6 +3,9 @@ import PostHero from "../components/PostHero.astro";
 import PostFooter from "../components/PostFooter.astro";
 import { getFeaturedPosts, invariant, type Post, type Settings } from "@matthiesenxyz/astro-ghostcms/api";
 import { Markup } from 'astro-remote';
+import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
+
+const useRemote = config.ThemeProvider.astroRemote.enable;
 
 export type Props = {
   post: Post;
@@ -16,10 +19,10 @@ async function getPostsSet(){
   const featuredPosts = await getFeaturedPosts();
   const fposts = posts;
   if(featuredPosts.posts.length === 0){ return fposts } 
-  else {
-    const featured = featuredPosts.posts[0]
-    return fposts.filter((p: Post)=>p.id !== featured.id)
-  }
+
+  const featured = featuredPosts.posts[0]
+  return fposts.filter((p: Post)=>p.id !== featured.id)
+
 }
 
 const mPosts = await getPostsSet()
@@ -29,13 +32,15 @@ invariant(settings, "Settings not found");
 
 <PostHero post={post} settings={settings} />
 <div id="ghostimport" class="mt-4 text-ctp-subtext1">
-  <Markup 
-    content={post.html} 
-    sanitize={{ 
-      allowComponents: true,
-      allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
-    }}
-  />
+  {useRemote ? (
+    <Markup 
+      content={post.html} 
+      sanitize={{ 
+        allowComponents: true,
+        allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
+      }}
+    />
+  ) : <Fragment set:html={post.html} /> }
 </div>
 <PostFooter post={post} settings={settings} posts={mPosts} />
 

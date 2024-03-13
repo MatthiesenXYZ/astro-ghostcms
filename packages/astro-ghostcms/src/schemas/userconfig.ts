@@ -17,22 +17,19 @@ export const GhostUserConfigSchema = z.object({
 	/** OPTIONAL - Configure the Theme Provider 
 	 * @ This option allows the user to configure the Theme Provider
 	 */
-	ThemeProvider: z
-		.object({
+	ThemeProvider: z.object({
 			/** OPTIONAL - Disable the theme provider
 			 * @default false
 			 */
-			disableThemeProvider: z.coerce.boolean(),
+			disableThemeProvider: z.coerce.boolean().default(false),
 			/** OPTIONAL - Set the theme you want to use
 			 * @default "@matthiesenxyz/astro-ghostcms-theme-default"
 			 */
-			theme: z.string(),
-		})
-		.optional()
-		.default({
-			disableThemeProvider: false,
-			theme: "@matthiesenxyz/astro-ghostcms-theme-default"
-		}),
+			theme: z.string().default("@matthiesenxyz/astro-ghostcms-theme-default"),
+			astroRemote: z.object({
+				enable: z.boolean().default(true),
+			}).optional().default({}),
+		}).optional().default({}),
 	/** Allows the user to disable the provided 404 page */
 	disableDefault404: z.coerce.boolean().optional(),
 	/** Allows the user to disable the provided RSS Feed */

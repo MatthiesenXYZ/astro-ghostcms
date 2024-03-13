@@ -66,6 +66,9 @@ export default defineConfig({
       ThemeProvider: { // Allows you to pass config options to our ThemeProvider if enabled.
         disableThemeProvider: false, // OPTIONAL - Default False
         theme: "@matthiesenxyz/astro-ghostcms-theme-default", // OPTIONAL - Default Theme shown.
+        astroRemote: {
+          enable: true // OPTIONAL - Default True, Allows the user to switch to standard <Fragment> html rendering if they are having issues with Astro-remote
+        }
       };
       disableDefault404: false, // Allows the user to disable the default `/404 page, to be able to create their own under `/src/pages/404.astro`.
       enableRSSFeed: true, // Allows the user to Enable or disable RSS Feed Generation. Default: true
