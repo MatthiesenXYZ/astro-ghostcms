@@ -4,6 +4,9 @@ import FeatureImage from "./FeatureImage.astro";
 import AuthorList from "./AuthorList.astro";
 import { formatDate } from "../utils";
 import { Markup } from 'astro-remote';
+import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
+
+const useRemote = config.ThemeProvider.astroRemote.enable;
 
 export type Props = {
   posts: Post[];
@@ -61,13 +64,15 @@ const latestFeatured = posts[0]
       </div>
       <div class="divider my-4"/>
       <section id="ghostimport" class="text-ctp-subtext1">
-        {latestFeatured && <Markup 
-    content={latestFeatured.html} 
-    sanitize={{ 
-      allowComponents: true, 
-      allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
-    }}
-  /> }
+
+  
+        {useRemote ? (latestFeatured && <Markup 
+            content={latestFeatured.html} 
+            sanitize={{ 
+              allowComponents: true,
+              allowElements: ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img', 'figure', 'figcaption', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong', 'del', 'hr', 'br', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'div', 'span', 'script', 'astrocard'],
+            }}
+          />) : (latestFeatured && <Fragment set:html={latestFeatured.html} />) }
       </section>
     </div>
   </main>

@@ -7,6 +7,9 @@ import BlogPostHeader from "../components/blog/BlogPostHeader.astro";
 import { Markup } from 'astro-remote';
 import * as C from "../components/ghostrender";
 import { Card } from "@eliancodes/brutal-ui";
+import config from "virtual:@matthiesenxyz/astro-ghostcms/config";
+
+const useRemote = config.ThemeProvider.astroRemote.enable;
 
 export async function getStaticPaths() {
   const [posts, pages, settings] = await Promise.all([getAllPosts(), await getAllPages(), await getSettings()]);
@@ -30,7 +33,7 @@ invariant(settings, "Settings are required");
 
   <div class="my-5"/>
   <div id="ghost">
-    <Markup 
+    {useRemote ? <Markup 
       content={post.html} 
       sanitize={{ 
         allowComponents: true,
@@ -46,7 +49,7 @@ invariant(settings, "Settings are required");
         p: C.Paragraph,
         astrocard: C.astrocard,
       }}
-    />
+    /> : <Fragment set:html={post.html} />}
   </div>
 
   </article>
