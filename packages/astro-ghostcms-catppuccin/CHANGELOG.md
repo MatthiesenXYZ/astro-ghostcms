@@ -1,5 +1,14 @@
 # @matthiesenxyz/astro-ghostcms-catppuccin
 
+## 0.0.13
+
+### Patch Changes
+
+- b0218e1: fix:
+
+  - Removed CodeSlot Component that sometimes would break with some <pre> components
+  - Will be adding at a latter time a custom component to replace this, but at this time this is now fixed.
+
 ## 0.0.12
 
 ### Patch Changes

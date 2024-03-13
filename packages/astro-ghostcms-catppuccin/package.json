@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-catppuccin",
   "description": "A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
