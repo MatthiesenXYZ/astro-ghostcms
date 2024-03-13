@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-catppuccin",
   "description": "A dark theme made with Catppuccin and TailwindCSS for Astro-GhostCMS",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -50,7 +50,7 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "@matthiesenxyz/astro-ghostcms": ">=3.3.3",
+    "@matthiesenxyz/astro-ghostcms": ">=3.3.4",
     "astro": ">=4.4.0"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@catppuccin/tailwindcss": "0.1.6",
     "@fontsource-variable/inter": "^5.0.17",
-    "@matthiesenxyz/astro-ghostcms": "^3.3.3",
+    "@matthiesenxyz/astro-ghostcms": "^3.3.4",
     "@tailwindcss/typography": "^0.5.10",
     "astro-navbar": "^2.3.1",
     "astro-remote": "^0.3.2",
