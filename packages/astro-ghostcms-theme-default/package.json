@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-ghostcms-theme-default",
   "description": "Default Theme for astro-ghostcms",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "homepage": "https://astro-ghostcms.xyz/",
   "type": "module",
   "license": "MIT",
@@ -47,7 +47,7 @@
     "typescript": "^5.4.2"
   },
   "peerDependencies": {
-    "@matthiesenxyz/astro-ghostcms": ">=3.3.4",
+    "@matthiesenxyz/astro-ghostcms": ">=3.3.5",
     "astro": ">=4.4.0"
   },
   "dependencies": {
