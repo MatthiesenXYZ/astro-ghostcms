@@ -26,7 +26,7 @@ jobs:
       - name: Setup npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
       - name: install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       - name: create and publish versions
         uses: matthiesenxyz/changeset@v1
         with:
