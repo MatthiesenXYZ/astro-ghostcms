@@ -61,7 +61,7 @@
     "@unocss/reset": "^0.58.6",
     "astro-font": "^0.0.78",
     "astro-remote": "0.3.2",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "ultrahtml": "^1.5.3",
     "unocss": "^0.58.6"
   }
