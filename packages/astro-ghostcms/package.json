@@ -61,8 +61,8 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.11.28",
-    "vitest": "^1.4.0",
+    "@types/node": "^20.12.7",
+    "vitest": "^1.5.2",
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
