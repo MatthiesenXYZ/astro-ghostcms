@@ -53,19 +53,19 @@
     "test:ci": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.21.1",
+    "@astrojs/starlight": "^0.22.2",
     "vitest": "^1.4.0",
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
-    "@matthiesenxyz/astro-gists": "^0.2.11",
+    "@matthiesenxyz/astro-gists": "^0.3.2",
     "@ts-ghost/core-api": "^6.0.0",
     "@ts-ghost/content-api": "^4.0.12",
-    "astro-integration-kit": "^0.6.0",
-    "astro-remote": "^0.3.2",
+    "astro-integration-kit": "^0.13.2",
+    "astro-remote": "^0.3.3",
     "ultrahtml": "^1.5.3",
-    "vite": "^5.1.6",
+    "vite": "^5.2.11",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "peerDependencies": {
