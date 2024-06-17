@@ -55,14 +55,14 @@
   },
   "dependencies": {
     "@eliancodes/brutal-ui": "^0.2.6",
-    "@iconify-json/logos": "^1.1.41",
+    "@iconify-json/logos": "^1.1.43",
     "@iconify-json/uil": "^1.1.8",
-    "@unocss/astro": "^0.58.6",
-    "@unocss/reset": "^0.58.6",
-    "astro-font": "^0.0.78",
-    "astro-remote": "0.3.2",
-    "typescript": "^5.4.2",
+    "@unocss/astro": "^0.61.0",
+    "@unocss/reset": "^0.61.0",
+    "astro-font": "^0.0.81",
+    "astro-remote": "0.3.3",
+    "typescript": "^5.4.5",
     "ultrahtml": "^1.5.3",
-    "unocss": "^0.58.6"
+    "unocss": "^0.61.0"
   }
 }
