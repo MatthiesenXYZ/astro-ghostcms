@@ -16,7 +16,7 @@ const CONF_URL = config.ghostURL;
 
 // SETUP GHOST API
 const ghostApiKey = CONTENT_API_KEY || "";
-const ghostUrl = CONF_URL || CONTENT_API_URL || "";
+const ghostUrl = CONTENT_API_URL || CONF_URL || "";
 const version = "v5.0";
 const api = new TSGhostContentAPI(ghostUrl, ghostApiKey, version);
 
