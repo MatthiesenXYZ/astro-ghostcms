@@ -59,13 +59,13 @@
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "@catppuccin/tailwindcss": "0.1.6",
-    "@fontsource-variable/inter": "^5.0.17",
+    "@fontsource-variable/inter": "^5.0.20",
     "@matthiesenxyz/astro-ghostcms": "^3.3.5",
-    "@tailwindcss/typography": "^0.5.10",
-    "astro-navbar": "^2.3.1",
-    "astro-remote": "^0.3.2",
-    "astro-seo": "^0.8.3",
-    "tailwindcss": "^3.3.5",
+    "@tailwindcss/typography": "^0.5.14",
+    "astro-navbar": "^2.3.3",
+    "astro-remote": "^0.3.3",
+    "astro-seo": "^0.8.4",
+    "tailwindcss": "^3.4.10",
     "ultrahtml": "1.5.3"
   }
 }
