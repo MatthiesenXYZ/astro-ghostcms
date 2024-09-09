@@ -22,10 +22,10 @@
 		"test:starlight:coverage": "pnpm --filter starlight-ghostcms test:coverage"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
-		"@changesets/cli": "^2.27.1",
-		"@vitest/ui": "^1.4.0",
-		"vitest": "^1.4.0",
-		"vitest-fetch-mock": "^0.2.2"
+		"@biomejs/biome": "1.8.3",
+		"@changesets/cli": "^2.27.8",
+		"@vitest/ui": "^2.0.5",
+		"vitest": "^2.0.5",
+		"vitest-fetch-mock": "^0.3.0"
 	}
 }

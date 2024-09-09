@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@types/node": "^20.11.28"
+    "@types/node": "^22.5.4"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.21.1",
