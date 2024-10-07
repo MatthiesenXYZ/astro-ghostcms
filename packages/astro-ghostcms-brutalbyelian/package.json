@@ -46,12 +46,12 @@
     "astro": ">=4.4.1"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^7.2.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^0.31.4",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier": "^3.2.5"
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-astro": "^1.2.4",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "@eliancodes/brutal-ui": "^0.2.6",
