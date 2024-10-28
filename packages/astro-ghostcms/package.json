@@ -66,19 +66,19 @@
     "vitest-fetch-mock": "^0.2.2"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
     "@matthiesenxyz/astro-ghostcms-theme-default": "^0.1.20",
-    "@resvg/resvg-js": "^2.6.0",
-    "@ts-ghost/core-api": "^6.0.0",
-    "@ts-ghost/content-api": "^4.0.12",
-    "astro-integration-kit": "^0.6.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@ts-ghost/core-api": "^6.1.0",
+    "@ts-ghost/content-api": "^4.1.0",
+    "astro-integration-kit": "^0.16.1",
     "astro-robots-txt": "^1.0.0",
     "fs-extra": "^11.2.0",
-    "package-json": "^10.0.0",
-    "picocolors": "^1.0.0",
-    "satori": "^0.10.13",
+    "package-json": "^10.0.1",
+    "picocolors": "^1.1.1",
+    "satori": "^0.11.2",
     "satori-html": "^0.3.2",
-    "vite": "^5.1.6"
+    "vite": "^5.4.10"
   }
 }
