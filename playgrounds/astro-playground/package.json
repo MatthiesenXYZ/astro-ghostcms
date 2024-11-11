@@ -11,18 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.5.6",
+    "astro": "^4.16.10",
     "@matthiesenxyz/astro-ghostcms": "workspace:*",
     "@matthiesenxyz/astro-ghostcms-theme-default": "workspace:*",
     "@matthiesenxyz/astro-ghostcms-catppuccin": "workspace:*",
     "@matthiesenxyz/astro-ghostcms-brutalbyelian": "workspace:*",
-    "@astrojs/tailwind": "^5.1.0",
-    "@unocss/astro": "^0.58.6",
-    "tailwindcss": "^3.3.5"
+    "@astrojs/tailwind": "^5.1.2",
+    "@unocss/astro": "^0.64.0",
+    "tailwindcss": "^3.4.14"
   },
   "devDependencies": {
-    "@unocss/reset": "^0.58.6",
-    "typescript": "^5.4.2",
-    "unocss": "^0.58.6"
+    "@unocss/reset": "^0.64.0",
+    "typescript": "^5.6.3",
+    "unocss": "^0.64.0"
   }
 }
