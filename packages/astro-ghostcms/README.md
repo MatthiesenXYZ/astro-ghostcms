@@ -1,4 +1,6 @@
-<img src="https://ghostdemo.matthiesen.xyz/content/images/size/w50/2024/01/logo-1.png" width="64px" />
+
+> [!IMPORTANT] 
+> This project has been deprecated in favor of the new [astro-ghostcms-loader](https://github.com/MatthiesenXYZ/ghostcms-loader/tree/main)
 
 # Welcome to Astro-GhostCMS
 
