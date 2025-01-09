@@ -1,8 +1,7 @@
 <img src="https://repository-images.githubusercontent.com/742727289/d4fb3f65-0d5f-4a1a-9f8b-9b3e2dc90bde" />
 
-Want to Chat?  Join our [Discord](https://discord.gg/u7NZqUyeAR)
-
-For a full always up to date documentation please checkout [Our Website](https://astro-ghostcms.xyz)
+> [!IMPORTANT] 
+> This project has been deprecated in favor of the new [astro-ghostcms-loader](https://github.com/MatthiesenXYZ/ghostcms-loader/tree/main)
 
 Don't like GitHub, and prefer GitLab?  This Repo is Auto Cloned to Gitlab! Check it out here: [GitLab: Astro-GhostCMS](https://gitlab.com/matthiesenxyz/astro-ghostcms)
 
